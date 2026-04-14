@@ -1,0 +1,113 @@
+﻿============================================
+  ResearchNet ├ù Crossref API Demo
+  Base: https://api.crossref.org
+  Email: research@example.org
+============================================
+
+≡ƒöì  SEARCH BY AUTHOR: "Albert Einstein"
+
+  1. Verhalten von Uhren und Ma├ƒst├ñben auf einem rotierenden Bezugsk├╢rper
+     Authors : Albert Einstein
+     Year    : 1956
+     Journal : ├£ber die spezielle und die allgemeine Relativit├ñtstheorie
+     DOI     : https://doi.org/10.1007/978-3-663-14880-7_23
+     Citations: 0
+
+  2. Bemerkungen Zu den in Diesem Bande Vereinigten Arbeiten
+     Authors : Albert Einstein
+     Year    : 1979
+     Journal : Albert Einstein als Philosoph und Naturforscher
+     DOI     : https://doi.org/10.1007/978-3-322-83572-7_28
+     Citations: 2
+
+  3. Why Socialism?
+     Authors : Albert Einstein
+     Year    : 1955
+     Journal : Monthly Review
+     DOI     : https://doi.org/10.14452/mr-007-02-1955-06_3
+     Citations: 0
+
+  4. Personal God Concept Causes Science-Religion Conflict
+     Authors : Albert Einstein
+     Year    : 1940
+     Journal : The Science News-Letter
+     DOI     : https://doi.org/10.2307/3916567
+     Citations: 1
+
+  5. Social Responsibility in Science
+     Authors : Albert Einstein
+     Year    : 1950
+     Journal : Science
+     DOI     : https://doi.org/10.1126/science.112.2921.760-c
+     Citations: 1
+
+
+≡ƒöì  SEARCH BY INSTITUTION: "MIT"
+
+  1. DIN 15075:1977-12, Krane; Laufr├ñder mit Spurkr├ñnzen, mit Gleitlagerung, mit Zahnkranz
+     Authors : 
+     Year    : ?
+     Journal : (no journal)
+     DOI     : https://doi.org/10.31030/1153911
+     Citations: 0
+
+  2. DIN 15079:1977-12, Krane; Laufr├ñder mit Spurkr├ñnzen, mit W├ñlzlagerung, mit Zahnkranz
+     Authors : 
+     Year    : ?
+     Journal : (no journal)
+     DOI     : https://doi.org/10.31030/1153957
+     Citations: 0
+
+  3. DIN 34822:2005-11, Zylinderschrauben mit Flansch mit Innenvielzahn mit Gewinde bis Kopf
+     Authors : 
+     Year    : ?
+     Journal : (no journal)
+     DOI     : https://doi.org/10.31030/9606606
+     Citations: 0
+
+  4. DIN 7984:2022-03, Zylinderschrauben mit Innensechskant mit niedrigem Kopf mit reduzierter Belastbarkeit
+     Authors : 
+     Year    : ?
+     Journal : (no journal)
+     DOI     : https://doi.org/10.31030/3325867
+     Citations: 0
+
+  5. DIN 7984:2021-01, Zylinderschrauben mit Innensechskant mit niedrigem Kopf mit reduzierter Belastbarkeit
+     Authors : 
+     Year    : ?
+     Journal : (no journal)
+     DOI     : https://doi.org/10.31030/3218858
+     Citations: 0
+
+
+≡ƒöì  RESOLVE DOI: 10.1038/nature12373
+
+  Title     : Nanometre-scale thermometry in a living cell
+  Authors   : G. Kucsko, P. C. Maurer, N. Y. Yao, M. Kubo, H. J. Noh, P. K. Lo, H. Park, M. D. Lukin
+  Year      : 2013
+  Journal   : Nature
+  Publisher : Springer Science and Business Media LLC
+  Type      : journal-article
+  DOI       : https://doi.org/10.1038/nature12373
+  Citations : 1753
+  URL       : https://doi.org/10.1038/nature12373
+
+
+≡ƒôï  BUILD RESEARCHER PROFILE: "Margaret Hamilton"
+  (simulating auto-fill from Crossref)
+
+  ≡ƒôÜ Publications found : 20
+  ≡ƒæÑ Unique co-authors  : 2
+  ≡ƒôê Total citations    : 34
+
+  Recent publications:
+    1. [2010] People with Complex Needs and the Criminal Justice System (16 citations) ΓÇö doi:10.1080/10345329.2010.12035888
+    2. [2011] Transfigured Stages (5 citations) ΓÇö doi:10.1163/9789401200554
+    3. [2011] Preliminary Material (0 citations) ΓÇö doi:10.1163/9789401200554_001
+    4. [1992] The Role of the Social Sciences in Drug and Alcohol Research: An Overview (0 citations) ΓÇö doi:10.5172/hesr.1992.2.1.62
+    5. [2011] Conclusion (0 citations) ΓÇö doi:10.1163/9789401200554_012
+
+  Co-authors:
+    - MARGARET HAMILTON
+    - Hamilton Margaret
+
