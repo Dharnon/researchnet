@@ -298,18 +298,12 @@ function OnboardingModal({ onClose }: { onClose: () => void }) {
         {/* Logo mark */}
         <div style={{
           width: 52, height: 52, borderRadius: 14,
-          background: "linear-gradient(135deg, #84cc16, #65a30d)",
+          background: "linear-gradient(135deg, #D97706, #92400E)",
           display: "flex", alignItems: "center", justifyContent: "center",
           margin: "0 auto 20px",
-          boxShadow: "0 0 40px #84cc1630",
+          boxShadow: "0 0 40px #D9770630",
         }}>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <circle cx="8" cy="12" r="3" fill="#000" opacity="0.9"/>
-            <circle cx="16" cy="7" r="2.5" fill="#000" opacity="0.7"/>
-            <circle cx="16" cy="17" r="2.5" fill="#000" opacity="0.7"/>
-            <line x1="11" y1="12" x2="14" y2="7.8" stroke="#000" strokeWidth="1.5" opacity="0.6"/>
-            <line x1="11" y1="12" x2="14" y2="16.2" stroke="#000" strokeWidth="1.5" opacity="0.6"/>
-          </svg>
+          <BookOpen size={22} color="#fff" strokeWidth={1.8} />
         </div>
 
         <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.03em" }}>
@@ -321,16 +315,16 @@ function OnboardingModal({ onClose }: { onClose: () => void }) {
 
         <button style={{
           width: "100%", padding: "13px 20px", borderRadius: 12,
-          border: "1px solid #84cc1640",
-          background: "#84cc16", color: "#000",
+          border: "1px solid #D9770640",
+          background: "#D97706", color: "#fff",
           fontSize: 13, fontWeight: 800, cursor: "pointer",
           display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
           marginBottom: 10,
           transition: "all 0.15s",
           letterSpacing: "-0.01em",
         }}
-        onMouseEnter={(e) => (e.currentTarget.style.background = "#9ae034")}
-        onMouseLeave={(e) => (e.currentTarget.style.background = "#84cc16")}
+        onMouseEnter={(e) => (e.currentTarget.style.background = "#B45309")}
+        onMouseLeave={(e) => (e.currentTarget.style.background = "#D97706")}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.178 3.872-3.722 0-1.797-.897-3.722-3.903-3.722h-2.266z"/>
@@ -381,18 +375,18 @@ function NavBar({ view, setView, connectedCount }: {
           display: "flex", alignItems: "center", gap: 7,
           padding: "7px 14px", borderRadius: 8, border: "none",
           fontSize: 12, fontWeight: 600, cursor: "pointer",
-          background: view === item.key ? "#1a1a1a" : "transparent",
+          background: view === item.key ? "#1f1f1f" : "transparent",
           color: view === item.key ? "var(--text-primary)" : "var(--text-subtle)",
           transition: "all 0.15s",
           position: "relative",
         }}>
-          <span style={{ color: view === item.key ? "var(--accent)" : "var(--text-subtle)", display: "flex" }}>
+          <span style={{ color: view === item.key ? "#84cc16" : "var(--text-subtle)", display: "flex" }}>
             {item.icon}
           </span>
           {item.label}
           {item.badge !== undefined && item.badge > 0 && (
             <span style={{
-              background: "var(--accent)", color: "#000",
+              background: "#84cc16", color: "#000",
               fontSize: 9, fontWeight: 800, padding: "1px 5px", borderRadius: 20,
               minWidth: 16, textAlign: "center",
             }}>
@@ -403,7 +397,7 @@ function NavBar({ view, setView, connectedCount }: {
             <div style={{
               position: "absolute", bottom: -5, left: "50%", transform: "translateX(-50%)",
               width: 20, height: 2, borderRadius: 2,
-              background: "var(--accent)",
+              background: "#84cc16",
             }} />
           )}
         </button>
@@ -556,16 +550,16 @@ export default function App() {
             <button
               onClick={() => setOnlyOpen((p) => !p)}
               style={{
-                background: onlyOpen ? `${"var(--accent)"}15` : "#111111",
+                background: onlyOpen ? "#84cc1615" : "#111111",
                 border: `1px solid ${onlyOpen ? "#84cc1640" : "#1e1e1e"}`,
-                borderRadius: 10, color: onlyOpen ? "var(--accent)" : "var(--text-muted)",
+                borderRadius: 10, color: onlyOpen ? "#84cc16" : "var(--text-muted)",
                 fontSize: 12, fontWeight: 600, padding: "8px 12px",
                 cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
               }}
             >
               <span style={{
                 width: 6, height: 6, borderRadius: "50%",
-                background: onlyOpen ? "var(--accent)" : "#333",
+                background: onlyOpen ? "#84cc16" : "#333",
                 display: "inline-block",
               }} />
               Solo abiertos
