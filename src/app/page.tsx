@@ -680,11 +680,28 @@ export default function App() {
           <span style={{ fontSize: 15, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em" }}>ResearchNet</span>
         </div>
         <NavBar view={view} setView={setView} connectedCount={connectedIds.length} unreadMessages={unreadMessages} />
-        <div style={{ display: "flex", alignItems: "center", gap: 6, background: "#111111", border: "1px solid #1e1e1e", borderRadius: 20, padding: "5px 12px" }}>
-          <Globe size={11} color="var(--text-subtle)" />
-          <span style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 600 }}>
-            {researchers.filter((r) => r.open).length} <span style={{ color: "var(--accent)" }}>open</span> · {researchers.length} researchers
-          </span>
+        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 6, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, padding: "5px 12px" }}>
+            <Globe size={11} color="var(--text-subtle)" />
+            <span style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 600 }}>
+              {researchers.filter((r) => r.open).length} <span style={{ color: "var(--accent)" }}>open</span> · {researchers.length} researchers
+            </span>
+          </div>
+          <button
+            onClick={toggleTheme}
+            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+            style={{
+              display: "flex", alignItems: "center", justifyContent: "center",
+              width: 32, height: 32, borderRadius: 8,
+              background: "var(--surface)", border: "1px solid var(--border)",
+              color: "var(--text-tertiary)", cursor: "pointer",
+              transition: "all 0.15s",
+            }}
+            onMouseEnter={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "#84cc1640"; el.style.color = "var(--accent)"; }}
+            onMouseLeave={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "var(--border)"; el.style.color = "var(--text-tertiary)"; }}
+          >
+            {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
+          </button>
         </div>
       </header>
 
