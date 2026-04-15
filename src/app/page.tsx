@@ -152,8 +152,8 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected, t }: {
               <p style={{ fontSize: 13, color: t.textSecondary, marginBottom: 2 }}>{researcher.role}</p>
               <p style={{ fontSize: 12, color: t.textTertiary }}>{researcher.dept}</p>
               {researcher.open && (
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 4, marginTop: 6, fontSize: 10, fontWeight: 600, color: t.accent, background: t.accentLight, border: `1px solid ${t.accent}25`, padding: "2px 8px", borderRadius: 20 }}>
-                  <span style={{ width: 5, height: 5, borderRadius: "50%", background: t.accent }} />Disponible
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 4, marginTop: 6, fontSize: 10, fontWeight: 600, color: "#22c55e", background: "rgba(34,197,94,0.08)", border: "1px solid rgba(34,197,94,0.20)", padding: "2px 8px", borderRadius: 20 }}>
+                  <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#22c55e" }} />Disponible
                 </span>
               )}
             </div>
@@ -475,14 +475,19 @@ function NavBar({ view, setView, connectedCount, unreadCount, t }: {
 // ─── THEME TOGGLE ICON ────────────────────────────────────────────────────────
 
 function ThemeToggle({ theme, onToggle }: { theme: string; onToggle: () => void }) {
+  const isDark = theme === "dark";
   return (
     <button onClick={onToggle} style={{
       padding: "6px 10px", borderRadius: 8,
-      border: "1px solid var(--t-border)", background: "var(--t-surface)",
-      color: "var(--t-text)", fontSize: 12, fontWeight: 600,
+      border: "1px solid var(--border)", background: "var(--surface)",
+      color: "var(--text-secondary)", fontSize: 12, fontWeight: 600,
       cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
       flexShrink: 0,
-    }}>
+      transition: "border-color 0.15s, background 0.15s, color 0.15s",
+    }}
+    onMouseEnter={(e) => { const b = e.currentTarget as HTMLButtonElement; b.style.borderColor = isDark ? "#303038" : "#cbd5e1"; b.style.background = "var(--surface-hover)"; }}
+    onMouseLeave={(e) => { const b = e.currentTarget as HTMLButtonElement; b.style.borderColor = "var(--border)"; b.style.background = "var(--surface)"; }}
+    >
       {theme === "light" ? (
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
