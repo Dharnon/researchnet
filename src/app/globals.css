@@ -1080,7 +1080,7 @@ body {
 }
 
 .opp-cta:hover {
-  background: var(--accent);
+  background: #b45309;
   color: #fff;
 }
 
