@@ -68,14 +68,14 @@ function Avatar({ seed, size = 80, style = {} }: { seed: string; size?: number; 
 
 function SkeletonLoader() {
   return (
-    <div style={{ background: "#f8f9fa", minHeight: "100vh" }}>
+    <div style={{ background: "#09090b", minHeight: "100vh" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px" }}>
         {[1, 2, 3].map((i) => (
           <div key={i} style={{ display: "flex", gap: 16, marginBottom: 16, alignItems: "center" }}>
-            <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#e9ecef" }} />
+            <div style={{ width: 64, height: 64, borderRadius: "50%", background: "#1e1e22" }} />
             <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
-              <div style={{ width: "40%", height: 14, borderRadius: 4, background: "#e9ecef" }} />
-              <div style={{ width: "25%", height: 11, borderRadius: 4, background: "#e9ecef" }} />
+              <div style={{ width: "40%", height: 14, borderRadius: 4, background: "#1e1e22" }} />
+              <div style={{ width: "25%", height: 11, borderRadius: 4, background: "#1e1e22" }} />
             </div>
           </div>
         ))}
@@ -94,17 +94,17 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 }) {
   return (
     <>
-      <div onClick={onClose} style={{ position: "fixed", inset: 0, top: 64, background: "rgba(0,0,0,0.5)", zIndex: 39, backdropFilter: "blur(4px)" }} />
+      <div onClick={onClose} style={{ position: "fixed", inset: 0, top: 64, background: "rgba(0,0,0,0.7)", zIndex: 39, backdropFilter: "blur(4px)" }} />
       <div style={{
         position: "fixed", top: 64, right: 0, bottom: 0, width: 380,
-        background: "#fff", borderLeft: "1px solid #e5e7eb",
+        background: "#111111", borderLeft: "1px solid #e5e7eb",
         zIndex: 50, display: "flex", flexDirection: "column",
         boxShadow: "-4px 0 24px rgba(0,0,0,0.08)",
       }}>
         {/* Header */}
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 20px", borderBottom: "1px solid #f3f4f6" }}>
-          <span style={{ fontSize: 11, fontWeight: 600, color: "#6b7280", textTransform: "uppercase", letterSpacing: "0.06em" }}>Perfil</span>
-          <button onClick={onClose} style={{ background: "none", border: "none", cursor: "pointer", color: "#9ca3af", fontSize: 20, lineHeight: 1, padding: 4 }}>
+          <span style={{ fontSize: 11, fontWeight: 600, color: "#a1a1aa", textTransform: "uppercase", letterSpacing: "0.06em" }}>Perfil</span>
+          <button onClick={onClose} style={{ background: "none", border: "none", cursor: "pointer", color: "#71717a", fontSize: 20, lineHeight: 1, padding: 4 }}>
             <X size={18} />
           </button>
         </div>
@@ -115,12 +115,12 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
             <Avatar seed={researcher.seed} size={72} style={{ borderRadius: "50%", overflow: "hidden", flexShrink: 0 }} />
             <div>
-              <h2 style={{ fontSize: 18, fontWeight: 700, color: "#111827", letterSpacing: "-0.02em", marginBottom: 2 }}>{researcher.name} {researcher.surname}</h2>
-              <p style={{ fontSize: 13, color: "#6b7280", marginBottom: 2 }}>{researcher.role}</p>
-              <p style={{ fontSize: 12, color: "#9ca3af" }}>{researcher.dept}</p>
+              <h2 style={{ fontSize: 18, fontWeight: 700, color: "#f4f4f5", letterSpacing: "-0.02em", marginBottom: 2 }}>{researcher.name} {researcher.surname}</h2>
+              <p style={{ fontSize: 13, color: "#a1a1aa", marginBottom: 2 }}>{researcher.role}</p>
+              <p style={{ fontSize: 12, color: "#71717a" }}>{researcher.dept}</p>
               {researcher.open && (
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 4, marginTop: 6, fontSize: 10, fontWeight: 600, color: "#059669", background: "#ecfdf5", border: "1px solid #a7f3d0", padding: "2px 8px", borderRadius: 20 }}>
-                  <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#10b981" }} />
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 4, marginTop: 6, fontSize: 10, fontWeight: 600, color: "#84cc16", background: "#84cc1615", border: "1px solid #a7f3d0", padding: "2px 8px", borderRadius: 20 }}>
+                  <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#9ae034" }} />
                   Disponible
                 </span>
               )}
@@ -128,46 +128,46 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           </div>
 
           {/* Match */}
-          <div style={{ background: "#f9fafb", border: "1px solid #e5e7eb", borderRadius: 12, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
-            <span style={{ fontSize: 28, fontWeight: 800, color: "#059669", letterSpacing: "-0.03em", lineHeight: 1 }}>{researcher.match}%</span>
+          <div style={{ background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
+            <span style={{ fontSize: 28, fontWeight: 800, color: "#84cc16", letterSpacing: "-0.03em", lineHeight: 1 }}>{researcher.match}%</span>
             <div>
-              <div style={{ fontSize: 12, fontWeight: 600, color: "#374151" }}> affinity</div>
-              <div style={{ fontSize: 11, color: "#9ca3af" }}>según áreas y publicaciones</div>
+              <div style={{ fontSize: 12, fontWeight: 600, color: "#d4d4d8" }}> affinity</div>
+              <div style={{ fontSize: 11, color: "#71717a" }}>según áreas y publicaciones</div>
             </div>
           </div>
 
           {/* Bio */}
           <div>
-            <p style={{ fontSize: 11, fontWeight: 600, color: "#6b7280", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6 }}>Biografía</p>
-            <p style={{ fontSize: 13, color: "#4b5563", lineHeight: 1.7 }}>{researcher.bio}</p>
+            <p style={{ fontSize: 11, fontWeight: 600, color: "#a1a1aa", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6 }}>Biografía</p>
+            <p style={{ fontSize: 13, color: "#a1a1aa", lineHeight: 1.7 }}>{researcher.bio}</p>
           </div>
 
           {/* Stats */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
             {[{ v: researcher.pubs, l: "Publicaciones" }, { v: researcher.projects, l: "Proyectos" }, { v: researcher.groups.length, l: "Grupos" }].map((s) => (
-              <div key={s.l} style={{ background: "#f9fafb", border: "1px solid #e5e7eb", borderRadius: 10, padding: "12px 8px", textAlign: "center" }}>
-                <div style={{ fontSize: 20, fontWeight: 800, color: "#111827", letterSpacing: "-0.03em", marginBottom: 2 }}>{s.v}</div>
-                <div style={{ fontSize: 10, color: "#9ca3af", fontWeight: 500 }}>{s.l}</div>
+              <div key={s.l} style={{ background: "#111111", border: "1px solid #e5e7eb", borderRadius: 10, padding: "12px 8px", textAlign: "center" }}>
+                <div style={{ fontSize: 20, fontWeight: 800, color: "#f4f4f5", letterSpacing: "-0.03em", marginBottom: 2 }}>{s.v}</div>
+                <div style={{ fontSize: 10, color: "#71717a", fontWeight: 500 }}>{s.l}</div>
               </div>
             ))}
           </div>
 
           {/* Areas */}
           <div>
-            <p style={{ fontSize: 11, fontWeight: 600, color: "#6b7280", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Áreas de investigación</p>
+            <p style={{ fontSize: 11, fontWeight: 600, color: "#a1a1aa", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Áreas de investigación</p>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               {researcher.tags.map((tag) => (
-                <span key={tag} style={{ fontSize: 11, fontWeight: 500, color: "#374151", background: "#f3f4f6", border: "1px solid #e5e7eb", padding: "4px 10px", borderRadius: 20 }}>{tag}</span>
+                <span key={tag} style={{ fontSize: 11, fontWeight: 500, color: "#d4d4d8", background: "#1a1a1e", border: "1px solid #e5e7eb", padding: "4px 10px", borderRadius: 20 }}>{tag}</span>
               ))}
             </div>
           </div>
 
           {/* Groups */}
           <div>
-            <p style={{ fontSize: 11, fontWeight: 600, color: "#6b7280", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Grupos</p>
+            <p style={{ fontSize: 11, fontWeight: 600, color: "#a1a1aa", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Grupos</p>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               {researcher.groups.map((g) => (
-                <span key={g} style={{ fontSize: 11, fontWeight: 500, color: "#059669", background: "#ecfdf5", border: "1px solid #a7f3d0", padding: "4px 10px", borderRadius: 6 }}>{g}</span>
+                <span key={g} style={{ fontSize: 11, fontWeight: 500, color: "#84cc16", background: "#84cc1615", border: "1px solid #a7f3d0", padding: "4px 10px", borderRadius: 6 }}>{g}</span>
               ))}
             </div>
           </div>
@@ -178,8 +178,8 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           <button onClick={onConnect} style={{
             flex: 1, padding: "10px 16px", borderRadius: 8, border: "none",
             fontSize: 13, fontWeight: 600, cursor: "pointer",
-            background: isConnected ? "#ecfdf5" : "#059669",
-            color: isConnected ? "#059669" : "#fff",
+            background: isConnected ? "#84cc1615" : "#84cc16",
+            color: isConnected ? "#84cc16" : "#111111",
             display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
           }}>
             {isConnected ? <><Check size={14} /> Conectado</> : <><Users size={14} /> Conectar</>}
@@ -188,7 +188,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             <button style={{
               flex: 1, padding: "10px 16px", borderRadius: 8,
               border: "1px solid #e5e7eb", fontSize: 13, fontWeight: 600,
-              cursor: "pointer", background: "#fff", color: "#374151",
+              cursor: "pointer", background: "#111111", color: "#d4d4d8",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
             }}>
               <MessageCircle size={14} /> Mensaje
@@ -208,31 +208,31 @@ function OppModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onClose: (
     Fondos: { bg: "#dcfce7", text: "#15803d" },
     Internacional: { bg: "#f3e8ff", text: "#7c3aed" },
     Doctorado: { bg: "#fce7f3", text: "#be185d" },
-    Laboral: { bg: "#d1fae5", text: "#059669" },
+    Laboral: { bg: "#d1fae5", text: "#84cc16" },
   };
-  const c = colors[opp.type] ?? { bg: "#f3f4f6", text: "#374151" };
+  const c = colors[opp.type] ?? { bg: "#1a1a1e", text: "#d4d4d8" };
   return (
     <>
-      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", zIndex: 200, backdropFilter: "blur(4px)" }} />
+      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 200, backdropFilter: "blur(4px)" }} />
       <div style={{
         position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
-        width: "100%", maxWidth: 480, background: "#fff", borderRadius: 16,
+        width: "100%", maxWidth: 480, background: "#111111", borderRadius: 16,
         border: "1px solid #e5e7eb", padding: 28, zIndex: 201,
         boxShadow: "0 24px 60px rgba(0,0,0,0.15)",
       }}>
-        <button onClick={onClose} style={{ position: "absolute", top: 16, right: 16, background: "none", border: "none", cursor: "pointer", color: "#9ca3af" }}>
+        <button onClick={onClose} style={{ position: "absolute", top: 16, right: 16, background: "none", border: "none", cursor: "pointer", color: "#71717a" }}>
           <X size={18} />
         </button>
         <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
           <span style={{ fontSize: 10, fontWeight: 700, color: c.text, background: c.bg, padding: "3px 10px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
-          {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#ea580c", background: "#fff7ed", padding: "3px 10px", borderRadius: 20 }}>🔥 Hot</span>}
+          {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#fb923c", background: "#fb923c15", padding: "3px 10px", borderRadius: 20 }}>🔥 Hot</span>}
         </div>
-        <h2 style={{ fontSize: 18, fontWeight: 700, color: "#111827", letterSpacing: "-0.02em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
-        <p style={{ fontSize: 13, color: "#6b7280", marginBottom: 16 }}>{opp.dept} · <span style={{ color: "#ea580c", fontWeight: 600 }}>Hasta {opp.deadline}</span></p>
-        <p style={{ fontSize: 13, color: "#4b5563", lineHeight: 1.7, marginBottom: 24 }}>{opp.desc}</p>
+        <h2 style={{ fontSize: 18, fontWeight: 700, color: "#f4f4f5", letterSpacing: "-0.02em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
+        <p style={{ fontSize: 13, color: "#a1a1aa", marginBottom: 16 }}>{opp.dept} · <span style={{ color: "#fb923c", fontWeight: 600 }}>Hasta {opp.deadline}</span></p>
+        <p style={{ fontSize: 13, color: "#a1a1aa", lineHeight: 1.7, marginBottom: 24 }}>{opp.desc}</p>
         <button style={{
           width: "100%", padding: "12px", borderRadius: 8, border: "none",
-          background: "#059669", color: "#fff", fontSize: 13, fontWeight: 600,
+          background: "#84cc16", color: "#111111", fontSize: 13, fontWeight: 600,
           cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
         }}>
           <ExternalLink size={14} /> Más información
@@ -252,43 +252,43 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
 }) {
   return (
     <div onClick={onSelect} style={{
-      background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12,
+      background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12,
       padding: "20px", cursor: "pointer",
       transition: "all 0.18s ease",
       display: "flex", flexDirection: "column", gap: 14,
     }}
     onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#d1fae5"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 16px rgba(0,0,0,0.06)"; (e.currentTarget as HTMLDivElement).style.transform = "translateY(-1px)"; }}
-    onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#e5e7eb"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none"; (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; }}
+    onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#1e1e22"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none"; (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; }}
     >
       {/* Top row */}
       <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
         <Avatar seed={researcher.seed} size={52} style={{ borderRadius: "50%", overflow: "hidden", flexShrink: 0 }} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 2 }}>
-            <span style={{ fontSize: 15, fontWeight: 700, color: "#111827", lineHeight: 1.2 }}>{researcher.name} {researcher.surname}</span>
-            <span style={{ fontSize: 13, fontWeight: 800, color: "#059669", flexShrink: 0 }}>{researcher.match}%</span>
+            <span style={{ fontSize: 15, fontWeight: 700, color: "#f4f4f5", lineHeight: 1.2 }}>{researcher.name} {researcher.surname}</span>
+            <span style={{ fontSize: 13, fontWeight: 800, color: "#84cc16", flexShrink: 0 }}>{researcher.match}%</span>
           </div>
-          <p style={{ fontSize: 12, color: "#6b7280", lineHeight: 1.3, marginBottom: 1 }}>{researcher.role}</p>
-          <p style={{ fontSize: 11, color: "#9ca3af" }}>{researcher.dept}</p>
+          <p style={{ fontSize: 12, color: "#a1a1aa", lineHeight: 1.3, marginBottom: 1 }}>{researcher.role}</p>
+          <p style={{ fontSize: 11, color: "#71717a" }}>{researcher.dept}</p>
         </div>
       </div>
 
       {/* Tags */}
       <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
         {researcher.tags.map((tag) => (
-          <span key={tag} style={{ fontSize: 10, fontWeight: 500, color: "#4b5563", background: "#f3f4f6", border: "1px solid #e5e7eb", padding: "3px 8px", borderRadius: 20 }}>{tag}</span>
+          <span key={tag} style={{ fontSize: 10, fontWeight: 500, color: "#a1a1aa", background: "#1a1a1e", border: "1px solid #e5e7eb", padding: "3px 8px", borderRadius: 20 }}>{tag}</span>
         ))}
       </div>
 
       {/* Footer */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 4, borderTop: "1px solid #f3f4f6" }}>
         <div style={{ display: "flex", gap: 12 }}>
-          <span style={{ fontSize: 12, color: "#6b7280" }}><span style={{ fontWeight: 700, color: "#374151" }}>{researcher.pubs}</span> papers</span>
-          <span style={{ fontSize: 12, color: "#6b7280" }}><span style={{ fontWeight: 700, color: "#374151" }}>{researcher.projects}</span> proyectos</span>
+          <span style={{ fontSize: 12, color: "#a1a1aa" }}><span style={{ fontWeight: 700, color: "#d4d4d8" }}>{researcher.pubs}</span> papers</span>
+          <span style={{ fontSize: 12, color: "#a1a1aa" }}><span style={{ fontWeight: 700, color: "#d4d4d8" }}>{researcher.projects}</span> proyectos</span>
         </div>
         {researcher.open && (
-          <span style={{ fontSize: 9, fontWeight: 700, color: "#059669", background: "#ecfdf5", border: "1px solid #a7f3d0", padding: "2px 7px", borderRadius: 20, display: "flex", alignItems: "center", gap: 3 }}>
-            <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#10b981" }} />Open
+          <span style={{ fontSize: 9, fontWeight: 700, color: "#84cc16", background: "#84cc1615", border: "1px solid #a7f3d0", padding: "2px 7px", borderRadius: 20, display: "flex", alignItems: "center", gap: 3 }}>
+            <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#9ae034" }} />Open
           </span>
         )}
         <button
@@ -296,9 +296,9 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           style={{
             padding: "5px 12px", borderRadius: 6, border: "1px solid",
             fontSize: 11, fontWeight: 600, cursor: "pointer",
-            background: isConnected ? "#ecfdf5" : "#fff",
-            borderColor: isConnected ? "#a7f3d0" : "#d1d5db",
-            color: isConnected ? "#059669" : "#374151",
+            background: isConnected ? "#84cc1615" : "#111111",
+            borderColor: isConnected ? "#84cc1630" : "#2a2a30",
+            color: isConnected ? "#84cc16" : "#d4d4d8",
             transition: "all 0.15s",
           }}
         >
@@ -318,28 +318,28 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
 }) {
   return (
     <div style={{
-      background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12,
+      background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12,
       padding: "14px 16px", display: "flex", alignItems: "center", gap: 12,
       transition: "all 0.15s",
     }}
     onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#d1fae5"; }}
-    onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#e5e7eb"; }}
+    onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#1e1e22"; }}
     >
       <Avatar seed={researcher.seed} size={40} style={{ borderRadius: "50%", overflow: "hidden", flexShrink: 0 }} />
       <div style={{ flex: 1, minWidth: 0 }}>
-        <p style={{ fontSize: 14, fontWeight: 600, color: "#111827", marginBottom: 1 }}>{researcher.name} {researcher.surname}</p>
-        <p style={{ fontSize: 11, color: "#9ca3af", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{researcher.role} · {researcher.dept}</p>
+        <p style={{ fontSize: 14, fontWeight: 600, color: "#f4f4f5", marginBottom: 1 }}>{researcher.name} {researcher.surname}</p>
+        <p style={{ fontSize: 11, color: "#71717a", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{researcher.role} · {researcher.dept}</p>
       </div>
-      <div style={{ fontSize: 14, fontWeight: 700, color: "#059669", flexShrink: 0 }}>{researcher.match}%</div>
+      <div style={{ fontSize: 14, fontWeight: 700, color: "#84cc16", flexShrink: 0 }}>{researcher.match}%</div>
       <button onClick={onMessage} title="Mensaje" style={{
         width: 32, height: 32, borderRadius: 8, border: "1px solid #e5e7eb",
-        background: "#fff", color: "#6b7280", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+        background: "#111111", color: "#a1a1aa", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
       }}>
         <MessageCircle size={14} />
       </button>
       <button onClick={onDisconnect} title="Desconectar" style={{
         width: 32, height: 32, borderRadius: 8, border: "1px solid #e5e7eb",
-        background: "#fff", color: "#9ca3af", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+        background: "#111111", color: "#71717a", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
       }}>
         <X size={14} />
       </button>
@@ -368,13 +368,13 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
       <div style={{ maxWidth: 680, margin: "0 auto", padding: "24px", display: "flex", flexDirection: "column", height: "calc(100vh - 64px)" }}>
         {/* Thread header */}
         <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid #f3f4f6" }}>
-          <button onClick={onBack} style={{ background: "none", border: "none", cursor: "pointer", color: "#6b7280", display: "flex" }}>
+          <button onClick={onBack} style={{ background: "none", border: "none", cursor: "pointer", color: "#a1a1aa", display: "flex" }}>
             <ArrowLeft size={16} />
           </button>
           <Avatar seed={selectedConv.seed} size={36} style={{ borderRadius: "50%", overflow: "hidden" }} />
           <div>
-            <p style={{ fontSize: 14, fontWeight: 700, color: "#111827" }}>{selectedConv.name}</p>
-            <p style={{ fontSize: 11, color: "#9ca3af" }}>{messages.length} mensajes</p>
+            <p style={{ fontSize: 14, fontWeight: 700, color: "#f4f4f5" }}>{selectedConv.name}</p>
+            <p style={{ fontSize: 11, color: "#71717a" }}>{messages.length} mensajes</p>
           </div>
         </div>
 
@@ -384,8 +384,8 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
             <div key={msg.id} style={{ display: "flex", justifyContent: msg.from === "me" ? "flex-end" : "flex-start" }}>
               <div style={{
                 maxWidth: "72%", padding: "10px 14px", borderRadius: 16,
-                background: msg.from === "me" ? "#059669" : "#f3f4f6",
-                color: msg.from === "me" ? "#fff" : "#111827",
+                background: msg.from === "me" ? "#84cc16" : "#1a1a1e",
+                color: msg.from === "me" ? "#111111" : "#f4f4f5",
                 fontSize: 13, lineHeight: 1.5,
                 borderBottomRightRadius: msg.from === "me" ? "4px" : "16px",
                 borderBottomLeftRadius: msg.from === "me" ? "16px" : "4px",
@@ -405,11 +405,11 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
             onChange={(e) => setNewMessage(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && onSend()}
             placeholder="Escribe un mensaje..."
-            style={{ flex: 1, background: "#fff", border: "1px solid #e5e7eb", borderRadius: 24, padding: "10px 16px", color: "#111827", fontSize: 13, outline: "none" }}
+            style={{ flex: 1, background: "#111111", border: "1px solid #e5e7eb", borderRadius: 24, padding: "10px 16px", color: "#f4f4f5", fontSize: 13, outline: "none" }}
           />
           <button onClick={onSend} style={{
             width: 40, height: 40, borderRadius: "50%", border: "none",
-            background: "#059669", color: "#fff", cursor: "pointer",
+            background: "#84cc16", color: "#111111", cursor: "pointer",
             display: "flex", alignItems: "center", justifyContent: "center",
           }}>
             <Send size={15} />
@@ -421,38 +421,38 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
 
   return (
     <div style={{ maxWidth: 680, margin: "0 auto", padding: "24px" }}>
-      <h1 style={{ fontSize: 22, fontWeight: 700, color: "#111827", letterSpacing: "-0.03em", marginBottom: 4 }}>Mensajes</h1>
-      <p style={{ fontSize: 13, color: "#6b7280", marginBottom: 24 }}>Conversaciones con tus contactos</p>
+      <h1 style={{ fontSize: 22, fontWeight: 700, color: "#f4f4f5", letterSpacing: "-0.03em", marginBottom: 4 }}>Mensajes</h1>
+      <p style={{ fontSize: 13, color: "#a1a1aa", marginBottom: 24 }}>Conversaciones con tus contactos</p>
       {conversations.length === 0 ? (
-        <div style={{ textAlign: "center", padding: "60px 24px", background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12 }}>
-          <MessageCircle size={32} style={{ color: "#d1d5db", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
-          <p style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 4 }}>Sin mensajes aún</p>
-          <p style={{ fontSize: 12, color: "#9ca3af" }}>Conéctate con investigadores para empezar una conversación</p>
+        <div style={{ textAlign: "center", padding: "60px 24px", background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12 }}>
+          <MessageCircle size={32} style={{ color: "#2a2a30", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
+          <p style={{ fontSize: 14, fontWeight: 600, color: "#d4d4d8", marginBottom: 4 }}>Sin mensajes aún</p>
+          <p style={{ fontSize: 12, color: "#71717a" }}>Conéctate con investigadores para empezar una conversación</p>
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {conversations.map((conv) => (
             <div key={conv.orcid} onClick={() => onSelect(conv.orcid)} style={{
               display: "flex", alignItems: "center", gap: 12,
-              background: "#fff", border: "1px solid #e5e7eb",
+              background: "#111111", border: "1px solid #e5e7eb",
               borderRadius: 12, padding: "14px 16px", cursor: "pointer",
               transition: "all 0.15s",
             }}
             onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#d1fae5"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#e5e7eb"; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#1e1e22"; }}
             >
               <Avatar seed={conv.seed} size={44} style={{ borderRadius: "50%", overflow: "hidden", flexShrink: 0 }} />
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 2 }}>
-                  <p style={{ fontSize: 14, fontWeight: 600, color: "#111827" }}>{conv.name}</p>
-                  <span style={{ fontSize: 10, color: "#9ca3af" }}>{conv.messages[conv.messages.length - 1].ts}</span>
+                  <p style={{ fontSize: 14, fontWeight: 600, color: "#f4f4f5" }}>{conv.name}</p>
+                  <span style={{ fontSize: 10, color: "#71717a" }}>{conv.messages[conv.messages.length - 1].ts}</span>
                 </div>
-                <p style={{ fontSize: 12, color: "#6b7280", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                <p style={{ fontSize: 12, color: "#a1a1aa", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                   {conv.messages[conv.messages.length - 1].text}
                 </p>
               </div>
               {conv.messages.some((m) => m.from === "them") && (
-                <Circle size={8} style={{ color: "#059669", flexShrink: 0 }} />
+                <Circle size={8} style={{ color: "#84cc16", flexShrink: 0 }} />
               )}
             </div>
           ))}
@@ -479,24 +479,24 @@ function NavBar({ view, setView, connectedCount, unreadCount }: {
   return (
     <nav style={{
       display: "flex", gap: 2,
-      background: "#f3f4f6", borderRadius: 10, padding: 4,
+      background: "#1a1a1e", borderRadius: 10, padding: 4,
     }}>
       {items.map((item) => (
         <button key={item.key} onClick={() => setView(item.key)} style={{
           display: "flex", alignItems: "center", gap: 6,
           padding: "7px 14px", borderRadius: 7, border: "none",
           fontSize: 13, fontWeight: 500, cursor: "pointer",
-          background: view === item.key ? "#fff" : "transparent",
-          color: view === item.key ? "#111827" : "#6b7280",
+          background: view === item.key ? "#111111" : "transparent",
+          color: view === item.key ? "#f4f4f5" : "#a1a1aa",
           transition: "all 0.15s",
           boxShadow: view === item.key ? "0 1px 3px rgba(0,0,0,0.08)" : "none",
         }}>
-          <span style={{ display: "flex", color: view === item.key ? "#059669" : "#9ca3af" }}>{item.icon}</span>
+          <span style={{ display: "flex", color: view === item.key ? "#84cc16" : "#71717a" }}>{item.icon}</span>
           {item.label}
           {item.badge !== undefined && item.badge > 0 && (
             <span style={{
-              background: item.key === "messages" ? "#ef4444" : "#059669",
-              color: "#fff", fontSize: 10, fontWeight: 700,
+              background: item.key === "messages" ? "#ef4444" : "#84cc16",
+              color: "#111111", fontSize: 10, fontWeight: 700,
               padding: "1px 6px", borderRadius: 20, minWidth: 18, textAlign: "center",
             }}>{item.badge}</span>
           )}
@@ -564,10 +564,10 @@ export default function App() {
   if (!mounted) return <SkeletonLoader />;
 
   return (
-    <div style={{ background: "#f8f9fa", minHeight: "100vh" }}>
+    <div style={{ background: "#09090b", minHeight: "100vh" }}>
       {/* HEADER */}
       <header style={{
-        background: "#fff", borderBottom: "1px solid #e5e7eb",
+        background: "#111111", borderBottom: "1px solid #e5e7eb",
         padding: "0 24px", height: 64,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         position: "sticky" as const, top: 0, zIndex: 50,
@@ -580,14 +580,14 @@ export default function App() {
             background: "linear-gradient(135deg, #059669, #10b981)",
             display: "flex", alignItems: "center", justifyContent: "center",
           }}>
-            <Users size={16} color="#fff" />
+            <Users size={16} color="#111111" />
           </div>
-          <span style={{ fontSize: 16, fontWeight: 800, color: "#111827", letterSpacing: "-0.04em" }}>ResearchNet</span>
+          <span style={{ fontSize: 16, fontWeight: 800, color: "#f4f4f5", letterSpacing: "-0.04em" }}>ResearchNet</span>
         </div>
 
         <NavBar view={view} setView={setView} connectedCount={connectedIds.length} unreadCount={unread} />
 
-        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#6b7280" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: "#a1a1aa" }}>
           <Globe size={13} />
           <span>{researchers.filter((r) => r.open).length} abiertos · {researchers.length} investigadores</span>
         </div>
@@ -597,23 +597,23 @@ export default function App() {
       {showOnboarding && (
         <div style={{
           position: "fixed", inset: 0, zIndex: 100,
-          background: "rgba(0,0,0,0.5)", backdropFilter: "blur(6px)",
+          background: "rgba(0,0,0,0.7)", backdropFilter: "blur(6px)",
           display: "flex", alignItems: "center", justifyContent: "center", padding: 20,
         }}>
           <div style={{
-            background: "#fff", borderRadius: 20, padding: 36, maxWidth: 420, width: "100%",
+            background: "#111111", borderRadius: 20, padding: 36, maxWidth: 420, width: "100%",
             textAlign: "center", boxShadow: "0 24px 60px rgba(0,0,0,0.2)",
           }}>
             <div style={{ width: 56, height: 56, borderRadius: 14, background: "linear-gradient(135deg, #059669, #10b981)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
-              <Users size={24} color="#fff" />
+              <Users size={24} color="#111111" />
             </div>
-            <h2 style={{ fontSize: 20, fontWeight: 700, color: "#111827", letterSpacing: "-0.03em", marginBottom: 8 }}>Bienvenido a ResearchNet</h2>
-            <p style={{ fontSize: 13, color: "#6b7280", lineHeight: 1.6, marginBottom: 24 }}>Conecta tu perfil ORCID para auto-completar tu información y descubrir investigadores complementarios.</p>
+            <h2 style={{ fontSize: 20, fontWeight: 700, color: "#f4f4f5", letterSpacing: "-0.03em", marginBottom: 8 }}>Bienvenido a ResearchNet</h2>
+            <p style={{ fontSize: 13, color: "#a1a1aa", lineHeight: 1.6, marginBottom: 24 }}>Conecta tu perfil ORCID para auto-completar tu información y descubrir investigadores complementarios.</p>
             <button
               onClick={() => { window.location.href = "/api/auth/orcid"; }}
               style={{
                 width: "100%", padding: "12px 20px", borderRadius: 8,
-                border: "none", background: "#059669", color: "#fff",
+                border: "none", background: "#84cc16", color: "#111111",
                 fontSize: 14, fontWeight: 600, cursor: "pointer", marginBottom: 10,
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
               }}
@@ -623,7 +623,7 @@ export default function App() {
               </svg>
               Conectar con ORCID
             </button>
-            <button onClick={() => { setShowOnboarding(false); }} style={{ background: "none", border: "none", color: "#9ca3af", fontSize: 12, cursor: "pointer" }}>
+            <button onClick={() => { setShowOnboarding(false); }} style={{ background: "none", border: "none", color: "#71717a", fontSize: 12, cursor: "pointer" }}>
               Omitir por ahora
             </button>
           </div>
@@ -647,33 +647,33 @@ export default function App() {
       {view === "discover" && (
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px 60px" }}>
           <div style={{ marginBottom: 28 }}>
-            <h1 style={{ fontSize: 24, fontWeight: 700, color: "#111827", letterSpacing: "-0.04em", marginBottom: 4 }}>Descubrir investigadores</h1>
-            <p style={{ fontSize: 14, color: "#6b7280" }}>Encuentra colaboradores para tu próximo proyecto de investigación</p>
+            <h1 style={{ fontSize: 24, fontWeight: 700, color: "#f4f4f5", letterSpacing: "-0.04em", marginBottom: 4 }}>Descubrir investigadores</h1>
+            <p style={{ fontSize: 14, color: "#a1a1aa" }}>Encuentra colaboradores para tu próximo proyecto de investigación</p>
           </div>
 
           {/* Filter bar */}
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", marginBottom: 20 }}>
-            <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
-              <Search size={14} color="#9ca3af" />
-              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, área o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "#111827", fontSize: 13, flex: 1 }} />
+            <div style={{ background: "#111111", border: "1px solid #e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
+              <Search size={14} color="#71717a" />
+              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, área o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "#f4f4f5", fontSize: 13, flex: 1 }} />
             </div>
-            <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none", background: "#fff", border: "1px solid #e5e7eb", borderRadius: 8, color: "#6b7280", fontSize: 13, fontWeight: 500, padding: "8px 12px", cursor: "pointer" }}>
+            <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none", background: "#111111", border: "1px solid #e5e7eb", borderRadius: 8, color: "#a1a1aa", fontSize: 13, fontWeight: 500, padding: "8px 12px", cursor: "pointer" }}>
               {allDepts.map((d) => <option key={d} value={d}>{d}</option>)}
             </select>
             <button onClick={() => setOnlyOpen((p) => !p)} style={{
               padding: "8px 12px", borderRadius: 8, border: "1px solid",
               fontSize: 12, fontWeight: 500, cursor: "pointer",
-              background: onlyOpen ? "#ecfdf5" : "#fff",
-              borderColor: onlyOpen ? "#a7f3d0" : "#e5e7eb",
-              color: onlyOpen ? "#059669" : "#6b7280",
+              background: onlyOpen ? "#84cc1615" : "#111111",
+              borderColor: onlyOpen ? "#84cc1630" : "#1e1e22",
+              color: onlyOpen ? "#84cc16" : "#a1a1aa",
               display: "flex", alignItems: "center", gap: 6,
             }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: onlyOpen ? "#10b981" : "#d1d5db", display: "inline-block" }} />
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: onlyOpen ? "#9ae034" : "#2a2a30", display: "inline-block" }} />
               Solo disponibles
             </button>
           </div>
 
-          <p style={{ fontSize: 12, color: "#9ca3af", fontWeight: 500, marginBottom: 14 }}>{filtered.length} investigador{filtered.length !== 1 ? "es" : ""}</p>
+          <p style={{ fontSize: 12, color: "#71717a", fontWeight: 500, marginBottom: 14 }}>{filtered.length} investigador{filtered.length !== 1 ? "es" : ""}</p>
 
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
             {filtered.map((r) => (
@@ -687,10 +687,10 @@ export default function App() {
           </div>
 
           {filtered.length === 0 && (
-            <div style={{ textAlign: "center", padding: "60px 24px", background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12 }}>
-              <Search size={28} style={{ color: "#d1d5db", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
-              <p style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 4 }}>Sin resultados</p>
-              <p style={{ fontSize: 12, color: "#9ca3af" }}>Prueba con otros filtros o términos de búsqueda</p>
+            <div style={{ textAlign: "center", padding: "60px 24px", background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12 }}>
+              <Search size={28} style={{ color: "#2a2a30", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
+              <p style={{ fontSize: 14, fontWeight: 600, color: "#d4d4d8", marginBottom: 4 }}>Sin resultados</p>
+              <p style={{ fontSize: 12, color: "#71717a" }}>Prueba con otros filtros o términos de búsqueda</p>
             </div>
           )}
         </div>
@@ -700,33 +700,33 @@ export default function App() {
       {view === "opportunities" && (
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px 60px" }}>
           <div style={{ marginBottom: 28 }}>
-            <h1 style={{ fontSize: 24, fontWeight: 700, color: "#111827", letterSpacing: "-0.04em", marginBottom: 4 }}>Oportunidades</h1>
-            <p style={{ fontSize: 14, color: "#6b7280" }}>Postdocs, becas, convocatorias y más</p>
+            <h1 style={{ fontSize: 24, fontWeight: 700, color: "#f4f4f5", letterSpacing: "-0.04em", marginBottom: 4 }}>Oportunidades</h1>
+            <p style={{ fontSize: 14, color: "#a1a1aa" }}>Postdocs, becas, convocatorias y más</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
             {opportunities.map((opp) => {
-              const c: Record<string, { bg: string; text: string }> = { Postdoc: { bg: "#e0f2fe", text: "#0369a1" }, Fondos: { bg: "#dcfce7", text: "#15803d" }, Internacional: { bg: "#f3e8ff", text: "#7c3aed" }, Doctorado: { bg: "#fce7f3", text: "#be185d" }, Laboral: { bg: "#d1fae5", text: "#059669" } };
-              const col = c[opp.type] ?? { bg: "#f3f4f6", text: "#374151" };
+              const c: Record<string, { bg: string; text: string }> = { Postdoc: { bg: "#e0f2fe", text: "#0369a1" }, Fondos: { bg: "#dcfce7", text: "#15803d" }, Internacional: { bg: "#f3e8ff", text: "#7c3aed" }, Doctorado: { bg: "#fce7f3", text: "#be185d" }, Laboral: { bg: "#d1fae5", text: "#84cc16" } };
+              const col = c[opp.type] ?? { bg: "#1a1a1e", text: "#d4d4d8" };
               return (
                 <div key={opp.id} onClick={() => setSelectedOpp(opp)} style={{
-                  background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12,
+                  background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12,
                   padding: 20, cursor: "pointer", display: "flex", flexDirection: "column", gap: 10,
                   transition: "all 0.18s",
                 }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#d1fae5"; (e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 16px rgba(0,0,0,0.06)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#e5e7eb"; (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "#1e1e22"; (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none"; }}
                 >
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     <span style={{ fontSize: 10, fontWeight: 700, color: col.text, background: col.bg, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
-                    {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#ea580c" }}>🔥 Hot</span>}
+                    {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#fb923c" }}>🔥 Hot</span>}
                   </div>
-                  <h3 style={{ fontSize: 14, fontWeight: 600, color: "#111827", lineHeight: 1.4 }}>{opp.title}</h3>
-                  <p style={{ fontSize: 12, color: "#9ca3af" }}>{opp.dept}</p>
+                  <h3 style={{ fontSize: 14, fontWeight: 600, color: "#f4f4f5", lineHeight: 1.4 }}>{opp.title}</h3>
+                  <p style={{ fontSize: 12, color: "#71717a" }}>{opp.dept}</p>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: 4 }}>
-                    <span style={{ fontSize: 12, color: "#ea580c", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
+                    <span style={{ fontSize: 12, color: "#fb923c", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
                       <Clock size={11} />{opp.deadline}
                     </span>
-                    <span style={{ fontSize: 12, fontWeight: 600, color: "#059669", display: "flex", alignItems: "center", gap: 3 }}>
+                    <span style={{ fontSize: 12, fontWeight: 600, color: "#84cc16", display: "flex", alignItems: "center", gap: 3 }}>
                       Ver más <ChevronRight size={12} />
                     </span>
                   </div>
@@ -741,15 +741,15 @@ export default function App() {
       {view === "network" && (
         <div style={{ maxWidth: 800, margin: "0 auto", padding: "40px 24px 60px" }}>
           <div style={{ marginBottom: 28 }}>
-            <h1 style={{ fontSize: 24, fontWeight: 700, color: "#111827", letterSpacing: "-0.04em", marginBottom: 4 }}>Tu red</h1>
-            <p style={{ fontSize: 14, color: "#6b7280" }}>{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
+            <h1 style={{ fontSize: 24, fontWeight: 700, color: "#f4f4f5", letterSpacing: "-0.04em", marginBottom: 4 }}>Tu red</h1>
+            <p style={{ fontSize: 14, color: "#a1a1aa" }}>{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
           </div>
           {connectedResearchers.length === 0 ? (
-            <div style={{ textAlign: "center", padding: "80px 32px", background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12 }}>
-              <Users size={48} style={{ color: "#d1d5db", marginBottom: 16, display: "block", margin: "0 auto 16px" }} />
-              <p style={{ fontSize: 16, fontWeight: 600, color: "#374151", marginBottom: 8 }}>Tu red está vacía</p>
-              <p style={{ fontSize: 13, color: "#9ca3af", maxWidth: 280, margin: "0 auto 24px", lineHeight: 1.6 }}>Explora investigadores y conéctate para construir tu red de colaboración.</p>
-              <button onClick={() => setView("discover")} style={{ padding: "10px 22px", borderRadius: 8, background: "#059669", color: "#fff", border: "none", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Descubrir investigadores</button>
+            <div style={{ textAlign: "center", padding: "80px 32px", background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12 }}>
+              <Users size={48} style={{ color: "#2a2a30", marginBottom: 16, display: "block", margin: "0 auto 16px" }} />
+              <p style={{ fontSize: 16, fontWeight: 600, color: "#d4d4d8", marginBottom: 8 }}>Tu red está vacía</p>
+              <p style={{ fontSize: 13, color: "#71717a", maxWidth: 280, margin: "0 auto 24px", lineHeight: 1.6 }}>Explora investigadores y conéctate para construir tu red de colaboración.</p>
+              <button onClick={() => setView("discover")} style={{ padding: "10px 22px", borderRadius: 8, background: "#84cc16", color: "#111111", border: "none", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Descubrir investigadores</button>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -782,41 +782,41 @@ export default function App() {
       {view === "profile" && (
         <div style={{ maxWidth: 800, margin: "0 auto", padding: "40px 24px 60px" }}>
           <div style={{ marginBottom: 28 }}>
-            <h1 style={{ fontSize: 24, fontWeight: 700, color: "#111827", letterSpacing: "-0.04em", marginBottom: 4 }}>Tu perfil</h1>
-            <p style={{ fontSize: 14, color: "#6b7280" }}>Gestiona tu información de investigador</p>
+            <h1 style={{ fontSize: 24, fontWeight: 700, color: "#f4f4f5", letterSpacing: "-0.04em", marginBottom: 4 }}>Tu perfil</h1>
+            <p style={{ fontSize: 14, color: "#a1a1aa" }}>Gestiona tu información de investigador</p>
           </div>
 
           {/* Profile card */}
-          <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 16, padding: 28, marginBottom: 16 }}>
+          <div style={{ background: "#111111", border: "1px solid #e5e7eb", borderRadius: 16, padding: 28, marginBottom: 16 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: 24 }}>
               <Avatar seed={userProfile.seed} size={72} style={{ borderRadius: "50%", overflow: "hidden", flexShrink: 0 }} />
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" as const }}>
-                  <h2 style={{ fontSize: 20, fontWeight: 700, color: "#111827", letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
+                  <h2 style={{ fontSize: 20, fontWeight: 700, color: "#f4f4f5", letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
                   {userProfile.open && (
-                    <span style={{ fontSize: 10, fontWeight: 700, color: "#059669", background: "#ecfdf5", border: "1px solid #a7f3d0", padding: "2px 8px", borderRadius: 20, display: "flex", alignItems: "center", gap: 3 }}>
-                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#10b981" }} />Disponible
+                    <span style={{ fontSize: 10, fontWeight: 700, color: "#84cc16", background: "#84cc1615", border: "1px solid #a7f3d0", padding: "2px 8px", borderRadius: 20, display: "flex", alignItems: "center", gap: 3 }}>
+                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#9ae034" }} />Disponible
                     </span>
                   )}
                 </div>
-                <p style={{ fontSize: 13, color: "#6b7280", marginBottom: 2 }}>{userProfile.role}</p>
-                <p style={{ fontSize: 12, color: "#9ca3af" }}>{userProfile.dept}</p>
+                <p style={{ fontSize: 13, color: "#a1a1aa", marginBottom: 2 }}>{userProfile.role}</p>
+                <p style={{ fontSize: 12, color: "#71717a" }}>{userProfile.dept}</p>
               </div>
-              <button style={{ padding: "8px 16px", borderRadius: 8, border: "1px solid #e5e7eb", background: "#fff", color: "#374151", fontSize: 12, fontWeight: 600, cursor: "pointer", flexShrink: 0 }}>
+              <button style={{ padding: "8px 16px", borderRadius: 8, border: "1px solid #e5e7eb", background: "#111111", color: "#d4d4d8", fontSize: 12, fontWeight: 600, cursor: "pointer", flexShrink: 0 }}>
                 Editar perfil
               </button>
             </div>
-            <p style={{ fontSize: 13, color: "#4b5563", lineHeight: 1.7, marginBottom: 20 }}>{userProfile.bio}</p>
+            <p style={{ fontSize: 13, color: "#a1a1aa", lineHeight: 1.7, marginBottom: 20 }}>{userProfile.bio}</p>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const, marginBottom: 20 }}>
               {userProfile.tags.map((tag) => (
-                <span key={tag} style={{ fontSize: 12, fontWeight: 500, color: "#059669", background: "#ecfdf5", border: "1px solid #a7f3d0", padding: "4px 12px", borderRadius: 20 }}>{tag}</span>
+                <span key={tag} style={{ fontSize: 12, fontWeight: 500, color: "#84cc16", background: "#84cc1615", border: "1px solid #a7f3d0", padding: "4px 12px", borderRadius: 20 }}>{tag}</span>
               ))}
             </div>
             <div>
-              <p style={{ fontSize: 11, fontWeight: 600, color: "#6b7280", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Grupos de investigación</p>
+              <p style={{ fontSize: 11, fontWeight: 600, color: "#a1a1aa", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Grupos de investigación</p>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const }}>
                 {userProfile.groups.map((g) => (
-                  <span key={g} style={{ fontSize: 12, fontWeight: 500, color: "#374151", background: "#f3f4f6", border: "1px solid #e5e7eb", padding: "4px 12px", borderRadius: 6 }}>{g}</span>
+                  <span key={g} style={{ fontSize: 12, fontWeight: 500, color: "#d4d4d8", background: "#1a1a1e", border: "1px solid #e5e7eb", padding: "4px 12px", borderRadius: 6 }}>{g}</span>
                 ))}
               </div>
             </div>
@@ -825,28 +825,28 @@ export default function App() {
           {/* Stats */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 16 }}>
             {[{ v: userProfile.pubs, l: "Publicaciones", icon: <BookOpen size={16} /> }, { v: userProfile.projects, l: "Proyectos", icon: <Briefcase size={16} /> }, { v: connectedIds.length, l: "Conexiones", icon: <Users size={16} /> }].map((s) => (
-              <div key={s.l} style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12, padding: "20px 16px", textAlign: "center" }}>
-                <div style={{ color: "#d1d5db", marginBottom: 8, display: "flex", justifyContent: "center" }}>{s.icon}</div>
-                <div style={{ fontSize: 28, fontWeight: 800, color: "#111827", letterSpacing: "-0.04em", marginBottom: 4 }}>{s.v}</div>
-                <div style={{ fontSize: 11, color: "#9ca3af", fontWeight: 500 }}>{s.l}</div>
+              <div key={s.l} style={{ background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12, padding: "20px 16px", textAlign: "center" }}>
+                <div style={{ color: "#2a2a30", marginBottom: 8, display: "flex", justifyContent: "center" }}>{s.icon}</div>
+                <div style={{ fontSize: 28, fontWeight: 800, color: "#f4f4f5", letterSpacing: "-0.04em", marginBottom: 4 }}>{s.v}</div>
+                <div style={{ fontSize: 11, color: "#71717a", fontWeight: 500 }}>{s.l}</div>
               </div>
             ))}
           </div>
 
           {/* Quick actions */}
-          <div style={{ background: "#fff", border: "1px solid #e5e7eb", borderRadius: 12, padding: 20 }}>
-            <p style={{ fontSize: 12, fontWeight: 600, color: "#374151", marginBottom: 14 }}>Acciones rápidas</p>
+          <div style={{ background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12, padding: 20 }}>
+            <p style={{ fontSize: 12, fontWeight: 600, color: "#d4d4d8", marginBottom: 14 }}>Acciones rápidas</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               {[{ label: "Ver mi perfil público", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((a) => (
                 <button key={a.label} style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                   padding: "12px 14px", borderRadius: 8,
-                  background: "#f9fafb", border: "1px solid #e5e7eb",
-                  color: "#374151", fontSize: 13, fontWeight: 500,
+                  background: "#111111", border: "1px solid #e5e7eb",
+                  color: "#d4d4d8", fontSize: 13, fontWeight: 500,
                   cursor: "pointer", width: "100%", textAlign: "left",
                 }}>
-                  <span style={{ display: "flex", alignItems: "center", gap: 8, color: "#059669" }}>{a.icon}{a.label}</span>
-                  <ChevronRight size={13} color="#d1d5db" />
+                  <span style={{ display: "flex", alignItems: "center", gap: 8, color: "#84cc16" }}>{a.icon}{a.label}</span>
+                  <ChevronRight size={13} color="#2a2a30" />
                 </button>
               ))}
             </div>
