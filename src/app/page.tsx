@@ -373,9 +373,10 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
             <div key={msg.id} style={{ display: "flex", justifyContent: msg.from === "me" ? "flex-end" : "flex-start" }}>
               <div style={{
                 maxWidth: "72%", padding: "10px 14px", borderRadius: 16,
-                background: msg.from === "me" ? t.accent : t.surfaceHover,
-                color: msg.from === "me" ? "#fff" : t.textPrimary,
+                background: msg.from === "me" ? "rgba(132,204,22,0.18)" : t.surfaceHover,
+                color: msg.from === "me" ? "#a3e635" : t.textPrimary,
                 fontSize: 13, lineHeight: 1.5,
+                border: msg.from === "me" ? "1px solid rgba(132,204,22,0.25)" : "1px solid transparent",
                 borderBottomRightRadius: msg.from === "me" ? "4px" : "16px",
                 borderBottomLeftRadius: msg.from === "me" ? "16px" : "4px",
               }}>
@@ -388,7 +389,9 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
         </div>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
           <input value={newMessage} onChange={(e) => setNewMessage(e.target.value)} onKeyDown={(e) => e.key === "Enter" && onSend()} placeholder="Escribe un mensaje..." style={{ flex: 1, background: t.surface, border: `1px solid ${t.border}`, borderRadius: 24, padding: "10px 16px", color: t.textPrimary, fontSize: 13, outline: "none" }} />
-          <button onClick={onSend} style={{ width: 40, height: 40, borderRadius: "50%", border: "none", background: t.accent, color: "#fff", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <button onClick={onSend} style={{ width: 40, height: 40, borderRadius: "50%", border: `1px solid ${t.accent}60`, background: `${t.accent}15`, color: t.accent, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.15s" }}
+            onMouseEnter={(e) => { const b = e.currentTarget as HTMLButtonElement; b.style.background = t.accent; b.style.color = "#000"; b.style.borderColor = t.accent; }}
+            onMouseLeave={(e) => { const b = e.currentTarget as HTMLButtonElement; b.style.background = `${t.accent}15`; b.style.color = t.accent; b.style.borderColor = `${t.accent}60`; }}>
             <Send size={15} />
           </button>
         </div>
@@ -454,7 +457,11 @@ function NavBar({ view, setView, connectedCount, unreadCount, t }: {
           color: view === item.key ? t.textPrimary : t.navItemColor,
           transition: "all 0.15s",
           boxShadow: view === item.key ? t.shadowCard : "none",
+          position: "relative",
         }}>
+          {view === item.key && (
+            <div style={{ position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)", width: 20, height: 2, borderRadius: 2, background: t.accent }} />
+          )}
           <span style={{ display: "flex", color: view === item.key ? t.accent : t.textTertiary }}>{item.icon}</span>
           {item.label}
           {item.badge !== undefined && item.badge > 0 && (
@@ -670,10 +677,19 @@ export default function App() {
           </div>
           {connectedResearchers.length === 0 ? (
             <div style={{ textAlign: "center", padding: "80px 32px", background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12 }}>
-              <Users size={48} style={{ color: t.textTertiary, marginBottom: 16, display: "block", margin: "0 auto 16px" }} />
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={{ margin: "0 auto 20px", display: "block" }}>
+                <circle cx="20" cy="32" r="10" stroke={t.border} strokeWidth="1.5" fill="none"/>
+                <circle cx="44" cy="16" r="7" stroke={t.border} strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="44" cy="48" r="7" stroke={t.border} strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <line x1="30" y1="29" x2="37" y2="19" stroke={t.accent} strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5"/>
+                <line x1="30" y1="35" x2="37" y2="45" stroke={t.accent} strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5"/>
+                <circle cx="20" cy="32" r="4" fill={t.accent} opacity="0.7"/>
+                <circle cx="44" cy="16" r="2.5" fill={t.accent} opacity="0.4"/>
+                <circle cx="44" cy="48" r="2.5" fill={t.accent} opacity="0.4"/>
+              </svg>
               <p style={{ fontSize: 16, fontWeight: 600, color: t.textPrimary, marginBottom: 8 }}>Tu red está vacía</p>
               <p style={{ fontSize: 13, color: t.textSecondary, maxWidth: 280, margin: "0 auto 24px", lineHeight: 1.6 }}>Explora investigadores y conéctate para construir tu red.</p>
-              <button onClick={() => setView("discover")} style={{ padding: "10px 22px", borderRadius: 8, background: t.accent, color: "#fff", border: "none", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Descubrir investigadores</button>
+              <button onClick={() => setView("discover")} style={{ padding: "10px 22px", borderRadius: 8, background: t.accent, color: "#000", border: "none", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Descubrir investigadores</button>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
