@@ -1,52 +1,53 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
-/* ── CSS VARIABLES (Dark Premium) ─────────────────────────────────────────── */
+/* ── CSS VARIABLES (Clean Classic — white + lime) ─────────────────────────── */
 :root {
-  --bg: #09090b;
-  --bg-secondary: #0f0f11;
-  --surface: #111114;
-  --surface-hover: #161618;
-  --border: #1e1e22;
-  --border-subtle: #161618;
+  --bg: #ffffff;
+  --bg-secondary: #f9fafb;
+  --surface: #ffffff;
+  --surface-hover: #f9fafb;
+  --border: #e5e7eb;
+  --border-subtle: #f3f4f6;
 
-  --text-primary: #f4f4f5;
-  --text-secondary: #a1a1aa;
-  --text-tertiary: #52525b;
-  --text-muted: #71717a;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-tertiary: #9ca3af;
+  --text-muted: #6b7280;
+  --text-subtle: #9ca3af;
 
-  --accent: #84cc16;
-  --accent-dim: #84cc1620;
-  --accent-hover: #9ae034;
-  --accent-glow: rgba(132, 204, 22, 0.12);
+  --accent: #65a30d;
+  --accent-dim: #84cc1615;
+  --accent-hover: #84cc16;
+  --accent-glow: rgba(101, 163, 13, 0.08);
 
-  --tag-bg: #1a1a1f;
-  --tag-border: #26262c;
-  --tag-text: #a1a1aa;
+  --tag-bg: #f3f4f6;
+  --tag-border: #e5e7eb;
+  --tag-text: #374151;
 
-  --card-bg: #111114;
-  --card-border: #1e1e22;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
 
-  --type-postdoc-bg: #1e2a3a;
-  --type-postdoc-text: #60a5fa;
+  --type-postdoc-bg: #eff6ff;
+  --type-postdoc-text: #1d4ed8;
 
-  --type-fondos-bg: #1a2e1a;
-  --type-fondos-text: #4ade80;
+  --type-fondos-bg: #f0fdf4;
+  --type-fondos-text: #15803d;
 
-  --type-intl-bg: #251a35;
-  --type-intl-text: #c084fc;
+  --type-intl-bg: #faf5ff;
+  --type-intl-text: #7c3aed;
 
-  --type-phd-bg: #351a2a;
-  --type-phd-text: #f472b6;
+  --type-phd-bg: #fdf2f8;
+  --type-phd-text: #be185d;
 
-  --type-becas-bg: #1a2535;
-  --type-becas-text: #38bdf8;
+  --type-becas-bg: #eff6ff;
+  --type-becas-text: #1d4ed8;
 
   --radius: 12px;
   --radius-sm: 8px;
   --radius-xs: 5px;
 
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.4);
-  --shadow-card-hover: 0 8px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(132, 204, 22, 0.08);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-card-hover: 0 8px 24px rgba(0,0,0,0.10), 0 0 0 1px rgba(101, 163, 13, 0.15);
 }
 
 /* ── RESET & BASE (Dark Premium) ─────────────────────────────────────────── */
@@ -96,7 +97,7 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-/* ── RESEARCHER CARD (Dark Premium) ───────────────────────────────────── */
+/* ── RESEARCHER CARD (Clean Classic) ──────────────────────────────────── */
 .b-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -123,8 +124,8 @@ select:focus-visible {
 }
 
 .b-card:hover {
-  border-color: rgba(132,204,22,0.35);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(132,204,22,0.12);
+  border-color: rgba(101,163,13,0.30);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 0 0 1px rgba(101,163,13,0.10);
   transform: translateY(-2px);
 }
 
@@ -165,9 +166,9 @@ select:focus-visible {
 }
 
 .r-card:hover {
-  border-color: rgba(132, 204, 22, 0.25);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.45), 0 0 0 1px rgba(132, 204, 22, 0.08);
-  transform: translateY(-2px);
+  border-color: rgba(101, 163, 13, 0.30);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 0 0 1px rgba(101, 163, 13, 0.08);
+  transform: translateY(-1px);
 }
 
 .r-card:hover::after {

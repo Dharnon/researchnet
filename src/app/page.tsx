@@ -61,39 +61,39 @@ const allDepts = ["Todos", ...new Set(researchers.map((r) => r.dept))];
 
 function SkeletonLoader() {
   return (
-    <div style={{ background: "#09090b", minHeight: "100vh", padding: "24px" }}>
+    <div style={{ background: "var(--bg)", minHeight: "100vh", padding: "24px" }}>
       {/* Header skeleton */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32, padding: "0 0 24px", borderBottom: "1px solid #1e1e22" }}>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <div style={{ width: 28, height: 28, borderRadius: 8, background: "#1e1e22" }} />
-          <div style={{ width: 90, height: 14, borderRadius: 4, background: "#1e1e22" }} />
+          <div style={{ width: 28, height: 28, borderRadius: 8, background: "var(--border)" }} />
+          <div style={{ width: 90, height: 14, borderRadius: 4, background: "var(--border)" }} />
         </div>
-        <div style={{ width: 280, height: 36, borderRadius: 10, background: "#1e1e22" }} />
-        <div style={{ width: 60, height: 14, borderRadius: 4, background: "#1e1e22" }} />
+        <div style={{ width: 280, height: 36, borderRadius: 10, background: "var(--border)" }} />
+        <div style={{ width: 60, height: 14, borderRadius: 4, background: "var(--border)" }} />
       </div>
       {/* Cards grid skeleton */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
         {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} style={{ background: "#111114", border: "1px solid #1e1e22", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
+          <div key={i} style={{ background: "var(--card-bg)", border: "1px solid #1e1e22", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-              <div style={{ width: 44, height: 44, borderRadius: 10, background: "#1e1e22" }} />
+              <div style={{ width: 44, height: 44, borderRadius: 10, background: "var(--border)" }} />
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
-                <div style={{ width: "70%", height: 13, borderRadius: 4, background: "#1e1e22" }} />
-                <div style={{ width: "50%", height: 10, borderRadius: 4, background: "#161618" }} />
-                <div style={{ width: "40%", height: 9, borderRadius: 4, background: "#161618" }} />
+                <div style={{ width: "70%", height: 13, borderRadius: 4, background: "var(--border)" }} />
+                <div style={{ width: "50%", height: 10, borderRadius: 4, background: "var(--border-subtle)" }} />
+                <div style={{ width: "40%", height: 9, borderRadius: 4, background: "var(--border-subtle)" }} />
               </div>
             </div>
             <div style={{ display: "flex", gap: 6 }}>
-              <div style={{ width: 64, height: 20, borderRadius: 20, background: "#1e1e22" }} />
-              <div style={{ width: 80, height: 20, borderRadius: 20, background: "#161618" }} />
-              <div style={{ width: 56, height: 20, borderRadius: 20, background: "#1e1e22" }} />
+              <div style={{ width: 64, height: 20, borderRadius: 20, background: "var(--border)" }} />
+              <div style={{ width: 80, height: 20, borderRadius: 20, background: "var(--border-subtle)" }} />
+              <div style={{ width: 56, height: 20, borderRadius: 20, background: "var(--border)" }} />
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 4 }}>
               <div style={{ display: "flex", gap: 10 }}>
-                <div style={{ width: 40, height: 10, borderRadius: 4, background: "#161618" }} />
-                <div style={{ width: 50, height: 10, borderRadius: 4, background: "#161618" }} />
+                <div style={{ width: 40, height: 10, borderRadius: 4, background: "var(--border-subtle)" }} />
+                <div style={{ width: 50, height: 10, borderRadius: 4, background: "var(--border-subtle)" }} />
               </div>
-              <div style={{ width: 72, height: 26, borderRadius: 8, background: "#1e1e22" }} />
+              <div style={{ width: 72, height: 26, borderRadius: 8, background: "var(--border)" }} />
             </div>
           </div>
         ))}
@@ -564,15 +564,15 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
 
   return (
     <div style={{
-      display: "flex", gap: 2, background: "#0f0f0f",
-      border: "1px solid #1e1e1e", borderRadius: 12, padding: 4,
+      display: "flex", gap: 2, background: "var(--bg-secondary)",
+      border: "1px solid var(--border)", borderRadius: 12, padding: 4,
     }}>
       {items.map((item) => (
         <button key={item.key} onClick={() => setView(item.key)} style={{
           display: "flex", alignItems: "center", gap: 6,
           padding: "7px 12px", borderRadius: 8, border: "none",
           fontSize: 12, fontWeight: 600, cursor: "pointer",
-          background: view === item.key ? "#1a1a1a" : "transparent",
+          background: view === item.key ? "var(--accent-dim)" : "transparent",
           color: view === item.key ? "var(--text-primary)" : "var(--text-subtle)",
           transition: "all 0.15s", position: "relative", whiteSpace: "nowrap",
         }}>
@@ -661,7 +661,7 @@ export default function App() {
       <header style={{
         borderBottom: "1px solid var(--card-border)", padding: "0 24px", height: 60,
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        position: "sticky" as const, top: 0, background: "rgba(9,9,11,0.92)",
+        position: "sticky" as const, top: 0, background: "rgba(255,255,255,0.92)",
         backdropFilter: "blur(20px)", zIndex: 50,
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -682,7 +682,7 @@ export default function App() {
           <span style={{ fontSize: 15, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em" }}>ResearchNet</span>
         </div>
         <NavBar view={view} setView={setView} connectedCount={connectedIds.length} unreadMessages={unreadMessages} />
-        <div style={{ display: "flex", alignItems: "center", gap: 6, background: "#111111", border: "1px solid #1e1e1e", borderRadius: 20, padding: "5px 12px" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, padding: "5px 12px" }}>
           <Globe size={11} color="var(--text-subtle)" />
           <span style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 600 }}>
             {researchers.filter((r) => r.open).length} <span style={{ color: "var(--accent)" }}>open</span> · {researchers.length} researchers
@@ -698,7 +698,7 @@ export default function App() {
           justifyContent: "center", padding: 20,
         }}>
           <div style={{
-            background: "#111111", border: "1px solid #222222", borderRadius: 20,
+            background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20,
             padding: 36, maxWidth: 420, width: "100%", textAlign: "center",
             boxShadow: "0 24px 80px rgba(0,0,0,0.8)",
           }}>
@@ -773,16 +773,16 @@ export default function App() {
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Encuentra colaboradores para tu próximo proyecto</p>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" as const, marginBottom: 24 }}>
-            <div style={{ background: "#111111", border: "1px solid #1e1e1e", borderRadius: 10, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
+            <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
               <Search size={13} color="var(--text-subtle)" />
               <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, área o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "var(--text-primary)", fontSize: 13, flex: 1, width: "100%" }} />
             </div>
-            <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none" as const, background: "#111111", border: "1px solid #1e1e1e", borderRadius: 10, color: "var(--text-muted)", fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer" as const }}>
+            <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none" as const, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, color: "var(--text-muted)", fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer" as const }}>
               {allDepts.map((d) => <option key={d} value={d}>{d}</option>)}
             </select>
             <button onClick={() => setOnlyOpen((p) => !p)} style={{
-              background: onlyOpen ? "rgba(132,204,22,0.08)" : "#111111",
-              border: `1px solid ${onlyOpen ? "#84cc1640" : "#1e1e1e"}`,
+              background: onlyOpen ? "rgba(101,163,13,0.08)" : "var(--surface)",
+              border: `1px solid ${onlyOpen ? "#84cc1640" : "var(--border)"}`,
               borderRadius: 10, color: onlyOpen ? "var(--accent)" : "var(--text-muted)",
               fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
             }}>
@@ -805,7 +805,7 @@ export default function App() {
             ))}
           </div>
           {filteredResearchers.length === 0 && (
-            <div style={{ textAlign: "center", padding: "60px 20px", background: "#111111", border: "1px solid #1e1e1e", borderRadius: 16 }}>
+            <div style={{ textAlign: "center", padding: "60px 20px", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 16 }}>
               <Search size={32} style={{ color: "#222", marginBottom: 14, display: "block", margin: "0 auto 14px" }} />
               <p style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 6 }}>Sin resultados</p>
               <p style={{ fontSize: 12, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto" }}>Prueba con otros filtros o cambia el término de búsqueda</p>
@@ -920,7 +920,7 @@ export default function App() {
             <h1 style={{ fontSize: 22, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em", marginBottom: 4 }}>Tu perfil</h1>
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Gestiona tu información de investigador</p>
           </div>
-          <div style={{ background: "#111111", border: "1px solid #1e1e1e", borderRadius: 18, padding: 28, marginBottom: 16 }}>
+          <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18, padding: 28, marginBottom: 16 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: 24 }}>
               <Avatar initials={userProfile.avatar} color={userProfile.color} size={64} />
               <div style={{ flex: 1 }}>
@@ -936,7 +936,7 @@ export default function App() {
                 <p style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 2 }}>{userProfile.role}</p>
                 <p style={{ fontSize: 12, color: "var(--text-subtle)" }}>{userProfile.dept}</p>
               </div>
-              <button style={{ padding: "8px 16px", borderRadius: 10, border: "1px solid #222222", background: "transparent", color: "var(--text-muted)", fontSize: 12, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>
+              <button style={{ padding: "8px 16px", borderRadius: 10, border: "1px solid var(--border)", background: "transparent", color: "var(--text-muted)", fontSize: 12, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>
                 Editar perfil
               </button>
             </div>
@@ -950,32 +950,32 @@ export default function App() {
               <p style={{ fontSize: 10, fontWeight: 700, color: "var(--text-subtle)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Grupos de investigación</p>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const }}>
                 {userProfile.groups.map((g) => (
-                  <span key={g} style={{ fontSize: 11, fontWeight: 600, color: "var(--text-muted)", background: "#1a1a1a", border: "1px solid #222222", padding: "4px 10px", borderRadius: 8 }}>{g}</span>
+                  <span key={g} style={{ fontSize: 11, fontWeight: 600, color: "var(--text-muted)", background: "var(--surface-hover)", border: "1px solid var(--border)", padding: "4px 10px", borderRadius: 8 }}>{g}</span>
                 ))}
               </div>
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 16 }}>
             {[{ value: userProfile.pubs, label: "Publicaciones", icon: <BookOpen size={16} /> }, { value: userProfile.projects, label: "Proyectos", icon: <Briefcase size={16} /> }, { value: connectedIds.length, label: "Conexiones", icon: <Users size={16} /> }].map((stat) => (
-              <div key={stat.label} style={{ background: "#111111", border: "1px solid #1e1e1e", borderRadius: 14, padding: "20px 16px", textAlign: "center" }}>
+              <div key={stat.label} style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: "20px 16px", textAlign: "center" }}>
                 <div style={{ color: "var(--text-subtle)", marginBottom: 8, display: "flex", justifyContent: "center" }}>{stat.icon}</div>
                 <div style={{ fontSize: 28, fontWeight: 900, color: "var(--text-primary)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 4 }}>{stat.value}</div>
                 <div style={{ fontSize: 11, color: "var(--text-subtle)", fontWeight: 600 }}>{stat.label}</div>
               </div>
             ))}
           </div>
-          <div style={{ background: "#111111", border: "1px solid #1e1e1e", borderRadius: 14, padding: 20 }}>
+          <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: 20 }}>
             <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones rápidas</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {[{ label: "Ver mi perfil público", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
                 <button key={action.label} style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                   padding: "12px 14px", borderRadius: 10, background: "#141414",
-                  border: "1px solid #1e1e1e", color: "var(--text-muted)", fontSize: 12, fontWeight: 600,
+                  border: "1px solid var(--border)", color: "var(--text-muted)", fontSize: 12, fontWeight: 600,
                   cursor: "pointer", textAlign: "left", width: "100%",
                 }}
                 onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#84cc1640"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#1e1e1e"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
                 >
                   <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{ color: "var(--accent)" }}>{action.icon}</span>
