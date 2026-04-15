@@ -514,7 +514,9 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [onlyOpen, setOnlyOpen] = useState(false);
   const [connectedIds, setConnectedIds] = useState<number[]>([]);
-  const [showOnboarding, setShowOnboarding] = useState(true);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userData, setUserData] = useState<any>(null);
   const [selectedResearcher, setSelectedResearcher] = useState<(typeof researchers)[0] | null>(null);
   const [selectedOpp, setSelectedOpp] = useState<(typeof opportunities)[0] | null>(null);
   const [selectedConv, setSelectedConv] = useState<string | null>(null);
@@ -524,7 +526,18 @@ export default function App() {
 
   useEffect(() => {
     setMounted(true);
-    if (localStorage.getItem("rn_onboarding_done")) setShowOnboarding(false);
+    // Check if user is logged in via session
+    fetch("/api/user")
+      .then((r) => r.ok ? r.json() : null)
+      .then((user) => {
+        if (user) {
+          setIsLoggedIn(true);
+          setUserData(user);
+        } else {
+          setShowOnboarding(true);
+        }
+      })
+      .catch(() => setShowOnboarding(true));
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") { setSelectedResearcher(null); setSelectedOpp(null); setSelectedConv(null); }
     };
@@ -597,7 +610,7 @@ export default function App() {
             <h2 style={{ fontSize: 20, fontWeight: 700, color: "#111827", letterSpacing: "-0.03em", marginBottom: 8 }}>Bienvenido a ResearchNet</h2>
             <p style={{ fontSize: 13, color: "#6b7280", lineHeight: 1.6, marginBottom: 24 }}>Conecta tu perfil ORCID para auto-completar tu información y descubrir investigadores complementarios.</p>
             <button
-              onClick={() => { setShowOnboarding(false); localStorage.setItem("rn_onboarding_done", "1"); }}
+              onClick={() => { window.location.href = "/api/auth/orcid"; }}
               style={{
                 width: "100%", padding: "12px 20px", borderRadius: 8,
                 border: "none", background: "#059669", color: "#fff",
@@ -610,7 +623,7 @@ export default function App() {
               </svg>
               Conectar con ORCID
             </button>
-            <button onClick={() => { setShowOnboarding(false); localStorage.setItem("rn_onboarding_done", "1"); }} style={{ background: "none", border: "none", color: "#9ca3af", fontSize: 12, cursor: "pointer" }}>
+            <button onClick={() => { setShowOnboarding(false); }} style={{ background: "none", border: "none", color: "#9ca3af", fontSize: 12, cursor: "pointer" }}>
               Omitir por ahora
             </button>
           </div>
