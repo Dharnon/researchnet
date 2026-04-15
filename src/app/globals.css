@@ -14,7 +14,7 @@ body {
   transition: background 0.4s ease, color 0.3s ease;
 }
 
-/* ── LIGHT THEME ──────────────────────────────────────────────────────── */
+/* ── LIGHT THEME (Warm Amber) ─────────────────────────────────────────── */
 [data-theme="light"] {
   --bg: #F2EFE9;
   --surface: #FFFFFF;
@@ -24,9 +24,10 @@ body {
   --text-primary: #39393A;
   --text-secondary: #71717A;
   --text-tertiary: #A1A1AA;
-  --accent: #10B981;
-  --accent-light: #D1FAE5;
-  --accent-text: #059669;
+  --text-muted: #71717A;
+  --accent: #D97706;
+  --accent-light: #FEF3C7;
+  --accent-text: #92400E;
   --tag-bg: #F4F3F0;
   --tag-text: #52525B;
   --tag-border: #E4E2DD;
@@ -40,7 +41,7 @@ body {
   --nav-text: #71717A;
 }
 
-/* ── DARK THEME ───────────────────────────────────────────────────────── */
+/* ── DARK THEME (Warm Charcoal) ───────────────────────────────────────── */
 [data-theme="dark"] {
   --bg: #0F0E17;
   --surface: #1A1B3A;
@@ -50,9 +51,10 @@ body {
   --text-primary: #EDEDEF;
   --text-secondary: #9CA3AF;
   --text-tertiary: #71717A;
-  --accent: #84CC16;
-  --accent-light: rgba(132, 204, 22, 0.12);
-  --accent-text: #84CC16;
+  --text-muted: #9CA3AF;
+  --accent: #F59E0B;
+  --accent-light: rgba(245, 158, 11, 0.12);
+  --accent-text: #FBBF24;
   --tag-bg: rgba(255,255,255,0.06);
   --tag-text: #D4D4D8;
   --tag-border: #2B2D49;
