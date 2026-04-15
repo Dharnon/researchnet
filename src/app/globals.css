@@ -38,6 +38,10 @@
   --radius: 14px;
   --radius-sm: 8px;
   --radius-xs: 5px;
+
+  --card-bg: #FEFEFE;
+  --card-border: #E8E0D8;
+  --tag-border: #E0D4C4;
 }
 
 /* ── RESET & BASE ──────────────────────────────────────────────────────────── */
