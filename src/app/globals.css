@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -14,7 +14,7 @@ body {
   transition: background 0.4s ease, color 0.3s ease;
 }
 
-/* ── LIGHT THEME (Warm Amber) ─────────────────────────────────────────── */
+/* ΓöÇΓöÇ LIGHT THEME (Warm Amber) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 [data-theme="light"] {
   --bg: #F2EFE9;
   --surface: #FFFFFF;
@@ -41,7 +41,7 @@ body {
   --nav-text: #71717A;
 }
 
-/* ── DARK THEME (Warm Charcoal) ───────────────────────────────────────── */
+/* ΓöÇΓöÇ DARK THEME (Warm Charcoal) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 [data-theme="dark"] {
   --bg: #0F0E17;
   --surface: #1A1B3A;
@@ -78,12 +78,12 @@ main {
   transition: background 0.4s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-/* ── SCROLLBAR ──────────────────────────────────────────────────────── */
+/* ΓöÇΓöÇ SCROLLBAR ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
-/* ── FOCUS ──────────────────────────────────────────────────────────── */
+/* ΓöÇΓöÇ FOCUS ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
@@ -91,21 +91,21 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-/* ── PLAYFAIR DISPLAY EDITORIAL TYPE ─────────────────────────────────── */
+/* ΓöÇΓöÇ PLAYFAIR DISPLAY EDITORIAL TYPE ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 /* Apply Playfair Display to section headings */
 .editorial-heading {
   font-family: 'Playfair Display', Georgia, serif !important;
 }
 
-/* ── CARD HOVER ENHANCEMENT ─────────────────────────────────────────── */
+/* ΓöÇΓöÇ CARD HOVER ENHANCEMENT ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 /* Override any inline hover styles to use CSS transitions */
 .b-card, .r-card {
   transition: all 0.2s ease;
   cursor: pointer;
 }
 
-/* ── AMBER ACCENT LINE ON CARDS ─────────────────────────────────────── */
-/* Left accent strip — editorial journal feel */
+/* ΓöÇΓöÇ AMBER ACCENT LINE ON CARDS ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
+/* Left accent strip ΓÇö editorial journal feel */
 .card-accent {
   position: relative;
   overflow: hidden;
@@ -123,26 +123,37 @@ select:focus-visible {
   opacity: 1;
 }
 
-/* ── SECTION DIVIDER ───────────────────────────────────────────────── */
+/* ΓöÇΓöÇ SECTION DIVIDER ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 .section-divider {
   height: 1px;
   background: var(--border-subtle);
   margin: 0;
 }
 
-/* ── RESPONSIVE FONT SCALE ──────────────────────────────────────────── */
+/* ΓöÇΓöÇ RESPONSIVE FONT SCALE ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 @media (max-width: 600px) {
   .editorial-heading {
     font-size: 18px !important;
   }
 }
 
-/* ── SMOOTH THEME TRANSITIONS ───────────────────────────────────────── */
+/* ΓöÇΓöÇ SMOOTH THEME TRANSITIONS ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 body, body * {
   transition: background 0.35s ease, color 0.25s ease, border-color 0.25s ease;
 }
 
-/* ── HEADER TRANSITION ───────────────────────────────────────────────── */
+/* ΓöÇΓöÇ HEADER TRANSITION ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
 .app-header {
   transition: background 0.3s ease, border-color 0.3s ease;
+}
+/* ── SKELETON SHIMMER ─────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(90deg, #E8E0D5 25%, #EDE6DB 50%, #E8E0D5 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
 }

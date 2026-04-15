@@ -1,52 +1,52 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import {
   Search, Users, Zap, User, BookOpen,
   Briefcase, Clock, X, Globe,
   ExternalLink, ChevronRight, MessageCircle,
-  Send, ArrowLeft, Check, Circle, Sun, Moon,
+  Send, ArrowLeft, Check, Circle,
 } from "lucide-react";
 
-// ─── DATA ─────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ DATA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const researchers = [
-  { id: 1, name: "Dra. Elena Vargas", role: "Profesora Titular", dept: "Ingeniería Biomédica", avatar: "EV", color: "#84cc16", tags: ["Machine Learning", "Neurociencia Computacional", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Investigo interfaces cerebro-computadora y modelos de aprendizaje profundo aplicados a señales neuronales." },
-  { id: 2, name: "Dr. Marcos Ibáñez", role: "Investigador Senior", dept: "Ciencias de la Computación", avatar: "MI", color: "#60a5fa", tags: ["NLP", "Large Language Models", "Ética en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multilingüe y los desafíos éticos que plantea la IA generativa." },
-  { id: 3, name: "Dra. Sofía Ríos", role: "Profesora Asociada", dept: "Biología Molecular", avatar: "SR", color: "#f472b6", tags: ["Genómica", "CRISPR", "Bioinformática"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para análisis de variantes genéticas y edición génica." },
-  { id: 4, name: "Dr. Andrés Leal", role: "Profesor Asociado", dept: "Física Computacional", avatar: "AL", color: "#c084fc", tags: ["Computación Cuántica", "Simulación", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Diseño algoritmos cuánticos para simulación de sistemas complejos y optimización combinatoria." },
-  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Posdoctoral", dept: "Salud Pública", avatar: "CF", color: "#fb923c", tags: ["Epidemiología", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiológicos para sistemas de alerta temprana." },
-  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Robótica e IA", avatar: "FM", color: "#34d399", tags: ["Robótica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepción visual para robots autónomos en entornos no estructurados." },
+  { id: 1, name: "Dra. Elena Vargas", role: "Profesora Titular", dept: "IngenierÃ­a BiomÃ©dica", avatar: "EV", color: "#84cc16", tags: ["Machine Learning", "Neurociencia Computacional", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Investigo interfaces cerebro-computadora y modelos de aprendizaje profundo aplicados a seÃ±ales neuronales." },
+  { id: 2, name: "Dr. Marcos IbÃ¡Ã±ez", role: "Investigador Senior", dept: "Ciencias de la ComputaciÃ³n", avatar: "MI", color: "#60a5fa", tags: ["NLP", "Large Language Models", "Ã‰tica en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multilingÃ¼e y los desafÃ­os Ã©ticos que plantea la IA generativa." },
+  { id: 3, name: "Dra. SofÃ­a RÃ­os", role: "Profesora Asociada", dept: "BiologÃ­a Molecular", avatar: "SR", color: "#f472b6", tags: ["GenÃ³mica", "CRISPR", "BioinformÃ¡tica"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para anÃ¡lisis de variantes genÃ©ticas y ediciÃ³n gÃ©nica." },
+  { id: 4, name: "Dr. AndrÃ©s Leal", role: "Profesor Asociado", dept: "FÃ­sica Computacional", avatar: "AL", color: "#c084fc", tags: ["ComputaciÃ³n CuÃ¡ntica", "SimulaciÃ³n", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "DiseÃ±o algoritmos cuÃ¡nticos para simulaciÃ³n de sistemas complejos y optimizaciÃ³n combinatoria." },
+  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Posdoctoral", dept: "Salud PÃºblica", avatar: "CF", color: "#fb923c", tags: ["EpidemiologÃ­a", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiolÃ³gicos para sistemas de alerta temprana." },
+  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "RobÃ³tica e IA", avatar: "FM", color: "#34d399", tags: ["RobÃ³tica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepciÃ³n visual para robots autÃ³nomos en entornos no estructurados." },
 ];
 
 const opportunities = [
-  { id: 1, title: "Postdoc – IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posición postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomédica." },
-  { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las áreas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigación en todas las áreas. Hasta $300.000 USD por proyecto, duración 4 años." },
-  { id: 3, title: "Colaboración EU Horizon – Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco collaborator para propuesta EU Horizon sobre computación cuántica aplicada a optimización combinatorial." },
-  { id: 4, title: "Tesis Doctoral – NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Búsqueda de estudiante doctoral para investigación en modelos de lenguaje multilingüe para lenguas minoritarias." },
-  { id: 5, title: "Research Engineer – Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robotics. Salario competitivo + equity." },
-  { id: 6, title: "Beca Marie Curie – Climate AI", dept: "Todas las áreas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio climático. Sin restricciones de nacionalidad." },
+  { id: 1, title: "Postdoc â€“ IA aplicada a salud", dept: "BiomÃ©dica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "PosiciÃ³n postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomÃ©dica." },
+  { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las Ã¡reas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigaciÃ³n en todas las Ã¡reas. Hasta $300.000 USD por proyecto, duraciÃ³n 4 aÃ±os." },
+  { id: 3, title: "ColaboraciÃ³n EU Horizon â€“ Quantum", dept: "FÃ­sica Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco collaborator para propuesta EU Horizon sobre computaciÃ³n cuÃ¡ntica aplicada a optimizaciÃ³n combinatorial." },
+  { id: 4, title: "Tesis Doctoral â€“ NLP MultilingÃ¼e", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "BÃºsqueda de estudiante doctoral para investigaciÃ³n en modelos de lenguaje multilingÃ¼e para lenguas minoritarias." },
+  { id: 5, title: "Research Engineer â€“ Vision Systems", dept: "RobÃ³tica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visiÃ³n por computador en robotics. Salario competitivo + equity." },
+  { id: 6, title: "Beca Marie Curie â€“ Climate AI", dept: "Todas las Ã¡reas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio climÃ¡tico. Sin restricciones de nacionalidad." },
 ];
 
 const mockMessages = [
   { orcid: "0000-0002-1234-5678", name: "Dra. Elena Vargas", avatar: "EV", color: "#84cc16", messages: [
     { id: 1, from: "them", text: "Hola! Vi tu perfil y me interesa mucho tu trabajo en sistemas distribuidos. Estamos buscando collaborators para un proyecto de IoT.", ts: "10:32" },
-    { id: 2, from: "me", text: "Hola Elena! Encantado de saludarte. Cuéntame más sobre el proyecto, suena interesante.", ts: "10:35" },
-    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorización ambiental. Nousamos LoRa y queríamos explorar machine learning para fusionar datos.", ts: "10:37" },
+    { id: 2, from: "me", text: "Hola Elena! Encantado de saludarte. CuÃ©ntame mÃ¡s sobre el proyecto, suena interesante.", ts: "10:35" },
+    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorizaciÃ³n ambiental. Nousamos LoRa y querÃ­amos explorar machine learning para fusionar datos.", ts: "10:37" },
   ]},
   { orcid: "0000-0003-9876-5432", name: "Dr. Felipe Mora", avatar: "FM", color: "#34d399", messages: [
-    { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podríamos colaborar.", ts: "Ayer" },
+    { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podrÃ­amos colaborar.", ts: "Ayer" },
   ]},
 ];
 
 const userProfile = {
   orcid: "0000-0001-2345-6789",
-  name: "José Ignacio",
-  surname: "Hernández",
+  name: "JosÃ© Ignacio",
+  surname: "HernÃ¡ndez",
   role: "Doctorando",
-  dept: "Ingeniería de Sistemas",
+  dept: "IngenierÃ­a de Sistemas",
   avatar: "JH",
-  color: "#D97706",
+  color: "#84cc16",
   tags: ["Sistemas Distribuidos", "IoT", "Machine Learning"],
   groups: ["DistributedSys Lab", "IoT Center"],
   projects: 2,
@@ -57,43 +57,52 @@ const userProfile = {
 
 const allDepts = ["Todos", ...new Set(researchers.map((r) => r.dept))];
 
-// ─── SKELETON LOADER ─────────────────────────────────────────────────────────
+const researcherColors: Record<string, string> = {
+  "IngenierÃ­a BiomÃ©dica": "#10b981",
+  "Ciencias de la ComputaciÃ³n": "#3b82f6",
+  "BiologÃ­a Molecular": "#8b5cf6",
+  "FÃ­sica Computacional": "#f59e0b",
+  "Salud PÃºblica": "#ef4444",
+  "RobÃ³tica e IA": "#6366f1",
+};
+
+// â”€â”€â”€ SKELETON LOADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function SkeletonLoader() {
   return (
-    <div style={{ background: "#F0EBE3", minHeight: "100vh", padding: "24px" }}>
+    <div style={{ background: "var(--bg)", minHeight: "100vh", padding: "24px" }}>
       {/* Header skeleton */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32, padding: "0 0 24px", borderBottom: "1px solid #E8E0D8" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32, padding: "0 0 24px", borderBottom: "1px solid var(--border)" }}>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <div style={{ width: 28, height: 28, borderRadius: 8, background: "#E8E0D8" }} />
-          <div style={{ width: 90, height: 14, borderRadius: 4, background: "#E8E0D8" }} />
+          <div className="skeleton-shimmer" style={{ width: 28, height: 28, borderRadius: 8 }} />
+          <div className="skeleton-shimmer" style={{ width: 90, height: 14, borderRadius: 4 }} />
         </div>
-        <div style={{ width: 280, height: 36, borderRadius: 10, background: "#E8E0D8" }} />
-        <div style={{ width: 60, height: 14, borderRadius: 4, background: "#E8E0D8" }} />
+        <div className="skeleton-shimmer" style={{ width: 280, height: 36, borderRadius: 10 }} />
+        <div className="skeleton-shimmer" style={{ width: 60, height: 14, borderRadius: 4 }} />
       </div>
       {/* Cards grid skeleton */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
         {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} style={{ background: "#FEFEFE", border: "1px solid #E8E0D8", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
+          <div key={i} style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-              <div style={{ width: 44, height: 44, borderRadius: 10, background: "#E8E0D8" }} />
+              <div className="skeleton-shimmer" style={{ width: 44, height: 44, borderRadius: 10 }} />
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
-                <div style={{ width: "70%", height: 13, borderRadius: 4, background: "#E8E0D8" }} />
-                <div style={{ width: "50%", height: 10, borderRadius: 4, background: "#F0EBE3" }} />
-                <div style={{ width: "40%", height: 9, borderRadius: 4, background: "#F0EBE3" }} />
+                <div className="skeleton-shimmer" style={{ width: "70%", height: 13, borderRadius: 4 }} />
+                <div className="skeleton-shimmer-dim" style={{ width: "50%", height: 10, borderRadius: 4 }} />
+                <div className="skeleton-shimmer-dim" style={{ width: "40%", height: 9, borderRadius: 4 }} />
               </div>
             </div>
             <div style={{ display: "flex", gap: 6 }}>
-              <div style={{ width: 64, height: 20, borderRadius: 20, background: "#E8E0D8" }} />
-              <div style={{ width: 80, height: 20, borderRadius: 20, background: "#F0EBE3" }} />
-              <div style={{ width: 56, height: 20, borderRadius: 20, background: "#E8E0D8" }} />
+              <div className="skeleton-shimmer" style={{ width: 64, height: 20, borderRadius: 20 }} />
+              <div className="skeleton-shimmer-dim" style={{ width: 80, height: 20, borderRadius: 20 }} />
+              <div className="skeleton-shimmer" style={{ width: 56, height: 20, borderRadius: 20 }} />
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 4 }}>
               <div style={{ display: "flex", gap: 10 }}>
-                <div style={{ width: 40, height: 10, borderRadius: 4, background: "#F0EBE3" }} />
-                <div style={{ width: 50, height: 10, borderRadius: 4, background: "#F0EBE3" }} />
+                <div className="skeleton-shimmer-dim" style={{ width: 40, height: 10, borderRadius: 4 }} />
+                <div className="skeleton-shimmer-dim" style={{ width: 50, height: 10, borderRadius: 4 }} />
               </div>
-              <div style={{ width: 72, height: 26, borderRadius: 8, background: "#E8E0D8" }} />
+              <div className="skeleton-shimmer" style={{ width: 72, height: 26, borderRadius: 8 }} />
             </div>
           </div>
         ))}
@@ -102,22 +111,24 @@ function SkeletonLoader() {
   );
 }
 
-// ─── AVATAR ───────────────────────────────────────────────────────────────────
+// â”€â”€â”€ AVATAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function Avatar({ initials, color, size = 44 }: { initials: string; color: string; size?: number }) {
+  const s = Math.round(size * 0.34);
   return (
     <div style={{
       width: size, height: size, borderRadius: 10,
-      background: `${color}18`, border: `1px solid ${color}30`,
+      background: `${color}18`, border: `1px solid ${color}25`,
       display: "flex", alignItems: "center", justifyContent: "center",
-      fontSize: size * 0.32, fontWeight: 800, color, flexShrink: 0, letterSpacing: "-0.02em",
+      fontSize: s, fontWeight: 700, color,
+      flexShrink: 0, letterSpacing: "-0.02em",
     }}>
       {initials}
     </div>
   );
 }
 
-// ─── DETAIL PANEL ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ DETAIL PANEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
   researcher: (typeof researchers)[0];
@@ -128,14 +139,14 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
   return (
     <>
       <div onClick={onClose} style={{
-        position: "fixed", inset: 0, top: 60, background: "rgba(0,0,0,0.5)",
+        position: "fixed", inset: 0, top: 60, background: "color-mix(in srgb, var(--bg) 65%, transparent)",
         zIndex: 39, backdropFilter: "blur(4px)",
       }} />
       <div style={{
         position: "fixed", top: 60, right: 0, bottom: 0, width: 340,
         background: "var(--surface)", borderLeft: "1px solid var(--card-border)",
         zIndex: 50, display: "flex", flexDirection: "column",
-        boxShadow: "-8px 0 32px rgba(0,0,0,0.4)",
+        boxShadow: "var(--shadow-detail-panel)",
       }}>
         {/* Header */}
         <div style={{
@@ -148,7 +159,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           <button onClick={onClose} style={{
             background: "none", border: "none", color: "var(--text-tertiary)",
             cursor: "pointer", fontSize: 20, lineHeight: 1, padding: "0 4px",
-          }}>×</button>
+          }}>Ã—</button>
         </div>
 
         {/* Body */}
@@ -203,7 +214,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 
           {/* Tags */}
           <div>
-            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Áreas</p>
+            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Ãreas</p>
             <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
               {researcher.tags.map((tag) => (
                 <span key={tag} style={{
@@ -223,7 +234,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
               flex: 1, padding: "10px", borderRadius: 9, border: "none",
               fontSize: 12, fontWeight: 700, cursor: "pointer",
               background: isConnected ? "var(--accent-dim)" : researcher.color,
-              color: isConnected ? "var(--accent)" : "#000",
+              color: isConnected ? "#22c55e" : "#000",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 5,
               transition: "all 0.15s",
             }}
@@ -250,14 +261,14 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
   );
 }
 
-// ─── OPPORTUNITY DETAIL MODAL ────────────────────────────────────────────────
+// â”€â”€â”€ OPPORTUNITY DETAIL MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onClose: () => void }) {
-  const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#D97706", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
+  const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#84cc16", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
   const color = typeColors[opp.type] ?? "#6b7280";
   return (
     <>
-      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.7)", zIndex: 200, backdropFilter: "blur(6px)" }} />
+      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "color-mix(in srgb, var(--bg) 75%, transparent)", zIndex: 200, backdropFilter: "blur(6px)" }} />
       <div style={{
         position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
         width: "100%", maxWidth: 480, background: "var(--surface)",
@@ -267,27 +278,27 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
         <button onClick={onClose} style={{
           position: "absolute", top: 16, right: 16, background: "none", border: "none",
           color: "var(--text-tertiary)", cursor: "pointer", fontSize: 18,
-        }}>×</button>
+        }}>Ã—</button>
         <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
           <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
           {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#fb923c", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
         </div>
         <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
-        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} · Fecha límite: <span style={{ color: "#fb923c", fontWeight: 700 }}>{opp.deadline}</span></p>
+        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} Â· Fecha lÃ­mite: <span style={{ color: "#fb923c", fontWeight: 700 }}>{opp.deadline}</span></p>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 20 }}>{opp.desc}</p>
         <button style={{
           width: "100%", padding: "12px", borderRadius: 10, border: "none",
           background: color, color: "#000", fontSize: 13, fontWeight: 700,
           cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
         }}>
-          <ExternalLink size={13} /> Más información
+          <ExternalLink size={13} /> MÃ¡s informaciÃ³n
         </button>
       </div>
     </>
   );
 }
 
-// ─── RESEARCHER CARD (click opens detail) ───────────────────────────────────
+// â”€â”€â”€ RESEARCHER CARD (click opens detail) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
   researcher: (typeof researchers)[0];
@@ -297,60 +308,68 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
 }) {
   return (
     <div
-      className="b-card card-accent"
-      style={{ "--card-accent": researcher.color } as React.CSSProperties}
+      className="b-card"
+      style={{ "--card-accent": researcher.color, transform: "scale(1.015) translateY(-1px)" } as React.CSSProperties}
       onClick={onSelect}
     >
-      <div className="r-card-top">
-        <div className="r-avatar-wrap">
-          <Avatar initials={researcher.avatar} color={researcher.color} size={44} />
-          {researcher.open && <span className="collab-dot" />}
-        </div>
-        <div className="r-card-header">
-          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 6, marginBottom: 2 }}>
-            <span className="r-name">{researcher.name}</span>
-            {researcher.open && (
-              <span style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 8, fontWeight: 700, color: "#D97706", background: "#FEF3C7", border: "1px solid #FCD34D", padding: "2px 6px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0 }}>
-                <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#D97706" }} />
-                Open
-              </span>
-            )}
+      <div className="b-card-top">
+        <Avatar initials={researcher.avatar} color={researcher.color} size={44} />
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
+            <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2 }}>{researcher.name}</span>
+            <span style={{
+              fontSize: 10, fontWeight: 700, color: researcher.color,
+              background: `${researcher.color}14`, padding: "2px 7px", borderRadius: 20, flexShrink: 0,
+            }}>
+              {researcher.match}%
+            </span>
           </div>
-          <p className="r-role">{researcher.role}</p>
-          <p className="r-dept">{researcher.dept}</p>
+          <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
+          <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 1 }}>{researcher.dept}</p>
         </div>
+        {researcher.open && (
+          <span style={{
+            display: "inline-flex", alignItems: "center", gap: 4,
+            fontSize: 9, fontWeight: 700, color: researcher.color,
+            background: `${researcher.color}10`, padding: "2px 6px", borderRadius: 20,
+            textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0, alignSelf: "flex-start",
+          }}>
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: researcher.color, display: "inline-block" }} />
+            Open
+          </span>
+        )}
       </div>
-
-      {/* Bio excerpt */}
-      <p style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.55, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
-        {researcher.bio}
-      </p>
-
-      <div className="r-tags">
+      <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
         {researcher.tags.slice(0, 3).map((tag) => (
-          <span key={tag} className="r-tag">{tag}</span>
+          <span key={tag} style={{
+            fontSize: 10, fontWeight: 600, color: "var(--tag-text)",
+            background: "var(--tag-bg)", border: "1px solid var(--tag-border)",
+            padding: "3px 8px", borderRadius: 20,
+          }}>{tag}</span>
         ))}
       </div>
-
-      <div className="r-card-footer">
-        <div className="r-match">
-          <span className="r-match-num">{researcher.match}</span>
-          <span className="r-match-pct">%</span>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", gap: 10 }}>
+          <span style={{ fontSize: 11, color: "var(--text-subtle)" }}>
+            <span style={{ fontWeight: 700, color: "var(--text-muted)" }}>{researcher.pubs}</span> papers
+          </span>
+          <span style={{ fontSize: 11, color: "var(--text-subtle)" }}>
+            <span style={{ fontWeight: 700, color: "var(--text-muted)" }}>{researcher.projects}</span> projects
+          </span>
         </div>
-        <span style={{ fontSize: 10, color: "var(--text-tertiary)", marginLeft: 2 }}>{researcher.pubs} papers · {researcher.projects} proj</span>
         <button
           onClick={onConnect}
-          className={`r-connect-btn ${isConnected ? "connected" : ""}`}
+          className={`b-connect-btn ${isConnected ? "connected" : ""}`}
           style={{ "--btn-color": researcher.color } as React.CSSProperties}
         >
-          {isConnected ? <><Check size={11} /> Conectado</> : "Conectar"}
+          {isConnected ? "âœ“ Connected" : "Connect"}
         </button>
       </div>
     </div>
   );
 }
 
-// ─── NETWORK CARD (with message button) ─────────────────────────────────────
+// â”€â”€â”€ NETWORK CARD (with message button) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function NetworkCard({ researcher, onDisconnect, onMessage }: {
   researcher: (typeof researchers)[0];
@@ -376,37 +395,35 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
         title="Enviar mensaje"
         style={{
           width: 30, height: 30, borderRadius: 8, border: "1px solid var(--card-border)",
-          background: "var(--surface)", color: "var(--text-muted)",
+          background: "var(--surface)", color: "var(--text-tertiary)",
           cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
           transition: "all 0.15s",
         }}
-        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#D9770640"; (e.currentTarget as HTMLButtonElement).style.color = "var(--accent)"; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(132,204,22,0.35)"; (e.currentTarget as HTMLButtonElement).style.color = "#84cc16"; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-tertiary)"; }}
       >
         <MessageCircle size={13} />
       </button>
-      <div style={{ textAlign: "right", flexShrink: 0 }}>
-        <div style={{ fontSize: 14, fontWeight: 800, color: researcher.color, lineHeight: 1, letterSpacing: "-0.02em" }}>{researcher.match}%</div>
-      </div>
+      <span style={{ fontSize: 11, color: "var(--text-tertiary)", fontWeight: 500, flexShrink: 0 }}>{researcher.match}%</span>
       <button
         onClick={onDisconnect}
         title="Desconectar"
         style={{
-          width: 28, height: 28, borderRadius: 8, border: "1px solid var(--card-border)",
-          background: "transparent", color: "var(--text-muted)",
+          width: 28, height: 28, borderRadius: 8, border: "1px solid var(--border)",
+          background: "transparent", color: "var(--text-tertiary)",
           fontSize: 16, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
           transition: "all 0.15s", flexShrink: 0,
         }}
-        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#ef444440"; (e.currentTarget as HTMLButtonElement).style.color = "#ef4444"; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(239,68,68,0.4)"; (e.currentTarget as HTMLButtonElement).style.color = "#ef4444"; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-tertiary)"; }}
       >
-        ×
+        Ã—
       </button>
     </div>
   );
 }
 
-// ─── MESSAGES VIEW ───────────────────────────────────────────────────────────
+// â”€â”€â”€ MESSAGES VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function MessagesView({ conversations, onSelectConversation, onBack, selectedOrcid, messages, onSendMessage, newMessage, setNewMessage }: {
   conversations: (typeof mockMessages);
@@ -471,7 +488,10 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
               flex: 1, background: "var(--surface)", border: "1px solid var(--card-border)",
               borderRadius: 24, padding: "10px 16px", color: "var(--text-primary)",
               fontSize: 13, outline: "none",
+              transition: "border-color 0.15s, box-shadow 0.15s",
             }}
+            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow)"; }}
+            onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--card-border)"; i.style.boxShadow = "none"; }}
           />
           <button
             onClick={onSendMessage}
@@ -492,7 +512,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
   return (
     <div style={{ maxWidth: 700, margin: "0 auto", padding: "24px" }}>
       <div style={{ marginBottom: 24 }}>
-        <h1 style={{ fontSize: 22, fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 4 }}>Mensajes</h1>
+        <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5 }}>Mensajes</h1>
         <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Conversaciones con tus contactos</p>
       </div>
 
@@ -501,9 +521,9 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
           textAlign: "center", padding: "60px 24px", background: "var(--card-bg)",
           border: "1px solid var(--card-border)", borderRadius: 16,
         }}>
-          <MessageCircle size={32} style={{ color: "#222", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
-          <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>Sin mensajes aún</p>
-          <p style={{ fontSize: 12, color: "var(--text-muted)" }}>Conéctate con investigadores y empieza una conversación</p>
+          <MessageCircle size={32} style={{ color: "var(--text-tertiary)", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
+          <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>Sin mensajes aÃºn</p>
+          <p style={{ fontSize: 12, color: "var(--text-muted)" }}>ConÃ©ctate con investigadores y empieza una conversaciÃ³n</p>
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -538,7 +558,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
   );
 }
 
-// ─── NAVBAR ───────────────────────────────────────────────────────────────────
+// â”€â”€â”€ NAVBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function NavBar({ view, setView, connectedCount, unreadMessages }: {
   view: string;
@@ -556,7 +576,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
 
   return (
     <div style={{
-      display: "flex", gap: 2, background: "var(--bg-warm)",
+      display: "flex", gap: 2, background: "var(--bg-secondary)",
       border: "1px solid var(--border)", borderRadius: 12, padding: 4,
     }}>
       {items.map((item) => (
@@ -564,7 +584,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           display: "flex", alignItems: "center", gap: 6,
           padding: "7px 12px", borderRadius: 8, border: "none",
           fontSize: 12, fontWeight: 600, cursor: "pointer",
-          background: view === item.key ? "var(--surface)" : "transparent",
+          background: view === item.key ? "var(--accent-dim)" : "transparent",
           color: view === item.key ? "var(--text-primary)" : "var(--text-subtle)",
           transition: "all 0.15s", position: "relative", whiteSpace: "nowrap",
         }}>
@@ -593,93 +613,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
   );
 }
 
-// ─── THEME TOGGLE ───────────────────────────────────────────────────────────
-
-function ThemeToggle({ theme, onToggle }: { theme: string; onToggle: () => void }) {
-  const isDark = theme === "dark";
-  return (
-    <button
-      onClick={onToggle}
-      title={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      style={{
-        position: "relative",
-        width: 52,
-        height: 28,
-        borderRadius: 14,
-        border: "none",
-        cursor: "pointer",
-        background: isDark ? "#1A1B3A" : "#E8E4DD",
-        transition: "background 0.4s ease",
-        padding: 0,
-        overflow: "hidden",
-        flexShrink: 0,
-      }}
-    >
-      {/* Stars (dark mode only) */}
-      {isDark && (
-        <>
-          <span style={{
-            position: "absolute", width: 2, height: 2,
-            borderRadius: "50%", background: "#fff",
-            top: 5, left: 8, opacity: 0.6,
-            boxShadow: "6px 3px 0 #fff, 18px 1px 0 #fff, 32px 5px 0 #fff",
-          }} />
-          <span style={{
-            position: "absolute", width: 1.5, height: 1.5,
-            borderRadius: "50%", background: "#fff",
-            top: 14, left: 20, opacity: 0.4,
-          }} />
-          <span style={{
-            position: "absolute", width: 1.5, height: 1.5,
-            borderRadius: "50%", background: "#fff",
-            top: 8, left: 28, opacity: 0.5,
-          }} />
-        </>
-      )}
-
-      {/* Sliding circle */}
-      <div style={{
-        position: "absolute",
-        top: 3,
-        left: isDark ? 26 : 3,
-        width: 22,
-        height: 22,
-        borderRadius: "50%",
-        background: isDark ? "#2B2D49" : "#fff",
-        transition: "left 0.35s cubic-bezier(0.68, -0.15, 0.27, 1.15), background 0.3s ease",
-        boxShadow: "0 1px 3px rgba(0,0,0,0.25)",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        zIndex: 1,
-      }}>
-        {/* Sun */}
-        {!isDark && (
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style={{ position: "absolute" }}>
-            <circle cx="12" cy="12" r="5" fill="#F59E0B" />
-            <line x1="12" y1="1" x2="12" y2="3" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
-            <line x1="12" y1="21" x2="12" y2="23" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
-            <line x1="1" y1="12" x2="3" y2="12" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
-            <line x1="21" y1="12" x2="23" y2="12" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
-          </svg>
-        )}
-
-        {/* Moon */}
-        {isDark && (
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style={{ position: "absolute" }}>
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#9CA3AF" />
-          </svg>
-        )}
-      </div>
-    </button>
-  );
-}
-
-// ─── MAIN ─────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function App() {
   const [view, setView] = useState<string>("discover");
@@ -687,14 +621,6 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [onlyOpen, setOnlyOpen] = useState(false);
   const [connectedIds, setConnectedIds] = useState<number[]>([]);
-  const [theme, setTheme] = useState<"light" | "dark">("light");
-
-  useEffect(() => {
-    document.body.setAttribute("data-theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => setTheme((t) => t === "dark" ? "light" : "dark");
-
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [selectedResearcher, setSelectedResearcher] = useState<(typeof researchers)[0] | null>(null);
   const [selectedOpp, setSelectedOpp] = useState<(typeof opportunities)[0] | null>(null);
@@ -747,49 +673,32 @@ export default function App() {
       <header className="app-header" style={{
         borderBottom: "1px solid var(--card-border)", padding: "0 24px", height: 60,
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        position: "sticky" as const, top: 0, background: "rgba(250,250,248,0.92)",
+        position: "sticky" as const, top: 0, background: "color-mix(in srgb, var(--surface) 92%, transparent)",
         backdropFilter: "blur(20px)", zIndex: 50,
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <div style={{
             width: 28, height: 28, borderRadius: 8,
-            background: "linear-gradient(135deg, #D97706, #92400E)",
+            background: "linear-gradient(135deg, #84cc16, #65a30d)",
             display: "flex", alignItems: "center", justifyContent: "center",
-            boxShadow: "0 0 20px rgba(217,119,6,0.25)",
+            boxShadow: "0 0 20px #84cc1625",
           }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <circle cx="8" cy="12" r="3" fill="#fff" opacity="0.9"/>
-              <circle cx="16" cy="7" r="2.5" fill="#fff" opacity="0.7"/>
-              <circle cx="16" cy="17" r="2.5" fill="#fff" opacity="0.7"/>
-              <line x1="11" y1="12" x2="14" y2="7.8" stroke="#fff" strokeWidth="1.5" opacity="0.6"/>
-              <line x1="11" y1="12" x2="14" y2="16.2" stroke="#fff" strokeWidth="1.5" opacity="0.6"/>
+              <circle cx="8" cy="12" r="3" fill="#000" opacity="0.9"/>
+              <circle cx="16" cy="7" r="2.5" fill="#000" opacity="0.7"/>
+              <circle cx="16" cy="17" r="2.5" fill="#000" opacity="0.7"/>
+              <line x1="11" y1="12" x2="14" y2="7.8" stroke="#000" strokeWidth="1.5" opacity="0.6"/>
+              <line x1="11" y1="12" x2="14" y2="16.2" stroke="#000" strokeWidth="1.5" opacity="0.6"/>
             </svg>
           </div>
           <span style={{ fontSize: 15, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em" }}>ResearchNet</span>
         </div>
         <NavBar view={view} setView={setView} connectedCount={connectedIds.length} unreadMessages={unreadMessages} />
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, padding: "5px 12px" }}>
-            <Globe size={11} color="var(--text-subtle)" />
-            <span style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 600 }}>
-              {researchers.filter((r) => r.open).length} <span style={{ color: "var(--accent)" }}>open</span> · {researchers.length} researchers
-            </span>
-          </div>
-          <button
-            onClick={toggleTheme}
-            title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-            style={{
-              display: "flex", alignItems: "center", justifyContent: "center",
-              width: 32, height: 32, borderRadius: 8,
-              background: "var(--surface)", border: "1px solid var(--border)",
-              color: "var(--text-tertiary)", cursor: "pointer",
-              transition: "all 0.15s",
-            }}
-            onMouseEnter={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "#D9770640"; el.style.color = "var(--accent)"; }}
-            onMouseLeave={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "var(--border)"; el.style.color = "var(--text-tertiary)"; }}
-          >
-            {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
-          </button>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, padding: "5px 12px" }}>
+          <Globe size={11} color="var(--text-subtle)" />
+          <span style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 600 }}>
+            {researchers.filter((r) => r.open).length} <span style={{ color: "var(--accent)" }}>open</span> Â· {researchers.length} researchers
+          </span>
         </div>
       </header>
 
@@ -801,18 +710,18 @@ export default function App() {
           justifyContent: "center", padding: 20,
         }}>
           <div style={{
-            background: "#111111", border: "1px solid #222222", borderRadius: 20,
+            background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20,
             padding: 36, maxWidth: 420, width: "100%", textAlign: "center",
-            boxShadow: "0 24px 80px rgba(0,0,0,0.12)",
+            boxShadow: "0 24px 80px rgba(0,0,0,0.8)",
           }}>
             <div style={{
               width: 52, height: 52, borderRadius: 14,
-              background: "linear-gradient(135deg, #D97706, #92400E)",
+              background: "linear-gradient(135deg, #84cc16, #65a30d)",
               display: "flex", alignItems: "center", justifyContent: "center",
-              margin: "0 auto 20px", boxShadow: "0 0 40px rgba(217,119,6,0.25)",
+              margin: "0 auto 20px", boxShadow: "0 0 40px #84cc1630",
             }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="8" cy="12" r="3" fill="#fff" opacity="0.9"/>
+                <circle cx="8" cy="12" r="3" fill="#000" opacity="0.9"/>
                 <circle cx="16" cy="7" r="2.5" fill="#000" opacity="0.7"/>
                 <circle cx="16" cy="17" r="2.5" fill="#000" opacity="0.7"/>
                 <line x1="11" y1="12" x2="14" y2="7.8" stroke="#000" strokeWidth="1.5" opacity="0.6"/>
@@ -820,12 +729,12 @@ export default function App() {
               </svg>
             </div>
             <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.03em" }}>Bienvenido a ResearchNet</h2>
-            <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.6, marginBottom: 28 }}>Conecta tu perfil ORCID para auto-completar tu información y empezar a descubrir colaboradores.</p>
+            <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.6, marginBottom: 28 }}>Conecta tu perfil ORCID para auto-completar tu informaciÃ³n y empezar a descubrir colaboradores.</p>
             <button
               onClick={() => { setShowOnboarding(false); localStorage.setItem("rn_onboarding_skipped", "1"); }}
               style={{
                 width: "100%", padding: "13px 20px", borderRadius: 12,
-                border: "1px solid #D9770640", background: "#D97706", color: "#000",
+                border: "1px solid #84cc1640", background: "#84cc16", color: "#000",
                 fontSize: 13, fontWeight: 800, cursor: "pointer",
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
                 marginBottom: 10,
@@ -842,7 +751,7 @@ export default function App() {
             >
               Omitir por ahora
             </button>
-            <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 20, lineHeight: 1.5 }}>ORCID es un identificador persistente. Tu información se mantiene privada.</p>
+            <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 20, lineHeight: 1.5 }}>ORCID es un identificador persistente. Tu informaciÃ³n se mantiene privada.</p>
           </div>
         </div>
       )}
@@ -868,24 +777,24 @@ export default function App() {
       {/* OPPORTUNITY MODAL */}
       {selectedOpp && <OppDetailModal opp={selectedOpp} onClose={() => setSelectedOpp(null)} />}
 
-      {/* ─── DISCOVER VIEW ─────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ DISCOVER VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {view === "discover" && (
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 22, fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 4 }}>Descubrir investigadores</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Encuentra colaboradores para tu próximo proyecto</p>
+            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5 }}>Descubrir investigadores</h1>
+            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Encuentra colaboradores para tu prÃ³ximo proyecto</p>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" as const, marginBottom: 24 }}>
             <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
-              <Search size={13} color="var(--text-tertiary)" />
-              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, área o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "var(--text-primary)", fontSize: 13, flex: 1, width: "100%" }} />
+              <Search size={13} color="var(--text-subtle)" />
+              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, Ã¡rea o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "var(--text-primary)", fontSize: 13, flex: 1, width: "100%" }} />
             </div>
             <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none" as const, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, color: "var(--text-muted)", fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer" as const }}>
               {allDepts.map((d) => <option key={d} value={d}>{d}</option>)}
             </select>
             <button onClick={() => setOnlyOpen((p) => !p)} style={{
-              background: onlyOpen ? "var(--accent-light)" : "var(--surface)",
-              border: `1px solid ${onlyOpen ? "#D9770640" : "var(--border)"}`,
+              background: onlyOpen ? "rgba(101,163,13,0.08)" : "var(--surface)",
+              border: `1px solid ${onlyOpen ? "#84cc1640" : "var(--border)"}`,
               borderRadius: 10, color: onlyOpen ? "var(--accent)" : "var(--text-muted)",
               fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
             }}>
@@ -908,25 +817,25 @@ export default function App() {
             ))}
           </div>
           {filteredResearchers.length === 0 && (
-            <div style={{ textAlign: "center", padding: "60px 20px", background: "#111111", border: "1px solid #1e1e1e", borderRadius: 16 }}>
-              <Search size={32} style={{ color: "#222", marginBottom: 14, display: "block", margin: "0 auto 14px" }} />
+            <div style={{ textAlign: "center", padding: "60px 20px", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 16 }}>
+              <Search size={32} style={{ color: "var(--text-tertiary)", marginBottom: 14, display: "block", margin: "0 auto 14px" }} />
               <p style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 6 }}>Sin resultados</p>
-              <p style={{ fontSize: 12, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto" }}>Prueba con otros filtros o cambia el término de búsqueda</p>
+              <p style={{ fontSize: 12, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto" }}>Prueba con otros filtros o cambia el tÃ©rmino de bÃºsqueda</p>
             </div>
           )}
         </div>
       )}
 
-      {/* ─── OPPORTUNITIES VIEW ─────────────────────────────────────────── */}
+      {/* â”€â”€â”€ OPPORTUNITIES VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {view === "opportunities" && (
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 22, fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 4 }}>Oportunidades</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Postdocs, becas, convocatorias y más</p>
+            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5 }}>Oportunidades</h1>
+            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Postdocs, becas, convocatorias y mÃ¡s</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
             {opportunities.map((opp) => {
-              const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#D97706", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
+              const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#84cc16", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
               const color = typeColors[opp.type] ?? "#6b7280";
               return (
                 <div key={opp.id} onClick={() => setSelectedOpp(opp)} style={{
@@ -948,7 +857,7 @@ export default function App() {
                       <Clock size={10} />{opp.deadline}
                     </span>
                     <span style={{ fontSize: 11, fontWeight: 600, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}>
-                      Ver más <ChevronRight size={10} />
+                      Ver mÃ¡s <ChevronRight size={10} />
                     </span>
                   </div>
                 </div>
@@ -958,52 +867,47 @@ export default function App() {
         </div>
       )}
 
-      {/* ─── NETWORK VIEW ───────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ NETWORK VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {view === "network" && (
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 22, fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 4 }}>Tu red</h1>
+            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5 }}>Tu red</h1>
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
           </div>
           {connectedResearchers.length === 0 ? (
-            <div style={{ textAlign: "center", padding: "80px 32px", background: "var(--card-bg)", border: "1px solid var(--card-border)", borderRadius: 16, position: "relative", overflow: "hidden" }}>
-              {/* Radial glow behind illustration */}
-              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -55%)", width: 200, height: 200, background: "radial-gradient(circle, rgba(217,119,6,0.07) 0%, transparent 70%)", pointerEvents: "none" }} />
-              <svg width="96" height="80" viewBox="0 0 96 80" fill="none" style={{ margin: "0 auto 20px", display: "block", position: "relative" }}>
-                {/* Center node — the user */}
-                <circle cx="48" cy="40" r="12" fill="rgba(217,119,6,0.12)" stroke="#D97706" strokeWidth="1.5"/>
-                <circle cx="48" cy="40" r="6" fill="#D97706" opacity="0.9"/>
-                {/* Soft glow ring around center */}
-                <circle cx="48" cy="40" r="16" stroke="#D97706" strokeWidth="0.5" fill="none" opacity="0.2"/>
-                {/* Satellite 1 — top right */}
-                <circle cx="76" cy="18" r="7" fill="rgba(217,119,6,0.07)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
-                <circle cx="76" cy="18" r="3" fill="var(--text-tertiary)" opacity="0.5"/>
-                {/* Satellite 2 — bottom right */}
-                <circle cx="78" cy="58" r="7" fill="rgba(217,119,6,0.07)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
-                <circle cx="78" cy="58" r="3" fill="var(--text-tertiary)" opacity="0.5"/>
-                {/* Satellite 3 — top left */}
-                <circle cx="20" cy="18" r="6" fill="rgba(217,119,6,0.06)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
-                <circle cx="20" cy="18" r="2.5" fill="var(--text-tertiary)" opacity="0.4"/>
-                {/* Satellite 4 — bottom left */}
-                <circle cx="18" cy="60" r="6" fill="rgba(217,119,6,0.06)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
-                <circle cx="18" cy="60" r="2.5" fill="var(--text-tertiary)" opacity="0.4"/>
-                {/* Satellite 5 — top center */}
-                <circle cx="48" cy="6" r="5" fill="rgba(217,119,6,0.05)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
-                <circle cx="48" cy="6" r="2" fill="var(--text-tertiary)" opacity="0.35"/>
-                {/* Connection lines — center to satellites */}
-                <line x1="58" y1="34" x2="70" y2="21" stroke="#D97706" strokeWidth="1" opacity="0.35"/>
-                <line x1="58" y1="46" x2="72" y2="54" stroke="#D97706" strokeWidth="1" opacity="0.35"/>
-                <line x1="40" y1="30" x2="28" y2="20" stroke="#D97706" strokeWidth="1" opacity="0.25"/>
-                <line x1="38" y1="48" x2="24" y2="56" stroke="#D97706" strokeWidth="1" opacity="0.25"/>
-                <line x1="48" y1="28" x2="48" y2="11" stroke="#D97706" strokeWidth="1" opacity="0.2"/>
-                {/* Satellite-to-satellite connections (mesh) */}
-                <line x1="72" y1="21" x2="48" y2="11" stroke="var(--text-tertiary)" strokeWidth="0.5" opacity="0.2" strokeDasharray="2 2"/>
-                <line x1="48" y1="11" x2="28" y2="20" stroke="var(--text-tertiary)" strokeWidth="0.5" opacity="0.2" strokeDasharray="2 2"/>
-                <line x1="24" y1="56" x2="72" y2="54" stroke="var(--text-tertiary)" strokeWidth="0.5" opacity="0.15" strokeDasharray="2 2"/>
+            <div className="empty-state">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={{ display: "block" }}>
+                {/* Central node */}
+                <circle cx="32" cy="32" r="8" stroke="#27272a" strokeWidth="1.5" fill="none"/>
+                <circle cx="32" cy="32" r="3" fill="#84cc16" opacity="0.7"/>
+                {/* Satellite nodes */}
+                <circle cx="14" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="50" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="14" cy="46" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="50" cy="46" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="32" cy="8" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
+                <circle cx="32" cy="56" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
+                {/* Connection lines */}
+                <line x1="24" y1="27" x2="18" y2="21" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="40" y1="27" x2="46" y2="21" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="24" y1="37" x2="18" y2="43" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="40" y1="37" x2="46" y2="43" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="32" y1="24" x2="32" y2="12" stroke="#27272a" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
+                <line x1="32" y1="40" x2="32" y2="52" stroke="#27272a" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
+                {/* Satellite node dots */}
+                <circle cx="14" cy="18" r="2" fill="#84cc16" opacity="0.4"/>
+                <circle cx="50" cy="18" r="2" fill="#84cc16" opacity="0.4"/>
+                <circle cx="14" cy="46" r="2" fill="#84cc16" opacity="0.4"/>
+                <circle cx="50" cy="46" r="2" fill="#84cc16" opacity="0.4"/>
               </svg>
-              <p style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.02em" }}>Tu red está vacía</p>
-              <p style={{ fontSize: 13, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto 24px", lineHeight: 1.6 }}>Explora investigadores y conéctate para construir tu red de colaboración.</p>
-              <button onClick={() => setView("discover")} style={{ padding: "10px 22px", borderRadius: 9, background: "var(--accent)", color: "#000", border: "none", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Descubrir investigadores</button>
+              <p className="empty-title">Tu red estÃ¡ vacÃ­a</p>
+              <p className="empty-sub">Explora investigadores y conÃ©ctate para construir tu red de colaboraciÃ³n.</p>
+              <button onClick={() => setView("discover")} style={{
+                marginTop: 6, padding: "9px 20px", borderRadius: 9,
+                background: "#84cc16", color: "#000", border: "none",
+                fontSize: 13, fontWeight: 700, cursor: "pointer",
+                fontFamily: "inherit",
+              }}>Descubrir investigadores</button>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -1026,7 +930,7 @@ export default function App() {
         </div>
       )}
 
-      {/* ─── MESSAGES VIEW ───────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ MESSAGES VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {view === "messages" && (
         <MessagesView
           conversations={conversations}
@@ -1040,69 +944,69 @@ export default function App() {
         />
       )}
 
-      {/* ─── PROFILE VIEW ─────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ PROFILE VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {view === "profile" && (
         <div style={{ maxWidth: 800, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 22, fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 4 }}>Tu perfil</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Gestiona tu información de investigador</p>
+            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5 }}>Tu perfil</h1>
+            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Gestiona tu informaciÃ³n de investigador</p>
           </div>
-          <div style={{ background: "#111111", border: "1px solid #1e1e1e", borderRadius: 18, padding: 28, marginBottom: 16 }}>
+          <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18, padding: 28, marginBottom: 16 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: 24 }}>
               <Avatar initials={userProfile.avatar} color={userProfile.color} size={64} />
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" as const }}>
-                  <h2 style={{ fontSize: 20, fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em" }}>{userProfile.name} {userProfile.surname}</h2>
+                  <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
                   {userProfile.open && (
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${userProfile.color}12`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
-                      Abiertos a colaboración
+                      Abiertos a colaboraciÃ³n
                     </span>
                   )}
                 </div>
                 <p style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 2 }}>{userProfile.role}</p>
                 <p style={{ fontSize: 12, color: "var(--text-subtle)" }}>{userProfile.dept}</p>
               </div>
-              <button style={{ padding: "8px 16px", borderRadius: 10, border: "1px solid var(--border)", background: "transparent", color: "var(--text-secondary)", fontSize: 12, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>
+              <button style={{ padding: "8px 16px", borderRadius: 10, border: "1px solid var(--border)", background: "transparent", color: "var(--text-muted)", fontSize: 12, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>
                 Editar perfil
               </button>
             </div>
             <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.7, marginBottom: 20 }}>{userProfile.bio}</p>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const, marginBottom: 20 }}>
               {userProfile.tags.map((tag) => (
-                <span key={tag} style={{ fontSize: 11, fontWeight: 600, color: "var(--accent-dark)", background: "var(--accent-light)", border: "1px solid #FCD34D", padding: "4px 10px", borderRadius: 20 }}>{tag}</span>
+                <span key={tag} style={{ fontSize: 11, fontWeight: 600, color: "var(--text-secondary)", background: "var(--surface-hover)", border: "1px solid var(--border)", padding: "4px 10px", borderRadius: 20 }}>{tag}</span>
               ))}
             </div>
             <div>
-              <p style={{ fontSize: 10, fontWeight: 700, color: "var(--text-subtle)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Grupos de investigación</p>
+              <p style={{ fontSize: 10, fontWeight: 700, color: "var(--text-subtle)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Grupos de investigaciÃ³n</p>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const }}>
                 {userProfile.groups.map((g) => (
-                  <span key={g} style={{ fontSize: 11, fontWeight: 600, color: "var(--text-secondary)", background: "var(--surface-hover)", border: "1px solid var(--border)", padding: "4px 10px", borderRadius: 8 }}>{g}</span>
+                  <span key={g} style={{ fontSize: 11, fontWeight: 600, color: "var(--text-muted)", background: "var(--surface-hover)", border: "1px solid var(--border)", padding: "4px 10px", borderRadius: 8 }}>{g}</span>
                 ))}
               </div>
             </div>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 16 }}>
             {[{ value: userProfile.pubs, label: "Publicaciones", icon: <BookOpen size={16} /> }, { value: userProfile.projects, label: "Proyectos", icon: <Briefcase size={16} /> }, { value: connectedIds.length, label: "Conexiones", icon: <Users size={16} /> }].map((stat) => (
-              <div key={stat.label} style={{ background: "#111111", border: "1px solid #1e1e1e", borderRadius: 14, padding: "20px 16px", textAlign: "center" }}>
+              <div key={stat.label} style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: "20px 16px", textAlign: "center" }}>
                 <div style={{ color: "var(--text-subtle)", marginBottom: 8, display: "flex", justifyContent: "center" }}>{stat.icon}</div>
                 <div style={{ fontSize: 28, fontWeight: 900, color: "var(--text-primary)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 4 }}>{stat.value}</div>
                 <div style={{ fontSize: 11, color: "var(--text-subtle)", fontWeight: 600 }}>{stat.label}</div>
               </div>
             ))}
           </div>
-          <div style={{ background: "#111111", border: "1px solid #1e1e1e", borderRadius: 14, padding: 20 }}>
-            <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones rápidas</p>
+          <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: 20 }}>
+            <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones rÃ¡pidas</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {[{ label: "Ver mi perfil público", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
+              {[{ label: "Ver mi perfil pÃºblico", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
                 <button key={action.label} style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
-                  padding: "12px 14px", borderRadius: 10, background: "#141414",
-                  border: "1px solid #1e1e1e", color: "var(--text-muted)", fontSize: 12, fontWeight: 600,
+                  padding: "12px 14px", borderRadius: 10, background: "var(--surface-hover)",
+                  border: "1px solid var(--border)", color: "var(--text-secondary)", fontSize: 12, fontWeight: 600,
                   cursor: "pointer", textAlign: "left", width: "100%",
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#D9770640"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#1e1e1e"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#84cc1640"; (e.currentTarget as HTMLButtonElement).style.color = "var(--accent)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)"; }}
                 >
                   <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{ color: "var(--accent)" }}>{action.icon}</span>
@@ -1118,5 +1022,3 @@ export default function App() {
     </div>
   );
 }
-
-
