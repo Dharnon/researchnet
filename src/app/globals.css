@@ -65,6 +65,14 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
 
+/* ── FOCUS VISIBLE ─────────────────────────────────────────────────────────── */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #D97706;
+  outline-offset: 2px;
+}
+
 /* ── LOADING ───────────────────────────────────────────────────────────────── */
 .app-loading {
   background: var(--bg);
