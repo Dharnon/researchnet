@@ -157,7 +157,7 @@ a {
 
 .header-count {
   font-size: 11px;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   font-weight: 500;
 }
 
@@ -472,9 +472,9 @@ a {
 }
 
 .r-card:hover {
-  border-color: rgba(132, 204, 22, 0.25);
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-2px);
+  border-color: rgba(132, 204, 22, 0.3);
+  box-shadow: 0 10px 40px rgba(0,0,0,0.55), 0 0 0 1px rgba(132, 204, 22, 0.1);
+  transform: translateY(-3px);
 }
 
 .r-card:hover::after {
@@ -559,18 +559,18 @@ a {
 }
 
 .r-match-num {
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 15px;
+  font-weight: 700;
   color: var(--accent);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   line-height: 1;
 }
 
 .r-match-pct {
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 600;
   color: var(--accent);
-  opacity: 0.7;
+  opacity: 0.55;
 }
 
 .r-match-label {
@@ -1089,13 +1089,14 @@ a {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 60px 20px;
+  padding: 80px 24px;
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: var(--radius);
   color: var(--text-tertiary);
-  gap: 10px;
+  gap: 12px;
   text-align: center;
+  box-shadow: inset 0 1px 0 var(--border-subtle);
 }
 
 .empty-title {
