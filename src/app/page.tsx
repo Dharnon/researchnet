@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import {
@@ -6,45 +6,65 @@ import {
   Briefcase, Clock, ChevronRight, X, Menu,
   BookMarked, TrendingUp, Award,
 } from "lucide-react";
-import Avatarr from "react-nice-avatar";
 
-// â”€â”€â”€ DATA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── DATA ─────────────────────────────────────────────────────────────────────
 
 const researchers = [
-  { id: 1, name: "Dra. Elena Vargas", role: "Profesora Titular", dept: "IngenierÃ­a BiomÃ©dica", tags: ["Machine Learning", "Neurociencia Computacional", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Investigo interfaces cerebro-computadora y modelos de aprendizaje profundo aplicados a seÃ±ales neuronales." },
-  { id: 2, name: "Dr. Marcos IbÃ¡Ã±ez", role: "Investigador Senior", dept: "Ciencias de la ComputaciÃ³n", tags: ["NLP", "Large Language Models", "Ã‰tica en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multilingÃ¼e y los desafÃ­os Ã©ticos que plantea la IA generativa." },
-  { id: 3, name: "Dra. SofÃ­a RÃ­os", role: "Profesora Asociada", dept: "BiologÃ­a Molecular", tags: ["GenÃ³mica", "CRISPR", "BioinformÃ¡tica"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para anÃ¡lisis de variantes genÃ©ticas y ediciÃ³n gÃ©nica." },
-  { id: 4, name: "Dr. AndrÃ©s Leal", role: "Profesor Asociado", dept: "FÃ­sica Computacional", tags: ["ComputaciÃ³n CuÃ¡ntica", "SimulaciÃ³n", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "DiseÃ±o algoritmos cuÃ¡nticos para simulaciÃ³n de sistemas complejos y optimizaciÃ³n combinatoria." },
-  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Posdoctoral", dept: "Salud PÃºblica", tags: ["EpidemiologÃ­a", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiolÃ³gicos para sistemas de alerta temprana." },
-  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "RobÃ³tica e IA", tags: ["RobÃ³tica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepciÃ³n visual para robots autÃ³nomos en entornos no estructurados." },
+  { id: 1, name: "Dra. Elena Vargas", role: "Profesora Titular", dept: "Ingeniería Biomédica", tags: ["Machine Learning", "Neurociencia Computacional", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Investigo interfaces cerebro-computadora y modelos de aprendizaje profundo aplicados a señales neuronales." },
+  { id: 2, name: "Dr. Marcos Ibáñez", role: "Investigador Senior", dept: "Ciencias de la Computación", tags: ["NLP", "Large Language Models", "Ética en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multilingüe y los desafíos éticos que plantea la IA generativa." },
+  { id: 3, name: "Dra. Sofía Ríos", role: "Profesora Asociada", dept: "Biología Molecular", tags: ["Genómica", "CRISPR", "Bioinformática"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para análisis de variantes genéticas y edición génica." },
+  { id: 4, name: "Dr. Andrés Leal", role: "Profesor Asociado", dept: "Física Computacional", tags: ["Computación Cuántica", "Simulación", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Diseño algoritmos cuánticos para simulación de sistemas complejos y optimización combinatoria." },
+  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Posdoctoral", dept: "Salud Pública", tags: ["Epidemiología", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiológicos para sistemas de alerta temprana." },
+  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Robótica e IA", tags: ["Robótica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepción visual para robots autónomos en entornos no estructurados." },
 ];
 
 const opportunities = [
-  { id: 1, title: "Postdoc â€“ IA aplicada a salud", dept: "BiomÃ©dica + CS", deadline: "30 Abr", type: "Postdoc", hot: true },
-  { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las Ã¡reas", deadline: "15 May", type: "Fondos", hot: true },
-  { id: 3, title: "ColaboraciÃ³n EU Horizon â€“ Quantum", dept: "FÃ­sica Comp.", deadline: "1 Jun", type: "Internacional", hot: false },
-  { id: 4, title: "Tesis Doctoral â€“ NLP MultilingÃ¼e", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false },
-  { id: 5, title: "Beca Fulbright â€“ InvestigaciÃ³n en IA", dept: "Ciencias de la ComputaciÃ³n", deadline: "10 Jun", type: "Becas", hot: false },
+  { id: 1, title: "Postdoc – IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true },
+  { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las áreas", deadline: "15 May", type: "Fondos", hot: true },
+  { id: 3, title: "Colaboración EU Horizon – Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false },
+  { id: 4, title: "Tesis Doctoral – NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false },
+  { id: 5, title: "Beca Fulbright – Investigación en IA", dept: "Ciencias de la Computación", deadline: "10 Jun", type: "Becas", hot: false },
 ];
 
 const allDepts = ["Todos", ...new Set(researchers.map((r) => r.dept))];
 
-// â”€â”€â”€ AVATAR CONFIG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── AVATAR ───────────────────────────────────────────────────────────────────
 
-const avatarShemes = [
-  { id: "EV", bg: "#e8d5b7", face: "#8b6f47", hair: "#4a3728" },
-  { id: "MI", bg: "#d5e8e8", face: "#6b8b8b", hair: "#2d3a3a" },
-  { id: "SR", bg: "#e8d5d5", face: "#a07070", hair: "#6b3a3a" },
-  { id: "AL", bg: "#d5dce8", face: "#7080a0", hair: "#2d3040" },
-  { id: "CF", bg: "#e8e0d5", face: "#908070", hair: "#5a4030" },
-  { id: "FM", bg: "#dce8d5", face: "#708b60", hair: "#304020" },
+const avatarColors = [
+  { bg: "#dcfce7", text: "#15803d" },
+  { bg: "#dbeafe", text: "#1d4ed8" },
+  { bg: "#fce7f3", text: "#9d174d" },
+  { bg: "#ede9fe", text: "#5b21b6" },
+  { bg: "#ffedd5", text: "#9a3412" },
+  { bg: "#e0f2fe", text: "#0369a1" },
 ];
 
-function getAvatarScheme(id: number) {
-  return avatarShemes[id - 1] || avatarShemes[0];
+function AvatarCircle({ id, size = 48 }: { id: number; size?: number }) {
+  const c = avatarColors[(id - 1) % avatarColors.length];
+  const initials = researchers[id - 1]?.name.split(" ").slice(0, 2).map((n) => n[0]).join("") ?? "?";
+  return (
+    <div style={{
+      width: size, height: size, borderRadius: "50%",
+      background: c.bg, border: `1.5px solid ${c.text}28`,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      fontSize: size * 0.32, fontWeight: 700, color: c.text,
+      letterSpacing: "-0.03em", flexShrink: 0,
+      position: "relative",
+    }}>
+      {initials}
+      {researchers[id - 1]?.open && (
+        <span style={{
+          position: "absolute", bottom: 1, right: 1,
+          width: Math.floor(size * 0.18), height: Math.floor(size * 0.18),
+          borderRadius: "50%", background: "#16a34a",
+          border: "2px solid #fff",
+        }} />
+      )}
+    </div>
+  );
 }
 
-// â”€â”€â”€ RESEARCHER CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── RESEARCHER CARD ───────────────────────────────────────────────────────────
 
 function ResearcherCard({ researcher, onConnect, isConnected, onSelect }: {
   researcher: (typeof researchers)[0];
@@ -52,17 +72,11 @@ function ResearcherCard({ researcher, onConnect, isConnected, onSelect }: {
   isConnected: boolean;
   onSelect: (r: (typeof researchers)[0]) => void;
 }) {
-  const scheme = getAvatarScheme(researcher.id);
   return (
     <div className="r-card" onClick={() => onSelect(researcher)}>
       <div className="r-card-top">
         <div className="r-avatar-wrap">
-          <Avatarr
-            id={researcher.id.toString()}
-            shape="rounded"
-            bgColor={scheme.bg} faceColor={scheme.face} hairColor={scheme.hair}
-          />
-          {researcher.open && <span className="collab-dot" />}
+          <AvatarCircle id={researcher.id} size={48} />
         </div>
         <div className="r-card-header">
           <div className="r-card-header-row">
@@ -92,39 +106,34 @@ function ResearcherCard({ researcher, onConnect, isConnected, onSelect }: {
   );
 }
 
-// â”€â”€â”€ RESEARCHER ROW (compact) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── RESEARCHER ROW (compact) ───────────────────────────────────────────────
 
 function ResearcherRow({ researcher, onConnect, isConnected }: {
   researcher: (typeof researchers)[0];
   onConnect: (id: number) => void;
   isConnected: boolean;
 }) {
-  const scheme = getAvatarScheme(researcher.id);
   return (
     <div className="r-row">
-      <Avatarr
-        id={researcher.id.toString()}
-        shape="rounded"
-        bgColor={scheme.bg} faceColor={scheme.face} hairColor={scheme.hair}
-      />
+      <AvatarCircle id={researcher.id} size={40} />
       <div className="r-row-info">
         <div className="r-row-top">
           <span className="r-row-name">{researcher.name}</span>
           {researcher.open && <span className="r-open-badge-sm"><span className="r-open-dot" />Abierto</span>}
         </div>
-        <span className="r-row-sub">{researcher.role} Â· {researcher.dept}</span>
+        <span className="r-row-sub">{researcher.role} · {researcher.dept}</span>
       </div>
       <div className="r-row-right">
         <span className="r-row-match">{researcher.match}%</span>
         <button className={`r-connect-btn-sm ${isConnected ? "connected" : ""}`} onClick={() => onConnect(researcher.id)}>
-          {isConnected ? "âœ“" : "+"}
+          {isConnected ? "✓" : "+"}
         </button>
       </div>
     </div>
   );
 }
 
-// â”€â”€â”€ OPPORTUNITY CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── OPPORTUNITY CARD ─────────────────────────────────────────────────────────
 
 function OppCard({ opp }: { opp: (typeof opportunities)[0] }) {
   const typeColors: Record<string, string> = {
@@ -138,7 +147,7 @@ function OppCard({ opp }: { opp: (typeof opportunities)[0] }) {
     <div className="opp-card">
       <div className="opp-top">
         <span className={`opp-type ${typeColors[opp.type] || ""}`}>{opp.type}</span>
-        {opp.hot && <span className="opp-hot">ðŸ”¥ Hot</span>}
+        {opp.hot && <span className="opp-hot">🔥 Hot</span>}
       </div>
       <h3 className="opp-title">{opp.title}</h3>
       <p className="opp-dept">{opp.dept}</p>
@@ -146,13 +155,13 @@ function OppCard({ opp }: { opp: (typeof opportunities)[0] }) {
         <span className="opp-deadline">
           <Clock size={10} /> {opp.deadline}
         </span>
-        <button className="opp-cta">Ver mÃ¡s</button>
+        <button className="opp-cta">Ver más</button>
       </div>
     </div>
   );
 }
 
-// â”€â”€â”€ DETAIL PANEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── DETAIL PANEL ─────────────────────────────────────────────────────────────
 
 function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
   researcher: (typeof researchers)[0];
@@ -160,20 +169,15 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
   onConnect: (id: number) => void;
   isConnected: boolean;
 }) {
-  const scheme = getAvatarScheme(researcher.id);
   return (
     <div className="detail-panel">
       <div className="detail-header">
         <span className="detail-label">Researcher</span>
-        <button onClick={onClose} className="detail-close">Ã—</button>
+        <button onClick={onClose} className="detail-close">×</button>
       </div>
       <div className="detail-body">
         <div className="detail-profile">
-          <Avatarr
-            id={researcher.id.toString()}
-            shape="rounded"
-            bgColor={scheme.bg} faceColor={scheme.face} hairColor={scheme.hair}
-          />
+          <AvatarCircle id={researcher.id} size={52} />
           <div>
             <h3 className="detail-name">{researcher.name}</h3>
             <p className="detail-role">{researcher.role}</p>
@@ -211,7 +215,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
         </div>
 
         <div className="detail-section">
-          <p className="detail-section-title">Ãreas</p>
+          <p className="detail-section-title">Áreas</p>
           <div className="detail-tags">
             {researcher.tags.map((tag) => <span key={tag} className="r-tag">{tag}</span>)}
           </div>
@@ -222,14 +226,14 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           className={`detail-connect-btn ${isConnected ? "connected" : ""}`}
           onClick={() => onConnect(researcher.id)}
         >
-          {isConnected ? "âœ“ Conectado" : "Conectar"}
+          {isConnected ? "✓ Conectado" : "Conectar"}
         </button>
       </div>
     </div>
   );
 }
 
-// â”€â”€â”€ NAV â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── NAV ─────────────────────────────────────────────────────────────────────
 
 function NavBar({ view, setView, connectedCount, isMobile }: {
   view: "discover" | "opportunities" | "network" | "profile";
@@ -260,7 +264,7 @@ function NavBar({ view, setView, connectedCount, isMobile }: {
               <button
                 key={item.key}
                 className={`nav-mobile-item ${view === item.key ? "active" : ""}`}
-                onClick={() => { setView(item.key as any); setMenuOpen(false); }}
+                onClick={() => { setView(item.key as "discover" | "opportunities" | "network" | "profile"); setMenuOpen(false); }}
               >
                 {item.icon}
                 {item.label}
@@ -279,7 +283,7 @@ function NavBar({ view, setView, connectedCount, isMobile }: {
         <button
           key={item.key}
           className={`nav-item ${view === item.key ? "active" : ""}`}
-          onClick={() => setView(item.key as any)}
+          onClick={() => setView(item.key as "discover" | "opportunities" | "network" | "profile")}
         >
           {item.icon}
           {item.label}
@@ -290,22 +294,22 @@ function NavBar({ view, setView, connectedCount, isMobile }: {
   );
 }
 
-// â”€â”€â”€ ONBOARDING MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── ONBOARDING MODAL ───────────────────────────────────────────────────────
 
 function OnboardingModal({ onClose }: { onClose: () => void }) {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-card" onClick={(e) => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}>Ã—</button>
-        <div className="modal-icon">â¬¡</div>
+        <button className="modal-close" onClick={onClose}>×</button>
+        <div className="modal-icon">🔬</div>
         <h2 className="modal-title">Conecta tu perfil ORCID</h2>
         <p className="modal-desc">
-          Vincula tu ORCID para auto-completar tu perfil con publicaciones, grupos de investigaciÃ³n y colaboraciones existentes.
+          Vincula tu ORCID para auto-completar tu perfil con publicaciones, grupos de investigación y colaboraciones existentes.
         </p>
         <div className="modal-benefits">
           {["Autocompletado de publicaciones", "Coincidencia con tu red existente", "Perfil verificado en minutos"].map((b) => (
             <div key={b} className="modal-benefit">
-              <span className="modal-check">âœ“</span> {b}
+              <span className="modal-check">✓</span> {b}
             </div>
           ))}
         </div>
@@ -318,17 +322,22 @@ function OnboardingModal({ onClose }: { onClose: () => void }) {
   );
 }
 
-// â”€â”€â”€ PROFILE VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── PROFILE VIEW ────────────────────────────────────────────────────────────
 
 function ProfileView({ onEdit }: { onEdit: () => void }) {
   return (
     <div className="profile-view">
       <div className="profile-hero">
-        <Avatarr id="me" shape="rounded"  />
+        <div style={{
+          width: 72, height: 72, borderRadius: "50%",
+          background: "#dcfce7", border: "2px solid #bbf7d0",
+          display: "flex", alignItems: "center", justifyContent: "center",
+          fontSize: 22, fontWeight: 800, color: "#15803d", flexShrink: 0,
+        }}>JH</div>
         <div className="profile-info">
-          <h2 className="profile-name">Dr. JosÃ© Ignacio</h2>
-          <p className="profile-role">Investigador Â· Universidad de Chile</p>
-          <p className="profile-dept">Ciencias de la ComputaciÃ³n</p>
+          <h2 className="profile-name">Dr. José Ignacio</h2>
+          <p className="profile-role">Investigador · Universidad de Chile</p>
+          <p className="profile-dept">Ciencias de la Computación</p>
         </div>
         <button className="profile-edit-btn" onClick={onEdit}>Editar perfil</button>
       </div>
@@ -353,7 +362,7 @@ function ProfileView({ onEdit }: { onEdit: () => void }) {
       </div>
 
       <div className="profile-section">
-        <h3 className="profile-section-title">Areas de investigaciÃ³n</h3>
+        <h3 className="profile-section-title">Áreas de investigación</h3>
         <div className="profile-tags">
           {["Machine Learning", "Sistemas Distribuidos", "Data Science"].map((t) => (
             <span key={t} className="r-tag">{t}</span>
@@ -376,7 +385,7 @@ function ProfileView({ onEdit }: { onEdit: () => void }) {
   );
 }
 
-// â”€â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── MAIN ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
   const [view, setView] = useState<"discover" | "opportunities" | "network" | "profile">("discover");
@@ -438,12 +447,12 @@ export default function App() {
       {/* MAIN CONTENT */}
       <main className="app-main">
 
-        {/* â”€â”€ DISCOVER â”€â”€ */}
+        {/* DISCOVER */}
         {view === "discover" && (
           <div className="discover-view">
             <div className="discover-intro">
               <h1 className="discover-heading">Descubre colaboradores</h1>
-              <p className="discover-sub">Encuentra investigadores complementarios en tu universidad y mÃ¡s allÃ¡.</p>
+              <p className="discover-sub">Encuentra investigadores complementarios en tu universidad y más allá.</p>
             </div>
 
             {/* Filter bar */}
@@ -453,7 +462,7 @@ export default function App() {
                 <input
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Nombre, Ã¡rea, departamento..."
+                  placeholder="Nombre, área, departamento..."
                   className="search-input"
                 />
               </div>
@@ -483,7 +492,7 @@ export default function App() {
               {filteredResearchers.length === 0 ? (
                 <div className="empty-state">
                   <Search size={32} />
-                  <p>No hay resultados para tu bÃºsqueda.</p>
+                  <p>No hay resultados para tu búsqueda.</p>
                 </div>
               ) : (
                 filteredResearchers.map((r) => (
@@ -502,7 +511,7 @@ export default function App() {
           </div>
         )}
 
-        {/* â”€â”€ OPPORTUNITIES â”€â”€ */}
+        {/* OPPORTUNITIES */}
         {view === "opportunities" && (
           <div className="opportunities-view">
             <div className="discover-intro">
@@ -515,7 +524,7 @@ export default function App() {
           </div>
         )}
 
-        {/* â”€â”€ NETWORK â”€â”€ */}
+        {/* NETWORK */}
         {view === "network" && (
           <div className="network-view">
             <div className="discover-intro">
@@ -525,8 +534,8 @@ export default function App() {
             {connectedResearchers.length === 0 ? (
               <div className="empty-state">
                 <Network size={36} />
-                <p className="empty-title">Tu red estÃ¡ vacÃ­a</p>
-                <p className="empty-sub">Conecta con investigadores para construir tu red de colaboraciÃ³n.</p>
+                <p className="empty-title">Tu red está vacía</p>
+                <p className="empty-sub">Conecta con investigadores para construir tu red de colaboración.</p>
               </div>
             ) : (
               <>
@@ -548,7 +557,7 @@ export default function App() {
           </div>
         )}
 
-        {/* â”€â”€ PROFILE â”€â”€ */}
+        {/* PROFILE */}
         {view === "profile" && (
           <div className="profile-view-wrap">
             <ProfileView onEdit={() => {}} />
