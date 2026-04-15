@@ -351,6 +351,7 @@ button { font-family: 'DM Sans', system-ui, sans-serif; touch-action: manipulati
 }
 .r-role { font-size: 11px; color: var(--text-secondary); margin-bottom: 1px; }
 .r-dept { font-size: 10px; color: var(--text-tertiary); }
+.r-match-inline { font-size: 11px; font-weight: 500; color: var(--accent); opacity: 0.65; }
 
 .r-tags { display: flex; gap: 5px; flex-wrap: wrap; }
 .r-tag {
@@ -375,19 +376,22 @@ button { font-family: 'DM Sans', system-ui, sans-serif; touch-action: manipulati
 .r-match-pct { font-size: 10px; font-weight: 600; color: var(--accent); opacity: 0.65; }
 
 .r-open-badge {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 4px;
   font-size: 9px;
-  font-weight: 700;
-  color: #15803d;
-  background: #dcfce7;
+  font-weight: 600;
+  color: #166534;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
   padding: 2px 7px;
   border-radius: 20px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
+  vertical-align: middle;
+  margin-left: 6px;
 }
-.r-open-dot { width: 4px; height: 4px; border-radius: 50%; background: #16a34a; }
+.r-open-dot { width: 5px; height: 5px; border-radius: 50%; background: #86efac; }
 
 .r-connect-btn {
   margin-left: auto;

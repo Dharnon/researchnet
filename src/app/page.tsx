@@ -67,7 +67,7 @@ function ResearcherCard({ researcher, onConnect, isConnected, onSelect }: {
         <div className="r-card-header">
           <h3 className="r-name">{researcher.name}</h3>
           <p className="r-role">{researcher.role}</p>
-          <p className="r-dept">{researcher.dept}</p>
+          <p className="r-dept">{researcher.dept} <span className="r-match-inline">{researcher.match}% match</span></p>
         </div>
       </div>
 
@@ -78,16 +78,6 @@ function ResearcherCard({ researcher, onConnect, isConnected, onSelect }: {
       </div>
 
       <div className="r-card-footer">
-        <div className="r-match">
-          <span className="r-match-num">{researcher.match}</span>
-          <span className="r-match-pct">%</span>
-          <span className="r-match-label"> match</span>
-        </div>
-        {researcher.open && (
-          <span className="r-open-badge">
-            <span className="r-open-dot" />Abierto
-          </span>
-        )}
         <button
           className={`r-connect-btn ${isConnected ? "connected" : ""}`}
           onClick={(e) => { e.stopPropagation(); onConnect(researcher.id); }}
