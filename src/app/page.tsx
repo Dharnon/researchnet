@@ -12,7 +12,7 @@ import {
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
 const researchers = [
-  { id: 1, name: "Elena", surname: "Vargas", role: "Profesora Titular", dept: "Ingeniería Biomédica", seed: "Elena Vargas", tags: ["Machine Learning", "Neurociencia", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Interiores cerebro-computadora y modelos de aprendizaje profundo aplicados a señales neuronales." },
+  { id: 1, name: "Elena", surname: "Vargas", role: "Profesora Titular", dept: "Ingeniería Biomédica", seed: "Elena Vargas", tags: ["Machine Learning", "Neurociencia", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Interfaces cerebro-computadora y modelos de aprendizaje profundo aplicados a señales neuronales." },
   { id: 2, name: "Marcos", surname: "Ibáñez", role: "Investigador Senior", dept: "Ciencias de la Computación", seed: "Marcos Ibáñez", tags: ["NLP", "LLMs", "Ética en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Modelos de lenguaje multilingüe y los desafíos éticos que plantea la IA generativa." },
   { id: 3, name: "Sofía", surname: "Ríos", role: "Profesora Asociada", dept: "Biología Molecular", seed: "Sofía Ríos", tags: ["Genómica", "CRISPR", "Bioinformática"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Herramientas computacionales para análisis de variantes genéticas y edición génica." },
   { id: 4, name: "Andrés", surname: "Leal", role: "Profesor Asociado", dept: "Física Computacional", seed: "Andrés Leal", tags: ["Computación Cuántica", "Simulación", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Algoritmos cuánticos para simulación de sistemas complejos y optimización combinatoria." },
@@ -70,27 +70,27 @@ const light = {
   navBg: "#f1f5f9",
   navItemBg: "#ffffff",
   navItemColor: "#64748b",
-  shadowCard: "0 1px 2px rgba(0,0,0,0.04)",
-  shadowHover: "0 4px 16px rgba(0,0,0,0.07)",
+  shadowCard: "0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03)",
+  shadowHover: "0 8px 32px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.05)",
 };
 
 const dark = {
-  bg: "#09090b",
-  surface: "#111114",
-  surfaceHover: "#161618",
-  border: "#1e1e22",
-  textPrimary: "#f5f5f5",
-  textSecondary: "#9ca3af",
-  textTertiary: "#52525b",
-  accent: "#84cc16",
-  accentLight: "rgba(132,204,22,0.08)",
-  headerBg: "rgba(9,9,11,0.96)",
-  headerText: "#f5f5f5",
-  navBg: "#0a0a0c",
-  navItemBg: "#18181b",
-  navItemColor: "#71717a",
-  shadowCard: "none",
-  shadowHover: "0 4px 24px rgba(0,0,0,0.5)",
+  bg: "#0c0c0e",
+  surface: "#141416",
+  surfaceHover: "#1c1c20",
+  border: "#242428",
+  textPrimary: "#ededef",
+  textSecondary: "#8b8b96",
+  textTertiary: "#45454d",
+  accent: "#5b8fd4",
+  accentLight: "rgba(91,143,212,0.10)",
+  headerBg: "rgba(12,12,14,0.97)",
+  headerText: "#ededef",
+  navBg: "#0c0c0e",
+  navItemBg: "#1c1c20",
+  navItemColor: "#6b6b78",
+  shadowCard: "0 0 0 1px #242428",
+  shadowHover: "0 0 0 1px #303038, 0 8px 40px rgba(0,0,0,0.55)",
 };
 
 // ─── AVATAR ───────────────────────────────────────────────────────────────────
@@ -133,7 +133,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected, t }: {
 }) {
   return (
     <>
-      <div onClick={onClose} style={{ position: "fixed", inset: 0, top: 64, background: "rgba(0,0,0,0.5)", zIndex: 39, backdropFilter: "blur(4px)" }} />
+      <div onClick={onClose} style={{ position: "fixed", inset: 0, top: 64, background: "rgba(0,0,0,0.55)", zIndex: 39, backdropFilter: "blur(6px)" }} />
       <div style={{
         position: "fixed", top: 64, right: 0, bottom: 0, width: 380,
         background: t.surface, borderLeft: `1px solid ${t.border}`,
@@ -152,7 +152,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected, t }: {
               <p style={{ fontSize: 13, color: t.textSecondary, marginBottom: 2 }}>{researcher.role}</p>
               <p style={{ fontSize: 12, color: t.textTertiary }}>{researcher.dept}</p>
               {researcher.open && (
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 4, marginTop: 6, fontSize: 10, fontWeight: 600, color: t.accent, background: t.accentLight, border: `1px solid ${t.accent}30`, padding: "2px 8px", borderRadius: 20 }}>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 4, marginTop: 6, fontSize: 10, fontWeight: 600, color: t.accent, background: t.accentLight, border: `1px solid ${t.accent}25`, padding: "2px 8px", borderRadius: 20 }}>
                   <span style={{ width: 5, height: 5, borderRadius: "50%", background: t.accent }} />Disponible
                 </span>
               )}
@@ -189,7 +189,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected, t }: {
             <p style={{ fontSize: 11, fontWeight: 600, color: t.textSecondary, textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Grupos</p>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               {researcher.groups.map((g) => (
-                <span key={g} style={{ fontSize: 11, fontWeight: 500, color: t.accent, background: t.accentLight, border: `1px solid ${t.accent}30`, padding: "4px 10px", borderRadius: 6 }}>{g}</span>
+                <span key={g} style={{ fontSize: 11, fontWeight: 500, color: t.accent, background: t.accentLight, border: `1px solid ${t.accent}25`, padding: "4px 10px", borderRadius: 6 }}>{g}</span>
               ))}
             </div>
           </div>
@@ -228,7 +228,7 @@ function OppModal({ opp, onClose, t }: { opp: (typeof opportunities)[0]; onClose
   const c = colors[opp.type] ?? { bg: "#f3f4f6", text: "#374151" };
   return (
     <>
-      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", zIndex: 200, backdropFilter: "blur(4px)" }} />
+      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 200, backdropFilter: "blur(6px)" }} />
       <div style={{
         position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
         width: "100%", maxWidth: 480, background: t.surface, borderRadius: 16,
@@ -264,19 +264,19 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected, t }: {
 }) {
   return (
     <div onClick={onSelect} style={{
-      background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12,
-      padding: 20, cursor: "pointer", transition: "border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease",
+      background: t.surface, border: `1px solid ${t.border}`, borderRadius: 14,
+      padding: 20, cursor: "pointer", transition: "border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease",
       display: "flex", flexDirection: "column", gap: 14,
     }}
-    onMouseEnter={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.border === "#e5e7eb" ? "#d1d5db" : "#2e2e33"; el.style.boxShadow = t.shadowHover; el.style.transform = "translateY(-1px)"; }}
-    onMouseLeave={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.border; el.style.boxShadow = "none"; el.style.transform = "translateY(0)"; }}
+    onMouseEnter={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.accent + "35"; el.style.boxShadow = t.shadowHover; }}
+    onMouseLeave={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.border; el.style.boxShadow = t.shadowCard; }}
     >
       <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
         <Avatar seed={researcher.seed} size={52} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 2 }}>
             <span style={{ fontSize: 15, fontWeight: 700, color: t.textPrimary, lineHeight: 1.2 }}>{researcher.name} {researcher.surname}</span>
-            <span style={{ fontSize: 11, fontWeight: 500, color: t.textTertiary, flexShrink: 0, letterSpacing: "0.01em" }}>{researcher.match}%</span>
+            <span style={{ fontSize: 10, fontWeight: 500, color: t.textTertiary, flexShrink: 0, letterSpacing: "0.02em", opacity: 0.7 }}>{researcher.match}%</span>
           </div>
           <p style={{ fontSize: 12, color: t.textSecondary, lineHeight: 1.3, marginBottom: 1 }}>{researcher.role}</p>
           <p style={{ fontSize: 11, color: t.textTertiary }}>{researcher.dept}</p>
@@ -320,8 +320,8 @@ function NetworkCard({ researcher, onDisconnect, onMessage, t }: {
   t: typeof light;
 }) {
   return (
-    <div style={{ background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12, padding: "14px 16px", display: "flex", alignItems: "center", gap: 12, transition: "all 0.15s" }}
-    onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = t.accent + "40"; }}
+    <div style={{ background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12, padding: "14px 16px", display: "flex", alignItems: "center", gap: 12, transition: "border-color 0.15s ease" }}
+    onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = t.accent + "35"; }}
     onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = t.border; }}
     >
       <Avatar seed={researcher.seed} size={40} />
@@ -329,11 +329,11 @@ function NetworkCard({ researcher, onDisconnect, onMessage, t }: {
         <p style={{ fontSize: 14, fontWeight: 600, color: t.textPrimary, marginBottom: 1 }}>{researcher.name} {researcher.surname}</p>
         <p style={{ fontSize: 11, color: t.textTertiary, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{researcher.role} · {researcher.dept}</p>
       </div>
-      <div style={{ fontSize: 14, fontWeight: 700, color: t.accent, flexShrink: 0 }}>{researcher.match}%</div>
-      <button onClick={onMessage} title="Mensaje" style={{ width: 32, height: 32, borderRadius: 8, border: `1px solid ${t.border}`, background: t.surface, color: t.textSecondary, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <span style={{ fontSize: 11, fontWeight: 500, color: t.textTertiary, opacity: 0.65, flexShrink: 0 }}>{researcher.match}%</span>
+      <button onClick={onMessage} title="Mensaje" style={{ width: 32, height: 32, borderRadius: 8, border: `1px solid ${t.border}`, background: t.surface, color: t.textSecondary, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.15s" }}>
         <MessageCircle size={14} />
       </button>
-      <button onClick={onDisconnect} title="Desconectar" style={{ width: 32, height: 32, borderRadius: 8, border: `1px solid ${t.border}`, background: "transparent", color: t.textTertiary, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <button onClick={onDisconnect} title="Desconectar" style={{ width: 32, height: 32, borderRadius: 8, border: `1px solid ${t.border}`, background: "transparent", color: t.textTertiary, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.15s" }}>
         <X size={14} />
       </button>
     </div>
@@ -389,9 +389,9 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
         </div>
         <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
           <input value={newMessage} onChange={(e) => setNewMessage(e.target.value)} onKeyDown={(e) => e.key === "Enter" && onSend()} placeholder="Escribe un mensaje..." style={{ flex: 1, background: t.surface, border: `1px solid ${t.border}`, borderRadius: 24, padding: "10px 16px", color: t.textPrimary, fontSize: 13, outline: "none" }} />
-          <button onClick={onSend} style={{ width: 40, height: 40, borderRadius: "50%", border: `1px solid ${t.accent}60`, background: `${t.accent}15`, color: t.accent, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.15s" }}
-            onMouseEnter={(e) => { const b = e.currentTarget as HTMLButtonElement; b.style.background = t.accent; b.style.color = "#000"; b.style.borderColor = t.accent; }}
-            onMouseLeave={(e) => { const b = e.currentTarget as HTMLButtonElement; b.style.background = `${t.accent}15`; b.style.color = t.accent; b.style.borderColor = `${t.accent}60`; }}>
+          <button onClick={onSend} style={{ width: 40, height: 40, borderRadius: "50%", border: `1px solid ${t.accent}50`, background: `${t.accent}12`, color: t.accent, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.15s" }}
+            onMouseEnter={(e) => { const b = e.currentTarget as HTMLButtonElement; b.style.background = t.accent; b.style.color = "#fff"; b.style.borderColor = t.accent; }}
+            onMouseLeave={(e) => { const b = e.currentTarget as HTMLButtonElement; b.style.background = `${t.accent}12`; b.style.color = t.accent; b.style.borderColor = `${t.accent}50`; }}>
             <Send size={15} />
           </button>
         </div>
@@ -412,8 +412,8 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {conversations.map((conv) => (
-            <div key={conv.orcid} onClick={() => onSelect(conv.orcid)} style={{ display: "flex", alignItems: "center", gap: 12, background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12, padding: "14px 16px", cursor: "pointer", transition: "all 0.15s" }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = t.accent + "40"; }}
+            <div key={conv.orcid} onClick={() => onSelect(conv.orcid)} style={{ display: "flex", alignItems: "center", gap: 12, background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12, padding: "14px 16px", cursor: "pointer", transition: "border-color 0.15s ease" }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = t.accent + "35"; }}
             onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = t.border; }}
             >
               <Avatar seed={conv.seed} size={44} />
@@ -464,7 +464,7 @@ function NavBar({ view, setView, connectedCount, unreadCount, t }: {
           <span style={{ display: "flex", color: view === item.key ? t.accent : t.textTertiary }}>{item.icon}</span>
           {item.label}
           {item.badge !== undefined && item.badge > 0 && (
-            <span style={{ background: item.key === "messages" ? "#ef4444" : t.accent + "30", color: item.key === "messages" ? "#fff" : t.accent, fontSize: 10, fontWeight: 700, padding: "1px 6px", borderRadius: 20, minWidth: 18, textAlign: "center" }}>{item.badge}</span>
+            <span style={{ background: item.key === "messages" ? "#ef4444" : t.accent + "25", color: item.key === "messages" ? "#fff" : t.accent, fontSize: 10, fontWeight: 700, padding: "1px 6px", borderRadius: 20, minWidth: 18, textAlign: "center" }}>{item.badge}</span>
           )}
         </button>
       ))}
@@ -570,7 +570,7 @@ export default function App() {
 
       {/* ONBOARDING */}
       {showOnboarding && (
-        <div style={{ position: "fixed", inset: 0, zIndex: 100, background: "rgba(0,0,0,0.5)", backdropFilter: "blur(6px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
+        <div style={{ position: "fixed", inset: 0, zIndex: 100, background: "rgba(0,0,0,0.55)", backdropFilter: "blur(8px)", display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
           <div style={{ background: t.surface, borderRadius: 20, padding: 36, maxWidth: 420, width: "100%", textAlign: "center", boxShadow: t.shadowHover }}>
             <div style={{ width: 56, height: 56, borderRadius: 14, background: `linear-gradient(135deg, ${t.accent}, ${t.accent}cc)`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
               <Users size={24} color="#fff" />
@@ -625,10 +625,12 @@ export default function App() {
             ))}
           </div>
           {filtered.length === 0 && (
-            <div style={{ textAlign: "center", padding: "60px 24px", background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12 }}>
-              <Search size={28} style={{ color: t.textTertiary, marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
+            <div style={{ textAlign: "center", padding: "60px 24px", background: t.surface, border: `1px solid ${t.border}`, borderRadius: 14 }}>
+              <div style={{ width: 56, height: 56, borderRadius: 16, background: t.surfaceHover, border: `1px solid ${t.border}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
+                <Search size={24} style={{ color: t.textTertiary }} />
+              </div>
               <p style={{ fontSize: 14, fontWeight: 600, color: t.textPrimary, marginBottom: 4 }}>Sin resultados</p>
-              <p style={{ fontSize: 12, color: t.textTertiary }}>Prueba con otros filtros o cambia el término</p>
+              <p style={{ fontSize: 12, color: t.textTertiary }}>Prueba con otros filtros o cambia el término de búsqueda</p>
             </div>
           )}
         </div>
@@ -646,9 +648,9 @@ export default function App() {
               const c: Record<string, { bg: string; text: string }> = { Postdoc: { bg: "#e0f2fe", text: "#0369a1" }, Fondos: { bg: "#dcfce7", text: "#15803d" }, Internacional: { bg: "#f3e8ff", text: "#7c3aed" }, Doctorado: { bg: "#fce7f3", text: "#be185d" }, Laboral: { bg: "#d1fae5", text: "#059669" } };
               const col = c[opp.type] ?? { bg: "#f3f4f6", text: "#374151" };
               return (
-                <div key={opp.id} onClick={() => setSelectedOpp(opp)} style={{ background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12, padding: 20, cursor: "pointer", display: "flex", flexDirection: "column", gap: 10, transition: "all 0.18s" }}
-                onMouseEnter={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.accent + "40"; el.style.transform = "translateY(-2px)"; el.style.boxShadow = t.shadowHover; }}
-                onMouseLeave={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.border; el.style.transform = "translateY(0)"; el.style.boxShadow = "none"; }}
+                <div key={opp.id} onClick={() => setSelectedOpp(opp)} style={{ background: t.surface, border: `1px solid ${t.border}`, borderRadius: 14, padding: 20, cursor: "pointer", display: "flex", flexDirection: "column", gap: 10, transition: "border-color 0.15s ease, box-shadow 0.15s ease" }}
+                onMouseEnter={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.accent + "35"; el.style.boxShadow = t.shadowHover; }}
+                onMouseLeave={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.border; el.style.boxShadow = t.shadowCard; }}
                 >
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
                     <span style={{ fontSize: 10, fontWeight: 700, color: col.text, background: col.bg, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
@@ -675,19 +677,18 @@ export default function App() {
             <p style={{ fontSize: 14, color: t.textSecondary }}>{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
           </div>
           {connectedResearchers.length === 0 ? (
-            <div style={{ textAlign: "center", padding: "80px 32px", background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12 }}>
-              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={{ margin: "0 auto 20px", display: "block" }}>
-                <circle cx="20" cy="32" r="10" stroke={t.border} strokeWidth="1.5" fill="none"/>
-                <circle cx="44" cy="16" r="7" stroke={t.border} strokeWidth="1.5" fill="none" opacity="0.5"/>
-                <circle cx="44" cy="48" r="7" stroke={t.border} strokeWidth="1.5" fill="none" opacity="0.5"/>
-                <line x1="30" y1="29" x2="37" y2="19" stroke={t.textTertiary} strokeWidth="1.5" strokeDasharray="3 2" opacity="0.3"/>
-                <line x1="30" y1="35" x2="37" y2="45" stroke={t.textTertiary} strokeWidth="1.5" strokeDasharray="3 2" opacity="0.3"/>
-                <circle cx="20" cy="32" r="4" fill={t.textTertiary} opacity="0.5"/>
-                <circle cx="44" cy="16" r="2.5" fill={t.textTertiary} opacity="0.3"/>
-                <circle cx="44" cy="48" r="2.5" fill={t.textTertiary} opacity="0.3"/>
-              </svg>
+            <div style={{ textAlign: "center", padding: "80px 32px", background: t.surface, border: `1px solid ${t.border}`, borderRadius: 16 }}>
+              <div style={{ width: 72, height: 72, borderRadius: 20, background: t.surfaceHover, border: `1px solid ${t.border}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 24px" }}>
+                <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                  <circle cx="11" cy="18" r="5" stroke={t.textTertiary} strokeWidth="1.5" fill="none" strokeDasharray="3 2"/>
+                  <circle cx="26" cy="9" r="4" stroke={t.textTertiary} strokeWidth="1.2" fill="none" strokeDasharray="3 2" opacity="0.5"/>
+                  <circle cx="26" cy="27" r="4" stroke={t.textTertiary} strokeWidth="1.2" fill="none" strokeDasharray="3 2" opacity="0.5"/>
+                  <path d="M15.5 16.5 L22.5 11" stroke={t.textTertiary} strokeWidth="1.2" strokeDasharray="3 2" opacity="0.3"/>
+                  <path d="M15.5 19.5 L22.5 25" stroke={t.textTertiary} strokeWidth="1.2" strokeDasharray="3 2" opacity="0.3"/>
+                </svg>
+              </div>
               <p style={{ fontSize: 16, fontWeight: 600, color: t.textPrimary, marginBottom: 8 }}>Tu red está vacía</p>
-              <p style={{ fontSize: 13, color: t.textSecondary, maxWidth: 280, margin: "0 auto 24px", lineHeight: 1.6 }}>Explora investigadores y conéctate para construir tu red.</p>
+              <p style={{ fontSize: 13, color: t.textSecondary, maxWidth: 280, margin: "0 auto 28px", lineHeight: 1.6 }}>Explora investigadores y conéctate para construir tu red de colaboración.</p>
               <button onClick={() => setView("discover")} style={{ padding: "10px 22px", borderRadius: 8, background: t.accent, color: "#fff", border: "none", fontSize: 13, fontWeight: 600, cursor: "pointer", letterSpacing: "0.01em" }}>Descubrir investigadores</button>
             </div>
           ) : (
@@ -717,12 +718,12 @@ export default function App() {
             <h1 style={{ fontSize: 24, fontWeight: 700, color: t.textPrimary, letterSpacing: "-0.04em", marginBottom: 4 }}>Tu perfil</h1>
             <p style={{ fontSize: 14, color: t.textSecondary }}>Gestiona tu información de investigador</p>
           </div>
-          <div style={{ background: t.surface, border: `1px solid ${t.border}`, borderRadius: 16, padding: 28, marginBottom: 16 }}>
+          <div style={{ background: t.surface, border: `1px solid ${t.border}`, borderRadius: 16, padding: 28, marginBottom: 16, boxShadow: t.shadowCard }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: 24 }}>
               <Avatar seed={userProfile.seed} size={72} />
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" }}>
-                  <h2 style={{ fontSize: 20, fontWeight: 700, color: t.textPrimary, letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
+                  <h2 style={{ fontSize: 22, fontWeight: 600, color: t.textPrimary, letterSpacing: "-0.02em", fontFamily: "var(--font-playfair), Georgia, serif" }}>{userProfile.name} {userProfile.surname}</h2>
                   {userProfile.open && (
                     <span style={{ fontSize: 10, fontWeight: 700, color: t.accent, background: t.accentLight, border: `1px solid ${t.accent}40`, padding: "2px 8px", borderRadius: 20, display: "flex", alignItems: "center", gap: 3 }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: t.accent }} />Disponible
@@ -751,19 +752,19 @@ export default function App() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 16 }}>
             {[{ v: userProfile.pubs, l: "Publicaciones", icon: <BookOpen size={16} /> }, { v: userProfile.projects, l: "Proyectos", icon: <Briefcase size={16} /> }, { v: connectedIds.length, l: "Conexiones", icon: <Users size={16} /> }].map((s) => (
-              <div key={s.l} style={{ background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12, padding: "20px 16px", textAlign: "center" }}>
+              <div key={s.l} style={{ background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12, padding: "20px 16px", textAlign: "center", boxShadow: t.shadowCard }}>
                 <div style={{ color: t.textTertiary, marginBottom: 8, display: "flex", justifyContent: "center" }}>{s.icon}</div>
                 <div style={{ fontSize: 28, fontWeight: 800, color: t.textPrimary, letterSpacing: "-0.04em", marginBottom: 4 }}>{s.v}</div>
                 <div style={{ fontSize: 11, color: t.textTertiary, fontWeight: 500 }}>{s.l}</div>
               </div>
             ))}
           </div>
-          <div style={{ background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12, padding: 20 }}>
+          <div style={{ background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12, padding: 20, boxShadow: t.shadowCard }}>
             <p style={{ fontSize: 12, fontWeight: 600, color: t.textPrimary, marginBottom: 14 }}>Acciones rápidas</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               {[{ label: "Ver mi perfil público", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((a) => (
-                <button key={a.label} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 14px", borderRadius: 8, background: t.surfaceHover, border: `1px solid ${t.border}`, color: t.textSecondary, fontSize: 13, fontWeight: 500, cursor: "pointer", width: "100%", textAlign: "left" }}
-                onMouseEnter={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = t.accent + "40"; el.style.color = t.textPrimary; }}
+                <button key={a.label} style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 14px", borderRadius: 8, background: t.surfaceHover, border: `1px solid ${t.border}`, color: t.textSecondary, fontSize: 13, fontWeight: 500, cursor: "pointer", width: "100%", textAlign: "left", transition: "border-color 0.15s ease, color 0.15s ease" }}
+                onMouseEnter={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = t.accent + "35"; el.style.color = t.textPrimary; }}
                 onMouseLeave={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = t.border; el.style.color = t.textSecondary; }}
                 >
                   <span style={{ display: "flex", alignItems: "center", gap: 8, color: t.accent }}>{a.icon}{a.label}</span>
