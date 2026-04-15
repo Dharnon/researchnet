@@ -3,9 +3,8 @@
 import { useState, useEffect } from "react";
 import {
   Search, Users, Zap, BookMarked, BookOpen,
-  Clock, ChevronRight, X,
+  Clock, ChevronRight,
 } from "lucide-react";
-import Avatarr, { genConfig } from "react-nice-avatar";
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
@@ -28,19 +27,40 @@ const opportunities = [
 
 const allDepts = ["Todos", ...new Set(researchers.map((r) => r.dept))];
 
-// ─── AVATAR SCHEME ───────────────────────────────────────────────────────────
+// ─── AVATAR ───────────────────────────────────────────────────────────────────
 
-const avatarSchemes = [
-  { bg: "#e8d5b7", face: "#8b6f47", hair: "#4a3728" },
-  { bg: "#d5e8e8", face: "#6b8b8b", hair: "#2d3a3a" },
-  { bg: "#e8d5d5", face: "#a07070", hair: "#6b3a3a" },
-  { bg: "#d5dce8", face: "#7080a0", hair: "#2d3040" },
-  { bg: "#e8e0d5", face: "#908070", hair: "#5a4030" },
-  { bg: "#dce8d5", face: "#708b60", hair: "#304020" },
+const avatarColors = [
+  { bg: "#fce7f3", text: "#9d174d" },
+  { bg: "#dbeafe", text: "#1e40af" },
+  { bg: "#e8d5d5", text: "#7f1d1d" },
+  { bg: "#d5dce8", text: "#1e3a5f" },
+  { bg: "#e8e0d5", text: "#78350f" },
+  { bg: "#dce8d5", text: "#14532d" },
 ];
 
-function getAvatarScheme(id: number) {
-  return avatarSchemes[(id - 1) % avatarSchemes.length];
+function AvatarCircle({ id, size = 56 }: { id: number; size?: number }) {
+  const c = avatarColors[(id - 1) % avatarColors.length];
+  const initials = researchers[id - 1]?.name.split(" ").slice(0, 2).map((n) => n[0]).join("") ?? "?";
+  return (
+    <div style={{
+      width: size, height: size, borderRadius: "50%",
+      background: c.bg, border: `1.5px solid ${c.text}25`,
+      display: "flex", alignItems: "center", justifyContent: "center",
+      fontSize: size * 0.32, fontWeight: 700, color: c.text,
+      letterSpacing: "-0.03em", flexShrink: 0,
+      position: "relative",
+    }}>
+      {initials}
+      {researchers[id - 1]?.open && (
+        <span style={{
+          position: "absolute", bottom: 2, right: 2,
+          width: Math.floor(size * 0.18), height: Math.floor(size * 0.18),
+          borderRadius: "50%", background: "#d97706",
+          border: "2px solid #fff",
+        }} />
+      )}
+    </div>
+  );
 }
 
 // ─── RESEARCHER CARD ───────────────────────────────────────────────────────────
@@ -51,18 +71,11 @@ function ResearcherCard({ researcher, onConnect, isConnected, onSelect }: {
   isConnected: boolean;
   onSelect: (r: (typeof researchers)[0]) => void;
 }) {
-  const scheme = getAvatarScheme(researcher.id);
   return (
     <div className="r-card" onClick={() => onSelect(researcher)}>
       <div className="r-card-top">
         <div className="r-avatar-wrap">
-          <Avatarr
-            id={researcher.id.toString()}
-            style={{ width: "3.5rem", height: "3.5rem" }}
-            shape="circle"
-            {...genConfig({ sex: researcher.id % 2 === 0 ? "woman" : "man", bgColor: scheme.bg, faceColor: scheme.face, hairColor: scheme.hair, hatStyle: "none", glassesStyle: "none" })}
-          />
-          {researcher.open && <span className="collab-dot" />}
+          <AvatarCircle id={researcher.id} size={56} />
         </div>
         <div className="r-card-header">
           <h3 className="r-name">{researcher.name}</h3>
@@ -105,15 +118,9 @@ function ResearcherRow({ researcher, onConnect, isConnected }: {
   onConnect: (id: number) => void;
   isConnected: boolean;
 }) {
-  const scheme = getAvatarScheme(researcher.id);
   return (
     <div className="r-row">
-      <Avatarr
-        id={researcher.id.toString()}
-        shape="circle"
-        style={{ width: "2.4rem", height: "2.4rem" }}
-        {...genConfig({ sex: researcher.id % 2 === 0 ? "woman" : "man", bgColor: scheme.bg, faceColor: scheme.face, hairColor: scheme.hair, hatStyle: "none", glassesStyle: "none" })}
-      />
+      <AvatarCircle id={researcher.id} size={40} />
       <div className="r-row-info">
         <div className="r-row-top">
           <span className="r-row-name">{researcher.name}</span>
@@ -167,7 +174,6 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
   onConnect: (id: number) => void;
   isConnected: boolean;
 }) {
-  const scheme = getAvatarScheme(researcher.id);
   return (
     <div className="detail-panel">
       <div className="detail-header">
@@ -176,12 +182,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
       </div>
       <div className="detail-body">
         <div className="detail-profile">
-          <Avatarr
-            id={researcher.id.toString()}
-            shape="circle"
-            style={{ width: "4rem", height: "4rem" }}
-            {...genConfig({ sex: researcher.id % 2 === 0 ? "woman" : "man", bgColor: scheme.bg, faceColor: scheme.face, hairColor: scheme.hair, hatStyle: "none", glassesStyle: "none" })}
-          />
+          <AvatarCircle id={researcher.id} size={64} />
           <div>
             <h3 className="detail-name">{researcher.name}</h3>
             <p className="detail-role">{researcher.role}</p>
@@ -237,7 +238,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
   );
 }
 
-// ─── NAV ──────────────────────────────────────────────────────────────────────
+// ─── NAV ─────────────────────────────────────────────────────────────────────
 
 function NavBar({ view, setView, connectedCount, isMobile }: {
   view: "discover" | "opportunities" | "network" | "profile";
@@ -334,7 +335,7 @@ function ProfileView() {
   return (
     <div className="profile-view">
       <div className="profile-hero">
-        <Avatarr id="me" shape="circle" style={{ width: "5rem", height: "5rem" }} {...genConfig({ sex: "man", bgColor: "#e8d5b7", faceColor: "#8b6f47", hairColor: "#4a3728", hatStyle: "none", glassesStyle: "none" })} />
+        <AvatarCircle id={99} size={72} />
         <div className="profile-info">
           <h2 className="profile-name">Dr. José Ignacio</h2>
           <p className="profile-role">Investigador · Universidad de Chile</p>
