@@ -297,7 +297,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
 }) {
   return (
     <div
-      className="b-card"
+      className="b-card card-accent"
       style={{ "--card-accent": researcher.color } as React.CSSProperties}
       onClick={onSelect}
     >
@@ -309,17 +309,19 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         <div className="r-card-header">
           <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 6, marginBottom: 2 }}>
             <span className="r-name">{researcher.name}</span>
-            <span className="r-open-badge">
-              <span className="r-open-dot" />
-              Open
-            </span>
+            {researcher.open && (
+              <span style={{ display: "flex", alignItems: "center", gap: 4, fontSize: 8, fontWeight: 700, color: "#D97706", background: "#FEF3C7", border: "1px solid #FCD34D", padding: "2px 6px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0 }}>
+                <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#D97706" }} />
+                Open
+              </span>
+            )}
           </div>
           <p className="r-role">{researcher.role}</p>
           <p className="r-dept">{researcher.dept}</p>
         </div>
       </div>
 
-      {/* Bio excerpt — editorial touch */}
+      {/* Bio excerpt */}
       <p style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.55, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
         {researcher.bio}
       </p>
@@ -334,7 +336,6 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         <div className="r-match">
           <span className="r-match-num">{researcher.match}</span>
           <span className="r-match-pct">%</span>
-          <span className="r-match-label">match</span>
         </div>
         <span style={{ fontSize: 10, color: "var(--text-tertiary)", marginLeft: 2 }}>{researcher.pubs} papers · {researcher.projects} proj</span>
         <button
@@ -342,7 +343,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           className={`r-connect-btn ${isConnected ? "connected" : ""}`}
           style={{ "--btn-color": researcher.color } as React.CSSProperties}
         >
-          {isConnected ? "Connected" : "Connect"}
+          {isConnected ? <><Check size={11} /> Conectado</> : "Conectar"}
         </button>
       </div>
     </div>
@@ -875,20 +876,20 @@ export default function App() {
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Encuentra colaboradores para tu próximo proyecto</p>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" as const, marginBottom: 24 }}>
-            <div style={{ background: "#111111", border: "1px solid #1e1e1e", borderRadius: 10, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
-              <Search size={13} color="var(--text-subtle)" />
+            <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
+              <Search size={13} color="var(--text-tertiary)" />
               <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, área o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "var(--text-primary)", fontSize: 13, flex: 1, width: "100%" }} />
             </div>
-            <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none" as const, background: "#111111", border: "1px solid #1e1e1e", borderRadius: 10, color: "var(--text-muted)", fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer" as const }}>
+            <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none" as const, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, color: "var(--text-muted)", fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer" as const }}>
               {allDepts.map((d) => <option key={d} value={d}>{d}</option>)}
             </select>
             <button onClick={() => setOnlyOpen((p) => !p)} style={{
               background: onlyOpen ? "var(--accent-light)" : "var(--surface)",
-              border: `1px solid ${onlyOpen ? "#D9770640" : "#1e1e1e"}`,
+              border: `1px solid ${onlyOpen ? "#D9770640" : "var(--border)"}`,
               borderRadius: 10, color: onlyOpen ? "var(--accent)" : "var(--text-muted)",
               fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
             }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: onlyOpen ? "var(--accent)" : "#333", display: "inline-block" }} />
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: onlyOpen ? "var(--accent)" : "var(--text-tertiary)", display: "inline-block" }} />
               Solo abiertos
             </button>
           </div>

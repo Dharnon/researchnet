@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -91,6 +91,53 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-/* ── SELECT ─────────────────────────────────────────────────────────── */
-select { font-family: inherit; }
-select option { background: var(--surface); color: var(--text-primary); }
+/* ── PLAYFAIR DISPLAY EDITORIAL TYPE ─────────────────────────────────── */
+/* Apply Playfair Display to section headings */
+.editorial-heading {
+  font-family: 'Playfair Display', Georgia, serif !important;
+}
+
+/* ── CARD HOVER ENHANCEMENT ─────────────────────────────────────────── */
+/* Override any inline hover styles to use CSS transitions */
+.b-card, .r-card {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* ── AMBER ACCENT LINE ON CARDS ─────────────────────────────────────── */
+/* Left accent strip — editorial journal feel */
+.card-accent {
+  position: relative;
+  overflow: hidden;
+}
+.card-accent::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #D97706, #F59E0B);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 14px 14px 0 0;
+}
+.card-accent:hover::before {
+  opacity: 1;
+}
+
+/* ── SECTION DIVIDER ───────────────────────────────────────────────── */
+.section-divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 0;
+}
+
+/* ── RESPONSIVE FONT SCALE ──────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .editorial-heading {
+    font-size: 18px !important;
+  }
+}
+
+/* ── SMOOTH THEME TRANSITIONS ───────────────────────────────────────── */
+body, body * {
+  transition: background 0.35s ease, color 0.25s ease, border-color 0.25s ease;
+}
