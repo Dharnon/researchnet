@@ -105,6 +105,9 @@ function ResearcherCard({ researcher, onConnect, isConnected }: {
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginBottom: 2 }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2 }}>{researcher.name}</span>
+            <span style={{ fontSize: 13, fontWeight: 500, color: "var(--text-muted)", lineHeight: 1.2 }}>
+              {researcher.match}% match
+            </span>
             {researcher.open && (
               <span style={{
                 display: "inline-flex", alignItems: "center", gap: 4,
@@ -118,10 +121,6 @@ function ResearcherCard({ researcher, onConnect, isConnected }: {
           </div>
           <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
           <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 1 }}>{researcher.dept}</p>
-        </div>
-        {/* Match score — small, unobtrusive metadata */}
-        <div style={{ textAlign: "right", flexShrink: 0 }}>
-          <div style={{ fontSize: 12, fontWeight: 600, color: "var(--text-muted)", lineHeight: 1 }}>{researcher.match}%</div>
         </div>
       </div>
 

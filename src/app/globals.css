@@ -459,14 +459,16 @@ a {
   box-shadow: var(--shadow-card);
 }
 
-.r-card::before {
+/* Solid lime-green accent line — slides in from left on hover */
+.r-card::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(132,204,22,0.2), transparent);
-  opacity: 0;
-  transition: opacity 0.18s ease;
+  top: 0; left: 0;
+  width: 0;
+  height: 2px;
+  background: #84cc16;
+  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 0 0 2px 0;
 }
 
 .r-card:hover {
@@ -475,8 +477,8 @@ a {
   transform: translateY(-2px);
 }
 
-.r-card:hover::before {
-  opacity: 1;
+.r-card:hover::after {
+  width: 100%;
 }
 
 .r-card-top {
@@ -762,6 +764,7 @@ a {
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
 }
 
 .detail-panel-container.mobile .detail-panel {
