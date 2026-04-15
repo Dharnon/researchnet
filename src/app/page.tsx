@@ -6,7 +6,7 @@ import {
   Briefcase, Clock, ChevronRight, X, Menu,
   BookMarked, TrendingUp, Award,
 } from "lucide-react";
-import { Avatarr } from "react-nice-avatar";
+import Avatarr from "react-nice-avatar";
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
@@ -59,9 +59,8 @@ function ResearcherCard({ researcher, onConnect, isConnected, onSelect }: {
         <div className="r-avatar-wrap">
           <Avatarr
             id={researcher.id.toString()}
-            shape="round"
-            size={56}
-            colors={{ bg: scheme.bg, face: scheme.face, hair: scheme.hair }}
+            shape="rounded"
+            bgColor={scheme.bg} faceColor={scheme.face} hairColor={scheme.hair}
           />
           {researcher.open && <span className="collab-dot" />}
         </div>
@@ -112,9 +111,8 @@ function ResearcherRow({ researcher, onConnect, isConnected }: {
     <div className="r-row">
       <Avatarr
         id={researcher.id.toString()}
-        shape="round"
-        size={38}
-        colors={{ bg: scheme.bg, face: scheme.face, hair: scheme.hair }}
+        shape="rounded"
+        bgColor={scheme.bg} faceColor={scheme.face} hairColor={scheme.hair}
       />
       <div className="r-row-info">
         <div className="r-row-top">
@@ -180,9 +178,8 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
         <div className="detail-profile">
           <Avatarr
             id={researcher.id.toString()}
-            shape="round"
-            size={64}
-            colors={{ bg: scheme.bg, face: scheme.face, hair: scheme.hair }}
+            shape="rounded"
+            bgColor={scheme.bg} faceColor={scheme.face} hairColor={scheme.hair}
           />
           <div>
             <h3 className="detail-name">{researcher.name}</h3>
@@ -242,8 +239,8 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 // ─── NAV ──────────────────────────────────────────────────────────────────────
 
 function NavBar({ view, setView, connectedCount, isMobile }: {
-  view: string;
-  setView: (v: string) => void;
+  view: "discover" | "opportunities" | "network" | "profile";
+  setView: (v: "discover" | "opportunities" | "network" | "profile") => void;
   connectedCount: number;
   isMobile: boolean;
 }) {
@@ -334,7 +331,7 @@ function ProfileView({ onEdit }: { onEdit: () => void }) {
   return (
     <div className="profile-view">
       <div className="profile-hero">
-        <Avatarr id="me" shape="round" size={80} />
+        <Avatarr id="me" shape="rounded"  />
         <div className="profile-info">
           <h2 className="profile-name">Dr. José Ignacio</h2>
           <p className="profile-role">Investigador · Universidad de Chile</p>
