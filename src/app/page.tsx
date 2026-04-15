@@ -222,8 +222,8 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             style={{
               flex: 1, padding: "10px", borderRadius: 9, border: "none",
               fontSize: 12, fontWeight: 700, cursor: "pointer",
-              background: isConnected ? "rgba(34,197,94,0.12)" : researcher.color,
-              color: isConnected ? "#22c55e" : "#000",
+              background: isConnected ? "var(--accent-dim)" : researcher.color,
+              color: isConnected ? "var(--accent)" : "#000",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 5,
               transition: "all 0.15s",
             }}
