@@ -526,7 +526,7 @@ export default function App() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
 
   useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
+    document.body.setAttribute("data-theme", theme);
   }, [theme]);
 
   useEffect(() => {
