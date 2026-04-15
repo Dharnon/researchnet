@@ -56,22 +56,22 @@ const allDepts = ["Todos", ...new Set(researchers.map((r) => r.dept))];
 // ─── THEME COLORS ─────────────────────────────────────────────────────────────
 
 const light = {
-  bg: "#f8f9fa",
+  bg: "#f8fafc",
   surface: "#ffffff",
   surfaceHover: "#f9fafb",
-  border: "#e5e7eb",
-  textPrimary: "#111827",
-  textSecondary: "#6b7280",
-  textTertiary: "#9ca3af",
+  border: "#e4e7eb",
+  textPrimary: "#0f172a",
+  textSecondary: "#64748b",
+  textTertiary: "#94a3b8",
   accent: "#059669",
   accentLight: "#d1fae5",
-  headerBg: "#ffffff",
-  headerText: "#111827",
-  navBg: "#f3f4f6",
+  headerBg: "rgba(255,255,255,0.92)",
+  headerText: "#0f172a",
+  navBg: "#f1f5f9",
   navItemBg: "#ffffff",
-  navItemColor: "#6b7280",
-  shadowCard: "0 1px 3px rgba(0,0,0,0.06)",
-  shadowHover: "0 4px 16px rgba(0,0,0,0.08)",
+  navItemColor: "#64748b",
+  shadowCard: "0 1px 2px rgba(0,0,0,0.04)",
+  shadowHover: "0 4px 16px rgba(0,0,0,0.07)",
 };
 
 const dark = {
@@ -81,16 +81,16 @@ const dark = {
   border: "#1e1e22",
   textPrimary: "#f5f5f5",
   textSecondary: "#9ca3af",
-  textTertiary: "#6b7280",
+  textTertiary: "#52525b",
   accent: "#84cc16",
-  accentLight: "rgba(132,204,22,0.12)",
-  headerBg: "rgba(9,9,11,0.92)",
+  accentLight: "rgba(132,204,22,0.08)",
+  headerBg: "rgba(9,9,11,0.96)",
   headerText: "#f5f5f5",
-  navBg: "#0f0f0f",
-  navItemBg: "#1a1a1a",
-  navItemColor: "#6b7280",
+  navBg: "#0a0a0c",
+  navItemBg: "#18181b",
+  navItemColor: "#71717a",
   shadowCard: "none",
-  shadowHover: "0 4px 20px rgba(0,0,0,0.4)",
+  shadowHover: "0 4px 24px rgba(0,0,0,0.5)",
 };
 
 // ─── AVATAR ───────────────────────────────────────────────────────────────────
@@ -265,10 +265,10 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected, t }: {
   return (
     <div onClick={onSelect} style={{
       background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12,
-      padding: 20, cursor: "pointer", transition: "all 0.18s ease",
+      padding: 20, cursor: "pointer", transition: "border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease",
       display: "flex", flexDirection: "column", gap: 14,
     }}
-    onMouseEnter={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.accent + "30"; el.style.boxShadow = t.shadowHover; el.style.transform = "translateY(-1px)"; }}
+    onMouseEnter={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.border === "#e5e7eb" ? "#d1d5db" : "#2e2e33"; el.style.boxShadow = t.shadowHover; el.style.transform = "translateY(-1px)"; }}
     onMouseLeave={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.border; el.style.boxShadow = "none"; el.style.transform = "translateY(0)"; }}
     >
       <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
@@ -276,7 +276,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected, t }: {
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 2 }}>
             <span style={{ fontSize: 15, fontWeight: 700, color: t.textPrimary, lineHeight: 1.2 }}>{researcher.name} {researcher.surname}</span>
-            <span style={{ fontSize: 12, fontWeight: 700, color: t.accent, opacity: 0.75, flexShrink: 0 }}>{researcher.match}%</span>
+            <span style={{ fontSize: 11, fontWeight: 500, color: t.textTertiary, flexShrink: 0, letterSpacing: "0.01em" }}>{researcher.match}%</span>
           </div>
           <p style={{ fontSize: 12, color: t.textSecondary, lineHeight: 1.3, marginBottom: 1 }}>{researcher.role}</p>
           <p style={{ fontSize: 11, color: t.textTertiary }}>{researcher.dept}</p>
@@ -284,23 +284,23 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected, t }: {
       </div>
       <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
         {researcher.tags.map((tag) => (
-          <span key={tag} style={{ fontSize: 10, fontWeight: 500, color: t.textSecondary, background: t.surfaceHover, border: `1px solid ${t.border}`, padding: "3px 8px", borderRadius: 20 }}>{tag}</span>
+          <span key={tag} style={{ fontSize: 10, fontWeight: 500, color: t.textSecondary, background: t.surfaceHover, border: `1px solid ${t.border}`, padding: "3px 8px", borderRadius: 4, letterSpacing: "0.01em" }}>{tag}</span>
         ))}
       </div>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 4, borderTop: `1px solid ${t.border}` }}>
         <div style={{ display: "flex", gap: 12 }}>
-          <span style={{ fontSize: 12, color: t.textSecondary }}><span style={{ fontWeight: 700, color: t.textPrimary }}>{researcher.pubs}</span> papers</span>
-          <span style={{ fontSize: 12, color: t.textSecondary }}><span style={{ fontWeight: 700, color: t.textPrimary }}>{researcher.projects}</span> proyectos</span>
+          <span style={{ fontSize: 11, color: t.textSecondary }}>{researcher.pubs} <span style={{ fontWeight: 600, color: t.textPrimary }}>papers</span></span>
+          <span style={{ fontSize: 11, color: t.textSecondary }}>{researcher.projects} <span style={{ fontWeight: 600, color: t.textPrimary }}>proyectos</span></span>
         </div>
         {researcher.open && (
-          <span style={{ fontSize: 9, fontWeight: 700, color: t.accent, background: t.accentLight, border: `1px solid ${t.accent}40`, padding: "2px 7px", borderRadius: 20, display: "flex", alignItems: "center", gap: 3 }}>
-            <span style={{ width: 4, height: 4, borderRadius: "50%", background: t.accent }} />Open
+          <span style={{ fontSize: 9, fontWeight: 600, color: t.accent, background: t.accentLight, border: `1px solid ${t.accent}20`, padding: "2px 7px", borderRadius: 4, display: "flex", alignItems: "center", gap: 4, letterSpacing: "0.04em" }}>
+            <span style={{ width: 4, height: 4, borderRadius: "50%", background: t.accent, opacity: 0.8 }} />Disponible
           </span>
         )}
         <button onClick={onConnect} style={{
-          padding: "5px 12px", borderRadius: 6, border: `1px solid ${isConnected ? t.accent : t.border}`,
+          padding: "5px 12px", borderRadius: 6, border: `1px solid ${isConnected ? t.accent + "40" : t.border}`,
           fontSize: 11, fontWeight: 600, cursor: "pointer",
-          background: isConnected ? t.accentLight : "transparent",
+          background: "transparent",
           color: isConnected ? t.accent : t.textSecondary,
           transition: "all 0.15s",
         }}>
@@ -373,10 +373,10 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
             <div key={msg.id} style={{ display: "flex", justifyContent: msg.from === "me" ? "flex-end" : "flex-start" }}>
               <div style={{
                 maxWidth: "72%", padding: "10px 14px", borderRadius: 16,
-                background: msg.from === "me" ? "rgba(132,204,22,0.18)" : t.surfaceHover,
-                color: msg.from === "me" ? "#a3e635" : t.textPrimary,
+                background: msg.from === "me" ? t.accentLight : t.surfaceHover,
+                color: msg.from === "me" ? t.textPrimary : t.textPrimary,
                 fontSize: 13, lineHeight: 1.5,
-                border: msg.from === "me" ? "1px solid rgba(132,204,22,0.25)" : "1px solid transparent",
+                border: msg.from === "me" ? `1px solid ${t.accent}20` : "1px solid transparent",
                 borderBottomRightRadius: msg.from === "me" ? "4px" : "16px",
                 borderBottomLeftRadius: msg.from === "me" ? "16px" : "4px",
               }}>
@@ -455,8 +455,7 @@ function NavBar({ view, setView, connectedCount, unreadCount, t }: {
           fontSize: 13, fontWeight: 500, cursor: "pointer",
           background: view === item.key ? t.navItemBg : "transparent",
           color: view === item.key ? t.textPrimary : t.navItemColor,
-          transition: "all 0.15s",
-          boxShadow: view === item.key ? t.shadowCard : "none",
+          transition: "background 0.15s, color 0.15s",
           position: "relative",
         }}>
           {view === item.key && (
@@ -465,7 +464,7 @@ function NavBar({ view, setView, connectedCount, unreadCount, t }: {
           <span style={{ display: "flex", color: view === item.key ? t.accent : t.textTertiary }}>{item.icon}</span>
           {item.label}
           {item.badge !== undefined && item.badge > 0 && (
-            <span style={{ background: item.key === "messages" ? "#ef4444" : t.accent, color: "#fff", fontSize: 10, fontWeight: 700, padding: "1px 6px", borderRadius: 20, minWidth: 18, textAlign: "center" }}>{item.badge}</span>
+            <span style={{ background: item.key === "messages" ? "#ef4444" : t.accent + "30", color: item.key === "messages" ? "#fff" : t.accent, fontSize: 10, fontWeight: 700, padding: "1px 6px", borderRadius: 20, minWidth: 18, textAlign: "center" }}>{item.badge}</span>
           )}
         </button>
       ))}
@@ -679,17 +678,17 @@ export default function App() {
             <div style={{ textAlign: "center", padding: "80px 32px", background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12 }}>
               <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={{ margin: "0 auto 20px", display: "block" }}>
                 <circle cx="20" cy="32" r="10" stroke={t.border} strokeWidth="1.5" fill="none"/>
-                <circle cx="44" cy="16" r="7" stroke={t.border} strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <circle cx="44" cy="48" r="7" stroke={t.border} strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <line x1="30" y1="29" x2="37" y2="19" stroke={t.accent} strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5"/>
-                <line x1="30" y1="35" x2="37" y2="45" stroke={t.accent} strokeWidth="1.5" strokeDasharray="3 2" opacity="0.5"/>
-                <circle cx="20" cy="32" r="4" fill={t.accent} opacity="0.7"/>
-                <circle cx="44" cy="16" r="2.5" fill={t.accent} opacity="0.4"/>
-                <circle cx="44" cy="48" r="2.5" fill={t.accent} opacity="0.4"/>
+                <circle cx="44" cy="16" r="7" stroke={t.border} strokeWidth="1.5" fill="none" opacity="0.5"/>
+                <circle cx="44" cy="48" r="7" stroke={t.border} strokeWidth="1.5" fill="none" opacity="0.5"/>
+                <line x1="30" y1="29" x2="37" y2="19" stroke={t.textTertiary} strokeWidth="1.5" strokeDasharray="3 2" opacity="0.3"/>
+                <line x1="30" y1="35" x2="37" y2="45" stroke={t.textTertiary} strokeWidth="1.5" strokeDasharray="3 2" opacity="0.3"/>
+                <circle cx="20" cy="32" r="4" fill={t.textTertiary} opacity="0.5"/>
+                <circle cx="44" cy="16" r="2.5" fill={t.textTertiary} opacity="0.3"/>
+                <circle cx="44" cy="48" r="2.5" fill={t.textTertiary} opacity="0.3"/>
               </svg>
               <p style={{ fontSize: 16, fontWeight: 600, color: t.textPrimary, marginBottom: 8 }}>Tu red está vacía</p>
               <p style={{ fontSize: 13, color: t.textSecondary, maxWidth: 280, margin: "0 auto 24px", lineHeight: 1.6 }}>Explora investigadores y conéctate para construir tu red.</p>
-              <button onClick={() => setView("discover")} style={{ padding: "10px 22px", borderRadius: 8, background: t.accent, color: "#000", border: "none", fontSize: 13, fontWeight: 600, cursor: "pointer" }}>Descubrir investigadores</button>
+              <button onClick={() => setView("discover")} style={{ padding: "10px 22px", borderRadius: 8, background: t.accent, color: "#fff", border: "none", fontSize: 13, fontWeight: 600, cursor: "pointer", letterSpacing: "0.01em" }}>Descubrir investigadores</button>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
