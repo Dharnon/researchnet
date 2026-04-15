@@ -61,39 +61,39 @@ const allDepts = ["Todos", ...new Set(researchers.map((r) => r.dept))];
 
 function SkeletonLoader() {
   return (
-    <div style={{ background: "#09090b", minHeight: "100vh", padding: "24px" }}>
+    <div style={{ background: "#F0EBE3", minHeight: "100vh", padding: "24px" }}>
       {/* Header skeleton */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32, padding: "0 0 24px", borderBottom: "1px solid #1e1e22" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32, padding: "0 0 24px", borderBottom: "1px solid #E8E0D8" }}>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <div style={{ width: 28, height: 28, borderRadius: 8, background: "#1e1e22" }} />
-          <div style={{ width: 90, height: 14, borderRadius: 4, background: "#1e1e22" }} />
+          <div style={{ width: 28, height: 28, borderRadius: 8, background: "#E8E0D8" }} />
+          <div style={{ width: 90, height: 14, borderRadius: 4, background: "#E8E0D8" }} />
         </div>
-        <div style={{ width: 280, height: 36, borderRadius: 10, background: "#1e1e22" }} />
-        <div style={{ width: 60, height: 14, borderRadius: 4, background: "#1e1e22" }} />
+        <div style={{ width: 280, height: 36, borderRadius: 10, background: "#E8E0D8" }} />
+        <div style={{ width: 60, height: 14, borderRadius: 4, background: "#E8E0D8" }} />
       </div>
       {/* Cards grid skeleton */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
         {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} style={{ background: "#111114", border: "1px solid #1e1e22", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
+          <div key={i} style={{ background: "#FEFEFE", border: "1px solid #E8E0D8", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-              <div style={{ width: 44, height: 44, borderRadius: 10, background: "#1e1e22" }} />
+              <div style={{ width: 44, height: 44, borderRadius: 10, background: "#E8E0D8" }} />
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
-                <div style={{ width: "70%", height: 13, borderRadius: 4, background: "#1e1e22" }} />
-                <div style={{ width: "50%", height: 10, borderRadius: 4, background: "#161618" }} />
-                <div style={{ width: "40%", height: 9, borderRadius: 4, background: "#161618" }} />
+                <div style={{ width: "70%", height: 13, borderRadius: 4, background: "#E8E0D8" }} />
+                <div style={{ width: "50%", height: 10, borderRadius: 4, background: "#F0EBE3" }} />
+                <div style={{ width: "40%", height: 9, borderRadius: 4, background: "#F0EBE3" }} />
               </div>
             </div>
             <div style={{ display: "flex", gap: 6 }}>
-              <div style={{ width: 64, height: 20, borderRadius: 20, background: "#1e1e22" }} />
-              <div style={{ width: 80, height: 20, borderRadius: 20, background: "#161618" }} />
-              <div style={{ width: 56, height: 20, borderRadius: 20, background: "#1e1e22" }} />
+              <div style={{ width: 64, height: 20, borderRadius: 20, background: "#E8E0D8" }} />
+              <div style={{ width: 80, height: 20, borderRadius: 20, background: "#F0EBE3" }} />
+              <div style={{ width: 56, height: 20, borderRadius: 20, background: "#E8E0D8" }} />
             </div>
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 4 }}>
               <div style={{ display: "flex", gap: 10 }}>
-                <div style={{ width: 40, height: 10, borderRadius: 4, background: "#161618" }} />
-                <div style={{ width: 50, height: 10, borderRadius: 4, background: "#161618" }} />
+                <div style={{ width: 40, height: 10, borderRadius: 4, background: "#F0EBE3" }} />
+                <div style={{ width: 50, height: 10, borderRadius: 4, background: "#F0EBE3" }} />
               </div>
-              <div style={{ width: 72, height: 26, borderRadius: 8, background: "#1e1e22" }} />
+              <div style={{ width: 72, height: 26, borderRadius: 8, background: "#E8E0D8" }} />
             </div>
           </div>
         ))}
