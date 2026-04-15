@@ -270,7 +270,7 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
         }}>×</button>
         <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
           <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
-          {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#fb923c" }}>🔥 Hot</span>}
+          {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#fb923c", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
         </div>
         <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
         <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} · Fecha límite: <span style={{ color: "#fb923c", fontWeight: 700 }}>{opp.deadline}</span></p>
@@ -744,7 +744,7 @@ export default function App() {
     <div style={{ background: "var(--bg)", minHeight: "100vh", color: "var(--text-primary)" }}>
 
       {/* HEADER */}
-      <header style={{
+      <header className="app-header" style={{
         borderBottom: "1px solid var(--card-border)", padding: "0 24px", height: 60,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         position: "sticky" as const, top: 0, background: "rgba(250,250,248,0.92)",
@@ -939,7 +939,7 @@ export default function App() {
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
                     <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
-                    {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#fb923c" }}>🔥</span>}
+                    {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={10} color="#fb923c" /></span>}
                   </div>
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
                   <p style={{ fontSize: 11, color: "var(--text-muted)" }}>{opp.dept}</p>
