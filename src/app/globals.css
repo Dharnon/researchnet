@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
-/* ── CSS VARIABLES (Clean Classic — white + lime) ──────────────────────────── */
+/* â”€â”€ CSS VARIABLES (Clean Classic â€” white + lime) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 :root {
   --bg: #f9fafb;
   --bg-secondary: #f3f4f6;
@@ -50,7 +50,7 @@
   --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
 }
 
-/* ── DARK MODE OVERRIDE (for variant-a, minimal) ───────────────────────────── */
+/* â”€â”€ DARK MODE OVERRIDE (for variant-a, minimal) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 [data-theme="dark"] {
   --bg: #09090b;
   --bg-secondary: #0f0f10;
@@ -81,7 +81,7 @@
   --shadow-card-hover: 0 0 0 1px rgba(132,204,22,0.12), 0 8px 32px rgba(0,0,0,0.6);
 }
 
-/* ── RESET & BASE (Dark Premium) ─────────────────────────────────────────── */
+/* â”€â”€ RESET & BASE (Dark Premium) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -100,7 +100,7 @@ body {
   min-height: 100vh;
 }
 
-/* ── SCROLLBAR ──────────────────────────────────────────────────────────────── */
+/* â”€â”€ SCROLLBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
@@ -120,15 +120,15 @@ a {
   text-decoration: none;
 }
 
-/* ── FOCUS VISIBLE ──────────────────────────────────────────────────────────── */
+/* â”€â”€ FOCUS VISIBLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid #94a3b8;
   outline-offset: 2px;
 }
 
-/* ── RESEARCHER CARD (Clean Classic) ──────────────────────────────────── */
+/* â”€â”€ RESEARCHER CARD (Clean Classic) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .b-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -158,7 +158,7 @@ select:focus-visible {
   gap: 12px;
 }
 
-/* Solid lime-green accent line — slides in from left on hover */
+/* Solid lime-green accent line â€” slides in from left on hover */
 .r-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -174,7 +174,7 @@ select:focus-visible {
   box-shadow: var(--shadow-card);
 }
 
-/* Thin left accent — subtle Linear-style indicator */
+/* Thin left accent â€” subtle Linear-style indicator */
 .r-card::after {
   content: '';
   position: absolute;
@@ -362,7 +362,7 @@ select:focus-visible {
   border-color: rgba(34,197,94,0.25);
 }
 
-/* ── RESEARCHER LIST (network view) ─────────────────────────────────────── */
+/* â”€â”€ RESEARCHER LIST (network view) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .r-list {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -471,7 +471,7 @@ select:focus-visible {
   color: #22c55e;
 }
 
-/* ── DETAIL PANEL ──────────────────────────────────────────────────────────── */
+/* â”€â”€ DETAIL PANEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .detail-panel-wrap {
   position: fixed;
   inset: 0;
@@ -703,7 +703,7 @@ select:focus-visible {
   color: #22c55e;
 }
 
-/* ── MOBILE BACKDROP ───────────────────────────────────────────────────────── */
+/* â”€â”€ MOBILE BACKDROP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .mobile-backdrop {
   position: fixed;
   inset: 0;
@@ -712,7 +712,7 @@ select:focus-visible {
   z-index: 39;
 }
 
-/* ── OPPORTUNITIES ─────────────────────────────────────────────────────────── */
+/* â”€â”€ OPPORTUNITIES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .opportunities-view {
   padding-top: 36px;
 }
@@ -820,12 +820,12 @@ select:focus-visible {
   color: var(--accent);
 }
 
-/* ── NETWORK VIEW ──────────────────────────────────────────────────────────── */
+/* â”€â”€ NETWORK VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .network-view {
   padding-top: 36px;
 }
 
-/* ── EMPTY STATE ───────────────────────────────────────────────────────────── */
+/* â”€â”€ EMPTY STATE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .empty-state {
   display: flex;
   flex-direction: column;
@@ -869,7 +869,7 @@ select:focus-visible {
   line-height: 1.6;
 }
 
-/* ── PROFILE VIEW ──────────────────────────────────────────────────────────── */
+/* â”€â”€ PROFILE VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .profile-view-wrap {
   padding-top: 36px;
 }
@@ -1011,7 +1011,7 @@ select:focus-visible {
   flex-shrink: 0;
 }
 
-/* ── ONBOARDING MODAL (Dark) ──────────────────────────────────────────────── */
+/* â”€â”€ ONBOARDING MODAL (Dark) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -1141,7 +1141,7 @@ select:focus-visible {
   color: var(--text-secondary);
 }
 
-/* ── RESPONSIVE ────────────────────────────────────────────────────────────── */
+/* â”€â”€ RESPONSIVE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 600px) {
   .app-header {
     padding: 0 14px;

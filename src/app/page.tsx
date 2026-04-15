@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import {
@@ -8,43 +8,43 @@ import {
   Send, ArrowLeft, Check, Circle,
 } from "lucide-react";
 
-// ─── DATA ─────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ DATA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 const researchers = [
-  { id: 1, name: "Dra. Elena Vargas", role: "Profesora Titular", dept: "Ingeniería Biomédica", avatar: "EV", color: "#84cc16", tags: ["Machine Learning", "Neurociencia Computacional", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Investigo interfaces cerebro-computadora y modelos de aprendizaje profundo aplicados a señales neuronales." },
-  { id: 2, name: "Dr. Marcos Ibáñez", role: "Investigador Senior", dept: "Ciencias de la Computación", avatar: "MI", color: "#60a5fa", tags: ["NLP", "Large Language Models", "Ética en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multilingüe y los desafíos éticos que plantea la IA generativa." },
-  { id: 3, name: "Dra. Sofía Ríos", role: "Profesora Asociada", dept: "Biología Molecular", avatar: "SR", color: "#f472b6", tags: ["Genómica", "CRISPR", "Bioinformática"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para análisis de variantes genéticas y edición génica." },
-  { id: 4, name: "Dr. Andrés Leal", role: "Profesor Asociado", dept: "Física Computacional", avatar: "AL", color: "#c084fc", tags: ["Computación Cuántica", "Simulación", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Diseño algoritmos cuánticos para simulación de sistemas complejos y optimización combinatoria." },
-  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Posdoctoral", dept: "Salud Pública", avatar: "CF", color: "#fb923c", tags: ["Epidemiología", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiológicos para sistemas de alerta temprana." },
-  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Robótica e IA", avatar: "FM", color: "#34d399", tags: ["Robótica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepción visual para robots autónomos en entornos no estructurados." },
+  { id: 1, name: "Dra. Elena Vargas", role: "Profesora Titular", dept: "IngenierÃ­a BiomÃ©dica", avatar: "EV", color: "#84cc16", tags: ["Machine Learning", "Neurociencia Computacional", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Investigo interfaces cerebro-computadora y modelos de aprendizaje profundo aplicados a seÃ±ales neuronales." },
+  { id: 2, name: "Dr. Marcos IbÃ¡Ã±ez", role: "Investigador Senior", dept: "Ciencias de la ComputaciÃ³n", avatar: "MI", color: "#60a5fa", tags: ["NLP", "Large Language Models", "Ã‰tica en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multilingÃ¼e y los desafÃ­os Ã©ticos que plantea la IA generativa." },
+  { id: 3, name: "Dra. SofÃ­a RÃ­os", role: "Profesora Asociada", dept: "BiologÃ­a Molecular", avatar: "SR", color: "#f472b6", tags: ["GenÃ³mica", "CRISPR", "BioinformÃ¡tica"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para anÃ¡lisis de variantes genÃ©ticas y ediciÃ³n gÃ©nica." },
+  { id: 4, name: "Dr. AndrÃ©s Leal", role: "Profesor Asociado", dept: "FÃ­sica Computacional", avatar: "AL", color: "#c084fc", tags: ["ComputaciÃ³n CuÃ¡ntica", "SimulaciÃ³n", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "DiseÃ±o algoritmos cuÃ¡nticos para simulaciÃ³n de sistemas complejos y optimizaciÃ³n combinatoria." },
+  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Posdoctoral", dept: "Salud PÃºblica", avatar: "CF", color: "#fb923c", tags: ["EpidemiologÃ­a", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiolÃ³gicos para sistemas de alerta temprana." },
+  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "RobÃ³tica e IA", avatar: "FM", color: "#34d399", tags: ["RobÃ³tica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepciÃ³n visual para robots autÃ³nomos en entornos no estructurados." },
 ];
 
 const opportunities = [
-  { id: 1, title: "Postdoc – IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posición postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomédica." },
-  { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las áreas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigación en todas las áreas. Hasta $300.000 USD por proyecto, duración 4 años." },
-  { id: 3, title: "Colaboración EU Horizon – Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco collaborator para propuesta EU Horizon sobre computación cuántica aplicada a optimización combinatorial." },
-  { id: 4, title: "Tesis Doctoral – NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Búsqueda de estudiante doctoral para investigación en modelos de lenguaje multilingüe para lenguas minoritarias." },
-  { id: 5, title: "Research Engineer – Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robotics. Salario competitivo + equity." },
-  { id: 6, title: "Beca Marie Curie – Climate AI", dept: "Todas las áreas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio climático. Sin restricciones de nacionalidad." },
+  { id: 1, title: "Postdoc â€“ IA aplicada a salud", dept: "BiomÃ©dica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "PosiciÃ³n postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomÃ©dica." },
+  { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las Ã¡reas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigaciÃ³n en todas las Ã¡reas. Hasta $300.000 USD por proyecto, duraciÃ³n 4 aÃ±os." },
+  { id: 3, title: "ColaboraciÃ³n EU Horizon â€“ Quantum", dept: "FÃ­sica Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco collaborator para propuesta EU Horizon sobre computaciÃ³n cuÃ¡ntica aplicada a optimizaciÃ³n combinatorial." },
+  { id: 4, title: "Tesis Doctoral â€“ NLP MultilingÃ¼e", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "BÃºsqueda de estudiante doctoral para investigaciÃ³n en modelos de lenguaje multilingÃ¼e para lenguas minoritarias." },
+  { id: 5, title: "Research Engineer â€“ Vision Systems", dept: "RobÃ³tica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visiÃ³n por computador en robotics. Salario competitivo + equity." },
+  { id: 6, title: "Beca Marie Curie â€“ Climate AI", dept: "Todas las Ã¡reas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio climÃ¡tico. Sin restricciones de nacionalidad." },
 ];
 
 const mockMessages = [
   { orcid: "0000-0002-1234-5678", name: "Dra. Elena Vargas", avatar: "EV", color: "#84cc16", messages: [
     { id: 1, from: "them", text: "Hola! Vi tu perfil y me interesa mucho tu trabajo en sistemas distribuidos. Estamos buscando collaborators para un proyecto de IoT.", ts: "10:32" },
-    { id: 2, from: "me", text: "Hola Elena! Encantado de saludarte. Cuéntame más sobre el proyecto, suena interesante.", ts: "10:35" },
-    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorización ambiental. Nousamos LoRa y queríamos explorar machine learning para fusionar datos.", ts: "10:37" },
+    { id: 2, from: "me", text: "Hola Elena! Encantado de saludarte. CuÃ©ntame mÃ¡s sobre el proyecto, suena interesante.", ts: "10:35" },
+    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorizaciÃ³n ambiental. Nousamos LoRa y querÃ­amos explorar machine learning para fusionar datos.", ts: "10:37" },
   ]},
   { orcid: "0000-0003-9876-5432", name: "Dr. Felipe Mora", avatar: "FM", color: "#34d399", messages: [
-    { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podríamos colaborar.", ts: "Ayer" },
+    { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podrÃ­amos colaborar.", ts: "Ayer" },
   ]},
 ];
 
 const userProfile = {
   orcid: "0000-0001-2345-6789",
-  name: "José Ignacio",
-  surname: "Hernández",
+  name: "JosÃ© Ignacio",
+  surname: "HernÃ¡ndez",
   role: "Doctorando",
-  dept: "Ingeniería de Sistemas",
+  dept: "IngenierÃ­a de Sistemas",
   avatar: "JH",
   color: "#84cc16",
   tags: ["Sistemas Distribuidos", "IoT", "Machine Learning"],
@@ -58,15 +58,15 @@ const userProfile = {
 const allDepts = ["Todos", ...new Set(researchers.map((r) => r.dept))];
 
 const researcherColors: Record<string, string> = {
-  "Ingeniería Biomédica": "#10b981",
-  "Ciencias de la Computación": "#3b82f6",
-  "Biología Molecular": "#8b5cf6",
-  "Física Computacional": "#f59e0b",
-  "Salud Pública": "#ef4444",
-  "Robótica e IA": "#6366f1",
+  "IngenierÃ­a BiomÃ©dica": "#10b981",
+  "Ciencias de la ComputaciÃ³n": "#3b82f6",
+  "BiologÃ­a Molecular": "#8b5cf6",
+  "FÃ­sica Computacional": "#f59e0b",
+  "Salud PÃºblica": "#ef4444",
+  "RobÃ³tica e IA": "#6366f1",
 };
 
-// ─── SKELETON LOADER ─────────────────────────────────────────────────────────
+// â”€â”€â”€ SKELETON LOADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function SkeletonLoader() {
   return (
@@ -111,7 +111,7 @@ function SkeletonLoader() {
   );
 }
 
-// ─── AVATAR ───────────────────────────────────────────────────────────────────
+// â”€â”€â”€ AVATAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function Avatar({ initials, color, size = 44 }: { initials: string; color: string; size?: number }) {
   const s = Math.round(size * 0.34);
@@ -128,7 +128,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
   );
 }
 
-// ─── DETAIL PANEL ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ DETAIL PANEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
   researcher: (typeof researchers)[0];
@@ -159,7 +159,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           <button onClick={onClose} style={{
             background: "none", border: "none", color: "var(--text-tertiary)",
             cursor: "pointer", fontSize: 20, lineHeight: 1, padding: "0 4px",
-          }}>×</button>
+          }}>Ã—</button>
         </div>
 
         {/* Body */}
@@ -214,7 +214,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 
           {/* Tags */}
           <div>
-            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Áreas</p>
+            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Ãreas</p>
             <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
               {researcher.tags.map((tag) => (
                 <span key={tag} style={{
@@ -261,7 +261,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
   );
 }
 
-// ─── OPPORTUNITY DETAIL MODAL ────────────────────────────────────────────────
+// â”€â”€â”€ OPPORTUNITY DETAIL MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onClose: () => void }) {
   const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#84cc16", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
@@ -278,27 +278,27 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
         <button onClick={onClose} style={{
           position: "absolute", top: 16, right: 16, background: "none", border: "none",
           color: "var(--text-tertiary)", cursor: "pointer", fontSize: 18,
-        }}>×</button>
+        }}>Ã—</button>
         <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
           <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
-          {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#fb923c" }}>🔥 Hot</span>}
+          {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#fb923c" }}>ðŸ”¥ Hot</span>}
         </div>
         <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
-        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} · Fecha límite: <span style={{ color: "#fb923c", fontWeight: 700 }}>{opp.deadline}</span></p>
+        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} Â· Fecha lÃ­mite: <span style={{ color: "#fb923c", fontWeight: 700 }}>{opp.deadline}</span></p>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 20 }}>{opp.desc}</p>
         <button style={{
           width: "100%", padding: "12px", borderRadius: 10, border: "none",
           background: color, color: "#000", fontSize: 13, fontWeight: 700,
           cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
         }}>
-          <ExternalLink size={13} /> Más información
+          <ExternalLink size={13} /> MÃ¡s informaciÃ³n
         </button>
       </div>
     </>
   );
 }
 
-// ─── RESEARCHER CARD (click opens detail) ───────────────────────────────────
+// â”€â”€â”€ RESEARCHER CARD (click opens detail) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
   researcher: (typeof researchers)[0];
@@ -362,14 +362,14 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           className={`b-connect-btn ${isConnected ? "connected" : ""}`}
           style={{ "--btn-color": researcher.color } as React.CSSProperties}
         >
-          {isConnected ? "✓ Connected" : "Connect"}
+          {isConnected ? "âœ“ Connected" : "Connect"}
         </button>
       </div>
     </div>
   );
 }
 
-// ─── NETWORK CARD (with message button) ─────────────────────────────────────
+// â”€â”€â”€ NETWORK CARD (with message button) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function NetworkCard({ researcher, onDisconnect, onMessage }: {
   researcher: (typeof researchers)[0];
@@ -417,13 +417,13 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
         onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(239,68,68,0.4)"; (e.currentTarget as HTMLButtonElement).style.color = "#ef4444"; }}
         onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-tertiary)"; }}
       >
-        ×
+        Ã—
       </button>
     </div>
   );
 }
 
-// ─── MESSAGES VIEW ───────────────────────────────────────────────────────────
+// â”€â”€â”€ MESSAGES VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function MessagesView({ conversations, onSelectConversation, onBack, selectedOrcid, messages, onSendMessage, newMessage, setNewMessage }: {
   conversations: (typeof mockMessages);
@@ -509,7 +509,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
   return (
     <div style={{ maxWidth: 700, margin: "0 auto", padding: "24px" }}>
       <div style={{ marginBottom: 24 }}>
-        <h1 style={{ fontSize: 22, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em", marginBottom: 4 }}>Mensajes</h1>
+        <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "var(--font-playfair), Georgia, serif" }}>Mensajes</h1>
         <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Conversaciones con tus contactos</p>
       </div>
 
@@ -519,8 +519,8 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
           border: "1px solid var(--card-border)", borderRadius: 16,
         }}>
           <MessageCircle size={32} style={{ color: "var(--text-tertiary)", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
-          <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>Sin mensajes aún</p>
-          <p style={{ fontSize: 12, color: "var(--text-muted)" }}>Conéctate con investigadores y empieza una conversación</p>
+          <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>Sin mensajes aÃºn</p>
+          <p style={{ fontSize: 12, color: "var(--text-muted)" }}>ConÃ©ctate con investigadores y empieza una conversaciÃ³n</p>
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -555,7 +555,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
   );
 }
 
-// ─── NAVBAR ───────────────────────────────────────────────────────────────────
+// â”€â”€â”€ NAVBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function NavBar({ view, setView, connectedCount, unreadMessages }: {
   view: string;
@@ -610,7 +610,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
   );
 }
 
-// ─── MAIN ─────────────────────────────────────────────────────────────────────
+// â”€â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 export default function App() {
   const [view, setView] = useState<string>("discover");
@@ -694,7 +694,7 @@ export default function App() {
         <div style={{ display: "flex", alignItems: "center", gap: 6, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, padding: "5px 12px" }}>
           <Globe size={11} color="var(--text-subtle)" />
           <span style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 600 }}>
-            {researchers.filter((r) => r.open).length} <span style={{ color: "var(--accent)" }}>open</span> · {researchers.length} researchers
+            {researchers.filter((r) => r.open).length} <span style={{ color: "var(--accent)" }}>open</span> Â· {researchers.length} researchers
           </span>
         </div>
       </header>
@@ -726,7 +726,7 @@ export default function App() {
               </svg>
             </div>
             <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.03em" }}>Bienvenido a ResearchNet</h2>
-            <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.6, marginBottom: 28 }}>Conecta tu perfil ORCID para auto-completar tu información y empezar a descubrir colaboradores.</p>
+            <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.6, marginBottom: 28 }}>Conecta tu perfil ORCID para auto-completar tu informaciÃ³n y empezar a descubrir colaboradores.</p>
             <button
               onClick={() => { setShowOnboarding(false); localStorage.setItem("rn_onboarding_skipped", "1"); }}
               style={{
@@ -748,7 +748,7 @@ export default function App() {
             >
               Omitir por ahora
             </button>
-            <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 20, lineHeight: 1.5 }}>ORCID es un identificador persistente. Tu información se mantiene privada.</p>
+            <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 20, lineHeight: 1.5 }}>ORCID es un identificador persistente. Tu informaciÃ³n se mantiene privada.</p>
           </div>
         </div>
       )}
@@ -774,17 +774,17 @@ export default function App() {
       {/* OPPORTUNITY MODAL */}
       {selectedOpp && <OppDetailModal opp={selectedOpp} onClose={() => setSelectedOpp(null)} />}
 
-      {/* ─── DISCOVER VIEW ─────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ DISCOVER VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {view === "discover" && (
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 22, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em", marginBottom: 4 }}>Descubrir investigadores</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Encuentra colaboradores para tu próximo proyecto</p>
+            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "var(--font-playfair), Georgia, serif" }}>Descubrir investigadores</h1>
+            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Encuentra colaboradores para tu prÃ³ximo proyecto</p>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" as const, marginBottom: 24 }}>
             <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
               <Search size={13} color="var(--text-subtle)" />
-              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, área o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "var(--text-primary)", fontSize: 13, flex: 1, width: "100%" }} />
+              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, Ã¡rea o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "var(--text-primary)", fontSize: 13, flex: 1, width: "100%" }} />
             </div>
             <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none" as const, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, color: "var(--text-muted)", fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer" as const }}>
               {allDepts.map((d) => <option key={d} value={d}>{d}</option>)}
@@ -817,18 +817,18 @@ export default function App() {
             <div style={{ textAlign: "center", padding: "60px 20px", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 16 }}>
               <Search size={32} style={{ color: "var(--text-tertiary)", marginBottom: 14, display: "block", margin: "0 auto 14px" }} />
               <p style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 6 }}>Sin resultados</p>
-              <p style={{ fontSize: 12, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto" }}>Prueba con otros filtros o cambia el término de búsqueda</p>
+              <p style={{ fontSize: 12, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto" }}>Prueba con otros filtros o cambia el tÃ©rmino de bÃºsqueda</p>
             </div>
           )}
         </div>
       )}
 
-      {/* ─── OPPORTUNITIES VIEW ─────────────────────────────────────────── */}
+      {/* â”€â”€â”€ OPPORTUNITIES VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {view === "opportunities" && (
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 22, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em", marginBottom: 4 }}>Oportunidades</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Postdocs, becas, convocatorias y más</p>
+            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "var(--font-playfair), Georgia, serif" }}>Oportunidades</h1>
+            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Postdocs, becas, convocatorias y mÃ¡s</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
             {opportunities.map((opp) => {
@@ -845,7 +845,7 @@ export default function App() {
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
                     <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
-                    {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#fb923c" }}>🔥</span>}
+                    {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#fb923c" }}>ðŸ”¥</span>}
                   </div>
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
                   <p style={{ fontSize: 11, color: "var(--text-muted)" }}>{opp.dept}</p>
@@ -854,7 +854,7 @@ export default function App() {
                       <Clock size={10} />{opp.deadline}
                     </span>
                     <span style={{ fontSize: 11, fontWeight: 600, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}>
-                      Ver más <ChevronRight size={10} />
+                      Ver mÃ¡s <ChevronRight size={10} />
                     </span>
                   </div>
                 </div>
@@ -864,11 +864,11 @@ export default function App() {
         </div>
       )}
 
-      {/* ─── NETWORK VIEW ───────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ NETWORK VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {view === "network" && (
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 22, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em", marginBottom: 4 }}>Tu red</h1>
+            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "var(--font-playfair), Georgia, serif" }}>Tu red</h1>
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
           </div>
           {connectedResearchers.length === 0 ? (
@@ -897,8 +897,8 @@ export default function App() {
                 <circle cx="14" cy="46" r="2" fill="#84cc16" opacity="0.4"/>
                 <circle cx="50" cy="46" r="2" fill="#84cc16" opacity="0.4"/>
               </svg>
-              <p className="empty-title">Tu red está vacía</p>
-              <p className="empty-sub">Explora investigadores y conéctate para construir tu red de colaboración.</p>
+              <p className="empty-title">Tu red estÃ¡ vacÃ­a</p>
+              <p className="empty-sub">Explora investigadores y conÃ©ctate para construir tu red de colaboraciÃ³n.</p>
               <button onClick={() => setView("discover")} style={{
                 marginTop: 6, padding: "9px 20px", borderRadius: 9,
                 background: "#84cc16", color: "#000", border: "none",
@@ -927,7 +927,7 @@ export default function App() {
         </div>
       )}
 
-      {/* ─── MESSAGES VIEW ───────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ MESSAGES VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {view === "messages" && (
         <MessagesView
           conversations={conversations}
@@ -941,12 +941,12 @@ export default function App() {
         />
       )}
 
-      {/* ─── PROFILE VIEW ─────────────────────────────────────────────── */}
+      {/* â”€â”€â”€ PROFILE VIEW â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {view === "profile" && (
         <div style={{ maxWidth: 800, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 22, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em", marginBottom: 4 }}>Tu perfil</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Gestiona tu información de investigador</p>
+            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "var(--font-playfair), Georgia, serif" }}>Tu perfil</h1>
+            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Gestiona tu informaciÃ³n de investigador</p>
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18, padding: 28, marginBottom: 16 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: 24 }}>
@@ -957,7 +957,7 @@ export default function App() {
                   {userProfile.open && (
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${userProfile.color}12`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
-                      Abiertos a colaboración
+                      Abiertos a colaboraciÃ³n
                     </span>
                   )}
                 </div>
@@ -975,7 +975,7 @@ export default function App() {
               ))}
             </div>
             <div>
-              <p style={{ fontSize: 10, fontWeight: 700, color: "var(--text-subtle)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Grupos de investigación</p>
+              <p style={{ fontSize: 10, fontWeight: 700, color: "var(--text-subtle)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Grupos de investigaciÃ³n</p>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const }}>
                 {userProfile.groups.map((g) => (
                   <span key={g} style={{ fontSize: 11, fontWeight: 600, color: "var(--text-muted)", background: "var(--surface-hover)", border: "1px solid var(--border)", padding: "4px 10px", borderRadius: 8 }}>{g}</span>
@@ -993,9 +993,9 @@ export default function App() {
             ))}
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: 20 }}>
-            <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones rápidas</p>
+            <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones rÃ¡pidas</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {[{ label: "Ver mi perfil público", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
+              {[{ label: "Ver mi perfil pÃºblico", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
                 <button key={action.label} style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                   padding: "12px 14px", borderRadius: 10, background: "#141414",
