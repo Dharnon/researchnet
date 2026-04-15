@@ -268,7 +268,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected, t }: {
       padding: 20, cursor: "pointer", transition: "all 0.18s ease",
       display: "flex", flexDirection: "column", gap: 14,
     }}
-    onMouseEnter={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.accent + "40"; el.style.boxShadow = t.shadowHover; el.style.transform = "translateY(-1px)"; }}
+    onMouseEnter={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.accent + "30"; el.style.boxShadow = t.shadowHover; el.style.transform = "translateY(-1px)"; }}
     onMouseLeave={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.border; el.style.boxShadow = "none"; el.style.transform = "translateY(0)"; }}
     >
       <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
@@ -276,7 +276,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected, t }: {
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 2 }}>
             <span style={{ fontSize: 15, fontWeight: 700, color: t.textPrimary, lineHeight: 1.2 }}>{researcher.name} {researcher.surname}</span>
-            <span style={{ fontSize: 13, fontWeight: 800, color: t.accent, flexShrink: 0 }}>{researcher.match}%</span>
+            <span style={{ fontSize: 12, fontWeight: 700, color: t.accent, opacity: 0.75, flexShrink: 0 }}>{researcher.match}%</span>
           </div>
           <p style={{ fontSize: 12, color: t.textSecondary, lineHeight: 1.3, marginBottom: 1 }}>{researcher.role}</p>
           <p style={{ fontSize: 11, color: t.textTertiary }}>{researcher.dept}</p>
