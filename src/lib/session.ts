@@ -1,0 +1,21 @@
+import { cookies } from 'next/headers';
+
+export async function getSession(): Promise<string | null> {
+  const cookieStore = await cookies();
+  return cookieStore.get('session')?.value ?? null;
+}
+
+export async function setSession(orcid: string) {
+  const cookieStore = await cookies();
+  cookieStore.set('session', orcid, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 60 * 60 * 24 * 30,
+  });
+}
+
+export async function clearSession() {
+  const cookieStore = await cookies();
+  cookieStore.delete('session');
+}
