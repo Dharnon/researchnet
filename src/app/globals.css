@@ -466,7 +466,7 @@ body {
   right: 1px;
   width: 10px;
   height: 10px;
-  background: #16A34A;
+  background: #D97706;
   border: 2px solid var(--surface);
   border-radius: 50%;
 }
@@ -557,8 +557,8 @@ body {
   gap: 4px;
   font-size: 9px;
   font-weight: 600;
-  color: #15803D;
-  background: #DCFCE7;
+  color: var(--accent-dark);
+  background: var(--accent-light);
   padding: 2px 7px;
   border-radius: 20px;
   text-transform: uppercase;
@@ -569,13 +569,13 @@ body {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #16A34A;
+  background: #D97706;
 }
 
 .r-connect-btn {
   margin-left: auto;
   padding: 6px 13px;
-  border-radius: 20px;
+  border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--surface);
   color: var(--text-primary);
@@ -593,9 +593,9 @@ body {
 }
 
 .r-connect-btn.connected {
-  background: #F0FDF4;
-  border-color: #BBF7D0;
-  color: #15803D;
+  background: var(--accent-light);
+  border-color: #FCD34D;
+  color: var(--accent-dark);
 }
 
 /* ── RESEARCHER LIST (network view) ─────────────────────────────────────── */
@@ -648,8 +648,8 @@ body {
   gap: 3px;
   font-size: 8px;
   font-weight: 600;
-  color: #15803D;
-  background: #DCFCE7;
+  color: var(--accent-dark);
+  background: var(--accent-light);
   padding: 1px 5px;
   border-radius: 20px;
   text-transform: uppercase;
@@ -702,9 +702,9 @@ body {
 }
 
 .r-connect-btn-sm.connected {
-  background: #F0FDF4;
-  border-color: #BBF7D0;
-  color: #15803D;
+  background: var(--accent-light);
+  border-color: #FCD34D;
+  color: var(--accent-dark);
 }
 
 /* ── DETAIL PANEL ──────────────────────────────────────────────────────────── */
@@ -936,8 +936,8 @@ body {
 }
 
 .detail-connect-btn.connected {
-  background: #F0FDF4;
-  color: #15803D;
+  background: var(--accent-light);
+  color: var(--accent-dark);
 }
 
 /* ── MOBILE BACKDROP ───────────────────────────────────────────────────────── */
