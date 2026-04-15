@@ -318,7 +318,7 @@ button { font-family: 'DM Sans', system-ui, sans-serif; touch-action: manipulati
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  background: var(--accent);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
@@ -372,8 +372,8 @@ button { font-family: 'DM Sans', system-ui, sans-serif; touch-action: manipulati
   border-top: 1px solid var(--border);
 }
 .r-match { display: flex; align-items: baseline; gap: 1px; }
-.r-match-num { font-size: 18px; font-weight: 700; color: var(--accent); letter-spacing: -0.03em; line-height: 1; }
-.r-match-pct { font-size: 10px; font-weight: 600; color: var(--accent); opacity: 0.65; }
+.r-match-num { font-size: 14px; font-weight: 600; color: var(--accent); letter-spacing: -0.02em; line-height: 1; }
+.r-match-pct { font-size: 10px; font-weight: 500; color: var(--accent); opacity: 0.65; }
 
 .r-open-badge {
   display: inline-flex;
