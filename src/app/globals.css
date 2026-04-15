@@ -441,18 +441,6 @@ body {
   display: flex;
   flex-direction: column;
   gap: 12px;
-}
-
-.r-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 18px;
-  cursor: pointer;
-  transition: all 0.18s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
   position: relative;
   overflow: hidden;
 }
@@ -613,9 +601,9 @@ body {
 }
 
 .r-connect-btn:hover {
-  background: var(--accent);
-  color: var(--surface);
-  border-color: var(--accent);
+  background: var(--accent-light);
+  color: var(--accent-dark);
+  border-color: #FCD34D;
 }
 
 .r-connect-btn.connected {

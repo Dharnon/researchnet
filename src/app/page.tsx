@@ -301,54 +301,45 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       style={{ "--card-accent": researcher.color } as React.CSSProperties}
       onClick={onSelect}
     >
-      <div className="b-card-top">
-        <Avatar initials={researcher.avatar} color={researcher.color} size={44} />
-        <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
-            <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2 }}>{researcher.name}</span>
-            <span style={{
-              fontSize: 10, fontWeight: 700, color: researcher.color,
-              background: `${researcher.color}14`, padding: "2px 7px", borderRadius: 20, flexShrink: 0,
-            }}>
-              {researcher.match}%
+      <div className="r-card-top">
+        <div className="r-avatar-wrap">
+          <Avatar initials={researcher.avatar} color={researcher.color} size={44} />
+          {researcher.open && <span className="collab-dot" />}
+        </div>
+        <div className="r-card-header">
+          <div style={{ display: "flex", alignItems: "flex-start", justifyContent: "space-between", gap: 6, marginBottom: 2 }}>
+            <span className="r-name">{researcher.name}</span>
+            <span className="r-open-badge">
+              <span className="r-open-dot" />
+              Open
             </span>
           </div>
-          <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
-          <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 1 }}>{researcher.dept}</p>
+          <p className="r-role">{researcher.role}</p>
+          <p className="r-dept">{researcher.dept}</p>
         </div>
-        {researcher.open && (
-          <span style={{
-            display: "inline-flex", alignItems: "center", gap: 4,
-            fontSize: 9, fontWeight: 700, color: researcher.color,
-            background: `${researcher.color}10`, padding: "2px 6px", borderRadius: 20,
-            textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0, alignSelf: "flex-start",
-          }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: researcher.color, display: "inline-block" }} />
-            Open
-          </span>
-        )}
       </div>
-      <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+
+      {/* Bio excerpt — editorial touch */}
+      <p style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.55, display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+        {researcher.bio}
+      </p>
+
+      <div className="r-tags">
         {researcher.tags.slice(0, 3).map((tag) => (
-          <span key={tag} style={{
-            fontSize: 10, fontWeight: 600, color: "var(--tag-text)",
-            background: "var(--tag-bg)", border: "1px solid var(--tag-border)",
-            padding: "3px 8px", borderRadius: 20,
-          }}>{tag}</span>
+          <span key={tag} className="r-tag">{tag}</span>
         ))}
       </div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div style={{ display: "flex", gap: 10 }}>
-          <span style={{ fontSize: 11, color: "var(--text-subtle)" }}>
-            <span style={{ fontWeight: 700, color: "var(--text-muted)" }}>{researcher.pubs}</span> papers
-          </span>
-          <span style={{ fontSize: 11, color: "var(--text-subtle)" }}>
-            <span style={{ fontWeight: 700, color: "var(--text-muted)" }}>{researcher.projects}</span> projects
-          </span>
+
+      <div className="r-card-footer">
+        <div className="r-match">
+          <span className="r-match-num">{researcher.match}</span>
+          <span className="r-match-pct">%</span>
+          <span className="r-match-label">match</span>
         </div>
+        <span style={{ fontSize: 10, color: "var(--text-tertiary)", marginLeft: 2 }}>{researcher.pubs} papers · {researcher.projects} proj</span>
         <button
           onClick={onConnect}
-          className={`b-connect-btn ${isConnected ? "connected" : ""}`}
+          className={`r-connect-btn ${isConnected ? "connected" : ""}`}
           style={{ "--btn-color": researcher.color } as React.CSSProperties}
         >
           {isConnected ? "Connected" : "Connect"}
