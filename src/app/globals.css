@@ -88,20 +88,32 @@ a {
   text-decoration: none;
 }
 
-/* ── LOADING ───────────────────────────────────────────────────────────────── */
-.app-loading {
-  background: var(--bg);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* ── FOCUS VISIBLE ──────────────────────────────────────────────────────────── */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
-.loading-text {
-  font-size: 20px;
-  color: var(--accent);
-  letter-spacing: 0.04em;
-  opacity: 0.4;
+
+/* ── CARD ACCENT LINE (top gradient) ───────────────────────────────────── */
+.b-card {
+  position: relative;
+  overflow: hidden;
 }
+
+.b-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent)), transparent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 14px 14px 0 0;
+}
+
+.b-card:hover::before { opacity: 1; }
 
 /* ── APP ROOT ──────────────────────────────────────────────────────────────── */
 .app-root {

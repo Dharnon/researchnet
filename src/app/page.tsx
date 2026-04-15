@@ -57,6 +57,51 @@ const userProfile = {
 
 const allDepts = ["Todos", ...new Set(researchers.map((r) => r.dept))];
 
+// ─── SKELETON LOADER ─────────────────────────────────────────────────────────
+
+function SkeletonLoader() {
+  return (
+    <div style={{ background: "#09090b", minHeight: "100vh", padding: "24px" }}>
+      {/* Header skeleton */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32, padding: "0 0 24px", borderBottom: "1px solid #1e1e22" }}>
+        <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
+          <div style={{ width: 28, height: 28, borderRadius: 8, background: "#1e1e22" }} />
+          <div style={{ width: 90, height: 14, borderRadius: 4, background: "#1e1e22" }} />
+        </div>
+        <div style={{ width: 280, height: 36, borderRadius: 10, background: "#1e1e22" }} />
+        <div style={{ width: 60, height: 14, borderRadius: 4, background: "#1e1e22" }} />
+      </div>
+      {/* Cards grid skeleton */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
+        {[1, 2, 3, 4, 5, 6].map((i) => (
+          <div key={i} style={{ background: "#111114", border: "1px solid #1e1e22", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
+            <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+              <div style={{ width: 44, height: 44, borderRadius: 10, background: "#1e1e22" }} />
+              <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
+                <div style={{ width: "70%", height: 13, borderRadius: 4, background: "#1e1e22" }} />
+                <div style={{ width: "50%", height: 10, borderRadius: 4, background: "#161618" }} />
+                <div style={{ width: "40%", height: 9, borderRadius: 4, background: "#161618" }} />
+              </div>
+            </div>
+            <div style={{ display: "flex", gap: 6 }}>
+              <div style={{ width: 64, height: 20, borderRadius: 20, background: "#1e1e22" }} />
+              <div style={{ width: 80, height: 20, borderRadius: 20, background: "#161618" }} />
+              <div style={{ width: 56, height: 20, borderRadius: 20, background: "#1e1e22" }} />
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 4 }}>
+              <div style={{ display: "flex", gap: 10 }}>
+                <div style={{ width: 40, height: 10, borderRadius: 4, background: "#161618" }} />
+                <div style={{ width: 50, height: 10, borderRadius: 4, background: "#161618" }} />
+              </div>
+              <div style={{ width: 72, height: 26, borderRadius: 8, background: "#1e1e22" }} />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ─── AVATAR ───────────────────────────────────────────────────────────────────
 
 function Avatar({ initials, color, size = 44 }: { initials: string; color: string; size?: number }) {
@@ -464,9 +509,9 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
           textAlign: "center", padding: "60px 24px", background: "var(--card-bg)",
           border: "1px solid var(--card-border)", borderRadius: 16,
         }}>
-          <MessageCircle size={32} style={{ color: "#222", marginBottom: 12, display: "margin", margin: "0 auto 12px" }} />
-          <p style={{ fontSize: 14, fontWeight: 700, color: "#2a2a2a", marginBottom: 4 }}>Sin mensajes aún</p>
-          <p style={{ fontSize: 12, color: "#1a1a1a" }}>Conéctate con investigadores y empieza una conversación</p>
+          <MessageCircle size={32} style={{ color: "#222", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
+          <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>Sin mensajes aún</p>
+          <p style={{ fontSize: 12, color: "var(--text-muted)" }}>Conéctate con investigadores y empieza una conversación</p>
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -576,6 +621,16 @@ export default function App() {
     setMounted(true);
     const skipped = localStorage.getItem("rn_onboarding_skipped");
     if (!skipped) setShowOnboarding(true);
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setSelectedResearcher(null);
+        setSelectedOpp(null);
+        setSelectedConv(null);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   const filteredResearchers = researchers.filter((r) => {
@@ -597,11 +652,7 @@ export default function App() {
     setNewMessage("");
   };
 
-  if (!mounted) return (
-    <div style={{ background: "#09090b", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
-      <div style={{ color: "#333", fontSize: 14 }}>Loading...</div>
-    </div>
-  );
+  if (!mounted) return <SkeletonLoader />;
 
   return (
     <div style={{ background: "var(--bg)", minHeight: "100vh", color: "var(--text-primary)" }}>
@@ -756,8 +807,8 @@ export default function App() {
           {filteredResearchers.length === 0 && (
             <div style={{ textAlign: "center", padding: "60px 20px", background: "#111111", border: "1px solid #1e1e1e", borderRadius: 16 }}>
               <Search size={32} style={{ color: "#222", marginBottom: 14, display: "block", margin: "0 auto 14px" }} />
-              <p style={{ fontSize: 15, fontWeight: 700, color: "#2a2a2a", marginBottom: 6 }}>Sin resultados</p>
-              <p style={{ fontSize: 12, color: "#1a1a1a", maxWidth: 260, margin: "0 auto" }}>Prueba con otros filtros o cambia el término de búsqueda</p>
+              <p style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 6 }}>Sin resultados</p>
+              <p style={{ fontSize: 12, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto" }}>Prueba con otros filtros o cambia el término de búsqueda</p>
             </div>
           )}
         </div>
