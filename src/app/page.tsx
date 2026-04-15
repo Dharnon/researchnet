@@ -57,6 +57,15 @@ const userProfile = {
 
 const allDepts = ["Todos", ...new Set(researchers.map((r) => r.dept))];
 
+const researcherColors: Record<string, string> = {
+  "Ingeniería Biomédica": "#10b981",
+  "Ciencias de la Computación": "#3b82f6",
+  "Biología Molecular": "#8b5cf6",
+  "Física Computacional": "#f59e0b",
+  "Salud Pública": "#ef4444",
+  "Robótica e IA": "#6366f1",
+};
+
 // ─── SKELETON LOADER ─────────────────────────────────────────────────────────
 
 function SkeletonLoader() {
@@ -105,12 +114,14 @@ function SkeletonLoader() {
 // ─── AVATAR ───────────────────────────────────────────────────────────────────
 
 function Avatar({ initials, color, size = 44 }: { initials: string; color: string; size?: number }) {
+  const s = Math.round(size * 0.34);
   return (
     <div style={{
       width: size, height: size, borderRadius: 10,
-      background: `${color}18`, border: `1px solid ${color}30`,
+      background: `${color}18`, border: `1px solid ${color}25`,
       display: "flex", alignItems: "center", justifyContent: "center",
-      fontSize: size * 0.32, fontWeight: 800, color, flexShrink: 0, letterSpacing: "-0.02em",
+      fontSize: s, fontWeight: 700, color,
+      flexShrink: 0, letterSpacing: "-0.02em",
     }}>
       {initials}
     </div>
@@ -939,7 +950,7 @@ export default function App() {
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18, padding: 28, marginBottom: 16 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: 24 }}>
-              <Avatar initials={userProfile.avatar} color={userProfile.color} size={64} />
+              <Avatar initials={userProfile.avatar} color={"#059669"} color={userProfile.color} size={64} />
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" as const }}>
                   <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
