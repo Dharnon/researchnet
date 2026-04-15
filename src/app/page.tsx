@@ -453,12 +453,14 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
               display: "flex", justifyContent: msg.from === "me" ? "flex-end" : "flex-start",
             }}>
               <div style={{
-                maxWidth: "70%", padding: "10px 14px", borderRadius: 16,
+                maxWidth: "60%", padding: "10px 14px", borderRadius: 16,
                 background: msg.from === "me" ? "var(--accent)" : "var(--surface)",
                 color: msg.from === "me" ? "#000" : "var(--text-primary)",
                 fontSize: 13, lineHeight: 1.5,
+                border: msg.from === "me" ? "none" : "1px solid var(--card-border)",
                 borderBottomRightRadius: msg.from === "me" ? "4px" : "16px",
                 borderBottomLeftRadius: msg.from === "me" ? "16px" : "4px",
+                boxShadow: msg.from === "me" ? "0 2px 8px rgba(132,204,22,0.2)" : "0 1px 3px rgba(0,0,0,0.3)",
               }}>
                 {msg.text}
                 <div style={{ fontSize: 9, opacity: 0.5, marginTop: 3, textAlign: "right" }}>{msg.ts}</div>
@@ -474,12 +476,14 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
             value={newMessage}
             onChange={(e) => setNewMessage(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && onSendMessage()}
-            placeholder="Escribe un mensaje..."
+            placeholder={selectedOrcid ? "Escribe un mensaje..." : "Buscar conversación..."}
             style={{
-              flex: 1, background: "var(--surface)", border: "1px solid var(--card-border)",
+              flex: 1, background: "var(--surface)", border: "1px solid var(--border)",
               borderRadius: 24, padding: "10px 16px", color: "var(--text-primary)",
-              fontSize: 13, outline: "none",
+              fontSize: 13, outline: "none", transition: "border-color 0.15s",
             }}
+            onFocus={(e) => { e.currentTarget.style.borderColor = "var(--accent)"; }}
+            onBlur={(e) => { e.currentTarget.style.borderColor = "var(--border)"; }}
           />
           <button
             onClick={onSendMessage}
@@ -864,15 +868,25 @@ export default function App() {
           </div>
           {connectedResearchers.length === 0 ? (
             <div style={{ textAlign: "center", padding: "80px 32px", background: "var(--card-bg)", border: "1px solid var(--card-border)", borderRadius: 16 }}>
-              <svg width="52" height="52" viewBox="0 0 52 52" fill="none" style={{ margin: "0 auto 20px", display: "block" }}>
-                <circle cx="16" cy="26" r="9" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.5"/>
-                <circle cx="36" cy="14" r="7" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.4"/>
-                <circle cx="36" cy="38" r="7" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.4"/>
-                <line x1="25" y1="23" x2="29" y2="16" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.6"/>
-                <line x1="25" y1="29" x2="29" y2="36" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.6"/>
-                <circle cx="16" cy="26" r="3" fill="var(--accent)" opacity="0.8"/>
-                <circle cx="36" cy="14" r="2" fill="var(--accent)" opacity="0.5"/>
-                <circle cx="36" cy="38" r="2" fill="var(--accent)" opacity="0.5"/>
+              <svg width="60" height="60" viewBox="0 0 60 60" fill="none" style={{ margin: "0 auto 20px", display: "block" }}>
+                <defs>
+                  <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+                    <stop offset="0%" stop-color="#84cc16" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#84cc16" stop-opacity="0"/>
+                  </radialGradient>
+                </defs>
+                <circle cx="16" cy="30" r="14" fill="url(#nodeGlow)"/>
+                <line x1="16" y1="30" x2="42" y2="18" stroke="#84cc1630" strokeWidth="1.5"/>
+                <line x1="16" y1="30" x2="42" y2="42" stroke="#84cc1630" strokeWidth="1.5"/>
+                <circle cx="42" cy="18" r="8" stroke="#52525b" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="42" cy="42" r="8" stroke="#52525b" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="42" cy="18" r="2.5" fill="#84cc1630"/>
+                <circle cx="42" cy="42" r="2.5" fill="#84cc1630"/>
+                <circle cx="16" cy="30" r="10" stroke="#84cc1640" strokeWidth="1.5" fill="none"/>
+                <circle cx="16" cy="30" r="4" fill="#84cc16" opacity="0.9"/>
+                <circle cx="28" cy="12" r="1.5" fill="#84cc1630"/>
+                <circle cx="50" cy="30" r="1" fill="#84cc1620"/>
+                <circle cx="28" cy="48" r="1.5" fill="#84cc1630"/>
               </svg>
               <p style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.02em" }}>Tu red está vacía</p>
               <p style={{ fontSize: 13, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto 24px", lineHeight: 1.6 }}>Explora investigadores y conéctate para construir tu red de colaboración.</p>
