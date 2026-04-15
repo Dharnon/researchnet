@@ -1187,3 +1187,14 @@ select:focus-visible {
     align-items: flex-start;
   }
 }
+
+/* ── HEADER TRANSITION ────────────────────────────────────────────────── */
+.app-header {
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Remove dead .b-card:hover translateY (overridden by .r-card) */
+.b-card:hover {
+  border-color: var(--border);
+  box-shadow: var(--shadow-card-hover);
+}
