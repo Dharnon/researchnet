@@ -65,6 +65,7 @@ const light = {
   textTertiary: "#94a3b8",
   accent: "#059669",
   accentLight: "#d1fae5",
+  orange: "#ea580c",
   headerBg: "rgba(255,255,255,0.92)",
   headerText: "#0f172a",
   navBg: "#f1f5f9",
@@ -84,6 +85,7 @@ const dark = {
   textTertiary: "#45454d",
   accent: "#5b8fd4",
   accentLight: "rgba(91,143,212,0.10)",
+  orange: "#fb923c",
   headerBg: "rgba(12,12,14,0.97)",
   headerText: "#ededef",
   navBg: "#0c0c0e",
@@ -240,7 +242,7 @@ function OppModal({ opp, onClose, t }: { opp: (typeof opportunities)[0]; onClose
         </button>
         <div style={{ display: "flex", gap: 8, marginBottom: 14 }}>
           <span style={{ fontSize: 10, fontWeight: 700, color: c.text, background: c.bg, padding: "3px 10px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
-          {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#ea580c", background: "#fff7ed", padding: "3px 10px", borderRadius: 20 }}>ðŸ”¥ Hot</span>}
+          {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: t.orange, background: `${t.orange}18`, padding: "3px 10px", borderRadius: 20 }}>ðŸ”¥ Hot</span>}
         </div>
         <h2 style={{ fontSize: 18, fontWeight: 700, color: t.textPrimary, letterSpacing: "-0.02em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
         <p style={{ fontSize: 13, color: t.textSecondary, marginBottom: 16 }}>{opp.dept} Â· <span style={{ color: "#ea580c", fontWeight: 600 }}>Hasta {opp.deadline}</span></p>
