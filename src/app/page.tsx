@@ -798,7 +798,7 @@ export default function App() {
               borderRadius: 10, color: onlyOpen ? "var(--accent)" : "var(--text-muted)",
               fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
             }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: onlyOpen ? "var(--accent)" : "#333", display: "inline-block" }} />
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: onlyOpen ? "var(--accent)" : "var(--text-tertiary)", display: "inline-block" }} />
               Solo abiertos
             </button>
           </div>
@@ -1001,12 +1001,12 @@ export default function App() {
               {[{ label: "Ver mi perfil pÃºblico", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
                 <button key={action.label} style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
-                  padding: "12px 14px", borderRadius: 10, background: "#141414",
-                  border: "1px solid var(--border)", color: "var(--text-muted)", fontSize: 12, fontWeight: 600,
+                  padding: "12px 14px", borderRadius: 10, background: "var(--surface-hover)",
+                  border: "1px solid var(--border)", color: "var(--text-secondary)", fontSize: 12, fontWeight: 600,
                   cursor: "pointer", textAlign: "left", width: "100%",
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#84cc1640"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#84cc1640"; (e.currentTarget as HTMLButtonElement).style.color = "var(--accent)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)"; }}
                 >
                   <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{ color: "var(--accent)" }}>{action.icon}</span>
