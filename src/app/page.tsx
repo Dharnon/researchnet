@@ -46,7 +46,7 @@ const userProfile = {
   role: "Doctorando",
   dept: "Ingeniería de Sistemas",
   avatar: "JH",
-  color: "#84cc16",
+  color: "#D97706",
   tags: ["Sistemas Distribuidos", "IoT", "Machine Learning"],
   groups: ["DistributedSys Lab", "IoT Center"],
   projects: 2,
@@ -253,7 +253,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 // ─── OPPORTUNITY DETAIL MODAL ────────────────────────────────────────────────
 
 function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onClose: () => void }) {
-  const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#84cc16", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
+  const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#D97706", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
   const color = typeColors[opp.type] ?? "#6b7280";
   return (
     <>
@@ -379,7 +379,7 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
           cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
           transition: "all 0.15s",
         }}
-        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#84cc1640"; (e.currentTarget as HTMLButtonElement).style.color = "var(--accent)"; }}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#D9770640"; (e.currentTarget as HTMLButtonElement).style.color = "var(--accent)"; }}
         onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
       >
         <MessageCircle size={13} />
@@ -697,7 +697,7 @@ export default function App() {
               color: "var(--text-tertiary)", cursor: "pointer",
               transition: "all 0.15s",
             }}
-            onMouseEnter={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "#84cc1640"; el.style.color = "var(--accent)"; }}
+            onMouseEnter={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "#D9770640"; el.style.color = "var(--accent)"; }}
             onMouseLeave={(e) => { const el = e.currentTarget as HTMLButtonElement; el.style.borderColor = "var(--border)"; el.style.color = "var(--text-tertiary)"; }}
           >
             {theme === "dark" ? <Sun size={14} /> : <Moon size={14} />}
@@ -737,7 +737,7 @@ export default function App() {
               onClick={() => { setShowOnboarding(false); localStorage.setItem("rn_onboarding_skipped", "1"); }}
               style={{
                 width: "100%", padding: "13px 20px", borderRadius: 12,
-                border: "1px solid #84cc1640", background: "#84cc16", color: "#000",
+                border: "1px solid #D9770640", background: "#84cc16", color: "#000",
                 fontSize: 13, fontWeight: 800, cursor: "pointer",
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
                 marginBottom: 10,
@@ -797,7 +797,7 @@ export default function App() {
             </select>
             <button onClick={() => setOnlyOpen((p) => !p)} style={{
               background: onlyOpen ? "var(--accent-light)" : "var(--surface)",
-              border: `1px solid ${onlyOpen ? "#84cc1640" : "#1e1e1e"}`,
+              border: `1px solid ${onlyOpen ? "#D9770640" : "#1e1e1e"}`,
               borderRadius: 10, color: onlyOpen ? "var(--accent)" : "var(--text-muted)",
               fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
             }}>
@@ -838,7 +838,7 @@ export default function App() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
             {opportunities.map((opp) => {
-              const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#84cc16", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
+              const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#D97706", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
               const color = typeColors[opp.type] ?? "#6b7280";
               return (
                 <div key={opp.id} onClick={() => setSelectedOpp(opp)} style={{
@@ -982,7 +982,7 @@ export default function App() {
             <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.7, marginBottom: 20 }}>{userProfile.bio}</p>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const, marginBottom: 20 }}>
               {userProfile.tags.map((tag) => (
-                <span key={tag} style={{ fontSize: 11, fontWeight: 600, color: "var(--accent)", background: "#84cc1612", border: "1px solid #84cc1630", padding: "4px 10px", borderRadius: 20 }}>{tag}</span>
+                <span key={tag} style={{ fontSize: 11, fontWeight: 600, color: "var(--accent-dark)", background: "var(--accent-light)", border: "1px solid #FCD34D", padding: "4px 10px", borderRadius: 20 }}>{tag}</span>
               ))}
             </div>
             <div>
@@ -1013,7 +1013,7 @@ export default function App() {
                   border: "1px solid #1e1e1e", color: "var(--text-muted)", fontSize: 12, fontWeight: 600,
                   cursor: "pointer", textAlign: "left", width: "100%",
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#84cc1640"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)"; }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#D9770640"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-primary)"; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#1e1e1e"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
                 >
                   <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
@@ -1030,3 +1030,5 @@ export default function App() {
     </div>
   );
 }
+
+
