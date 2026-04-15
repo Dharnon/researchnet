@@ -323,9 +323,9 @@ button { font-family: 'DM Sans', system-ui, sans-serif; touch-action: manipulati
   transition: opacity 0.2s ease;
 }
 .r-card:hover {
-  border-color: rgba(132,204,22,0.35);
-  box-shadow: var(--card-shadow-hover);
-  transform: translateY(-2px);
+  border-color: rgba(132,204,22,0.4);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.07), 0 12px 36px rgba(0,0,0,0.09);
+  transform: translateY(-3px);
 }
 .r-card:hover::after { opacity: 1; }
 
@@ -350,8 +350,8 @@ button { font-family: 'DM Sans', system-ui, sans-serif; touch-action: manipulati
   margin-bottom: 2px;
 }
 .r-role { font-size: 11px; color: var(--text-secondary); margin-bottom: 1px; }
-.r-dept { font-size: 10px; color: var(--text-tertiary); }
-.r-match-inline { font-size: 11px; font-weight: 500; color: var(--accent); opacity: 0.65; }
+.r-dept { font-size: 10px; color: var(--text-tertiary); display: block; }
+.r-match-inline { font-size: 10px; font-weight: 600; color: var(--accent); opacity: 0.8; margin-top: 1px; display: block; }
 
 .r-tags { display: flex; gap: 5px; flex-wrap: wrap; }
 .r-tag {
@@ -368,8 +368,8 @@ button { font-family: 'DM Sans', system-ui, sans-serif; touch-action: manipulati
   align-items: center;
   gap: 8px;
   margin-top: auto;
-  padding-top: 10px;
-  border-top: 1px solid var(--border);
+  padding-top: 8px;
+  border-top: 1px solid #f3f4f6;
 }
 .r-match { display: flex; align-items: baseline; gap: 1px; }
 .r-match-num { font-size: 14px; font-weight: 600; color: var(--accent); letter-spacing: -0.02em; line-height: 1; }
@@ -396,7 +396,7 @@ button { font-family: 'DM Sans', system-ui, sans-serif; touch-action: manipulati
 .r-connect-btn {
   margin-left: auto;
   padding: 6px 14px;
-  border-radius: 20px;
+  border-radius: 8px;
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--text-primary);
@@ -407,7 +407,7 @@ button { font-family: 'DM Sans', system-ui, sans-serif; touch-action: manipulati
   white-space: nowrap;
 }
 .r-connect-btn:hover { background: var(--accent); color: #000; border-color: var(--accent); }
-.r-connect-btn.connected { background: #dcfce7; border-color: #86efac; color: #15803d; }
+.r-connect-btn.connected { background: #f0fdf4; border-color: #bbf7d0; color: #15803d; border-radius: 8px; }
 
 /* ── RESEARCHER LIST (network view) ─────────────────────────────────────── */
 .r-list {
