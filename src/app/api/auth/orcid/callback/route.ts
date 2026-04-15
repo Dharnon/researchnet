@@ -1,26 +1,25 @@
-import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
-import { users } from "@/lib/db/schema";
-import { eq } from "drizzle-orm";
+import { NextRequest, NextResponse } from 'next/server';
+import { db } from '@/lib/db';
+import { users } from '@/lib/db/schema';
+import { setSession } from '@/lib/session';
+import { eq } from 'drizzle-orm';
 
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
-  const code = searchParams.get("code");
+  const code = searchParams.get('code');
+
   if (!code) {
     return NextResponse.redirect(`${process.env.NEXT_PUBLIC_APP_URL}/?error=no_code`);
   }
 
   // Exchange code for token
-  const tokenRes = await fetch("https://orcid.org/oauth/token", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      Accept: "application/json",
-    },
+  const tokenRes = await fetch('https://orcid.org/oauth/token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' },
     body: new URLSearchParams({
       client_id: process.env.ORCID_CLIENT_ID!,
       client_secret: process.env.ORCID_CLIENT_SECRET!,
-      grant_type: "authorization_code",
+      grant_type: 'authorization_code',
       code,
       redirect_uri: `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/orcid/callback`,
     }),
@@ -36,22 +35,25 @@ export async function GET(req: NextRequest) {
   const refreshToken = tokenData.refresh_token as string;
 
   // Fetch ORCID profile
-  let name = orcid;
+  const profileRes = await fetch(`https://pub.orcid.org/v3.0/${orcid}/person`, {
+    headers: { Accept: 'application/json', Authorization: `Bearer ${accessToken}` },
+  });
+
+  let name = 'Researcher';
   let email: string | null = null;
-  try {
-    const profileRes = await fetch(`https://pub.orcid.org/v3.0/${orcid}/person`, {
-      headers: { Accept: "application/json", Authorization: `Bearer ${accessToken}` },
-    });
-    if (profileRes.ok) {
-      const profile = await profileRes.json();
-      const given = profile.name?.["given-name"]?.value;
-      const family = profile.name?.["family-name"]?.value;
-      name = given && family ? `${given} ${family}` : given || orcid;
-      if (profile.emails?.email?.length > 0) {
-        email = profile.emails.email[0].email;
-      }
+
+  if (profileRes.ok) {
+    const profile = await profileRes.json();
+    name =
+      profile.name?.['given-name']?.value && profile.name?.['family-name']?.value
+        ? `${profile.name['given-name'].value} ${profile.name['family-name'].value}`
+        : profile.name?.['given-name']?.value || orcid;
+
+    // Try to get email
+    if (profile.emails?.email?.length > 0) {
+      email = profile.emails.email[0].email;
     }
-  } catch {}
+  }
 
   // Upsert user
   const existing = await db.query.users.findFirst({ where: eq(users.orcid, orcid) });
@@ -61,13 +63,15 @@ export async function GET(req: NextRequest) {
     await db.insert(users).values({ orcid, name, email, accessToken, refreshToken });
   }
 
-  // Set session cookie and redirect
+  // Set session cookie
   const response = NextResponse.redirect(`${process.env.NEXT_PUBLIC_APP_URL}/`);
-  response.cookies.set("session", orcid, {
+  setSession(orcid);
+  response.cookies.set('session', orcid, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
     maxAge: 60 * 60 * 24 * 30,
   });
+
   return response;
 }
