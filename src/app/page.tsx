@@ -384,29 +384,27 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
         title="Enviar mensaje"
         style={{
           width: 30, height: 30, borderRadius: 8, border: "1px solid var(--card-border)",
-          background: "var(--surface)", color: "var(--text-muted)",
+          background: "var(--surface)", color: "var(--text-tertiary)",
           cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
           transition: "all 0.15s",
         }}
-        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#84cc1640"; (e.currentTarget as HTMLButtonElement).style.color = "var(--accent)"; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(132,204,22,0.35)"; (e.currentTarget as HTMLButtonElement).style.color = "#84cc16"; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-tertiary)"; }}
       >
         <MessageCircle size={13} />
       </button>
-      <div style={{ textAlign: "right", flexShrink: 0 }}>
-        <div style={{ fontSize: 14, fontWeight: 800, color: researcher.color, lineHeight: 1, letterSpacing: "-0.02em" }}>{researcher.match}%</div>
-      </div>
+      <span style={{ fontSize: 11, color: "var(--text-tertiary)", fontWeight: 500, flexShrink: 0 }}>{researcher.match}%</span>
       <button
         onClick={onDisconnect}
         title="Desconectar"
         style={{
-          width: 28, height: 28, borderRadius: 8, border: "1px solid var(--card-border)",
-          background: "transparent", color: "var(--text-muted)",
+          width: 28, height: 28, borderRadius: 8, border: "1px solid var(--border)",
+          background: "transparent", color: "var(--text-tertiary)",
           fontSize: 16, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
           transition: "all 0.15s", flexShrink: 0,
         }}
-        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#ef444440"; (e.currentTarget as HTMLButtonElement).style.color = "#ef4444"; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-muted)"; }}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(239,68,68,0.4)"; (e.currentTarget as HTMLButtonElement).style.color = "#ef4444"; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-tertiary)"; }}
       >
         ×
       </button>
@@ -863,20 +861,39 @@ export default function App() {
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
           </div>
           {connectedResearchers.length === 0 ? (
-            <div style={{ textAlign: "center", padding: "80px 32px", background: "var(--card-bg)", border: "1px solid var(--card-border)", borderRadius: 16 }}>
-              <svg width="52" height="52" viewBox="0 0 52 52" fill="none" style={{ margin: "0 auto 20px", display: "block" }}>
-                <circle cx="16" cy="26" r="9" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.5"/>
-                <circle cx="36" cy="14" r="7" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.4"/>
-                <circle cx="36" cy="38" r="7" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.4"/>
-                <line x1="25" y1="23" x2="29" y2="16" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.6"/>
-                <line x1="25" y1="29" x2="29" y2="36" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.6"/>
-                <circle cx="16" cy="26" r="3" fill="var(--accent)" opacity="0.8"/>
-                <circle cx="36" cy="14" r="2" fill="var(--accent)" opacity="0.5"/>
-                <circle cx="36" cy="38" r="2" fill="var(--accent)" opacity="0.5"/>
+            <div className="empty-state">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={{ display: "block" }}>
+                {/* Central node */}
+                <circle cx="32" cy="32" r="8" stroke="#27272a" strokeWidth="1.5" fill="none"/>
+                <circle cx="32" cy="32" r="3" fill="#84cc16" opacity="0.7"/>
+                {/* Satellite nodes */}
+                <circle cx="14" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="50" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="14" cy="46" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="50" cy="46" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="32" cy="8" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
+                <circle cx="32" cy="56" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
+                {/* Connection lines */}
+                <line x1="24" y1="27" x2="18" y2="21" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="40" y1="27" x2="46" y2="21" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="24" y1="37" x2="18" y2="43" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="40" y1="37" x2="46" y2="43" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="32" y1="24" x2="32" y2="12" stroke="#27272a" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
+                <line x1="32" y1="40" x2="32" y2="52" stroke="#27272a" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
+                {/* Satellite node dots */}
+                <circle cx="14" cy="18" r="2" fill="#84cc16" opacity="0.4"/>
+                <circle cx="50" cy="18" r="2" fill="#84cc16" opacity="0.4"/>
+                <circle cx="14" cy="46" r="2" fill="#84cc16" opacity="0.4"/>
+                <circle cx="50" cy="46" r="2" fill="#84cc16" opacity="0.4"/>
               </svg>
-              <p style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.02em" }}>Tu red está vacía</p>
-              <p style={{ fontSize: 13, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto 24px", lineHeight: 1.6 }}>Explora investigadores y conéctate para construir tu red de colaboración.</p>
-              <button onClick={() => setView("discover")} style={{ padding: "10px 22px", borderRadius: 9, background: "var(--accent)", color: "#000", border: "none", fontSize: 13, fontWeight: 700, cursor: "pointer" }}>Descubrir investigadores</button>
+              <p className="empty-title">Tu red está vacía</p>
+              <p className="empty-sub">Explora investigadores y conéctate para construir tu red de colaboración.</p>
+              <button onClick={() => setView("discover")} style={{
+                marginTop: 6, padding: "9px 20px", borderRadius: 9,
+                background: "#84cc16", color: "#000", border: "none",
+                fontSize: 13, fontWeight: 700, cursor: "pointer",
+                fontFamily: "inherit",
+              }}>Descubrir investigadores</button>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>

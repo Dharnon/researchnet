@@ -50,6 +50,37 @@
   --shadow-card-hover: 0 0 40px rgba(132,204,22,0.10), 0 8px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(132,204,22,0.20);
 }
 
+/* ── DARK PREMIUM VARIABLES ────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg: #09090b;
+  --bg-secondary: #0f0f10;
+  --surface: #111114;
+  --surface-hover: #18181b;
+  --border: #1e1e22;
+  --border-subtle: #141416;
+
+  --text-primary: #ededef;
+  --text-secondary: #a1a1aa;
+  --text-tertiary: #52525b;
+  --text-muted: #a1a1aa;
+  --text-subtle: #71717a;
+
+  --accent: #84cc16;
+  --accent-dim: rgba(132,204,22,0.10);
+  --accent-hover: #a3e635;
+  --accent-glow: rgba(132,204,22,0.08);
+
+  --tag-bg: #1a1a1e;
+  --tag-border: #27272a;
+  --tag-text: #a1a1aa;
+
+  --card-bg: #111114;
+  --card-border: #1e1e22;
+
+  --shadow-card: none;
+  --shadow-card-hover: 0 0 0 1px rgba(132,204,22,0.12), 0 8px 32px rgba(0,0,0,0.6);
+}
+
 /* ── RESET & BASE (Dark Premium) ─────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -124,9 +155,14 @@ select:focus-visible {
 }
 
 .b-card:hover {
-  border-color: rgba(0,0,0,0.10);
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-  transform: translateY(-2px);
+  border-color: rgba(132,204,22,0.20);
+  box-shadow: 0 0 0 1px rgba(132,204,22,0.10), 0 8px 28px rgba(0,0,0,0.5);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .b-card:hover {
+  border-color: rgba(132,204,22,0.25);
+  box-shadow: 0 0 0 1px rgba(132,204,22,0.15), 0 8px 32px rgba(0,0,0,0.7);
 }
 
 .b-card:hover::before { opacity: 0; }
@@ -153,16 +189,17 @@ select:focus-visible {
   box-shadow: var(--shadow-card);
 }
 
-/* Solid lime-green accent line — slides in from left on hover */
+/* Thin left accent — subtle Linear-style indicator */
 .r-card::after {
   content: '';
   position: absolute;
   top: 0; left: 0;
-  width: 0;
-  height: 2px;
+  width: 3px;
+  height: 100%;
   background: #84cc16;
-  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 0 0 2px 0;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: var(--radius) 0 0 var(--radius);
 }
 
 .r-card:hover {
@@ -172,7 +209,7 @@ select:focus-visible {
 }
 
 .r-card:hover::after {
-  width: 100%;
+  opacity: 1;
 }
 
 .r-card-top {
@@ -411,10 +448,11 @@ select:focus-visible {
 }
 
 .r-row-match {
-  font-size: 16px;
-  font-weight: 800;
-  color: var(--accent);
-  letter-spacing: -0.03em;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
 }
 
 .r-connect-btn-sm {
@@ -806,24 +844,40 @@ select:focus-visible {
   justify-content: center;
   padding: 80px 24px;
   background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  border: 1px solid var(--border);
   border-radius: var(--radius);
   color: var(--text-tertiary);
   gap: 12px;
   text-align: center;
-  box-shadow: inset 0 1px 0 var(--border-subtle);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial glow behind the icon */
+.empty-state::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(132,204,22,0.06) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .empty-title {
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--text-secondary);
+  letter-spacing: -0.01em;
 }
 
 .empty-sub {
   font-size: 13px;
   color: var(--text-tertiary);
-  max-width: 280px;
+  max-width: 260px;
+  line-height: 1.6;
 }
 
 /* ── PROFILE VIEW ──────────────────────────────────────────────────────────── */
