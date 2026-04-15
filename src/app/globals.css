@@ -118,14 +118,14 @@ select:focus-visible {
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(132,204,22,0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(101,163,13,0.15), transparent);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 
 .b-card:hover {
-  border-color: rgba(101,163,13,0.30);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08), 0 0 0 1px rgba(101,163,13,0.10);
+  border-color: rgba(0,0,0,0.12);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   transform: translateY(-2px);
 }
 
@@ -709,8 +709,8 @@ select:focus-visible {
 }
 
 .opp-card:hover {
-  border-color: rgba(132, 204, 22, 0.2);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  border-color: #d1d5db;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.07);
   transform: translateY(-2px);
 }
 
@@ -780,7 +780,7 @@ select:focus-visible {
   font-weight: 600;
   color: var(--accent);
   background: var(--accent-dim);
-  border: none;
+  border: 1px solid transparent;
   padding: 5px 11px;
   border-radius: 6px;
   cursor: pointer;
@@ -788,7 +788,8 @@ select:focus-visible {
 }
 
 .opp-cta:hover {
-  background: var(--accent-glow);
+  background: #f3f4f6;
+  border-color: #d1d5db;
 }
 
 /* ── NETWORK VIEW ──────────────────────────────────────────────────────────── */
