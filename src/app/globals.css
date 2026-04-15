@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
-/* ── CSS VARIABLES (Dark Premium — Linear-style) ─────────────────────────── */
+/* â”€â”€ CSS VARIABLES (Dark Premium â€” Linear-style) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 :root,
 [data-theme="dark"] {
   --bg: #0c0c0e;
@@ -59,7 +59,7 @@
   --shadow-elevated: 0 16px 60px rgba(0,0,0,0.80);
 }
 
-/* ── LIGHT OVERRIDE ──────────────────────────────────────────────────────── */
+/* â”€â”€ LIGHT OVERRIDE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 [data-theme="light"] {
   --bg: #f8fafc;
   --bg-secondary: #f1f5f9;
@@ -90,7 +90,7 @@
   --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.04);
 }
 
-/* ── RESET ─────────────────────────────────────────────────────────────── */
+/* â”€â”€ RESET â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 
@@ -105,7 +105,7 @@ body {
   min-height: 100vh;
 }
 
-/* ── SCROLLBAR ─────────────────────────────────────────────────────────── */
+/* â”€â”€ SCROLLBAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
@@ -122,7 +122,7 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-/* ── RESEARCHER CARD (Linear-style dark) ───────────────────────────────── */
+/* â”€â”€ RESEARCHER CARD (Linear-style dark) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .r-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -260,7 +260,7 @@ select:focus-visible {
   color: #22c55e;
 }
 
-/* ── RESEARCHER LIST ───────────────────────────────────────────────────── */
+/* â”€â”€ RESEARCHER LIST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .r-list {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -338,7 +338,7 @@ select:focus-visible {
   color: #22c55e;
 }
 
-/* ── DETAIL PANEL ──────────────────────────────────────────────────────── */
+/* â”€â”€ DETAIL PANEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .detail-panel-wrap { position: fixed; inset: 0; top: 60px; background: rgba(0,0,0,0.6); z-index: 40; backdrop-filter: blur(4px); }
 
 .detail-panel-container { position: fixed; top: 60px; right: 0; bottom: 0; width: 340px; z-index: 50; box-shadow: -12px 0 48px rgba(0,0,0,0.60); }
@@ -526,7 +526,7 @@ select:focus-visible {
   color: var(--open-dot);
 }
 
-/* ── MOBILE BACKDROP ───────────────────────────────────────────────────── */
+/* â”€â”€ MOBILE BACKDROP â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .mobile-backdrop {
   position: fixed;
   inset: 0;
@@ -535,7 +535,7 @@ select:focus-visible {
   z-index: 39;
 }
 
-/* ── EMPTY STATE ───────────────────────────────────────────────────────── */
+/* â”€â”€ EMPTY STATE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .empty-state {
   display: flex;
   flex-direction: column;
@@ -567,7 +567,7 @@ select:focus-visible {
 .empty-title { font-size: 16px; font-weight: 600; color: var(--text-secondary); letter-spacing: -0.01em; }
 .empty-sub { font-size: 13px; color: var(--text-tertiary); max-width: 260px; line-height: 1.6; }
 
-/* ── OPPORTUNITIES ─────────────────────────────────────────────────────── */
+/* â”€â”€ OPPORTUNITIES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .opportunities-view { padding-top: 36px; }
 
 .opp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
@@ -636,7 +636,7 @@ select:focus-visible {
 
 .opp-cta:hover { border-color: var(--accent); }
 
-/* ── MODAL ─────────────────────────────────────────────────────────────── */
+/* â”€â”€ MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -729,7 +729,7 @@ select:focus-visible {
 
 .modal-skip:hover { color: var(--text-secondary); }
 
-/* ── PROFILE ───────────────────────────────────────────────────────────── */
+/* â”€â”€ PROFILE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 .profile-view-wrap { padding-top: 36px; }
 
 .profile-view {
@@ -808,11 +808,55 @@ select:focus-visible {
   flex-shrink: 0;
 }
 
-/* ── RESPONSIVE ────────────────────────────────────────────────────────── */
+/* â”€â”€ RESPONSIVE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @media (max-width: 600px) {
   .detail-panel-container { width: 100%; top: auto; bottom: 0; height: 75vh; border-radius: 20px 20px 0 0; }
   .detail-panel { border-radius: 20px 20px 0 0; border-left: none; border-top: 1px solid var(--border); max-height: 75vh; }
   .detail-panel-wrap { display: none; }
   .profile-view { padding: 20px; }
   .profile-hero { flex-direction: column; align-items: flex-start; }
+}
+
+/* ── SKELETON SHIMMER ────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -600px 0; }
+  100% { background-position: 600px 0; }
+}
+
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--border) 25%,
+    var(--bg-secondary) 50%,
+    var(--border) 75%
+  );
+  background-size: 1200px 100%;
+  animation: shimmer 1.7s ease-in-out infinite;
+}
+
+.skeleton-shimmer-dim {
+  background: linear-gradient(
+    90deg,
+    var(--border-subtle) 25%,
+    var(--bg) 50%,
+    var(--border-subtle) 75%
+  );
+  background-size: 1200px 100%;
+  animation: shimmer 1.7s ease-in-out infinite;
+  animation-delay: 0.2s;
+}
+
+/* ── CARD HOVER PREMIUM LIFT ─────────────────────────────────────────── */
+.r-card:hover {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.r-card:hover::before {
+  opacity: 1;
+  transition: opacity 0.25s ease;
+}
+
+.b-card:hover::before {
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
