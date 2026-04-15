@@ -272,13 +272,14 @@ button { font-family: 'DM Sans', system-ui, sans-serif; touch-action: manipulati
   color: var(--accent-hover);
 }
 .filter-open-dot {
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: var(--text-tertiary);
   flex-shrink: 0;
+  transition: background 0.15s;
 }
-.filter-open-btn.active .filter-open-dot { background: var(--accent); }
+.filter-open-btn.active .filter-open-dot { background: var(--accent); box-shadow: 0 0 0 2px rgba(132,204,22,0.25); }
 
 .results-count {
   font-size: 11px;
@@ -323,9 +324,9 @@ button { font-family: 'DM Sans', system-ui, sans-serif; touch-action: manipulati
   transition: opacity 0.2s ease;
 }
 .r-card:hover {
-  border-color: rgba(132,204,22,0.4);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.07), 0 12px 36px rgba(0,0,0,0.09);
-  transform: translateY(-3px);
+  border-color: rgba(132,204,22,0.35);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07), 0 16px 48px rgba(0,0,0,0.07);
+  transform: translateY(-2px);
 }
 .r-card:hover::after { opacity: 1; }
 
@@ -342,6 +343,17 @@ button { font-family: 'DM Sans', system-ui, sans-serif; touch-action: manipulati
   border-radius: 50%;
 }
 .r-card-header { flex: 1; min-width: 0; }
+.r-card-header-row { display: flex; align-items: center; justify-content: space-between; gap: 6px; margin-bottom: 2px; }
+.r-match-chip {
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--accent-hover);
+  background: var(--accent-dim);
+  padding: 2px 7px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  letter-spacing: 0.01em;
+}
 .r-name {
   font-size: 14px;
   font-weight: 700;
