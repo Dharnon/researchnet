@@ -592,6 +592,92 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
   );
 }
 
+// ─── THEME TOGGLE ───────────────────────────────────────────────────────────
+
+function ThemeToggle({ theme, onToggle }: { theme: string; onToggle: () => void }) {
+  const isDark = theme === "dark";
+  return (
+    <button
+      onClick={onToggle}
+      title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+      style={{
+        position: "relative",
+        width: 52,
+        height: 28,
+        borderRadius: 14,
+        border: "none",
+        cursor: "pointer",
+        background: isDark ? "#1A1B3A" : "#E8E4DD",
+        transition: "background 0.4s ease",
+        padding: 0,
+        overflow: "hidden",
+        flexShrink: 0,
+      }}
+    >
+      {/* Stars (dark mode only) */}
+      {isDark && (
+        <>
+          <span style={{
+            position: "absolute", width: 2, height: 2,
+            borderRadius: "50%", background: "#fff",
+            top: 5, left: 8, opacity: 0.6,
+            boxShadow: "6px 3px 0 #fff, 18px 1px 0 #fff, 32px 5px 0 #fff",
+          }} />
+          <span style={{
+            position: "absolute", width: 1.5, height: 1.5,
+            borderRadius: "50%", background: "#fff",
+            top: 14, left: 20, opacity: 0.4,
+          }} />
+          <span style={{
+            position: "absolute", width: 1.5, height: 1.5,
+            borderRadius: "50%", background: "#fff",
+            top: 8, left: 28, opacity: 0.5,
+          }} />
+        </>
+      )}
+
+      {/* Sliding circle */}
+      <div style={{
+        position: "absolute",
+        top: 3,
+        left: isDark ? 26 : 3,
+        width: 22,
+        height: 22,
+        borderRadius: "50%",
+        background: isDark ? "#2B2D49" : "#fff",
+        transition: "left 0.35s cubic-bezier(0.68, -0.15, 0.27, 1.15), background 0.3s ease",
+        boxShadow: "0 1px 3px rgba(0,0,0,0.25)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        zIndex: 1,
+      }}>
+        {/* Sun */}
+        {!isDark && (
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style={{ position: "absolute" }}>
+            <circle cx="12" cy="12" r="5" fill="#F59E0B" />
+            <line x1="12" y1="1" x2="12" y2="3" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
+            <line x1="12" y1="21" x2="12" y2="23" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
+            <line x1="1" y1="12" x2="3" y2="12" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
+            <line x1="21" y1="12" x2="23" y2="12" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        )}
+
+        {/* Moon */}
+        {isDark && (
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" style={{ position: "absolute" }}>
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="#9CA3AF" />
+          </svg>
+        )}
+      </div>
+    </button>
+  );
+}
+
 // ─── MAIN ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
@@ -600,6 +686,14 @@ export default function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [onlyOpen, setOnlyOpen] = useState(false);
   const [connectedIds, setConnectedIds] = useState<number[]>([]);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    document.body.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((t) => t === "dark" ? "light" : "dark");
+
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [selectedResearcher, setSelectedResearcher] = useState<(typeof researchers)[0] | null>(null);
   const [selectedOpp, setSelectedOpp] = useState<(typeof opportunities)[0] | null>(null);
@@ -607,13 +701,6 @@ export default function App() {
   const [newMessage, setNewMessage] = useState("");
   const [conversations, setConversations] = useState(mockMessages);
   const [mounted, setMounted] = useState(false);
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-  useEffect(() => {
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
-
-  const toggleTheme = () => setTheme((t) => t === "dark" ? "light" : "dark");
 
   useEffect(() => {
     setMounted(true);
@@ -737,7 +824,7 @@ export default function App() {
               onClick={() => { setShowOnboarding(false); localStorage.setItem("rn_onboarding_skipped", "1"); }}
               style={{
                 width: "100%", padding: "13px 20px", borderRadius: 12,
-                border: "1px solid #D9770640", background: "#84cc16", color: "#000",
+                border: "1px solid #D9770640", background: "#D97706", color: "#000",
                 fontSize: 13, fontWeight: 800, cursor: "pointer",
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
                 marginBottom: 10,
@@ -880,34 +967,34 @@ export default function App() {
           {connectedResearchers.length === 0 ? (
             <div style={{ textAlign: "center", padding: "80px 32px", background: "var(--card-bg)", border: "1px solid var(--card-border)", borderRadius: 16, position: "relative", overflow: "hidden" }}>
               {/* Radial glow behind illustration */}
-              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -55%)", width: 200, height: 200, background: "radial-gradient(circle, rgba(132,204,22,0.07) 0%, transparent 70%)", pointerEvents: "none" }} />
+              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -55%)", width: 200, height: 200, background: "radial-gradient(circle, rgba(217,119,6,0.07) 0%, transparent 70%)", pointerEvents: "none" }} />
               <svg width="96" height="80" viewBox="0 0 96 80" fill="none" style={{ margin: "0 auto 20px", display: "block", position: "relative" }}>
                 {/* Center node — the user */}
-                <circle cx="48" cy="40" r="12" fill="rgba(132,204,22,0.12)" stroke="#84cc16" strokeWidth="1.5"/>
-                <circle cx="48" cy="40" r="6" fill="#84cc16" opacity="0.9"/>
+                <circle cx="48" cy="40" r="12" fill="rgba(217,119,6,0.12)" stroke="#D97706" strokeWidth="1.5"/>
+                <circle cx="48" cy="40" r="6" fill="#D97706" opacity="0.9"/>
                 {/* Soft glow ring around center */}
-                <circle cx="48" cy="40" r="16" stroke="#84cc16" strokeWidth="0.5" fill="none" opacity="0.2"/>
+                <circle cx="48" cy="40" r="16" stroke="#D97706" strokeWidth="0.5" fill="none" opacity="0.2"/>
                 {/* Satellite 1 — top right */}
-                <circle cx="76" cy="18" r="7" fill="rgba(132,204,22,0.07)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
+                <circle cx="76" cy="18" r="7" fill="rgba(217,119,6,0.07)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
                 <circle cx="76" cy="18" r="3" fill="var(--text-tertiary)" opacity="0.5"/>
                 {/* Satellite 2 — bottom right */}
-                <circle cx="78" cy="58" r="7" fill="rgba(132,204,22,0.07)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
+                <circle cx="78" cy="58" r="7" fill="rgba(217,119,6,0.07)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
                 <circle cx="78" cy="58" r="3" fill="var(--text-tertiary)" opacity="0.5"/>
                 {/* Satellite 3 — top left */}
-                <circle cx="20" cy="18" r="6" fill="rgba(132,204,22,0.06)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
+                <circle cx="20" cy="18" r="6" fill="rgba(217,119,6,0.06)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
                 <circle cx="20" cy="18" r="2.5" fill="var(--text-tertiary)" opacity="0.4"/>
                 {/* Satellite 4 — bottom left */}
-                <circle cx="18" cy="60" r="6" fill="rgba(132,204,22,0.06)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
+                <circle cx="18" cy="60" r="6" fill="rgba(217,119,6,0.06)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
                 <circle cx="18" cy="60" r="2.5" fill="var(--text-tertiary)" opacity="0.4"/>
                 {/* Satellite 5 — top center */}
-                <circle cx="48" cy="6" r="5" fill="rgba(132,204,22,0.05)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
+                <circle cx="48" cy="6" r="5" fill="rgba(217,119,6,0.05)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
                 <circle cx="48" cy="6" r="2" fill="var(--text-tertiary)" opacity="0.35"/>
                 {/* Connection lines — center to satellites */}
-                <line x1="58" y1="34" x2="70" y2="21" stroke="#84cc16" strokeWidth="1" opacity="0.35"/>
-                <line x1="58" y1="46" x2="72" y2="54" stroke="#84cc16" strokeWidth="1" opacity="0.35"/>
-                <line x1="40" y1="30" x2="28" y2="20" stroke="#84cc16" strokeWidth="1" opacity="0.25"/>
-                <line x1="38" y1="48" x2="24" y2="56" stroke="#84cc16" strokeWidth="1" opacity="0.25"/>
-                <line x1="48" y1="28" x2="48" y2="11" stroke="#84cc16" strokeWidth="1" opacity="0.2"/>
+                <line x1="58" y1="34" x2="70" y2="21" stroke="#D97706" strokeWidth="1" opacity="0.35"/>
+                <line x1="58" y1="46" x2="72" y2="54" stroke="#D97706" strokeWidth="1" opacity="0.35"/>
+                <line x1="40" y1="30" x2="28" y2="20" stroke="#D97706" strokeWidth="1" opacity="0.25"/>
+                <line x1="38" y1="48" x2="24" y2="56" stroke="#D97706" strokeWidth="1" opacity="0.25"/>
+                <line x1="48" y1="28" x2="48" y2="11" stroke="#D97706" strokeWidth="1" opacity="0.2"/>
                 {/* Satellite-to-satellite connections (mesh) */}
                 <line x1="72" y1="21" x2="48" y2="11" stroke="var(--text-tertiary)" strokeWidth="0.5" opacity="0.2" strokeDasharray="2 2"/>
                 <line x1="48" y1="11" x2="28" y2="20" stroke="var(--text-tertiary)" strokeWidth="0.5" opacity="0.2" strokeDasharray="2 2"/>
