@@ -1,56 +1,56 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
 
-/* ── CSS VARIABLES (Dark Premium — dark + lime) ──────────────────────────── */
+/* ── CSS VARIABLES (Clean Classic — white + lime) ──────────────────────────── */
 :root {
-  --bg: #09090b;
-  --bg-secondary: #111116;
-  --surface: #111116;
-  --surface-hover: #18181b;
-  --border: #27272a;
-  --border-subtle: #1c1c1f;
+  --bg: #f9fafb;
+  --bg-secondary: #f3f4f6;
+  --surface: #ffffff;
+  --surface-hover: #f9fafb;
+  --border: #e5e7eb;
+  --border-subtle: #f3f4f6;
 
-  --text-primary: #fafafa;
-  --text-secondary: #a1a1aa;
-  --text-tertiary: #71717a;
-  --text-muted: #a1a1aa;
-  --text-subtle: #71717a;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  --text-muted: #6b7280;
+  --text-subtle: #9ca3af;
 
-  --accent: #84cc16;
-  --accent-dim: rgba(132, 204, 22, 0.10);
-  --accent-hover: #a3e635;
-  --accent-glow: rgba(132, 204, 22, 0.12);
+  --accent: #65a30d;
+  --accent-dim: rgba(101, 163, 13, 0.08);
+  --accent-hover: #84cc16;
+  --accent-glow: rgba(101, 163, 13, 0.08);
 
-  --tag-bg: rgba(255,255,255,0.05);
-  --tag-border: rgba(255,255,255,0.08);
-  --tag-text: #d4d4d8;
+  --tag-bg: #f3f4f6;
+  --tag-border: #e5e7eb;
+  --tag-text: #374151;
 
-  --card-bg: #111116;
-  --card-border: #27272a;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
 
   --type-postdoc-bg: rgba(96, 165, 250, 0.10);
-  --type-postdoc-text: #60a5fa;
+  --type-postdoc-text: #2563eb;
 
   --type-fondos-bg: rgba(132, 204, 22, 0.10);
-  --type-fondos-text: #84cc16;
+  --type-fondos-text: #65a30d;
 
   --type-intl-bg: rgba(192, 132, 252, 0.10);
-  --type-intl-text: #c084fc;
+  --type-intl-text: #7c3aed;
 
   --type-phd-bg: rgba(244, 114, 182, 0.10);
-  --type-phd-text: #f472b6;
+  --type-phd-text: #be185d;
 
   --type-becas-bg: rgba(96, 165, 250, 0.10);
-  --type-becas-text: #60a5fa;
+  --type-becas-text: #2563eb;
 
   --radius: 14px;
   --radius-sm: 8px;
   --radius-xs: 5px;
 
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.4), 0 1px 2px rgba(0,0,0,0.3);
-  --shadow-card-hover: 0 0 40px rgba(132,204,22,0.10), 0 8px 24px rgba(0,0,0,0.5), 0 0 0 1px rgba(132,204,22,0.20);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
 }
 
-/* ── DARK PREMIUM VARIABLES ────────────────────────────────────────────────── */
+/* ── DARK MODE OVERRIDE (for variant-a, minimal) ───────────────────────────── */
 [data-theme="dark"] {
   --bg: #09090b;
   --bg-secondary: #0f0f10;
@@ -144,25 +144,10 @@ select:focus-visible {
   box-shadow: var(--shadow-card);
 }
 
-.b-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(101,163,13,0.15), transparent);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-
 .b-card:hover {
-  border-color: rgba(132,204,22,0.20);
-  box-shadow: 0 0 0 1px rgba(132,204,22,0.10), 0 8px 28px rgba(0,0,0,0.5);
+  border-color: var(--border);
+  box-shadow: var(--shadow-card-hover);
   transform: translateY(-1px);
-}
-
-[data-theme="dark"] .b-card:hover {
-  border-color: rgba(132,204,22,0.25);
-  box-shadow: 0 0 0 1px rgba(132,204,22,0.15), 0 8px 32px rgba(0,0,0,0.7);
 }
 
 .b-card:hover::before { opacity: 0; }
@@ -358,20 +343,23 @@ select:focus-visible {
 .b-connect-btn {
   padding: 5px 12px;
   border-radius: 8px;
-  border: none;
+  border: 1px solid var(--accent);
   font-size: 11px;
   font-weight: 700;
   cursor: pointer;
-  background: var(--btn-color, var(--accent));
-  color: #000;
+  background: transparent;
+  color: var(--accent);
   transition: all 0.15s;
 }
-.b-connect-btn.connected {
-  background: rgba(132,204,22,0.12);
-  color: var(--btn-color, var(--accent));
-}
 .b-connect-btn:hover:not(.connected) {
-  filter: brightness(1.1);
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+.b-connect-btn.connected {
+  background: rgba(34,197,94,0.10);
+  color: #16a34a;
+  border-color: rgba(34,197,94,0.25);
 }
 
 /* ── RESEARCHER LIST (network view) ─────────────────────────────────────── */
@@ -827,8 +815,9 @@ select:focus-visible {
 }
 
 .opp-cta:hover {
-  background: #f3f4f6;
-  border-color: #d1d5db;
+  background: var(--accent-dim);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 /* ── NETWORK VIEW ──────────────────────────────────────────────────────────── */

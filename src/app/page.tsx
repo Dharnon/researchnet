@@ -950,7 +950,7 @@ export default function App() {
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18, padding: 28, marginBottom: 16 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: 24 }}>
-              <Avatar initials={userProfile.avatar} color={"#059669"} color={userProfile.color} size={64} />
+              <Avatar initials={userProfile.avatar} color={userProfile.color} size={64} />
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" as const }}>
                   <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
