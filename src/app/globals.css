@@ -2,40 +2,104 @@
 
 /* ── BASE RESET ─────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
+body { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-size: 14px; line-height: 1.5; -webkit-font-smoothing: antialiased; }
 
+/* ── LIGHT THEME (default) ─────────────────────────────────────────────── */
+:root, [data-theme="light"] {
+  --bg: #f8f9fa;
+  --surface: #ffffff;
+  --surface-hover: #f9fafb;
+  --border: #e5e7eb;
+  --border-subtle: #f3f4f6;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+  --text-tertiary: #9ca3af;
+  --text-muted: #6b7280;
+  --text-subtle: #9ca3af;
+  --accent: #059669;
+  --accent-light: #d1fae5;
+  --tag-bg: #f3f4f6;
+  --tag-text: #374151;
+  --tag-border: #e5e7eb;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+  --card-accent: #059669;
+  --surface-raised: #ffffff;
+  --type-postdoc-bg: #e0f2fe;
+  --type-postdoc-text: #0369a1;
+  --type-fondos-bg: #dcfce7;
+  --type-fondos-text: #15803d;
+  --type-intl-bg: #f3e8ff;
+  --type-intl-text: #7c3aed;
+  --type-phd-bg: #fce7f3;
+  --type-phd-text: #be185d;
+  --header-bg: #ffffff;
+  --nav-bg: #f3f4f6;
+  --nav-item-bg: #ffffff;
+  --nav-item-color: #6b7280;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-hover: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+/* ── DARK THEME ─────────────────────────────────────────────────────────── */
+[data-theme="dark"] {
+  --bg: #09090b;
+  --surface: #111114;
+  --surface-hover: #161618;
+  --border: #1e1e22;
+  --border-subtle: #141417;
+  --text-primary: #f5f5f5;
+  --text-secondary: #9ca3af;
+  --text-tertiary: #6b7280;
+  --text-muted: #9ca3af;
+  --text-subtle: #6b7280;
+  --accent: #84cc16;
+  --accent-light: rgba(132,204,22,0.12);
+  --tag-bg: rgba(255,255,255,0.06);
+  --tag-text: #d1d5db;
+  --tag-border: #222222;
+  --card-bg: #111114;
+  --card-border: #1e1e22;
+  --card-accent: #84cc16;
+  --surface-raised: #161618;
+  --type-postdoc-bg: rgba(96,165,250,0.12);
+  --type-postdoc-text: #60a5fa;
+  --type-fondos-bg: rgba(132,204,22,0.12);
+  --type-fondos-text: #84cc16;
+  --type-intl-bg: rgba(192,132,252,0.12);
+  --type-intl-text: #c084fc;
+  --type-phd-bg: rgba(244,114,182,0.12);
+  --type-phd-text: #f472b6;
+  --header-bg: rgba(9,9,11,0.92);
+  --nav-bg: #0f0f0f;
+  --nav-item-bg: #1a1a1a;
+  --nav-item-color: #6b7280;
+  --shadow-card: none;
+  --shadow-hover: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+/* ── BASE STYLES ─────────────────────────────────────────────────────────── */
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  font-size: 14px;
-  line-height: 1.5;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #f4f4f5;
-  background: #09090b;
+  background: var(--bg);
+  color: var(--text-primary);
+  transition: background 0.2s, color 0.2s;
 }
 
 /* ── SCROLLBAR ──────────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 
 /* ── FOCUS ──────────────────────────────────────────────────────────────── */
-button:focus-visible,
-input:focus-visible,
-select:focus-visible {
-  outline: 2px solid #059669;
+button:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
+/* ── TYPOGRAPHY ─────────────────────────────────────────────────────────── */
+h1, h2, h3 { font-weight: 700; line-height: 1.2; color: var(--text-primary); }
+
 /* ── SELECT ─────────────────────────────────────────────────────────────── */
 select { font-family: inherit; }
-select option { background: #fff; color: #111827; }
-
-/* ── TYPOGRAPHY ─────────────────────────────────────────────────────────── */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 700;
-  line-height: 1.2;
-  color: #111827;
-}
+select option { background: var(--surface); color: var(--text-primary); }

@@ -97,12 +97,12 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
       <div onClick={onClose} style={{ position: "fixed", inset: 0, top: 64, background: "rgba(0,0,0,0.7)", zIndex: 39, backdropFilter: "blur(4px)" }} />
       <div style={{
         position: "fixed", top: 64, right: 0, bottom: 0, width: 380,
-        background: "#111111", borderLeft: "1px solid #e5e7eb",
+        background: "#111111", borderLeft: "1px solid var(--border)",
         zIndex: 50, display: "flex", flexDirection: "column",
         boxShadow: "-4px 0 24px rgba(0,0,0,0.08)",
       }}>
         {/* Header */}
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 20px", borderBottom: "1px solid #f3f4f6" }}>
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "16px 20px", borderBottom: "1px solid var(--surface-hover)" }}>
           <span style={{ fontSize: 11, fontWeight: 600, color: "#a1a1aa", textTransform: "uppercase", letterSpacing: "0.06em" }}>Perfil</span>
           <button onClick={onClose} style={{ background: "none", border: "none", cursor: "pointer", color: "#71717a", fontSize: 20, lineHeight: 1, padding: 4 }}>
             <X size={18} />
@@ -119,7 +119,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
               <p style={{ fontSize: 13, color: "#a1a1aa", marginBottom: 2 }}>{researcher.role}</p>
               <p style={{ fontSize: 12, color: "#71717a" }}>{researcher.dept}</p>
               {researcher.open && (
-                <span style={{ display: "inline-flex", alignItems: "center", gap: 4, marginTop: 6, fontSize: 10, fontWeight: 600, color: "#84cc16", background: "#84cc1615", border: "1px solid #a7f3d0", padding: "2px 8px", borderRadius: 20 }}>
+                <span style={{ display: "inline-flex", alignItems: "center", gap: 4, marginTop: 6, fontSize: 10, fontWeight: 600, color: "#84cc16", background: "#84cc1615", border: "1px solid var(--accent)", padding: "2px 8px", borderRadius: 20 }}>
                   <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#9ae034" }} />
                   Disponible
                 </span>
@@ -128,7 +128,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           </div>
 
           {/* Match */}
-          <div style={{ background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
+          <div style={{ background: "#111111", border: "1px solid var(--border)", borderRadius: 12, padding: "12px 16px", display: "flex", alignItems: "center", gap: 10 }}>
             <span style={{ fontSize: 28, fontWeight: 800, color: "#84cc16", letterSpacing: "-0.03em", lineHeight: 1 }}>{researcher.match}%</span>
             <div>
               <div style={{ fontSize: 12, fontWeight: 600, color: "#d4d4d8" }}> affinity</div>
@@ -145,7 +145,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           {/* Stats */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
             {[{ v: researcher.pubs, l: "Publicaciones" }, { v: researcher.projects, l: "Proyectos" }, { v: researcher.groups.length, l: "Grupos" }].map((s) => (
-              <div key={s.l} style={{ background: "#111111", border: "1px solid #e5e7eb", borderRadius: 10, padding: "12px 8px", textAlign: "center" }}>
+              <div key={s.l} style={{ background: "#111111", border: "1px solid var(--border)", borderRadius: 10, padding: "12px 8px", textAlign: "center" }}>
                 <div style={{ fontSize: 20, fontWeight: 800, color: "#f4f4f5", letterSpacing: "-0.03em", marginBottom: 2 }}>{s.v}</div>
                 <div style={{ fontSize: 10, color: "#71717a", fontWeight: 500 }}>{s.l}</div>
               </div>
@@ -157,7 +157,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             <p style={{ fontSize: 11, fontWeight: 600, color: "#a1a1aa", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Áreas de investigación</p>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               {researcher.tags.map((tag) => (
-                <span key={tag} style={{ fontSize: 11, fontWeight: 500, color: "#d4d4d8", background: "#1a1a1e", border: "1px solid #e5e7eb", padding: "4px 10px", borderRadius: 20 }}>{tag}</span>
+                <span key={tag} style={{ fontSize: 11, fontWeight: 500, color: "#d4d4d8", background: "#1a1a1e", border: "1px solid var(--border)", padding: "4px 10px", borderRadius: 20 }}>{tag}</span>
               ))}
             </div>
           </div>
@@ -167,14 +167,14 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             <p style={{ fontSize: 11, fontWeight: 600, color: "#a1a1aa", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Grupos</p>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               {researcher.groups.map((g) => (
-                <span key={g} style={{ fontSize: 11, fontWeight: 500, color: "#84cc16", background: "#84cc1615", border: "1px solid #a7f3d0", padding: "4px 10px", borderRadius: 6 }}>{g}</span>
+                <span key={g} style={{ fontSize: 11, fontWeight: 500, color: "#84cc16", background: "#84cc1615", border: "1px solid var(--accent)", padding: "4px 10px", borderRadius: 6 }}>{g}</span>
               ))}
             </div>
           </div>
         </div>
 
         {/* Footer */}
-        <div style={{ padding: "16px 20px", borderTop: "1px solid #f3f4f6", display: "flex", gap: 8 }}>
+        <div style={{ padding: "16px 20px", borderTop: "1px solid var(--surface-hover)", display: "flex", gap: 8 }}>
           <button onClick={onConnect} style={{
             flex: 1, padding: "10px 16px", borderRadius: 8, border: "none",
             fontSize: 13, fontWeight: 600, cursor: "pointer",
@@ -187,7 +187,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           {!isConnected && (
             <button style={{
               flex: 1, padding: "10px 16px", borderRadius: 8,
-              border: "1px solid #e5e7eb", fontSize: 13, fontWeight: 600,
+              border: "1px solid var(--border)", fontSize: 13, fontWeight: 600,
               cursor: "pointer", background: "#111111", color: "#d4d4d8",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
             }}>
@@ -217,7 +217,7 @@ function OppModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onClose: (
       <div style={{
         position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
         width: "100%", maxWidth: 480, background: "#111111", borderRadius: 16,
-        border: "1px solid #e5e7eb", padding: 28, zIndex: 201,
+        border: "1px solid var(--border)", padding: 28, zIndex: 201,
         boxShadow: "0 24px 60px rgba(0,0,0,0.15)",
       }}>
         <button onClick={onClose} style={{ position: "absolute", top: 16, right: 16, background: "none", border: "none", cursor: "pointer", color: "#71717a" }}>
@@ -252,7 +252,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
 }) {
   return (
     <div onClick={onSelect} style={{
-      background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12,
+      background: "#111111", border: "1px solid var(--border)", borderRadius: 12,
       padding: "20px", cursor: "pointer",
       transition: "all 0.18s ease",
       display: "flex", flexDirection: "column", gap: 14,
@@ -276,18 +276,18 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       {/* Tags */}
       <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
         {researcher.tags.map((tag) => (
-          <span key={tag} style={{ fontSize: 10, fontWeight: 500, color: "#a1a1aa", background: "#1a1a1e", border: "1px solid #e5e7eb", padding: "3px 8px", borderRadius: 20 }}>{tag}</span>
+          <span key={tag} style={{ fontSize: 10, fontWeight: 500, color: "#a1a1aa", background: "#1a1a1e", border: "1px solid var(--border)", padding: "3px 8px", borderRadius: 20 }}>{tag}</span>
         ))}
       </div>
 
       {/* Footer */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 4, borderTop: "1px solid #f3f4f6" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", paddingTop: 4, borderTop: "1px solid var(--surface-hover)" }}>
         <div style={{ display: "flex", gap: 12 }}>
           <span style={{ fontSize: 12, color: "#a1a1aa" }}><span style={{ fontWeight: 700, color: "#d4d4d8" }}>{researcher.pubs}</span> papers</span>
           <span style={{ fontSize: 12, color: "#a1a1aa" }}><span style={{ fontWeight: 700, color: "#d4d4d8" }}>{researcher.projects}</span> proyectos</span>
         </div>
         {researcher.open && (
-          <span style={{ fontSize: 9, fontWeight: 700, color: "#84cc16", background: "#84cc1615", border: "1px solid #a7f3d0", padding: "2px 7px", borderRadius: 20, display: "flex", alignItems: "center", gap: 3 }}>
+          <span style={{ fontSize: 9, fontWeight: 700, color: "#84cc16", background: "#84cc1615", border: "1px solid var(--accent)", padding: "2px 7px", borderRadius: 20, display: "flex", alignItems: "center", gap: 3 }}>
             <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#9ae034" }} />Open
           </span>
         )}
@@ -318,7 +318,7 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
 }) {
   return (
     <div style={{
-      background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12,
+      background: "#111111", border: "1px solid var(--border)", borderRadius: 12,
       padding: "14px 16px", display: "flex", alignItems: "center", gap: 12,
       transition: "all 0.15s",
     }}
@@ -332,13 +332,13 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
       </div>
       <div style={{ fontSize: 14, fontWeight: 700, color: "#84cc16", flexShrink: 0 }}>{researcher.match}%</div>
       <button onClick={onMessage} title="Mensaje" style={{
-        width: 32, height: 32, borderRadius: 8, border: "1px solid #e5e7eb",
+        width: 32, height: 32, borderRadius: 8, border: "1px solid var(--border)",
         background: "#111111", color: "#a1a1aa", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
       }}>
         <MessageCircle size={14} />
       </button>
       <button onClick={onDisconnect} title="Desconectar" style={{
-        width: 32, height: 32, borderRadius: 8, border: "1px solid #e5e7eb",
+        width: 32, height: 32, borderRadius: 8, border: "1px solid var(--border)",
         background: "#111111", color: "#71717a", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
       }}>
         <X size={14} />
@@ -367,7 +367,7 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
     return (
       <div style={{ maxWidth: 680, margin: "0 auto", padding: "24px", display: "flex", flexDirection: "column", height: "calc(100vh - 64px)" }}>
         {/* Thread header */}
-        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid #f3f4f6" }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20, paddingBottom: 16, borderBottom: "1px solid var(--surface-hover)" }}>
           <button onClick={onBack} style={{ background: "none", border: "none", cursor: "pointer", color: "#a1a1aa", display: "flex" }}>
             <ArrowLeft size={16} />
           </button>
@@ -405,7 +405,7 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
             onChange={(e) => setNewMessage(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && onSend()}
             placeholder="Escribe un mensaje..."
-            style={{ flex: 1, background: "#111111", border: "1px solid #e5e7eb", borderRadius: 24, padding: "10px 16px", color: "#f4f4f5", fontSize: 13, outline: "none" }}
+            style={{ flex: 1, background: "#111111", border: "1px solid var(--border)", borderRadius: 24, padding: "10px 16px", color: "#f4f4f5", fontSize: 13, outline: "none" }}
           />
           <button onClick={onSend} style={{
             width: 40, height: 40, borderRadius: "50%", border: "none",
@@ -424,7 +424,7 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
       <h1 style={{ fontSize: 22, fontWeight: 700, color: "#f4f4f5", letterSpacing: "-0.03em", marginBottom: 4 }}>Mensajes</h1>
       <p style={{ fontSize: 13, color: "#a1a1aa", marginBottom: 24 }}>Conversaciones con tus contactos</p>
       {conversations.length === 0 ? (
-        <div style={{ textAlign: "center", padding: "60px 24px", background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12 }}>
+        <div style={{ textAlign: "center", padding: "60px 24px", background: "#111111", border: "1px solid var(--border)", borderRadius: 12 }}>
           <MessageCircle size={32} style={{ color: "#2a2a30", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
           <p style={{ fontSize: 14, fontWeight: 600, color: "#d4d4d8", marginBottom: 4 }}>Sin mensajes aún</p>
           <p style={{ fontSize: 12, color: "#71717a" }}>Conéctate con investigadores para empezar una conversación</p>
@@ -434,7 +434,7 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
           {conversations.map((conv) => (
             <div key={conv.orcid} onClick={() => onSelect(conv.orcid)} style={{
               display: "flex", alignItems: "center", gap: 12,
-              background: "#111111", border: "1px solid #e5e7eb",
+              background: "#111111", border: "1px solid var(--border)",
               borderRadius: 12, padding: "14px 16px", cursor: "pointer",
               transition: "all 0.15s",
             }}
@@ -523,6 +523,11 @@ export default function App() {
   const [newMessage, setNewMessage] = useState("");
   const [conversations] = useState(mockMessages);
   const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     setMounted(true);
@@ -567,7 +572,7 @@ export default function App() {
     <div style={{ background: "#09090b", minHeight: "100vh" }}>
       {/* HEADER */}
       <header style={{
-        background: "#111111", borderBottom: "1px solid #e5e7eb",
+        background: "#111111", borderBottom: "1px solid var(--border)",
         padding: "0 24px", height: 64,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         position: "sticky" as const, top: 0, zIndex: 50,
@@ -577,7 +582,7 @@ export default function App() {
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <div style={{
             width: 32, height: 32, borderRadius: 8,
-            background: "linear-gradient(135deg, #059669, #10b981)",
+            background: "linear-gradient(135deg, var(--accent), var(--accent))",
             display: "flex", alignItems: "center", justifyContent: "center",
           }}>
             <Users size={16} color="#111111" />
@@ -604,7 +609,7 @@ export default function App() {
             background: "#111111", borderRadius: 20, padding: 36, maxWidth: 420, width: "100%",
             textAlign: "center", boxShadow: "0 24px 60px rgba(0,0,0,0.2)",
           }}>
-            <div style={{ width: 56, height: 56, borderRadius: 14, background: "linear-gradient(135deg, #059669, #10b981)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
+            <div style={{ width: 56, height: 56, borderRadius: 14, background: "linear-gradient(135deg, var(--accent), var(--accent))", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
               <Users size={24} color="#111111" />
             </div>
             <h2 style={{ fontSize: 20, fontWeight: 700, color: "#f4f4f5", letterSpacing: "-0.03em", marginBottom: 8 }}>Bienvenido a ResearchNet</h2>
@@ -653,11 +658,11 @@ export default function App() {
 
           {/* Filter bar */}
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", marginBottom: 20 }}>
-            <div style={{ background: "#111111", border: "1px solid #e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
+            <div style={{ background: "#111111", border: "1px solid var(--border)", borderRadius: 8, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
               <Search size={14} color="#71717a" />
               <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, área o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "#f4f4f5", fontSize: 13, flex: 1 }} />
             </div>
-            <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none", background: "#111111", border: "1px solid #e5e7eb", borderRadius: 8, color: "#a1a1aa", fontSize: 13, fontWeight: 500, padding: "8px 12px", cursor: "pointer" }}>
+            <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none", background: "#111111", border: "1px solid var(--border)", borderRadius: 8, color: "#a1a1aa", fontSize: 13, fontWeight: 500, padding: "8px 12px", cursor: "pointer" }}>
               {allDepts.map((d) => <option key={d} value={d}>{d}</option>)}
             </select>
             <button onClick={() => setOnlyOpen((p) => !p)} style={{
@@ -687,7 +692,7 @@ export default function App() {
           </div>
 
           {filtered.length === 0 && (
-            <div style={{ textAlign: "center", padding: "60px 24px", background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12 }}>
+            <div style={{ textAlign: "center", padding: "60px 24px", background: "#111111", border: "1px solid var(--border)", borderRadius: 12 }}>
               <Search size={28} style={{ color: "#2a2a30", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
               <p style={{ fontSize: 14, fontWeight: 600, color: "#d4d4d8", marginBottom: 4 }}>Sin resultados</p>
               <p style={{ fontSize: 12, color: "#71717a" }}>Prueba con otros filtros o términos de búsqueda</p>
@@ -709,7 +714,7 @@ export default function App() {
               const col = c[opp.type] ?? { bg: "#1a1a1e", text: "#d4d4d8" };
               return (
                 <div key={opp.id} onClick={() => setSelectedOpp(opp)} style={{
-                  background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12,
+                  background: "#111111", border: "1px solid var(--border)", borderRadius: 12,
                   padding: 20, cursor: "pointer", display: "flex", flexDirection: "column", gap: 10,
                   transition: "all 0.18s",
                 }}
@@ -745,7 +750,7 @@ export default function App() {
             <p style={{ fontSize: 14, color: "#a1a1aa" }}>{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
           </div>
           {connectedResearchers.length === 0 ? (
-            <div style={{ textAlign: "center", padding: "80px 32px", background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12 }}>
+            <div style={{ textAlign: "center", padding: "80px 32px", background: "#111111", border: "1px solid var(--border)", borderRadius: 12 }}>
               <Users size={48} style={{ color: "#2a2a30", marginBottom: 16, display: "block", margin: "0 auto 16px" }} />
               <p style={{ fontSize: 16, fontWeight: 600, color: "#d4d4d8", marginBottom: 8 }}>Tu red está vacía</p>
               <p style={{ fontSize: 13, color: "#71717a", maxWidth: 280, margin: "0 auto 24px", lineHeight: 1.6 }}>Explora investigadores y conéctate para construir tu red de colaboración.</p>
@@ -787,14 +792,14 @@ export default function App() {
           </div>
 
           {/* Profile card */}
-          <div style={{ background: "#111111", border: "1px solid #e5e7eb", borderRadius: 16, padding: 28, marginBottom: 16 }}>
+          <div style={{ background: "#111111", border: "1px solid var(--border)", borderRadius: 16, padding: 28, marginBottom: 16 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: 24 }}>
               <Avatar seed={userProfile.seed} size={72} style={{ borderRadius: "50%", overflow: "hidden", flexShrink: 0 }} />
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" as const }}>
                   <h2 style={{ fontSize: 20, fontWeight: 700, color: "#f4f4f5", letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
                   {userProfile.open && (
-                    <span style={{ fontSize: 10, fontWeight: 700, color: "#84cc16", background: "#84cc1615", border: "1px solid #a7f3d0", padding: "2px 8px", borderRadius: 20, display: "flex", alignItems: "center", gap: 3 }}>
+                    <span style={{ fontSize: 10, fontWeight: 700, color: "#84cc16", background: "#84cc1615", border: "1px solid var(--accent)", padding: "2px 8px", borderRadius: 20, display: "flex", alignItems: "center", gap: 3 }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#9ae034" }} />Disponible
                     </span>
                   )}
@@ -802,21 +807,21 @@ export default function App() {
                 <p style={{ fontSize: 13, color: "#a1a1aa", marginBottom: 2 }}>{userProfile.role}</p>
                 <p style={{ fontSize: 12, color: "#71717a" }}>{userProfile.dept}</p>
               </div>
-              <button style={{ padding: "8px 16px", borderRadius: 8, border: "1px solid #e5e7eb", background: "#111111", color: "#d4d4d8", fontSize: 12, fontWeight: 600, cursor: "pointer", flexShrink: 0 }}>
+              <button style={{ padding: "8px 16px", borderRadius: 8, border: "1px solid var(--border)", background: "#111111", color: "#d4d4d8", fontSize: 12, fontWeight: 600, cursor: "pointer", flexShrink: 0 }}>
                 Editar perfil
               </button>
             </div>
             <p style={{ fontSize: 13, color: "#a1a1aa", lineHeight: 1.7, marginBottom: 20 }}>{userProfile.bio}</p>
             <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const, marginBottom: 20 }}>
               {userProfile.tags.map((tag) => (
-                <span key={tag} style={{ fontSize: 12, fontWeight: 500, color: "#84cc16", background: "#84cc1615", border: "1px solid #a7f3d0", padding: "4px 12px", borderRadius: 20 }}>{tag}</span>
+                <span key={tag} style={{ fontSize: 12, fontWeight: 500, color: "#84cc16", background: "#84cc1615", border: "1px solid var(--accent)", padding: "4px 12px", borderRadius: 20 }}>{tag}</span>
               ))}
             </div>
             <div>
               <p style={{ fontSize: 11, fontWeight: 600, color: "#a1a1aa", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Grupos de investigación</p>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const }}>
                 {userProfile.groups.map((g) => (
-                  <span key={g} style={{ fontSize: 12, fontWeight: 500, color: "#d4d4d8", background: "#1a1a1e", border: "1px solid #e5e7eb", padding: "4px 12px", borderRadius: 6 }}>{g}</span>
+                  <span key={g} style={{ fontSize: 12, fontWeight: 500, color: "#d4d4d8", background: "#1a1a1e", border: "1px solid var(--border)", padding: "4px 12px", borderRadius: 6 }}>{g}</span>
                 ))}
               </div>
             </div>
@@ -825,7 +830,7 @@ export default function App() {
           {/* Stats */}
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 16 }}>
             {[{ v: userProfile.pubs, l: "Publicaciones", icon: <BookOpen size={16} /> }, { v: userProfile.projects, l: "Proyectos", icon: <Briefcase size={16} /> }, { v: connectedIds.length, l: "Conexiones", icon: <Users size={16} /> }].map((s) => (
-              <div key={s.l} style={{ background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12, padding: "20px 16px", textAlign: "center" }}>
+              <div key={s.l} style={{ background: "#111111", border: "1px solid var(--border)", borderRadius: 12, padding: "20px 16px", textAlign: "center" }}>
                 <div style={{ color: "#2a2a30", marginBottom: 8, display: "flex", justifyContent: "center" }}>{s.icon}</div>
                 <div style={{ fontSize: 28, fontWeight: 800, color: "#f4f4f5", letterSpacing: "-0.04em", marginBottom: 4 }}>{s.v}</div>
                 <div style={{ fontSize: 11, color: "#71717a", fontWeight: 500 }}>{s.l}</div>
@@ -834,14 +839,14 @@ export default function App() {
           </div>
 
           {/* Quick actions */}
-          <div style={{ background: "#111111", border: "1px solid #e5e7eb", borderRadius: 12, padding: 20 }}>
+          <div style={{ background: "#111111", border: "1px solid var(--border)", borderRadius: 12, padding: 20 }}>
             <p style={{ fontSize: 12, fontWeight: 600, color: "#d4d4d8", marginBottom: 14 }}>Acciones rápidas</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               {[{ label: "Ver mi perfil público", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((a) => (
                 <button key={a.label} style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                   padding: "12px 14px", borderRadius: 8,
-                  background: "#111111", border: "1px solid #e5e7eb",
+                  background: "#111111", border: "1px solid var(--border)",
                   color: "#d4d4d8", fontSize: 13, fontWeight: 500,
                   cursor: "pointer", width: "100%", textAlign: "left",
                 }}>
