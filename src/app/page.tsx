@@ -81,7 +81,7 @@ function ResearcherCard({ researcher, onConnect, isConnected, onSelect }: {
         <div className="r-card-header">
           <div className="r-card-header-row">
             <h3 className="r-name">{researcher.name}</h3>
-            <span className="r-match-chip">{researcher.match}%</span>
+            <span className="r-match-chip">{researcher.match}</span>
           </div>
           <p className="r-role">{researcher.role}</p>
           <p className="r-dept">{researcher.dept}</p>
