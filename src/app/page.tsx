@@ -63,7 +63,7 @@ function SkeletonLoader() {
   return (
     <div style={{ background: "var(--bg)", minHeight: "100vh", padding: "24px" }}>
       {/* Header skeleton */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32, padding: "0 0 24px", borderBottom: "1px solid #1e1e22" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32, padding: "0 0 24px", borderBottom: "1px solid var(--border)" }}>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
           <div style={{ width: 28, height: 28, borderRadius: 8, background: "var(--border)" }} />
           <div style={{ width: 90, height: 14, borderRadius: 4, background: "var(--border)" }} />
@@ -74,7 +74,7 @@ function SkeletonLoader() {
       {/* Cards grid skeleton */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
         {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} style={{ background: "var(--card-bg)", border: "1px solid #1e1e22", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
+          <div key={i} style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
               <div style={{ width: 44, height: 44, borderRadius: 10, background: "var(--border)" }} />
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
@@ -509,7 +509,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
           textAlign: "center", padding: "60px 24px", background: "var(--card-bg)",
           border: "1px solid var(--card-border)", borderRadius: 16,
         }}>
-          <MessageCircle size={32} style={{ color: "#222", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
+          <MessageCircle size={32} style={{ color: "var(--text-tertiary)", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
           <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>Sin mensajes aún</p>
           <p style={{ fontSize: 12, color: "var(--text-muted)" }}>Conéctate con investigadores y empieza una conversación</p>
         </div>
@@ -806,7 +806,7 @@ export default function App() {
           </div>
           {filteredResearchers.length === 0 && (
             <div style={{ textAlign: "center", padding: "60px 20px", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 16 }}>
-              <Search size={32} style={{ color: "#222", marginBottom: 14, display: "block", margin: "0 auto 14px" }} />
+              <Search size={32} style={{ color: "var(--text-tertiary)", marginBottom: 14, display: "block", margin: "0 auto 14px" }} />
               <p style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 6 }}>Sin resultados</p>
               <p style={{ fontSize: 12, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto" }}>Prueba con otros filtros o cambia el término de búsqueda</p>
             </div>
