@@ -5,7 +5,7 @@ import {
   Search, Users, Zap, User, BookOpen,
   Briefcase, Clock, X, Globe,
   ExternalLink, ChevronRight, MessageCircle,
-  Send, ArrowLeft, Check, Circle,
+  Send, ArrowLeft, Check, Circle, Sun, Moon,
 } from "lucide-react";
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
@@ -607,6 +607,13 @@ export default function App() {
   const [newMessage, setNewMessage] = useState("");
   const [conversations, setConversations] = useState(mockMessages);
   const [mounted, setMounted] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("dark");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((t) => t === "dark" ? "light" : "dark");
 
   useEffect(() => {
     setMounted(true);
@@ -652,22 +659,22 @@ export default function App() {
       <header style={{
         borderBottom: "1px solid var(--card-border)", padding: "0 24px", height: 60,
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        position: "sticky" as const, top: 0, background: "rgba(9,9,11,0.92)",
+        position: "sticky" as const, top: 0, background: "rgba(250,250,248,0.92)",
         backdropFilter: "blur(20px)", zIndex: 50,
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <div style={{
             width: 28, height: 28, borderRadius: 8,
-            background: "linear-gradient(135deg, #84cc16, #65a30d)",
+            background: "linear-gradient(135deg, #D97706, #92400E)",
             display: "flex", alignItems: "center", justifyContent: "center",
-            boxShadow: "0 0 20px #84cc1625",
+            boxShadow: "0 0 20px rgba(217,119,6,0.25)",
           }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <circle cx="8" cy="12" r="3" fill="#000" opacity="0.9"/>
-              <circle cx="16" cy="7" r="2.5" fill="#000" opacity="0.7"/>
-              <circle cx="16" cy="17" r="2.5" fill="#000" opacity="0.7"/>
-              <line x1="11" y1="12" x2="14" y2="7.8" stroke="#000" strokeWidth="1.5" opacity="0.6"/>
-              <line x1="11" y1="12" x2="14" y2="16.2" stroke="#000" strokeWidth="1.5" opacity="0.6"/>
+              <circle cx="8" cy="12" r="3" fill="#fff" opacity="0.9"/>
+              <circle cx="16" cy="7" r="2.5" fill="#fff" opacity="0.7"/>
+              <circle cx="16" cy="17" r="2.5" fill="#fff" opacity="0.7"/>
+              <line x1="11" y1="12" x2="14" y2="7.8" stroke="#fff" strokeWidth="1.5" opacity="0.6"/>
+              <line x1="11" y1="12" x2="14" y2="16.2" stroke="#fff" strokeWidth="1.5" opacity="0.6"/>
             </svg>
           </div>
           <span style={{ fontSize: 15, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em" }}>ResearchNet</span>
@@ -691,16 +698,16 @@ export default function App() {
           <div style={{
             background: "#111111", border: "1px solid #222222", borderRadius: 20,
             padding: 36, maxWidth: 420, width: "100%", textAlign: "center",
-            boxShadow: "0 24px 80px rgba(0,0,0,0.8)",
+            boxShadow: "0 24px 80px rgba(0,0,0,0.12)",
           }}>
             <div style={{
               width: 52, height: 52, borderRadius: 14,
-              background: "linear-gradient(135deg, #84cc16, #65a30d)",
+              background: "linear-gradient(135deg, #D97706, #92400E)",
               display: "flex", alignItems: "center", justifyContent: "center",
-              margin: "0 auto 20px", boxShadow: "0 0 40px #84cc1630",
+              margin: "0 auto 20px", boxShadow: "0 0 40px rgba(217,119,6,0.25)",
             }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="8" cy="12" r="3" fill="#000" opacity="0.9"/>
+                <circle cx="8" cy="12" r="3" fill="#fff" opacity="0.9"/>
                 <circle cx="16" cy="7" r="2.5" fill="#000" opacity="0.7"/>
                 <circle cx="16" cy="17" r="2.5" fill="#000" opacity="0.7"/>
                 <line x1="11" y1="12" x2="14" y2="7.8" stroke="#000" strokeWidth="1.5" opacity="0.6"/>
@@ -772,7 +779,7 @@ export default function App() {
               {allDepts.map((d) => <option key={d} value={d}>{d}</option>)}
             </select>
             <button onClick={() => setOnlyOpen((p) => !p)} style={{
-              background: onlyOpen ? "rgba(132,204,22,0.08)" : "#111111",
+              background: onlyOpen ? "var(--accent-light)" : "var(--surface)",
               border: `1px solid ${onlyOpen ? "#84cc1640" : "#1e1e1e"}`,
               borderRadius: 10, color: onlyOpen ? "var(--accent)" : "var(--text-muted)",
               fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
@@ -854,16 +861,40 @@ export default function App() {
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
           </div>
           {connectedResearchers.length === 0 ? (
-            <div style={{ textAlign: "center", padding: "80px 32px", background: "var(--card-bg)", border: "1px solid var(--card-border)", borderRadius: 16 }}>
-              <svg width="52" height="52" viewBox="0 0 52 52" fill="none" style={{ margin: "0 auto 20px", display: "block" }}>
-                <circle cx="16" cy="26" r="9" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.5"/>
-                <circle cx="36" cy="14" r="7" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.4"/>
-                <circle cx="36" cy="38" r="7" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.4"/>
-                <line x1="25" y1="23" x2="29" y2="16" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.6"/>
-                <line x1="25" y1="29" x2="29" y2="36" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="3 2" opacity="0.6"/>
-                <circle cx="16" cy="26" r="3" fill="var(--accent)" opacity="0.8"/>
-                <circle cx="36" cy="14" r="2" fill="var(--accent)" opacity="0.5"/>
-                <circle cx="36" cy="38" r="2" fill="var(--accent)" opacity="0.5"/>
+            <div style={{ textAlign: "center", padding: "80px 32px", background: "var(--card-bg)", border: "1px solid var(--card-border)", borderRadius: 16, position: "relative", overflow: "hidden" }}>
+              {/* Radial glow behind illustration */}
+              <div style={{ position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -55%)", width: 200, height: 200, background: "radial-gradient(circle, rgba(132,204,22,0.07) 0%, transparent 70%)", pointerEvents: "none" }} />
+              <svg width="96" height="80" viewBox="0 0 96 80" fill="none" style={{ margin: "0 auto 20px", display: "block", position: "relative" }}>
+                {/* Center node — the user */}
+                <circle cx="48" cy="40" r="12" fill="rgba(132,204,22,0.12)" stroke="#84cc16" strokeWidth="1.5"/>
+                <circle cx="48" cy="40" r="6" fill="#84cc16" opacity="0.9"/>
+                {/* Soft glow ring around center */}
+                <circle cx="48" cy="40" r="16" stroke="#84cc16" strokeWidth="0.5" fill="none" opacity="0.2"/>
+                {/* Satellite 1 — top right */}
+                <circle cx="76" cy="18" r="7" fill="rgba(132,204,22,0.07)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
+                <circle cx="76" cy="18" r="3" fill="var(--text-tertiary)" opacity="0.5"/>
+                {/* Satellite 2 — bottom right */}
+                <circle cx="78" cy="58" r="7" fill="rgba(132,204,22,0.07)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
+                <circle cx="78" cy="58" r="3" fill="var(--text-tertiary)" opacity="0.5"/>
+                {/* Satellite 3 — top left */}
+                <circle cx="20" cy="18" r="6" fill="rgba(132,204,22,0.06)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
+                <circle cx="20" cy="18" r="2.5" fill="var(--text-tertiary)" opacity="0.4"/>
+                {/* Satellite 4 — bottom left */}
+                <circle cx="18" cy="60" r="6" fill="rgba(132,204,22,0.06)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
+                <circle cx="18" cy="60" r="2.5" fill="var(--text-tertiary)" opacity="0.4"/>
+                {/* Satellite 5 — top center */}
+                <circle cx="48" cy="6" r="5" fill="rgba(132,204,22,0.05)" stroke="var(--text-tertiary)" strokeWidth="1.2"/>
+                <circle cx="48" cy="6" r="2" fill="var(--text-tertiary)" opacity="0.35"/>
+                {/* Connection lines — center to satellites */}
+                <line x1="58" y1="34" x2="70" y2="21" stroke="#84cc16" strokeWidth="1" opacity="0.35"/>
+                <line x1="58" y1="46" x2="72" y2="54" stroke="#84cc16" strokeWidth="1" opacity="0.35"/>
+                <line x1="40" y1="30" x2="28" y2="20" stroke="#84cc16" strokeWidth="1" opacity="0.25"/>
+                <line x1="38" y1="48" x2="24" y2="56" stroke="#84cc16" strokeWidth="1" opacity="0.25"/>
+                <line x1="48" y1="28" x2="48" y2="11" stroke="#84cc16" strokeWidth="1" opacity="0.2"/>
+                {/* Satellite-to-satellite connections (mesh) */}
+                <line x1="72" y1="21" x2="48" y2="11" stroke="var(--text-tertiary)" strokeWidth="0.5" opacity="0.2" strokeDasharray="2 2"/>
+                <line x1="48" y1="11" x2="28" y2="20" stroke="var(--text-tertiary)" strokeWidth="0.5" opacity="0.2" strokeDasharray="2 2"/>
+                <line x1="24" y1="56" x2="72" y2="54" stroke="var(--text-tertiary)" strokeWidth="0.5" opacity="0.15" strokeDasharray="2 2"/>
               </svg>
               <p style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.02em" }}>Tu red está vacía</p>
               <p style={{ fontSize: 13, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto 24px", lineHeight: 1.6 }}>Explora investigadores y conéctate para construir tu red de colaboración.</p>
