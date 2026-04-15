@@ -69,59 +69,34 @@ function ResearcherCard({ researcher, onConnect, isConnected }: {
   isConnected: boolean;
 }) {
   return (
-    <div style={{
-      background: "var(--card-bg)",
-      border: "1px solid var(--card-border)",
-      borderRadius: 14,
-      padding: 20,
-      display: "flex",
-      flexDirection: "column",
-      gap: 14,
-      transition: "all 0.2s ease",
-      cursor: "pointer",
-      position: "relative",
-      overflow: "hidden",
-    }}
-    onMouseEnter={(e) => {
-      (e.currentTarget as HTMLDivElement).style.borderColor = `${researcher.color}40`;
-      (e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)";
-      (e.currentTarget as HTMLDivElement).style.boxShadow = `0 8px 32px ${researcher.color}08`;
-    }}
-    onMouseLeave={(e) => {
-      (e.currentTarget as HTMLDivElement).style.borderColor = "var(--card-border)";
-      (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)";
-      (e.currentTarget as HTMLDivElement).style.boxShadow = "none";
-    }}
-    >
-      {/* Glow accent */}
-      <div style={{
-        position: "absolute", top: 0, left: 0, right: 0, height: 1,
-        background: `linear-gradient(90deg, transparent, ${researcher.color}30, transparent)`,
-      }} />
-
-      {/* Top row */}
-      <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
+    <div className="b-card" style={{ "--card-accent": researcher.color } as React.CSSProperties}>
+      <div className="b-card-top">
         <Avatar initials={researcher.avatar} color={researcher.color} size={44} />
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, flexWrap: "wrap", marginBottom: 2 }}>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2 }}>{researcher.name}</span>
-            <span style={{ fontSize: 13, fontWeight: 500, color: "var(--text-muted)", lineHeight: 1.2 }}>
-              {researcher.match}% match
+            <span style={{
+              fontSize: 10, fontWeight: 700, color: researcher.color,
+              background: `${researcher.color}14`,
+              padding: "2px 7px", borderRadius: 20, flexShrink: 0,
+            }}>
+              {researcher.match}%
             </span>
-            {researcher.open && (
-              <span style={{
-                display: "inline-flex", alignItems: "center", gap: 4,
-                fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${researcher.color}12`,
-                padding: "2px 6px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em",
-              }}>
-                <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
-                Open
-              </span>
-            )}
           </div>
           <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
           <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 1 }}>{researcher.dept}</p>
         </div>
+        {researcher.open && (
+          <span style={{
+            display: "inline-flex", alignItems: "center", gap: 4,
+            fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${researcher.color}10`,
+            padding: "2px 6px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em",
+            flexShrink: 0, alignSelf: "flex-start",
+          }}>
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: researcher.color, display: "inline-block" }} />
+            Open
+          </span>
+        )}
       </div>
 
       {/* Tags */}
@@ -149,13 +124,8 @@ function ResearcherCard({ researcher, onConnect, isConnected }: {
         </div>
         <button
           onClick={(e) => { e.stopPropagation(); onConnect(researcher.id); }}
-          style={{
-            padding: "5px 12px", borderRadius: 8, border: "none",
-            fontSize: 11, fontWeight: 700, cursor: "pointer",
-            background: isConnected ? `${researcher.color}15` : researcher.color,
-            color: isConnected ? researcher.color : "#000",
-            transition: "all 0.15s",
-          }}
+          className={`b-connect-btn ${isConnected ? "connected" : ""}`}
+          style={{ "--btn-color": researcher.color } as React.CSSProperties}
         >
           {isConnected ? "Connected" : "Connect"}
         </button>
