@@ -574,7 +574,14 @@ export default function App() {
             <Globe size={13} />
             <span>{researchers.filter((r) => r.open).length} abiertos Â· {researchers.length} investigadores</span>
           </div>
-          <ThemeToggle theme={theme} onToggle={() => setTheme((v) => v === "light" ? "dark" : "light")} />
+          <ThemeToggle
+            theme={theme}
+            onToggle={() => {
+              const toggle = () => setTheme((t) => t === "light" ? "dark" : "light");
+              if (!document.startViewTransition) { toggle(); return; }
+              document.startViewTransition(toggle);
+            }}
+          />
         </div>
       </header>
 
