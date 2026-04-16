@@ -1,36 +1,37 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { generateState, stateCookie } from '@/lib/session';
 
 export async function GET(req: NextRequest) {
   const clientId = process.env.ORCID_CLIENT_ID;
-  const redirectUri = `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/orcid/callback`;
-  const scope = '/authenticate';
-  const authUrl = `https://orcid.org/oauth/authorize?client_id=${clientId}&response_type=code&scope=${scope}&redirect_uri=${redirectUri}`;
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? new URL(req.url).origin;
 
-  return NextResponse.redirect(authUrl);
-}
-
-export async function POST(req: NextRequest) {
-  const { code } = await req.json();
-  const clientId = process.env.ORCID_CLIENT_ID;
-  const clientSecret = process.env.ORCID_CLIENT_SECRET;
-  const redirectUri = `${process.env.NEXT_PUBLIC_APP_URL}/api/auth/orcid/callback`;
-
-  const tokenRes = await fetch('https://orcid.org/oauth/token', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded', Accept: 'application/json' },
-    body: new URLSearchParams({
-      client_id: clientId!,
-      client_secret: clientSecret!,
-      grant_type: 'authorization_code',
-      code,
-      redirect_uri: redirectUri,
-    }),
-  });
-
-  if (!tokenRes.ok) {
-    return NextResponse.json({ error: 'Failed to exchange code for token' }, { status: 400 });
+  if (!clientId) {
+    const where = new URL('/?error=orcid_not_configured', appUrl);
+    return NextResponse.redirect(where);
   }
 
-  const tokenData = await tokenRes.json();
-  return NextResponse.json(tokenData);
+  const useSandbox = process.env.ORCID_USE_SANDBOX === '1';
+  const orcidBase = useSandbox ? 'https://sandbox.orcid.org' : 'https://orcid.org';
+
+  const redirectUri = `${appUrl}/api/auth/orcid/callback`;
+  const scope = '/authenticate';
+  const state = generateState();
+
+  const authUrl =
+    `${orcidBase}/oauth/authorize` +
+    `?client_id=${encodeURIComponent(clientId)}` +
+    `&response_type=code` +
+    `&scope=${encodeURIComponent(scope)}` +
+    `&redirect_uri=${encodeURIComponent(redirectUri)}` +
+    `&state=${encodeURIComponent(state)}`;
+
+  const res = NextResponse.redirect(authUrl);
+  res.cookies.set(stateCookie.name, state, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    path: '/',
+    maxAge: 60 * 10,
+  });
+  return res;
 }

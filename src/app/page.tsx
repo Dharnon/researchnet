@@ -4,10 +4,14 @@ import { useState, useEffect, useRef } from "react";
 import AvatarLib, { genConfig } from "react-nice-avatar";
 import {
   Search, Users, Zap, User, BookOpen,
-  Briefcase, Clock, Globe,
-  ExternalLink, ChevronRight, MessageCircle,
+  Briefcase, Clock,
+  ExternalLink, ChevronRight, ChevronDown, MessageCircle,
   Send, ArrowLeft, Check, Circle, X,
+  Sun, Moon, LogOut,
 } from "lucide-react";
+import { DiscoverView } from "@/components/discover/DiscoverView";
+import { ResearcherPanel } from "@/components/profile/ResearcherPanel";
+import type { Researcher } from "@/types";
 
 // â”€â”€â”€ DATA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
@@ -50,8 +54,6 @@ const userProfile = {
   bio: "Doctorando enfocado en sistemas distribuidos e IoT. Busco colaboraciones.",
   open: true,
 };
-
-const allDepts = ["Todos", ...new Set(researchers.map((r) => r.dept))];
 
 // â”€â”€â”€ THEME COLORS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
@@ -109,14 +111,19 @@ function Avatar({ seed, size = 52 }: { seed: string; size?: number }) {
 // â”€â”€â”€ SKELETON â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function SkeletonLoader({ t }: { t: typeof light }) {
+  const shimmer: React.CSSProperties = {
+    background: `linear-gradient(90deg, ${t.surfaceHover} 25%, ${t.border} 50%, ${t.surfaceHover} 75%)`,
+    backgroundSize: "1200px 100%",
+    animation: "shimmer 1.7s ease-in-out infinite",
+  };
   return (
     <div style={{ background: t.bg, minHeight: "100vh", padding: 40 }}>
       {[1, 2, 3].map((i) => (
         <div key={i} style={{ display: "flex", gap: 16, marginBottom: 16, alignItems: "center" }}>
-          <div className="skeleton-shimmer" style={{ width: 52, height: 52, borderRadius: "50%" }} />
+          <div style={{ ...shimmer, width: 52, height: 52, borderRadius: "50%" }} />
           <div style={{ flex: 1 }}>
-            <div className="skeleton-shimmer" style={{ width: "40%", height: 14, borderRadius: 4, marginBottom: 6 }} />
-            <div className="skeleton-shimmer-dim" style={{ width: "25%", height: 11, borderRadius: 4 }} />
+            <div style={{ ...shimmer, width: "40%", height: 14, borderRadius: 4, marginBottom: 6 }} />
+            <div style={{ ...shimmer, width: "25%", height: 11, borderRadius: 4, opacity: 0.6 }} />
           </div>
         </div>
       ))}
@@ -439,107 +446,291 @@ function NavBar({ view, setView, connectedCount, unreadCount, t }: {
   connectedCount: number; unreadCount: number; t: typeof light;
 }) {
   const items = [
-    { key: "discover", icon: <Search size={15} />, label: "Descubrir" },
-    { key: "opportunities", icon: <Zap size={15} />, label: "Oportunidades" },
-    { key: "network", icon: <Users size={15} />, label: "Red", badge: connectedCount },
-    { key: "messages", icon: <MessageCircle size={15} />, label: "Mensajes", badge: unreadCount },
-    { key: "profile", icon: <User size={15} />, label: "Perfil" },
+    { key: "discover", icon: <Search size={14} />, label: "Descubrir" },
+    { key: "opportunities", icon: <Zap size={14} />, label: "Oportunidades" },
+    { key: "network", icon: <Users size={14} />, label: "Red", badge: connectedCount },
+    { key: "messages", icon: <MessageCircle size={14} />, label: "Mensajes", badge: unreadCount },
+    { key: "profile", icon: <User size={14} />, label: "Perfil" },
   ];
 
+  const navRef = useRef<HTMLDivElement>(null);
+  const [indicator, setIndicator] = useState<{ left: number; width: number; ready: boolean }>({ left: 0, width: 0, ready: false });
+
+  useEffect(() => {
+    const update = () => {
+      const el = navRef.current?.querySelector<HTMLElement>(`[data-nav="${view}"]`);
+      if (el && navRef.current) {
+        const parent = navRef.current.getBoundingClientRect();
+        const rect = el.getBoundingClientRect();
+        setIndicator({ left: rect.left - parent.left, width: rect.width, ready: true });
+      }
+    };
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, [view]);
+
   return (
-    <nav style={{ display: "flex", gap: 2, background: t.navBg, borderRadius: 10, padding: 4 }}>
-      {items.map((item) => (
-        <button key={item.key} onClick={() => setView(item.key)} style={{
-          display: "flex", alignItems: "center", gap: 6, padding: "7px 14px", borderRadius: 7, border: "none",
-          fontSize: 13, fontWeight: 500, cursor: "pointer",
-          background: view === item.key ? t.navItemBg : "transparent",
-          color: view === item.key ? t.textPrimary : t.navItemColor,
-          transition: "background 0.15s, color 0.15s",
-          position: "relative",
-        }}>
-          {view === item.key && (
-            <div style={{ position: "absolute", bottom: 0, left: "50%", transform: "translateX(-50%)", width: 20, height: 2, borderRadius: 2, background: t.accent }} />
-          )}
-          <span style={{ display: "flex", color: view === item.key ? t.accent : t.textTertiary }}>{item.icon}</span>
-          {item.label}
-          {item.badge !== undefined && item.badge > 0 && (
-            <span style={{ background: item.key === "messages" ? "#ef4444" : t.accent + "25", color: item.key === "messages" ? "#fff" : t.accent, fontSize: 10, fontWeight: 700, padding: "1px 6px", borderRadius: 20, minWidth: 18, textAlign: "center" }}>{item.badge}</span>
-          )}
-        </button>
-      ))}
+    <nav ref={navRef} style={{ position: "relative", display: "flex", gap: 2, height: 64, alignItems: "center" }}>
+      {items.map((item) => {
+        const active = view === item.key;
+        return (
+          <button
+            key={item.key}
+            data-nav={item.key}
+            onClick={() => setView(item.key)}
+            style={{
+              display: "flex", alignItems: "center", gap: 7,
+              height: "100%", padding: "0 14px",
+              border: "none", background: "transparent",
+              fontSize: 13, fontWeight: 500, cursor: "pointer",
+              color: active ? t.textPrimary : t.textTertiary,
+              transition: "color 0.18s ease",
+              letterSpacing: "-0.005em",
+            }}
+            onMouseEnter={(e) => { if (!active) (e.currentTarget as HTMLButtonElement).style.color = t.textSecondary; }}
+            onMouseLeave={(e) => { if (!active) (e.currentTarget as HTMLButtonElement).style.color = t.textTertiary; }}
+          >
+            <span style={{ display: "flex", color: active ? t.accent : "currentColor", transition: "color 0.18s ease" }}>{item.icon}</span>
+            {item.label}
+            {item.badge !== undefined && item.badge > 0 && (
+              <span style={{
+                background: item.key === "messages" ? "#ef4444" : t.accentLight,
+                color: item.key === "messages" ? "#fff" : t.accent,
+                fontSize: 10, fontWeight: 700, padding: "1px 6px", borderRadius: 20,
+                minWidth: 18, textAlign: "center", lineHeight: 1.4,
+              }}>{item.badge}</span>
+            )}
+          </button>
+        );
+      })}
+      <div aria-hidden style={{
+        position: "absolute", bottom: 0,
+        left: indicator.left, width: indicator.width, height: 2,
+        background: t.accent, borderRadius: 2,
+        opacity: indicator.ready ? 1 : 0,
+        transition: "left 0.28s cubic-bezier(0.4, 0, 0.2, 1), width 0.28s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease",
+        pointerEvents: "none",
+      }} />
     </nav>
   );
 }
 
 // â”€â”€â”€ THEME TOGGLE ICON â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-function ThemeToggle({ theme, onToggle }: { theme: string; onToggle: () => void }) {
+function ThemeToggle({ theme, onToggle, t }: { theme: string; onToggle: () => void; t: typeof light }) {
   const isDark = theme === "dark";
+  const W = 52, H = 28, THUMB = 22, PAD = 2;
   return (
-    <button onClick={onToggle} style={{
-      padding: "6px 10px", borderRadius: 8,
-      border: "1px solid var(--border)", background: "var(--surface)",
-      color: "var(--text-secondary)", fontSize: 12, fontWeight: 600,
-      cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
-      flexShrink: 0,
-      transition: "border-color 0.15s, background 0.15s, color 0.15s",
-    }}
-    onMouseEnter={(e) => { const b = e.currentTarget as HTMLButtonElement; b.style.borderColor = isDark ? "#303038" : "#cbd5e1"; b.style.background = "var(--surface-hover)"; }}
-    onMouseLeave={(e) => { const b = e.currentTarget as HTMLButtonElement; b.style.borderColor = "var(--border)"; b.style.background = "var(--surface)"; }}
+    <button
+      onClick={onToggle}
+      role="switch"
+      aria-checked={isDark}
+      aria-label={`Cambiar a modo ${isDark ? "claro" : "oscuro"}`}
+      style={{
+        position: "relative",
+        width: W, height: H, borderRadius: 999,
+        border: `1px solid ${isDark ? "#2a2a30" : "#cbd5e1"}`,
+        background: isDark ? "#18181b" : "#e2e8f0",
+        cursor: "pointer", padding: 0, flexShrink: 0,
+        transition: "background 0.25s ease, border-color 0.25s ease",
+      }}
     >
-      <div style={{ transition: "transform 0.4s ease", transform: theme === "dark" ? "rotate(180deg) scale(1.15)" : "rotate(0deg) scale(1)" }}>
-        {theme === "light" ? (
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-          </svg>
-        ) : (
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-            <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-          </svg>
-        )}
-      </div>
+      <span aria-hidden style={{
+        position: "absolute", left: 7, top: "50%", transform: "translateY(-50%)",
+        display: "flex", color: isDark ? "rgba(255,255,255,0.22)" : "#f59e0b",
+        transition: "color 0.25s ease",
+      }}>
+        <Sun size={12} strokeWidth={2.4} />
+      </span>
+      <span aria-hidden style={{
+        position: "absolute", right: 7, top: "50%", transform: "translateY(-50%)",
+        display: "flex", color: isDark ? "#94a3b8" : "rgba(15,23,42,0.22)",
+        transition: "color 0.25s ease",
+      }}>
+        <Moon size={12} strokeWidth={2.4} />
+      </span>
+      <span aria-hidden style={{
+        position: "absolute", top: PAD, left: PAD,
+        width: THUMB, height: THUMB, borderRadius: "50%",
+        background: isDark ? "#0c0c0e" : "#ffffff",
+        boxShadow: isDark
+          ? "0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06)"
+          : "0 1px 3px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.04)",
+        transform: isDark ? `translateX(${W - THUMB - PAD * 2}px)` : "translateX(0)",
+        transition: "transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), background 0.25s ease",
+      }} />
     </button>
   );
 }
 
-// â”€â”€â”€ MAIN â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ─── USER MENU ──────────────────────────────────────────────────────────
+
+type CurrentUser = { orcid: string; name: string; email: string | null };
+
+function UserMenu({ user, onLogout, onGoProfile, t }: {
+  user: CurrentUser;
+  onLogout: () => void;
+  onGoProfile: () => void;
+  t: typeof light;
+}) {
+  const [open, setOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+  const firstName = user.name.split(" ")[0];
+
+  useEffect(() => {
+    if (!open) return;
+    const onDoc = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) setOpen(false);
+    };
+    const onEsc = (e: KeyboardEvent) => { if (e.key === "Escape") setOpen(false); };
+    document.addEventListener("mousedown", onDoc);
+    document.addEventListener("keydown", onEsc);
+    return () => {
+      document.removeEventListener("mousedown", onDoc);
+      document.removeEventListener("keydown", onEsc);
+    };
+  }, [open]);
+
+  const itemStyle: React.CSSProperties = {
+    display: "flex", alignItems: "center", gap: 10,
+    width: "100%", padding: "10px 14px",
+    border: "none", background: "transparent",
+    fontSize: 13, fontWeight: 500, color: t.textSecondary,
+    cursor: "pointer", textAlign: "left",
+    transition: "background 0.12s ease, color 0.12s ease",
+    borderRadius: 6,
+  };
+
+  return (
+    <div ref={ref} style={{ position: "relative" }}>
+      <button
+        onClick={() => setOpen((o) => !o)}
+        aria-haspopup="menu"
+        aria-expanded={open}
+        style={{
+          display: "flex", alignItems: "center", gap: 8,
+          padding: "3px 10px 3px 3px", borderRadius: 999,
+          border: `1px solid ${t.border}`, background: t.surface,
+          cursor: "pointer", color: t.textPrimary,
+          transition: "background 0.15s ease, border-color 0.15s ease",
+        }}
+        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = t.surfaceHover; }}
+        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = t.surface; }}
+      >
+        <Avatar seed={user.name} size={24} />
+        <span style={{ fontSize: 12, fontWeight: 600, color: t.textPrimary, maxWidth: 120, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{firstName}</span>
+        <ChevronDown size={12} style={{ color: t.textTertiary, transition: "transform 0.2s ease", transform: open ? "rotate(180deg)" : "rotate(0)" }} />
+      </button>
+
+      {open && (
+        <div role="menu" style={{
+          position: "absolute", top: "calc(100% + 8px)", right: 0,
+          width: 260, background: t.surface,
+          border: `1px solid ${t.border}`, borderRadius: 12,
+          boxShadow: t.shadowHover, overflow: "hidden",
+          zIndex: 100,
+        }}>
+          <div style={{ padding: "14px 14px 12px", borderBottom: `1px solid ${t.border}`, display: "flex", gap: 10, alignItems: "center" }}>
+            <Avatar seed={user.name} size={36} />
+            <div style={{ minWidth: 0 }}>
+              <div style={{ fontSize: 13, fontWeight: 700, color: t.textPrimary, letterSpacing: "-0.01em", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{user.name}</div>
+              <div style={{ fontSize: 10, fontFamily: "ui-monospace, SFMono-Regular, Menlo, monospace", color: t.textTertiary, letterSpacing: "0.02em", marginTop: 2 }}>{user.orcid}</div>
+            </div>
+          </div>
+          <div style={{ padding: 4 }}>
+            <button
+              role="menuitem"
+              onClick={() => { setOpen(false); onGoProfile(); }}
+              style={itemStyle}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = t.surfaceHover; (e.currentTarget as HTMLButtonElement).style.color = t.textPrimary; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "transparent"; (e.currentTarget as HTMLButtonElement).style.color = t.textSecondary; }}
+            >
+              <User size={14} /> Ver mi perfil
+            </button>
+            <a
+              role="menuitem"
+              href={`https://orcid.org/${user.orcid}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setOpen(false)}
+              style={{ ...itemStyle, textDecoration: "none" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = t.surfaceHover; (e.currentTarget as HTMLAnchorElement).style.color = t.textPrimary; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLAnchorElement).style.background = "transparent"; (e.currentTarget as HTMLAnchorElement).style.color = t.textSecondary; }}
+            >
+              <ExternalLink size={14} /> Abrir perfil ORCID
+            </a>
+          </div>
+          <div style={{ borderTop: `1px solid ${t.border}`, padding: 4 }}>
+            <button
+              role="menuitem"
+              onClick={onLogout}
+              style={{ ...itemStyle, color: "#dc2626" }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "rgba(220, 38, 38, 0.08)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = "transparent"; }}
+            >
+              <LogOut size={14} /> Cerrar sesión
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── MAIN ───────────────────────────────────────────────────────────────
 
 export default function App() {
   const [view, setView] = useState("discover");
-  const [selectedDept, setSelectedDept] = useState("Todos");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [onlyOpen, setOnlyOpen] = useState(false);
   const [connectedIds, setConnectedIds] = useState<number[]>([]);
   const [showOnboarding, setShowOnboarding] = useState(true);
-  const [selectedResearcher, setSelectedResearcher] = useState<(typeof researchers)[0] | null>(null);
+  const [selectedResearcher, setSelectedResearcher] = useState<Researcher | null>(null);
   const [selectedOpp, setSelectedOpp] = useState<(typeof opportunities)[0] | null>(null);
   const [selectedConv, setSelectedConv] = useState<string | null>(null);
   const [newMessage, setNewMessage] = useState("");
   const [conversations] = useState(mockMessages);
   const [mounted, setMounted] = useState(false);
   const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [currentUser, setCurrentUser] = useState<CurrentUser | null>(null);
 
   const t = theme === "dark" ? dark : light;
 
   useEffect(() => {
     setMounted(true);
-    if (typeof window !== "undefined" && localStorage.getItem("rn_onboarding_done")) setShowOnboarding(false);
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") { setSelectedResearcher(null); setSelectedOpp(null); setSelectedConv(null); }
     };
     window.addEventListener("keydown", onKey);
+
+    fetch("/api/user", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((u) => {
+        if (u && u.orcid) {
+          setCurrentUser({ orcid: u.orcid, name: u.name, email: u.email ?? null });
+          setShowOnboarding(false);
+        } else if (typeof window !== "undefined" && localStorage.getItem("rn_onboarding_done")) {
+          setShowOnboarding(false);
+        }
+      })
+      .catch(() => {
+        if (typeof window !== "undefined" && localStorage.getItem("rn_onboarding_done")) setShowOnboarding(false);
+      });
+
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const filtered = researchers.filter((r) => {
-    const q = searchQuery.toLowerCase();
-    return (r.name.toLowerCase().includes(q) || r.tags.some((tag) => tag.toLowerCase().includes(q)) || r.dept.toLowerCase().includes(q))
-      && (selectedDept === "Todos" || r.dept === selectedDept)
-      && (!onlyOpen || r.open);
-  });
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      document.documentElement.setAttribute("data-theme", theme);
+      document.documentElement.style.colorScheme = theme;
+    }
+  }, [theme]);
+
+  const handleLogout = async () => {
+    await fetch("/api/auth/logout", { method: "POST" });
+    setCurrentUser(null);
+    window.location.reload();
+  };
 
   const connectedResearchers = researchers.filter((r) => connectedIds.includes(r.id));
   const unread = conversations.reduce((acc, c) => acc + c.messages.filter((m) => m.from === "them").length, 0);
@@ -565,19 +756,39 @@ export default function App() {
           <span style={{ fontSize: 16, fontWeight: 800, color: t.headerText, letterSpacing: "-0.04em" }}>ResearchNet</span>
         </div>
         <NavBar view={view} setView={setView} connectedCount={connectedIds.length} unreadCount={unread} t={t} />
-        <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 12, color: t.textSecondary }}>
-            <Globe size={13} />
-            <span>{researchers.filter((r) => r.open).length} abiertos Â· {researchers.length} investigadores</span>
-          </div>
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <ThemeToggle
             theme={theme}
+            t={t}
             onToggle={() => {
-              const toggle = () => setTheme((t) => t === "light" ? "dark" : "light");
-              if (!document.startViewTransition) { toggle(); return; }
-              document.startViewTransition(toggle);
+              const toggle = () => setTheme((prev) => (prev === "light" ? "dark" : "light"));
+              if (typeof document !== "undefined" && (document as Document & { startViewTransition?: (cb: () => void) => void }).startViewTransition) {
+                (document as Document & { startViewTransition: (cb: () => void) => void }).startViewTransition(toggle);
+              } else {
+                toggle();
+              }
             }}
           />
+          {currentUser ? (
+            <UserMenu user={currentUser} onLogout={handleLogout} onGoProfile={() => setView("profile")} t={t} />
+          ) : (
+            <button
+              onClick={() => { window.location.href = "/api/auth/orcid"; }}
+              style={{
+                display: "flex", alignItems: "center", gap: 6,
+                padding: "7px 14px", borderRadius: 8, border: "none",
+                background: t.accent, color: "#fff",
+                fontSize: 12, fontWeight: 600, cursor: "pointer",
+                letterSpacing: "-0.005em",
+                transition: "filter 0.15s ease",
+              }}
+              onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1.08)"; }}
+              onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.filter = "brightness(1)"; }}
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden><path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zM7.369 4.378c.525 0 .947.431.947.947s-.422.947-.947.947a.95.95 0 0 1-.947-.947c0-.525.422-.947.947-.947zm-.722 3.038h1.444v10.041H6.647V7.416zm3.562 0h3.9c3.712 0 5.344 2.653 5.344 5.025 0 2.578-2.016 5.016-5.325 5.016h-3.919V7.416zm1.444 1.303v7.444h2.297c3.272 0 3.872-2.178 3.872-3.722 0-1.797-.897-3.722-3.903-3.722h-2.266z"/></svg>
+              Ingresar
+            </button>
+          )}
         </div>
       </header>
 
@@ -601,9 +812,31 @@ export default function App() {
 
       {/* DETAIL PANEL */}
       {selectedResearcher && (
-        <DetailPanel researcher={selectedResearcher} onClose={() => setSelectedResearcher(null)}
-          onConnect={() => setConnectedIds((p) => p.includes(selectedResearcher.id) ? p.filter((x) => x !== selectedResearcher.id) : [...p, selectedResearcher.id])}
-          isConnected={connectedIds.includes(selectedResearcher.id)} t={t} />
+        <ResearcherPanel
+          researcher={selectedResearcher}
+          onClose={() => setSelectedResearcher(null)}
+          onConnect={() =>
+            setConnectedIds((p) =>
+              p.includes(selectedResearcher.id)
+                ? p.filter((x) => x !== selectedResearcher.id)
+                : [...p, selectedResearcher.id],
+            )
+          }
+          onMessage={() => {
+            if (selectedResearcher.orcid) setSelectedConv(selectedResearcher.orcid);
+            setView("messages");
+            setSelectedResearcher(null);
+          }}
+          onOpenFull={
+            selectedResearcher.orcid
+              ? () => {
+                  window.location.href = `/researcher/${encodeURIComponent(selectedResearcher.orcid!)}`;
+                }
+              : undefined
+          }
+          isConnected={connectedIds.includes(selectedResearcher.id)}
+          t={t}
+        />
       )}
 
       {/* OPPORTUNITY MODAL */}
@@ -611,42 +844,16 @@ export default function App() {
 
       {/* â”€â”€ DISCOVER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       {view === "discover" && (
-        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "40px 24px 60px" }}>
-          <div style={{ marginBottom: 28 }}>
-            <h1 style={{ fontSize: 24, fontWeight: 700, color: t.textPrimary, letterSpacing: "-0.04em", marginBottom: 4 }}>Descubrir investigadores</h1>
-            <p style={{ fontSize: 14, color: t.textSecondary }}>Encuentra colaboradores para tu prÃ³ximo proyecto</p>
-          </div>
-          <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap", marginBottom: 20 }}>
-            <div style={{ background: t.surface, border: `1px solid ${t.border}`, borderRadius: 8, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
-              <Search size={14} color={t.textTertiary} />
-              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, Ã¡rea o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: t.textPrimary, fontSize: 13, flex: 1 }} />
-            </div>
-            <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none", background: t.surface, border: `1px solid ${t.border}`, borderRadius: 8, color: t.textSecondary, fontSize: 13, fontWeight: 500, padding: "8px 12px", cursor: "pointer" }}>
-              {allDepts.map((d) => <option key={d} value={d}>{d}</option>)}
-            </select>
-            <button onClick={() => setOnlyOpen((p) => !p)} style={{ padding: "8px 12px", borderRadius: 8, border: `1px solid ${onlyOpen ? t.accent : t.border}`, fontSize: 12, fontWeight: 500, cursor: "pointer", background: onlyOpen ? t.accentLight : "transparent", color: onlyOpen ? t.accent : t.textSecondary, display: "flex", alignItems: "center", gap: 6 }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: onlyOpen ? t.accent : t.textTertiary, display: "inline-block" }} />
-              Solo disponibles
-            </button>
-          </div>
-          <p style={{ fontSize: 12, color: t.textTertiary, fontWeight: 500, marginBottom: 14 }}>{filtered.length} investigador{filtered.length !== 1 ? "es" : ""}</p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
-            {filtered.map((r) => (
-              <ResearcherCard key={r.id} researcher={r} onSelect={() => setSelectedResearcher(r)}
-                onConnect={(e) => { e.stopPropagation(); setConnectedIds((p) => p.includes(r.id) ? p.filter((x) => x !== r.id) : [...p, r.id]); }}
-                isConnected={connectedIds.includes(r.id)} t={t} />
-            ))}
-          </div>
-          {filtered.length === 0 && (
-            <div style={{ textAlign: "center", padding: "60px 24px", background: t.surface, border: `1px solid ${t.border}`, borderRadius: 14 }}>
-              <div style={{ width: 56, height: 56, borderRadius: 16, background: t.surfaceHover, border: `1px solid ${t.border}`, display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 16px" }}>
-                <Search size={24} style={{ color: t.textTertiary }} />
-              </div>
-              <p style={{ fontSize: 14, fontWeight: 600, color: t.textPrimary, marginBottom: 4 }}>Sin resultados</p>
-              <p style={{ fontSize: 12, color: t.textTertiary }}>Prueba con otros filtros o cambia el tÃ©rmino de bÃºsqueda</p>
-            </div>
-          )}
-        </div>
+        <DiscoverView
+          connectedIds={connectedIds}
+          onConnect={(id) =>
+            setConnectedIds((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]))
+          }
+          onSelectResearcher={(r) => setSelectedResearcher(r)}
+          onSelectOpportunity={(o) => setSelectedOpp(o)}
+          opportunities={opportunities}
+          t={t}
+        />
       )}
 
       {/* â”€â”€ OPPORTUNITIES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}

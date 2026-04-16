@@ -8,6 +8,8 @@ export const users = sqliteTable('users', {
   department: text('department'),
   bio: text('bio'),
   avatar: text('avatar'),
+  affiliation: text('affiliation'),
+  openToCollab: integer('open_to_collab', { mode: 'boolean' }).default(false),
   accessToken: text('access_token'),
   refreshToken: text('refresh_token'),
   createdAt: integer('created_at', { mode: 'timestamp' }).notNull().$defaultFn(() => new Date()),

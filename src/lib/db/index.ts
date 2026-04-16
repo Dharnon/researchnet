@@ -14,6 +14,8 @@ sqlite.exec(`
     department TEXT,
     bio TEXT,
     avatar TEXT,
+    affiliation TEXT,
+    open_to_collab INTEGER DEFAULT 0,
     access_token TEXT,
     refresh_token TEXT,
     created_at INTEGER NOT NULL
@@ -48,3 +50,14 @@ sqlite.exec(`
     skill TEXT NOT NULL
   );
 `);
+
+type ColumnInfo = { name: string };
+function ensureColumn(table: string, column: string, ddl: string) {
+  const cols = sqlite.prepare(`PRAGMA table_info(${table})`).all() as ColumnInfo[];
+  if (!cols.some((c) => c.name === column)) {
+    sqlite.exec(`ALTER TABLE ${table} ADD COLUMN ${ddl}`);
+  }
+}
+
+ensureColumn('users', 'affiliation', 'affiliation TEXT');
+ensureColumn('users', 'open_to_collab', 'open_to_collab INTEGER DEFAULT 0');

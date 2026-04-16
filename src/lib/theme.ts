@@ -1,0 +1,41 @@
+export const light = {
+  bg: "#f8fafc",
+  surface: "#ffffff",
+  surfaceHover: "#f9fafb",
+  border: "#e4e7eb",
+  textPrimary: "#0f172a",
+  textSecondary: "#64748b",
+  textTertiary: "#94a3b8",
+  accent: "#059669",
+  accentLight: "#d1fae5",
+  orange: "#ea580c",
+  headerBg: "rgba(255,255,255,0.92)",
+  headerText: "#0f172a",
+  navBg: "#f1f5f9",
+  navItemBg: "#ffffff",
+  navItemColor: "#64748b",
+  shadowCard: "0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.03)",
+  shadowHover: "0 8px 32px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.05)",
+};
+
+export const dark: typeof light = {
+  bg: "#0c0c0e",
+  surface: "#141416",
+  surfaceHover: "#1c1c20",
+  border: "#242428",
+  textPrimary: "#ededef",
+  textSecondary: "#8b8b96",
+  textTertiary: "#45454d",
+  accent: "#5b8fd4",
+  accentLight: "rgba(91,143,212,0.10)",
+  orange: "#fb923c",
+  headerBg: "rgba(12,12,14,0.97)",
+  headerText: "#ededef",
+  navBg: "#0c0c0e",
+  navItemBg: "#1c1c20",
+  navItemColor: "#6b6b78",
+  shadowCard: "0 0 0 1px #242428",
+  shadowHover: "0 0 0 1px #303038, 0 8px 40px rgba(0,0,0,0.55)",
+};
+
+export type Theme = typeof light;

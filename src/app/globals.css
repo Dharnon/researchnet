@@ -930,28 +930,73 @@ select:focus-visible {
 /* researcher-card: amber hover via CSS */
 .researcher-card {
   transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
-  box-shadow: var(--shadow-card);
+  box-shadow: none;
 }
 .researcher-card:hover {
-  box-shadow: var(--shadow-hover);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   border-color: rgba(217, 119, 6, 0.3) !important;
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 }
 .card-accent {
   position: relative;
-  overflow: hidden;
 }
-.card-accent::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, #D97706, #F59E0B);
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  border-radius: 14px 14px 0 0;
+
+/* ── DISCOVER BENTO ─────────────────────────────────────────────────── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 200px;
+  gap: 16px;
+  grid-auto-flow: dense;
 }
-.card-accent:hover::before {
-  opacity: 1;
+
+@media (max-width: 900px) {
+  .bento-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+  .bento-grid > * {
+    grid-row: auto !important;
+    min-height: 200px;
+  }
+}
+
+/* ── DISCOVER HERO BENTO (Wellfound-style 3 curated columns) ────────── */
+.bento-hero {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.bento-hero-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-width: 0;
+  height: 100%;
+}
+
+@media (max-width: 900px) {
+  .bento-hero-col { height: auto; }
+}
+
+.bento-hero-row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+@media (max-width: 900px) {
+  .bento-hero { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 600px) {
+  .bento-hero { grid-template-columns: 1fr; }
 }
 
 /* ── VIEW TRANSITIONS (theme toggle) ─────────────────────────────────── */
