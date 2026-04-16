@@ -356,7 +356,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           className={`b-connect-btn ${isConnected ? "connected" : ""}`}
           style={{ "--btn-color": researcher.color } as React.CSSProperties}
         >
-          {isConnected ? "âœ“ Connected" : "Connect"}
+          {isConnected ? <><Check size={13} /> Conectado</> : "Conectar"}
         </button>
       </div>
     </div>
