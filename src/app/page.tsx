@@ -333,7 +333,7 @@ function NetworkCard({ researcher, onDisconnect, onMessage, t }: {
       <button onClick={onMessage} title="Mensaje" style={{ width: 32, height: 32, borderRadius: 8, border: `1px solid ${t.border}`, background: t.surface, color: t.textSecondary, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.15s" }}>
         <MessageCircle size={14} />
       </button>
-      <button onClick={onDisconnect} title="Desconectar" style={{ width: 32, height: 32, borderRadius: 8, border: `1px solid ${t.border}`, background: "transparent", color: t.textTertiary, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.15s" }}>
+      <button onClick={onDisconnect} title="Desconectar" className="net-disconnect-btn">
         <X size={14} />
       </button>
     </div>
@@ -392,9 +392,7 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
           onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = t.accent + "60"; i.style.boxShadow = `0 0 0 3px ${t.accent}15`; }}
           onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = t.border; i.style.boxShadow = "none"; }}
           />
-          <button onClick={onSend} style={{ width: 40, height: 40, borderRadius: "50%", border: `1px solid ${t.accent}50`, background: `${t.accent}12`, color: t.accent, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.15s" }}
-            onMouseEnter={(e) => { const b = e.currentTarget as HTMLButtonElement; b.style.background = t.accent; b.style.color = "#fff"; b.style.borderColor = t.accent; }}
-            onMouseLeave={(e) => { const b = e.currentTarget as HTMLButtonElement; b.style.background = `${t.accent}12`; b.style.color = t.accent; b.style.borderColor = `${t.accent}50`; }}>
+          <button onClick={onSend} className="msg-send-btn">
             <Send size={15} />
           </button>
         </div>
@@ -415,9 +413,7 @@ function MessagesView({ conversations, onSelect, onBack, selectedOrcid, messages
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {conversations.map((conv) => (
-            <div key={conv.orcid} onClick={() => onSelect(conv.orcid)} style={{ display: "flex", alignItems: "center", gap: 12, background: t.surface, border: `1px solid ${t.border}`, borderRadius: 12, padding: "14px 16px", cursor: "pointer", transition: "border-color 0.15s ease" }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = t.accent + "35"; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = t.border; }}
+            <div key={conv.orcid} onClick={() => onSelect(conv.orcid)} className="conv-item" style={{ display: "flex", alignItems: "center", gap: 12 }}
             >
               <Avatar seed={conv.seed} size={44} />
               <div style={{ flex: 1, minWidth: 0 }}>

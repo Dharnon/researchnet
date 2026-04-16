@@ -393,6 +393,69 @@ select:focus-visible {
 
 .detail-close:hover { color: var(--text-primary); }
 
+/* Variant B: Send message button — CSS hover (no JS needed) */
+.msg-send-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(91, 143, 212, 0.50);
+  background: rgba(91, 143, 212, 0.10);
+  color: #5b8fd4;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  flex-shrink: 0;
+}
+.msg-send-btn:hover {
+  background: #5b8fd4;
+  color: #fff;
+  border-color: #5b8fd4;
+}
+
+/* Variant B: Disconnect button — red hover danger state */
+.net-disconnect-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.net-disconnect-btn:hover {
+  background: rgba(239, 68, 68, 0.10);
+  border-color: rgba(239, 68, 68, 0.30);
+  color: #ef4444;
+}
+
+/* Variant B: Conversation list item hover */
+.conv-item {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.conv-item:hover { border-color: rgba(91, 143, 212, 0.35); }
+
+/* Variant B: Researcher card — premium hover lift */
+.researcher-card {
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.researcher-card:hover {
+  border-color: rgba(91, 143, 212, 0.30);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
 .detail-body {
   flex: 1;
   overflow-y: auto;
