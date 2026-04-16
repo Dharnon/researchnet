@@ -157,6 +157,82 @@ body {
   background-size: 800px 100%;
   animation: shimmer 1.8s ease-in-out infinite;
 }
+/* Variant C: Connect button — amber editorial accent */
+.b-connect-btn {
+  padding: 5px 13px;
+  border-radius: 8px;
+  border: 1px solid #D97706;
+  background: transparent;
+  color: #D97706;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  letter-spacing: 0.01em;
+}
+.b-connect-btn:hover:not(.connected) {
+  background: #D97706;
+  color: #fff;
+  border-color: #D97706;
+}
+.b-connect-btn.connected {
+  background: rgba(217, 119, 6, 0.08);
+  border-color: rgba(217, 119, 6, 0.25);
+  color: #92400E;
+}
+
+/* Variant C: Connect button dark mode */
+[data-theme="dark"] .b-connect-btn {
+  border-color: #fb923c;
+  color: #fb923c;
+}
+[data-theme="dark"] .b-connect-btn:hover:not(.connected) {
+  background: #fb923c;
+  color: #fff;
+  border-color: #fb923c;
+}
+
+/* Variant C: Network card disconnect — red danger state */
+.c-disconnect-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text-tertiary);
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.c-disconnect-btn:hover {
+  background: rgba(239, 68, 68, 0.10);
+  border-color: rgba(239, 68, 68, 0.30);
+  color: #ef4444;
+}
+
+/* Variant C: Message button — amber hover */
+.c-msg-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-tertiary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justifyContent: center;
+  transition: all 0.15s;
+}
+.c-msg-btn:hover {
+  border-color: rgba(217, 119, 6, 0.35);
+  color: #D97706;
+}
+
 /* researcher-card: amber hover via CSS */
 .researcher-card {
   transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;

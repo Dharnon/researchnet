@@ -176,11 +176,11 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 
           {/* Match score */}
           <div style={{
-            background: `${researcher.color}0d`, border: `1px solid ${researcher.color}25`,
+            background: "rgba(217,119,6,0.06)", border: "1px solid rgba(217,119,6,0.18)",
             borderRadius: 10, padding: "10px 14px", display: "flex", alignItems: "baseline", gap: 6,
           }}>
-            <span style={{ fontSize: 28, fontWeight: 900, color: researcher.color, letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
-            <span style={{ fontSize: 12, fontWeight: 600, color: researcher.color, opacity: 0.6 }}>% affinity</span>
+            <span style={{ fontSize: 28, fontWeight: 900, color: "#D97706", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
+            <span style={{ fontSize: 12, fontWeight: 600, color: "#D97706", opacity: 0.6 }}>% affinity</span>
           </div>
 
           {/* Bio */}
@@ -205,8 +205,8 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
               {researcher.groups.map((g) => (
                 <span key={g} style={{
-                  fontSize: 10, fontWeight: 600, color: researcher.color,
-                  background: `${researcher.color}10`, padding: "3px 8px", borderRadius: 6,
+                  fontSize: 10, fontWeight: 600, color: "#D97706",
+                  background: "rgba(217,119,6,0.08)", padding: "3px 8px", borderRadius: 6,
                 }}>{g}</span>
               ))}
             </div>
@@ -233,8 +233,8 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             style={{
               flex: 1, padding: "10px", borderRadius: 9, border: "none",
               fontSize: 12, fontWeight: 700, cursor: "pointer",
-              background: isConnected ? "var(--accent-dim)" : researcher.color,
-              color: isConnected ? "#22c55e" : "#000",
+              background: isConnected ? "rgba(34,197,94,0.10)" : "#D97706",
+              color: isConnected ? "#16a34a" : "#fff",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 5,
               transition: "all 0.15s",
             }}
@@ -327,8 +327,8 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2 }}>{researcher.name}</span>
             <span style={{
-              fontSize: 10, fontWeight: 700, color: researcher.color,
-              background: `${researcher.color}14`, padding: "2px 7px", borderRadius: 20, flexShrink: 0,
+              fontSize: 10, fontWeight: 700, color: "#D97706",
+              background: "rgba(217,119,6,0.08)", padding: "2px 7px", borderRadius: 20, flexShrink: 0,
             }}>
               {researcher.match}%
             </span>
@@ -339,11 +339,11 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         {researcher.open && (
           <span style={{
             display: "inline-flex", alignItems: "center", gap: 4,
-            fontSize: 9, fontWeight: 700, color: researcher.color,
-            background: `${researcher.color}10`, padding: "2px 6px", borderRadius: 20,
+            fontSize: 9, fontWeight: 700, color: "#D97706",
+            background: "rgba(217,119,6,0.08)", padding: "2px 6px", borderRadius: 20,
             textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0, alignSelf: "flex-start",
           }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: researcher.color, display: "inline-block" }} />
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#D97706", display: "inline-block" }} />
             Open
           </span>
         )}
@@ -369,7 +369,6 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         <button
           onClick={onConnect}
           className={`b-connect-btn ${isConnected ? "connected" : ""}`}
-          style={{ "--btn-color": researcher.color } as React.CSSProperties}
         >
           {isConnected ? "âœ“ Connected" : "Connect"}
         </button>
@@ -389,9 +388,9 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
     <div style={{
       background: "var(--card-bg)", border: "1px solid var(--card-border)",
       borderRadius: 14, padding: 16, display: "flex", alignItems: "center",
-      gap: 12, transition: "all 0.18s",
+      gap: 12, transition: "border-color 0.18s",
     }}
-    onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = `${researcher.color}30`; }}
+    onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "rgba(217,119,6,0.25)"; }}
     onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--card-border)"; }}
     >
       <Avatar initials={researcher.avatar} color={researcher.color} size={40} />
@@ -402,14 +401,7 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
       <button
         onClick={onMessage}
         title="Enviar mensaje"
-        style={{
-          width: 30, height: 30, borderRadius: 8, border: "1px solid var(--card-border)",
-          background: "var(--surface)", color: "var(--text-tertiary)",
-          cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-          transition: "all 0.15s",
-        }}
-        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(132,204,22,0.35)"; (e.currentTarget as HTMLButtonElement).style.color = "#84cc16"; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-tertiary)"; }}
+        className="c-msg-btn"
       >
         <MessageCircle size={13} />
       </button>
@@ -417,14 +409,7 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
       <button
         onClick={onDisconnect}
         title="Desconectar"
-        style={{
-          width: 28, height: 28, borderRadius: 8, border: "1px solid var(--border)",
-          background: "transparent", color: "var(--text-tertiary)",
-          fontSize: 16, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-          transition: "all 0.15s", flexShrink: 0,
-        }}
-        onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(239,68,68,0.4)"; (e.currentTarget as HTMLButtonElement).style.color = "#ef4444"; }}
-        onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-tertiary)"; }}
+        className="c-disconnect-btn"
       >
         Ã—
       </button>
