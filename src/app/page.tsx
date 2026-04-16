@@ -329,7 +329,7 @@ function NetworkCard({ researcher, onDisconnect, onMessage, t }: {
         <p style={{ fontSize: 14, fontWeight: 600, color: t.textPrimary, marginBottom: 1 }}>{researcher.name} {researcher.surname}</p>
         <p style={{ fontSize: 11, color: t.textTertiary, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{researcher.role} Â· {researcher.dept}</p>
       </div>
-      <span style={{ fontSize: 11, fontWeight: 500, color: t.textTertiary, opacity: 0.65, flexShrink: 0 }}>{researcher.match}%</span>
+      <span style={{ fontSize: 11, fontWeight: 500, color: t.textTertiary, opacity: 0.75, flexShrink: 0, fontVariantNumeric: "tabular-nums", letterSpacing: "-0.01em" }}>{researcher.match}%</span>
       <button onClick={onMessage} title="Mensaje" style={{ width: 32, height: 32, borderRadius: 8, border: `1px solid ${t.border}`, background: t.surface, color: t.textSecondary, cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", transition: "all 0.15s" }}>
         <MessageCircle size={14} />
       </button>
