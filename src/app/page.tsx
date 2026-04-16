@@ -314,26 +314,21 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       <div className="b-card-top">
         <Avatar initials={researcher.avatar} color={researcher.color} size={44} />
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
-            <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2 }}>{researcher.name}</span>
-            <span style={{
-              fontSize: 10, fontWeight: 700, color: "#65a30d",
-              background: "rgba(101,163,13,0.08)", padding: "2px 7px", borderRadius: 20, flexShrink: 0,
-            }}>
-              {researcher.match}%
-            </span>
-          </div>
-          <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
-          <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 1 }}>{researcher.dept}</p>
+          <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.3, display: "block", marginBottom: 2 }}>{researcher.name}</span>
+          <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role} · {researcher.dept}</p>
         </div>
+      </div>
+      <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+        <span style={{ fontSize: 10, fontWeight: 700, color: "#65a30d", opacity: 0.65, letterSpacing: "-0.02em" }}>{researcher.match}%</span>
         {researcher.open && (
           <span style={{
-            display: "inline-flex", alignItems: "center", gap: 4,
-            fontSize: 9, fontWeight: 700, color: "#65a30d",
-            background: "rgba(101,163,13,0.08)", padding: "2px 6px", borderRadius: 20,
-            textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0, alignSelf: "flex-start",
+            display: "inline-flex", alignItems: "center", gap: 3,
+            fontSize: 8, fontWeight: 700, color: "#4ade80",
+            background: "rgba(34,197,94,0.07)", border: "1px solid rgba(34,197,94,0.18)",
+            padding: "2px 5px", borderRadius: 20,
+            textTransform: "uppercase", letterSpacing: "0.06em",
           }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#65a30d", display: "inline-block" }} />
+            <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#4ade80" }} />
             Open
           </span>
         )}
