@@ -46,8 +46,8 @@
   --radius-sm: 8px;
   --radius-xs: 5px;
 
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.03);
+  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
   --shadow-detail-panel: -8px 0 32px rgba(0,0,0,0.15);
 }
 
@@ -78,8 +78,8 @@
   --card-bg: #111114;
   --card-border: #1e1e22;
 
-  --shadow-card: none;
-  --shadow-card-hover: 0 0 0 1px rgba(132,204,22,0.12), 0 8px 32px rgba(0,0,0,0.6);
+  --shadow-card: 0 0 0 1px #1e1e22;
+  --shadow-card-hover: 0 0 0 1px #303038, 0 8px 40px rgba(0,0,0,0.55);
 }
 
 /* â”€â”€ SHIMMER ANIMATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -276,6 +276,7 @@ select:focus-visible {
   border: 1px solid var(--tag-border);
   padding: 3px 8px;
   border-radius: 20px;
+  letter-spacing: 0.01em;
 }
 
 .r-card-footer {
@@ -1210,11 +1211,4 @@ select:focus-visible {
 /* ── HEADER TRANSITION ────────────────────────────────────────────────── */
 .app-header {
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Remove dead .b-card:hover translateY (overridden by .r-card) */
-.b-card:hover {
-  border-color: var(--border);
-  box-shadow: var(--shadow-card-hover);
-  transform: scale(1.015) !important;
 }
