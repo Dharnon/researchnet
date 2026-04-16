@@ -308,9 +308,18 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
 }) {
   return (
     <div
-      className="b-card"
-      style={{ "--card-accent": researcher.color, transform: "scale(1.015) translateY(-1px)" } as React.CSSProperties}
       onClick={onSelect}
+      className="card-accent researcher-card"
+      style={{
+        background: "var(--surface)",
+        border: "1px solid var(--border)",
+        borderRadius: 14,
+        padding: 20,
+        cursor: "pointer",
+        display: "flex",
+        flexDirection: "column",
+        gap: 14,
+      }}
     >
       <div className="b-card-top">
         <Avatar initials={researcher.avatar} color={researcher.color} size={44} />

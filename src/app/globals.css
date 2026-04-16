@@ -11,7 +11,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background: #F2EFE9;
   color: #39393A;
-  transition: background 0.4s ease, color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.3s ease;
 }
 
 /* ΓöÇΓöÇ LIGHT THEME (Warm Amber) ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
@@ -75,7 +75,7 @@ section,
 main {
   background: var(--bg);
   color: var(--text-primary);
-  transition: background 0.4s ease, color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.4s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 /* ΓöÇΓöÇ SCROLLBAR ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
@@ -138,8 +138,8 @@ select:focus-visible {
 }
 
 /* ΓöÇΓöÇ SMOOTH THEME TRANSITIONS ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
-body, body * {
-  transition: background 0.35s ease, color 0.25s ease, border-color 0.25s ease;
+body {
+  transition: background-color 0.35s ease, color 0.25s ease;
 }
 
 /* ΓöÇΓöÇ HEADER TRANSITION ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ */
@@ -156,4 +156,30 @@ body, body * {
   background: linear-gradient(90deg, #E8E0D5 25%, #EDE6DB 50%, #E8E0D5 75%);
   background-size: 800px 100%;
   animation: shimmer 1.8s ease-in-out infinite;
+}
+/* researcher-card: amber hover via CSS */
+.researcher-card {
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-card);
+}
+.researcher-card:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(217, 119, 6, 0.3) !important;
+  transform: translateY(-2px);
+}
+.card-accent {
+  position: relative;
+  overflow: hidden;
+}
+.card-accent::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #D97706, #F59E0B);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 14px 14px 0 0;
+}
+.card-accent:hover::before {
+  opacity: 1;
 }
