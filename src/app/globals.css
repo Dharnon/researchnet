@@ -424,14 +424,16 @@ select:focus-visible {
   display: flex;
   align-items: baseline;
   gap: 6px;
+  box-shadow: 0 0 0 4px var(--accent-glow), inset 0 1px 0 rgba(91,143,212,0.08);
 }
 
 .detail-match-num {
   font-size: 28px;
   font-weight: 800;
-  color: var(--text-tertiary);
+  color: var(--accent);
   letter-spacing: -0.04em;
   line-height: 1;
+  opacity: 0.85;
 }
 
 .detail-bio { font-size: 13px; color: var(--text-secondary); line-height: 1.65; }
@@ -859,4 +861,32 @@ select:focus-visible {
 .b-card:hover::before {
   opacity: 0;
   transition: opacity 0.2s ease;
+}
+
+
+/* researcher-card: amber hover via CSS */
+.researcher-card {
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  box-shadow: var(--shadow-card);
+}
+.researcher-card:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(217, 119, 6, 0.3) !important;
+  transform: translateY(-2px);
+}
+.card-accent {
+  position: relative;
+  overflow: hidden;
+}
+.card-accent::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #D97706, #F59E0B);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: 14px 14px 0 0;
+}
+.card-accent:hover::before {
+  opacity: 1;
 }

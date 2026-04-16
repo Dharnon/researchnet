@@ -265,20 +265,18 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected, t }: {
   t: typeof light;
 }) {
   return (
-    <div onClick={onSelect} style={{
+    <div onClick={onSelect} className="card-accent researcher-card" style={{
       background: t.surface, border: `1px solid ${t.border}`, borderRadius: 14,
-      padding: 20, cursor: "pointer", transition: "border-color 0.15s ease, box-shadow 0.15s ease, background 0.15s ease",
+      padding: 20, cursor: "pointer",
       display: "flex", flexDirection: "column", gap: 14,
     }}
-    onMouseEnter={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.accent + "35"; el.style.boxShadow = t.shadowHover; }}
-    onMouseLeave={(e) => { const el = e.currentTarget as HTMLDivElement; el.style.borderColor = t.border; el.style.boxShadow = t.shadowCard; }}
     >
       <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
         <Avatar seed={researcher.seed} size={52} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 2 }}>
             <span style={{ fontSize: 15, fontWeight: 700, color: t.textPrimary, lineHeight: 1.2 }}>{researcher.name} {researcher.surname}</span>
-            <span style={{ fontSize: 10, fontWeight: 500, color: t.textTertiary, flexShrink: 0, letterSpacing: "0.02em", opacity: 0.7 }}>{researcher.match}%</span>
+            <span style={{ fontSize: 11, fontWeight: 500, color: t.textTertiary, flexShrink: 0, letterSpacing: "0.01em", opacity: 0.8 }}>{researcher.match}%</span>
           </div>
           <p style={{ fontSize: 12, color: t.textSecondary, lineHeight: 1.3, marginBottom: 1 }}>{researcher.role}</p>
           <p style={{ fontSize: 11, color: t.textTertiary }}>{researcher.dept}</p>
