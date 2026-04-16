@@ -114,11 +114,11 @@ function SkeletonLoader() {
 // â”€â”€â”€ AVATAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function Avatar({ initials, color, size = 44 }: { initials: string; color: string; size?: number }) {
-  const s = Math.round(size * 0.34);
+  const s = Math.round(size * 0.32);
   return (
     <div style={{
-      width: size, height: size, borderRadius: 10,
-      background: `${color}18`, border: `1px solid ${color}25`,
+      width: size, height: size, borderRadius: "50%",
+      background: `${color}18`, border: `1.5px solid ${color}30`,
       display: "flex", alignItems: "center", justifyContent: "center",
       fontSize: s, fontWeight: 700, color,
       flexShrink: 0, letterSpacing: "-0.02em",
@@ -309,7 +309,6 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
   return (
     <div
       className="b-card"
-      style={{ "--card-accent": researcher.color, transform: "scale(1.015) translateY(-1px)" } as React.CSSProperties}
       onClick={onSelect}
     >
       <div className="b-card-top">
@@ -318,8 +317,8 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2 }}>{researcher.name}</span>
             <span style={{
-              fontSize: 10, fontWeight: 700, color: researcher.color,
-              background: `${researcher.color}14`, padding: "2px 7px", borderRadius: 20, flexShrink: 0,
+              fontSize: 10, fontWeight: 700, color: "#65a30d",
+              background: "rgba(101,163,13,0.08)", padding: "2px 7px", borderRadius: 20, flexShrink: 0,
             }}>
               {researcher.match}%
             </span>
@@ -330,11 +329,11 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         {researcher.open && (
           <span style={{
             display: "inline-flex", alignItems: "center", gap: 4,
-            fontSize: 9, fontWeight: 700, color: researcher.color,
-            background: `${researcher.color}10`, padding: "2px 6px", borderRadius: 20,
+            fontSize: 9, fontWeight: 700, color: "#65a30d",
+            background: "rgba(101,163,13,0.08)", padding: "2px 6px", borderRadius: 20,
             textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0, alignSelf: "flex-start",
           }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: researcher.color, display: "inline-block" }} />
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#65a30d", display: "inline-block" }} />
             Open
           </span>
         )}

@@ -164,12 +164,23 @@ select:focus-visible {
 }
 
 .b-card:hover {
-  border-color: var(--border);
+  border-color: rgba(101, 163, 13, 0.30);
   box-shadow: var(--shadow-card-hover);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
 }
 
 .b-card:hover::before { opacity: 0; }
+
+/* Lime accent line that slides in from top on hover */
+.b-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, #65a30d, #84cc16);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.b-card:hover::before { opacity: 1; }
 
 .b-card-top {
   display: flex;
