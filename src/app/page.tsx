@@ -139,7 +139,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
   return (
     <>
       <div onClick={onClose} style={{
-        position: "fixed", inset: 0, top: 60, background: "color-mix(in srgb, var(--bg) 65%, transparent)",
+        position: "fixed", inset: 0, top: 60, background: "rgba(0,0,0,0.48)",
         zIndex: 39, backdropFilter: "blur(4px)",
       }} />
       <div style={{
@@ -268,7 +268,7 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
   const color = typeColors[opp.type] ?? "#6b7280";
   return (
     <>
-      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "color-mix(in srgb, var(--bg) 75%, transparent)", zIndex: 200, backdropFilter: "blur(6px)" }} />
+      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 200, backdropFilter: "blur(6px)" }} />
       <div style={{
         position: "fixed", top: "50%", left: "50%", transform: "translate(-50%, -50%)",
         width: "100%", maxWidth: 480, background: "var(--surface)",
@@ -667,7 +667,7 @@ export default function App() {
       <header className="app-header" style={{
         borderBottom: "1px solid var(--card-border)", padding: "0 24px", height: 60,
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        position: "sticky" as const, top: 0, background: "color-mix(in srgb, var(--surface) 92%, transparent)",
+        position: "sticky" as const, top: 0, background: "var(--header-bg)",
         backdropFilter: "blur(20px)", zIndex: 50,
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
