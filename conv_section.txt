@@ -1,0 +1,25 @@
+conversations.map((conv) => (
+            <div key={conv.orcid} onClick={() => onSelectConversation(conv.orcid)} style={{
+              display: "flex", alignItems: "center", gap: 12,
+              background: "var(--card-bg)", border: "1px solid var(--card-border)",
+              borderRadius: 14, padding: "14px 16px", cursor: "pointer",
+              transition: "all 0.15s",
+            }}
+            onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = `${conv.color}30`; }}
+            onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--card-border)"; }}
+            >
+              <Avatar initials={conv.avatar} color={conv.color} size={44} />
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 2 }}>
+                  <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)" }}>{conv.name}</p>
+                  <span style={{ fontSize: 10, color: "var(--text-tertiary)" }}>{conv.messages[conv.messages.length - 1].ts}</span>
+                </div>
+                <p style={{ fontSize: 12, color: "var(--text-muted)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                  {conv.messages[conv.messages.length - 1].text}
+                </p>
+              </div>
+              {conv.messages.filter((m) => m.from === "them").length > 0 && (
+                <Circle size={8} style={{ color: "var(--accent)", flexShrink: 0 }} />
+              )}
+            </div>
+          ))}

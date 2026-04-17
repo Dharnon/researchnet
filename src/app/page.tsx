@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import {
@@ -66,7 +66,27 @@ const researcherColors: Record<string, string> = {
   "Robótica e IA": "#6366f1",
 };
 
-// â”€â”€â”€ SKELETON LOADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// â”€â”€â”€ MATCH BADGE (color-coded pill) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+function MatchBadge({ score }: { score: number }) {
+  const color = score >= 90 ? "#22c55e" : score >= 70 ? "#f59e0b" : "#9ca3af";
+  const bg = score >= 90 ? "rgba(34,197,94,0.08)" : score >= 70 ? "rgba(245,158,11,0.08)" : "rgba(156,163,175,0.08)";
+  const border = score >= 90 ? "rgba(34,197,94,0.18)" : score >= 70 ? "rgba(245,158,11,0.18)" : "rgba(156,163,175,0.18)";
+  return (
+    <span style={{
+      display: "inline-flex", alignItems: "center", gap: 3,
+      fontSize: 10, fontWeight: 700,
+      color, background: bg, border: `1px solid ${border}`,
+      padding: "2px 7px", borderRadius: 20,
+      letterSpacing: "-0.01em",
+    }}>
+      <span style={{ width: 5, height: 5, borderRadius: "50%", background: color, flexShrink: 0 }} />
+      {score}%
+    </span>
+  );
+}
+
+// â”€â”€â”€ SKELETON LOADER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function SkeletonLoader() {
   return (
@@ -82,7 +102,7 @@ function SkeletonLoader() {
       </div>
       {/* Cards grid skeleton */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
-        {[1, 2, 3, 4, 5, 6].map((i) => (
+        {[1, 2, 3].map((i) => (
           <div key={i} style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
               <div style={{ width: 44, height: 44, borderRadius: 10, background: "var(--border)" }} />
@@ -176,11 +196,18 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 
           {/* Match score */}
           <div style={{
-            background: `${researcher.color}0d`, border: `1px solid ${researcher.color}25`,
-            borderRadius: 10, padding: "10px 14px", display: "flex", alignItems: "baseline", gap: 6,
+            borderLeft: "3px solid #84cc16",
+            background: "#84cc160a",
+            border: "1px solid #84cc1620",
+            borderRadius: 10, padding: "10px 14px",
+            display: "flex", flexDirection: "column", gap: 2,
           }}>
-            <span style={{ fontSize: 28, fontWeight: 900, color: researcher.color, letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
-            <span style={{ fontSize: 12, fontWeight: 600, color: researcher.color, opacity: 0.6 }}>% affinity</span>
+            <span style={{ fontSize: 9, fontWeight: 700, color: "#84cc16", textTransform: "uppercase", letterSpacing: "0.08em" }}>Match Score</span>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 5 }}>
+              <span style={{ fontSize: 30, fontWeight: 900, color: "#84cc16", letterSpacing: "-0.05em", lineHeight: 1 }}>{researcher.match}</span>
+              <span style={{ fontSize: 12, fontWeight: 600, color: "#84cc16", opacity: 0.6 }}>%</span>
+            </div>
+            <span style={{ fontSize: 10, color: "#84cc16", opacity: 0.5 }}>affinity based on shared areas</span>
           </div>
 
           {/* Bio */}
@@ -319,7 +346,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         </div>
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
-        <span style={{ fontSize: 10, fontWeight: 700, color: "#65a30d", opacity: 0.65, letterSpacing: "-0.02em" }}>{researcher.match}%</span>
+        <MatchBadge score={researcher.match} />
         {researcher.open && (
           <span style={{
             display: "inline-flex", alignItems: "center", gap: 3,
@@ -521,31 +548,37 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          {conversations.map((conv) => (
-            <div key={conv.orcid} onClick={() => onSelectConversation(conv.orcid)} style={{
-              display: "flex", alignItems: "center", gap: 12,
-              background: "var(--card-bg)", border: "1px solid var(--card-border)",
-              borderRadius: 14, padding: "14px 16px", cursor: "pointer",
-              transition: "all 0.15s",
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = `${conv.color}30`; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--card-border)"; }}
-            >
-              <Avatar initials={conv.avatar} color={conv.color} size={44} />
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 2 }}>
-                  <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)" }}>{conv.name}</p>
-                  <span style={{ fontSize: 10, color: "var(--text-tertiary)" }}>{conv.messages[conv.messages.length - 1].ts}</span>
+          {conversations.map((conv) => {
+            const lastMsg = conv.messages[conv.messages.length - 1];
+            const hasUnread = conv.messages.some((m) => m.from === "them");
+            return (
+              <div key={conv.orcid} onClick={() => onSelectConversation(conv.orcid)} style={{
+                display: "flex", alignItems: "center", gap: 12,
+                background: "var(--card-bg)", border: "1px solid var(--card-border)",
+                borderRadius: 14, padding: "14px 16px", cursor: "pointer",
+                transition: "all 0.15s",
+                position: "relative", overflow: "hidden",
+              }}
+              onMouseEnter={(e) => { const r = e.currentTarget as HTMLDivElement; r.style.borderColor = conv.color + "30"; r.style.filter = "brightness(1.06)"; }}
+              onMouseLeave={(e) => { const r = e.currentTarget as HTMLDivElement; r.style.borderColor = "var(--card-border)"; r.style.filter = "brightness(1)"; }}
+              >
+                {hasUnread && (
+                  <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: conv.color, borderRadius: "14px 0 0 14px" }} />
+                )}
+                <Avatar initials={conv.avatar} color={conv.color} size={44} />
+                <div style={{ flex: 1, minWidth: 0 }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 2 }}>
+                    <p style={{ fontSize: 14, fontWeight: hasUnread ? 800 : 600, color: "var(--text-primary)" }}>{conv.name}</p>
+                    <span style={{ fontSize: 10, color: "var(--text-tertiary)", fontWeight: 400, letterSpacing: "0.01em" }}>{lastMsg.ts}</span>
+                  </div>
+                  <p style={{ fontSize: 12, color: "var(--text-muted)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                    {lastMsg.text}
+                  </p>
                 </div>
-                <p style={{ fontSize: 12, color: "var(--text-muted)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                  {conv.messages[conv.messages.length - 1].text}
-                </p>
+                {hasUnread && <Circle size={8} style={{ color: "var(--accent)", flexShrink: 0 }} />}
               </div>
-              {conv.messages.filter((m) => m.from === "them").length > 0 && (
-                <Circle size={8} style={{ color: "var(--accent)", flexShrink: 0 }} />
-              )}
-            </div>
-          ))}
+            );
+          })
         </div>
       )}
     </div>
@@ -576,7 +609,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
       {items.map((item) => (
         <button key={item.key} onClick={() => setView(item.key)} style={{
           display: "flex", alignItems: "center", gap: 6,
-          padding: "7px 12px", borderRadius: 8, border: "none",
+          padding: "7px 16px", borderRadius: 8, border: "none",
           fontSize: 12, fontWeight: 600, cursor: "pointer",
           background: view === item.key ? "var(--accent-dim)" : "transparent",
           color: view === item.key ? "var(--text-primary)" : "var(--text-subtle)",
@@ -870,40 +903,43 @@ export default function App() {
           </div>
           {connectedResearchers.length === 0 ? (
             <div className="empty-state">
-              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={{ display: "block" }}>
+              {/*
+                Radial glow + sophisticated network SVG illustration
+              */}
+              <div className="empty-state-glow" />
+              <svg width="80" height="80" viewBox="0 0 80 80" fill="none" style={{ display: "block", position: "relative", zIndex: 1 }}>
+                {/* Outer dashed ring */}
+                <circle cx="40" cy="40" r="34" stroke="#84cc16" strokeWidth="1" strokeDasharray="4 3" fill="none" opacity="0.18"/>
                 {/* Central node */}
-                <circle cx="32" cy="32" r="8" stroke="#27272a" strokeWidth="1.5" fill="none"/>
-                <circle cx="32" cy="32" r="3" fill="#84cc16" opacity="0.7"/>
+                <circle cx="40" cy="40" r="9" fill="#18181b" stroke="#84cc16" strokeWidth="1.5"/>
+                <circle cx="40" cy="40" r="4" fill="#84cc16" opacity="0.85"/>
                 {/* Satellite nodes */}
-                <circle cx="14" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <circle cx="50" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <circle cx="14" cy="46" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <circle cx="50" cy="46" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <circle cx="32" cy="8" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
-                <circle cx="32" cy="56" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
+                <circle cx="40" cy="16" r="5" fill="#18181b" stroke="#27272a" strokeWidth="1.5"/>
+                <circle cx="40" cy="16" r="2" fill="#84cc16" opacity="0.5"/>
+                <circle cx="62" cy="27" r="4.5" fill="#18181b" stroke="#27272a" strokeWidth="1.2"/>
+                <circle cx="62" cy="27" r="1.8" fill="#84cc16" opacity="0.35"/>
+                <circle cx="62" cy="53" r="4.5" fill="#18181b" stroke="#27272a" strokeWidth="1.2"/>
+                <circle cx="62" cy="53" r="1.8" fill="#84cc16" opacity="0.35"/>
+                <circle cx="40" cy="64" r="5" fill="#18181b" stroke="#27272a" strokeWidth="1.5"/>
+                <circle cx="40" cy="64" r="2" fill="#84cc16" opacity="0.5"/>
+                <circle cx="18" cy="53" r="4.5" fill="#18181b" stroke="#27272a" strokeWidth="1.2"/>
+                <circle cx="18" cy="53" r="1.8" fill="#84cc16" opacity="0.35"/>
+                <circle cx="18" cy="27" r="4.5" fill="#18181b" stroke="#27272a" strokeWidth="1.2"/>
+                <circle cx="18" cy="27" r="1.8" fill="#84cc16" opacity="0.35"/>
                 {/* Connection lines */}
-                <line x1="24" y1="27" x2="18" y2="21" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="40" y1="27" x2="46" y2="21" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="24" y1="37" x2="18" y2="43" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="40" y1="37" x2="46" y2="43" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="32" y1="24" x2="32" y2="12" stroke="#27272a" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
-                <line x1="32" y1="40" x2="32" y2="52" stroke="#27272a" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
-                {/* Satellite node dots */}
-                <circle cx="14" cy="18" r="2" fill="#84cc16" opacity="0.4"/>
-                <circle cx="50" cy="18" r="2" fill="#84cc16" opacity="0.4"/>
-                <circle cx="14" cy="46" r="2" fill="#84cc16" opacity="0.4"/>
-                <circle cx="50" cy="46" r="2" fill="#84cc16" opacity="0.4"/>
+                <line x1="40" y1="31" x2="40" y2="21" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.5"/>
+                <line x1="48" y1="35" x2="58" y2="29" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
+                <line x1="48" y1="45" x2="58" y2="51" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
+                <line x1="40" y1="49" x2="40" y2="59" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.5"/>
+                <line x1="32" y1="45" x2="22" y2="51" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
+                <line x1="32" y1="35" x2="22" y2="29" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
               </svg>
               <p className="empty-title">Tu red está vacía</p>
               <p className="empty-sub">Explora investigadores y conéctate para construir tu red de colaboración.</p>
-              <button onClick={() => setView("discover")} style={{
-                marginTop: 6, padding: "9px 20px", borderRadius: 9,
-                background: "#84cc16", color: "#000", border: "none",
-                fontSize: 13, fontWeight: 700, cursor: "pointer",
-                fontFamily: "inherit",
-              }}>Descubrir investigadores</button>
-            </div>
-          ) : (
+              <button onClick={() => setView("discover")} className="empty-cta-btn">
+                Explorar investigadores
+              </button>
+            </div> : (
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {connectedResearchers.map((r) => (
                 <NetworkCard
