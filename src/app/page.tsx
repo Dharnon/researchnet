@@ -673,16 +673,16 @@ export default function App() {
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <div style={{
             width: 28, height: 28, borderRadius: 8,
-            background: "linear-gradient(135deg, #84cc16, #65a30d)",
+            background: "linear-gradient(135deg, #D97706, #B45309)",
             display: "flex", alignItems: "center", justifyContent: "center",
-            boxShadow: "0 0 20px #84cc1625",
+            boxShadow: "0 0 20px rgba(217,119,6,0.25)",
           }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
-              <circle cx="8" cy="12" r="3" fill="#000" opacity="0.9"/>
-              <circle cx="16" cy="7" r="2.5" fill="#000" opacity="0.7"/>
-              <circle cx="16" cy="17" r="2.5" fill="#000" opacity="0.7"/>
-              <line x1="11" y1="12" x2="14" y2="7.8" stroke="#000" strokeWidth="1.5" opacity="0.6"/>
-              <line x1="11" y1="12" x2="14" y2="16.2" stroke="#000" strokeWidth="1.5" opacity="0.6"/>
+              <circle cx="8" cy="12" r="3" fill="#fff" opacity="0.9"/>
+              <circle cx="16" cy="7" r="2.5" fill="#fff" opacity="0.7"/>
+              <circle cx="16" cy="17" r="2.5" fill="#fff" opacity="0.7"/>
+              <line x1="11" y1="12" x2="14" y2="7.8" stroke="#fff" strokeWidth="1.5" opacity="0.6"/>
+              <line x1="11" y1="12" x2="14" y2="16.2" stroke="#fff" strokeWidth="1.5" opacity="0.6"/>
             </svg>
           </div>
           <span style={{ fontSize: 15, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em" }}>ResearchNet</span>
@@ -710,16 +710,16 @@ export default function App() {
           }}>
             <div style={{
               width: 52, height: 52, borderRadius: 14,
-              background: "linear-gradient(135deg, #84cc16, #65a30d)",
+              background: "linear-gradient(135deg, #D97706, #92400E)",
               display: "flex", alignItems: "center", justifyContent: "center",
-              margin: "0 auto 20px", boxShadow: "0 0 40px #84cc1630",
+              margin: "0 auto 20px", boxShadow: "0 0 40px rgba(217,119,6,0.30)",
             }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle cx="8" cy="12" r="3" fill="#000" opacity="0.9"/>
-                <circle cx="16" cy="7" r="2.5" fill="#000" opacity="0.7"/>
-                <circle cx="16" cy="17" r="2.5" fill="#000" opacity="0.7"/>
-                <line x1="11" y1="12" x2="14" y2="7.8" stroke="#000" strokeWidth="1.5" opacity="0.6"/>
-                <line x1="11" y1="12" x2="14" y2="16.2" stroke="#000" strokeWidth="1.5" opacity="0.6"/>
+                <circle cx="8" cy="12" r="3" fill="#fff" opacity="0.95"/>
+                <circle cx="16" cy="7" r="2.5" fill="#fff" opacity="0.75"/>
+                <circle cx="16" cy="17" r="2.5" fill="#fff" opacity="0.75"/>
+                <line x1="11" y1="12" x2="14" y2="7.8" stroke="#fff" strokeWidth="1.5" opacity="0.65"/>
+                <line x1="11" y1="12" x2="14" y2="16.2" stroke="#fff" strokeWidth="1.5" opacity="0.65"/>
               </svg>
             </div>
             <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.03em" }}>Bienvenido a ResearchNet</h2>
@@ -728,7 +728,7 @@ export default function App() {
               onClick={() => { setShowOnboarding(false); localStorage.setItem("rn_onboarding_skipped", "1"); }}
               style={{
                 width: "100%", padding: "13px 20px", borderRadius: 12,
-                border: "1px solid #84cc1640", background: "#84cc16", color: "#000",
+                border: "1px solid rgba(217,119,6,0.35)", background: "#D97706", color: "#fff",
                 fontSize: 13, fontWeight: 800, cursor: "pointer",
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
                 marginBottom: 10,
@@ -787,9 +787,9 @@ export default function App() {
               {allDepts.map((d) => <option key={d} value={d}>{d}</option>)}
             </select>
             <button onClick={() => setOnlyOpen((p) => !p)} style={{
-              background: onlyOpen ? "rgba(101,163,13,0.08)" : "var(--surface)",
-              border: `1px solid ${onlyOpen ? "#84cc1640" : "var(--border)"}`,
-              borderRadius: 10, color: onlyOpen ? "var(--accent)" : "var(--text-muted)",
+              background: onlyOpen ? "rgba(217,119,6,0.08)" : "var(--surface)",
+              border: `1px solid ${onlyOpen ? "rgba(217,119,6,0.30)" : "var(--border)"}`,
+              borderRadius: 10, color: onlyOpen ? "#D97706" : "var(--text-muted)",
               fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
             }}>
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: onlyOpen ? "var(--accent)" : "var(--text-tertiary)", display: "inline-block" }} />
@@ -873,7 +873,7 @@ export default function App() {
               <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={{ display: "block" }}>
                 {/* Central node */}
                 <circle cx="32" cy="32" r="8" stroke="#27272a" strokeWidth="1.5" fill="none"/>
-                <circle cx="32" cy="32" r="3" fill="#84cc16" opacity="0.7"/>
+                <circle cx="32" cy="32" r="3" fill="#D97706" opacity="0.8"/>
                 {/* Satellite nodes */}
                 <circle cx="14" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
                 <circle cx="50" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
@@ -882,23 +882,23 @@ export default function App() {
                 <circle cx="32" cy="8" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
                 <circle cx="32" cy="56" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
                 {/* Connection lines */}
-                <line x1="24" y1="27" x2="18" y2="21" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="40" y1="27" x2="46" y2="21" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="24" y1="37" x2="18" y2="43" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="40" y1="37" x2="46" y2="43" stroke="#84cc16" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="24" y1="27" x2="18" y2="21" stroke="#D97706" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
+                <line x1="40" y1="27" x2="46" y2="21" stroke="#D97706" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
+                <line x1="24" y1="37" x2="18" y2="43" stroke="#D97706" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
+                <line x1="40" y1="37" x2="46" y2="43" stroke="#D97706" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
                 <line x1="32" y1="24" x2="32" y2="12" stroke="#27272a" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
                 <line x1="32" y1="40" x2="32" y2="52" stroke="#27272a" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
                 {/* Satellite node dots */}
-                <circle cx="14" cy="18" r="2" fill="#84cc16" opacity="0.4"/>
-                <circle cx="50" cy="18" r="2" fill="#84cc16" opacity="0.4"/>
-                <circle cx="14" cy="46" r="2" fill="#84cc16" opacity="0.4"/>
-                <circle cx="50" cy="46" r="2" fill="#84cc16" opacity="0.4"/>
+                <circle cx="14" cy="18" r="2" fill="#D97706" opacity="0.45"/>
+                <circle cx="50" cy="18" r="2" fill="#D97706" opacity="0.45"/>
+                <circle cx="14" cy="46" r="2" fill="#D97706" opacity="0.45"/>
+                <circle cx="50" cy="46" r="2" fill="#D97706" opacity="0.45"/>
               </svg>
               <p className="empty-title">Tu red estÃ¡ vacÃ­a</p>
               <p className="empty-sub">Explora investigadores y conÃ©ctate para construir tu red de colaboraciÃ³n.</p>
               <button onClick={() => setView("discover")} style={{
                 marginTop: 6, padding: "9px 20px", borderRadius: 9,
-                background: "#84cc16", color: "#000", border: "none",
+                background: "#D97706", color: "#fff", border: "none",
                 fontSize: 13, fontWeight: 700, cursor: "pointer",
                 fontFamily: "inherit",
               }}>Descubrir investigadores</button>
