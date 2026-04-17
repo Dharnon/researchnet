@@ -548,37 +548,31 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-          {conversations.map((conv) => {
-            const lastMsg = conv.messages[conv.messages.length - 1];
-            const hasUnread = conv.messages.some((m) => m.from === "them");
-            return (
-              <div key={conv.orcid} onClick={() => onSelectConversation(conv.orcid)} style={{
-                display: "flex", alignItems: "center", gap: 12,
-                background: "var(--card-bg)", border: "1px solid var(--card-border)",
-                borderRadius: 14, padding: "14px 16px", cursor: "pointer",
-                transition: "all 0.15s",
-                position: "relative", overflow: "hidden",
-              }}
-              onMouseEnter={(e) => { const r = e.currentTarget as HTMLDivElement; r.style.borderColor = conv.color + "30"; r.style.filter = "brightness(1.06)"; }}
-              onMouseLeave={(e) => { const r = e.currentTarget as HTMLDivElement; r.style.borderColor = "var(--card-border)"; r.style.filter = "brightness(1)"; }}
-              >
-                {hasUnread && (
-                  <div style={{ position: "absolute", left: 0, top: 0, bottom: 0, width: 3, background: conv.color, borderRadius: "14px 0 0 14px" }} />
-                )}
-                <Avatar initials={conv.avatar} color={conv.color} size={44} />
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 2 }}>
-                    <p style={{ fontSize: 14, fontWeight: hasUnread ? 800 : 600, color: "var(--text-primary)" }}>{conv.name}</p>
-                    <span style={{ fontSize: 10, color: "var(--text-tertiary)", fontWeight: 400, letterSpacing: "0.01em" }}>{lastMsg.ts}</span>
-                  </div>
-                  <p style={{ fontSize: 12, color: "var(--text-muted)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                    {lastMsg.text}
-                  </p>
+          {conversations.map((conv) => (
+            <div key={conv.orcid} onClick={() => onSelectConversation(conv.orcid)} style={{
+              display: "flex", alignItems: "center", gap: 12,
+              background: "var(--card-bg)", border: "1px solid var(--card-border)",
+              borderRadius: 14, padding: "14px 16px", cursor: "pointer",
+              transition: "all 0.15s",
+            }}
+            onMouseEnter={(e) => { const r = e.currentTarget as HTMLDivElement; r.style.borderColor = conv.color + "30"; r.style.filter = "brightness(1.06)"; }}
+            onMouseLeave={(e) => { const r = e.currentTarget as HTMLDivElement; r.style.borderColor = "var(--card-border)"; r.style.filter = "brightness(1)"; }}
+            >
+              <Avatar initials={conv.avatar} color={conv.color} size={44} />
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 2 }}>
+                  <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)" }}>{conv.name}</p>
+                  <span style={{ fontSize: 10, color: "var(--text-tertiary)" }}>{conv.messages[conv.messages.length - 1].ts}</span>
                 </div>
-                {hasUnread && <Circle size={8} style={{ color: "var(--accent)", flexShrink: 0 }} />}
+                <p style={{ fontSize: 12, color: "var(--text-muted)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                  {conv.messages[conv.messages.length - 1].text}
+                </p>
               </div>
-            );
-          })
+              {conv.messages.filter((m) => m.from === "them").length > 0 && (
+                <Circle size={8} style={{ color: "var(--accent)", flexShrink: 0 }} />
+              )}
+            </div>
+          ))}
         </div>
       )}
     </div>
@@ -939,7 +933,8 @@ export default function App() {
               <button onClick={() => setView("discover")} className="empty-cta-btn">
                 Explorar investigadores
               </button>
-            </div> : (
+            </div>
+          ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {connectedResearchers.map((r) => (
                 <NetworkCard
