@@ -22,17 +22,17 @@ const researchers = [
 const opportunities = [
   { id: 1, title: "Postdoc – IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posición postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomédica." },
   { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las áreas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigación en todas las áreas. Hasta $300.000 USD por proyecto, duración 4 años." },
-  { id: 3, title: "Colaboración EU Horizon â€“ Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco collaborator para propuesta EU Horizon sobre computación cuántica aplicada a optimización combinatorial." },
+  { id: 3, title: "Colaboración EU Horizon —“ Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco colaborador para propuesta EU Horizon sobre computación cuántica aplicada a optimización combinatorial." },
   { id: 4, title: "Tesis Doctoral – NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Búsqueda de estudiante doctoral para investigación en modelos de lenguaje multilingüe para lenguas minoritarias." },
-  { id: 5, title: "Research Engineer â€“ Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robotics. Salario competitivo + equity." },
+  { id: 5, title: "Research Engineer —“ Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robotics. Salario competitivo + equity." },
   { id: 6, title: "Beca Marie Curie – Climate AI", dept: "Todas las áreas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio climático. Sin restricciones de nacionalidad." },
 ];
 
 const mockMessages = [
   { orcid: "0000-0002-1234-5678", name: "Dra. Elena Vargas", avatar: "EV", color: "#84cc16", messages: [
-    { id: 1, from: "them", text: "Hola! Vi tu perfil y me interesa mucho tu trabajo en sistemas distribuidos. Estamos buscando collaborators para un proyecto de IoT.", ts: "10:32" },
+    { id: 1, from: "them", text: "Hola! Vi tu perfil y me interesa mucho tu trabajo en sistemas distribuidos. Estamos buscando colaboradores para un proyecto de IoT.", ts: "10:32" },
     { id: 2, from: "me", text: "Hola Elena! Encantado de saludarte. Cuéntame más sobre el proyecto, suena interesante.", ts: "10:35" },
-    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorización ambiental. Nousamos LoRa y queríamos explorar machine learning para fusionar datos.", ts: "10:37" },
+    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorización ambiental. Usamos LoRa y queríamos explorar machine learning para fusionar datos.", ts: "10:37" },
   ]},
   { orcid: "0000-0003-9876-5432", name: "Dr. Felipe Mora", avatar: "FM", color: "#34d399", messages: [
     { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podríamos colaborar.", ts: "Ayer" },
