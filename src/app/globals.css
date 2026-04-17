@@ -163,13 +163,7 @@ select:focus-visible {
   box-shadow: var(--shadow-card);
 }
 
-.b-card:hover {
-  border-color: rgba(101, 163, 13, 0.30);
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-2px);
-}
 
-.b-card:hover::before { opacity: 0; }
 
 /* Lime accent line that slides in from top on hover */
 .b-card::before {
