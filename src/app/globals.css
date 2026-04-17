@@ -88,13 +88,13 @@
 }
 
 .skeleton-shimmer {
-  background: linear-gradient(90deg, var(--border) 25%, color-mix(in srgb, var(--border) 60%, transparent) 50%, var(--border) 75%);
+  background: linear-gradient(90deg, var(--border) 25%, rgba(255,255,255,0.03) 50%, var(--border) 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
 
 .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, var(--border-subtle) 25%, color-mix(in srgb, var(--border-subtle) 50%, transparent) 50%, var(--border-subtle) 75%);
+  background: linear-gradient(90deg, var(--border-subtle) 25%, rgba(0,0,0,0.02) 50%, var(--border-subtle) 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite 0.2s;
 }
@@ -172,6 +172,10 @@ select:focus-visible {
   background: linear-gradient(90deg, #65a30d, #84cc16);
   opacity: 0;
   transition: opacity 0.2s ease;
+}
+.b-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.05);
+  transform: translateY(-2px);
 }
 .b-card:hover::before { opacity: 1; }
 
