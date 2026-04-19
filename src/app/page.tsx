@@ -128,6 +128,25 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
   );
 }
 
+
+// ─── MATCH BADGE (warm: green ≥90, amber ≥70, gray <70) ─────────────────────
+function MatchBadge({ score }: { score: number }) {
+  const color = score >= 90 ? "#22c55e" : score >= 70 ? "#D97706" : "#9ca3af";
+  const bg = score >= 90 ? "rgba(34,197,94,0.08)" : score >= 70 ? "rgba(217,119,6,0.08)" : "rgba(156,163,175,0.08)";
+  const border = score >= 90 ? "rgba(34,197,94,0.18)" : score >= 70 ? "rgba(217,119,6,0.18)" : "rgba(156,163,175,0.18)";
+  return (
+    <span style={{
+      display: "inline-flex", alignItems: "center", gap: 3,
+      fontSize: 10, fontWeight: 700,
+      color, background: bg, border: `1px solid ${border}`,
+      padding: "2px 7px", borderRadius: 20,
+      letterSpacing: "-0.01em", flexShrink: 0,
+    }}>
+      <span style={{ width: 5, height: 5, borderRadius: "50%", background: color, flexShrink: 0 }} />
+      {score}%
+    </span>
+  );
+}
 // â”€â”€â”€ DETAIL PANEL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
@@ -264,7 +283,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 // â”€â”€â”€ OPPORTUNITY DETAIL MODAL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onClose: () => void }) {
-  const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#84cc16", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
+  const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "var(--accent)", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
   const color = typeColors[opp.type] ?? "#6b7280";
   return (
     <>
@@ -326,12 +345,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2 }}>{researcher.name}</span>
-            <span style={{
-              fontSize: 10, fontWeight: 700, color: "#D97706",
-              background: "rgba(217,119,6,0.08)", padding: "2px 7px", borderRadius: 20, flexShrink: 0,
-            }}>
-              {researcher.match}%
-            </span>
+            <MatchBadge score={researcher.match} />
           </div>
           <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
           <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 1 }}>{researcher.dept}</p>
@@ -828,7 +842,7 @@ export default function App() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
             {opportunities.map((opp) => {
-              const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#84cc16", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
+              const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "var(--accent)", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
               const color = typeColors[opp.type] ?? "#6b7280";
               return (
                 <div key={opp.id} onClick={() => setSelectedOpp(opp)} style={{
