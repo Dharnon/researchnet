@@ -196,18 +196,18 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 
           {/* Match score */}
           <div style={{
-            borderLeft: "3px solid #84cc16",
-            background: "#84cc160a",
-            border: "1px solid #84cc1620",
+            borderLeft: "3px solid var(--accent)",
+            background: "var(--accent-dim)",
+            border: "1px solid var(--accent-glow)",
             borderRadius: 10, padding: "10px 14px",
             display: "flex", flexDirection: "column", gap: 2,
           }}>
-            <span style={{ fontSize: 9, fontWeight: 700, color: "#84cc16", textTransform: "uppercase", letterSpacing: "0.08em" }}>Match Score</span>
+            <span style={{ fontSize: 9, fontWeight: 700, color: "var(--accent)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Match Score</span>
             <div style={{ display: "flex", alignItems: "baseline", gap: 5 }}>
-              <span style={{ fontSize: 30, fontWeight: 900, color: "#84cc16", letterSpacing: "-0.05em", lineHeight: 1 }}>{researcher.match}</span>
-              <span style={{ fontSize: 12, fontWeight: 600, color: "#84cc16", opacity: 0.6 }}>%</span>
+              <span style={{ fontSize: 30, fontWeight: 900, color: "var(--accent)", letterSpacing: "-0.05em", lineHeight: 1 }}>{researcher.match}</span>
+              <span style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", opacity: 0.6 }}>%</span>
             </div>
-            <span style={{ fontSize: 10, color: "#84cc16", opacity: 0.5 }}>affinity based on shared areas</span>
+            <span style={{ fontSize: 10, color: "var(--accent)", opacity: 0.5 }}>affinity based on shared areas</span>
           </div>
 
           {/* Bio */}
@@ -291,7 +291,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 // ─── OPPORTUNITY DETAIL MODAL ────────────────────────────────────────────────
 
 function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onClose: () => void }) {
-  const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#84cc16", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
+  const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "var(--accent)", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
   const color = typeColors[opp.type] ?? "#6b7280";
   return (
     <>
@@ -856,7 +856,7 @@ export default function App() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 16 }}>
             {opportunities.map((opp) => {
-              const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#84cc16", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
+              const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "var(--accent)", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
               const color = typeColors[opp.type] ?? "#6b7280";
               return (
                 <div key={opp.id} onClick={() => setSelectedOpp(opp)} style={{
