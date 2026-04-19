@@ -214,7 +214,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 
           {/* Tags */}
           <div>
-            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Áreas</p>
+            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Á  reas</p>
             <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
               {researcher.tags.map((tag) => (
                 <span key={tag} style={{
@@ -284,7 +284,7 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
           {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#fb923c", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
         </div>
         <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
-        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} Â· Fecha límite: <span style={{ color: "#fb923c", fontWeight: 700 }}>{opp.deadline}</span></p>
+        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} Â   Fecha límite: <span style={{ color: "#fb923c", fontWeight: 700 }}>{opp.deadline}</span></p>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 20 }}>{opp.desc}</p>
         <button style={{
           width: "100%", padding: "12px", borderRadius: 10, border: "none",
@@ -691,7 +691,7 @@ export default function App() {
         <div style={{ display: "flex", alignItems: "center", gap: 6, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, padding: "5px 12px" }}>
           <Globe size={11} color="var(--text-subtle)" />
           <span style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 600 }}>
-            {researchers.filter((r) => r.open).length} <span style={{ color: "var(--accent)" }}>open</span> Â· {researchers.length} researchers
+            {researchers.filter((r) => r.open).length} <span style={{ color: "var(--accent)" }}>open</span> Â   {researchers.length} researchers
           </span>
         </div>
       </header>
