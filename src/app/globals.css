@@ -1,5 +1,5 @@
 
-/* â”€â”€ CSS VARIABLES (Clean Classic â€” white + lime) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* â”€â”€ CSS VARIABLES (Clean Classic "” white + lime) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 :root {
   --bg: #f9fafb;
   --bg-secondary: #f3f4f6;
@@ -186,7 +186,7 @@ select:focus-visible {
   gap: 12px;
 }
 
-/* Solid lime-green accent line â€” slides in from left on hover */
+/* Solid lime-green accent line "” slides in from left on hover */
 .r-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -202,7 +202,7 @@ select:focus-visible {
   box-shadow: var(--shadow-card);
 }
 
-/* Thin left accent â€” subtle Linear-style indicator */
+/* Thin left accent "” subtle Linear-style indicator */
 .r-card::after {
   content: '';
   position: absolute;
