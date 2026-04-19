@@ -191,6 +191,11 @@ body {
   color: #fff;
   border-color: #fb923c;
 }
+[data-theme="dark"] .b-connect-btn.connected {
+  background: rgba(251, 146, 60, 0.12);
+  border-color: rgba(251, 146, 60, 0.30);
+  color: #fb923c;
+}
 
 /* Variant C: Network card disconnect — red danger state */
 .c-disconnect-btn {
