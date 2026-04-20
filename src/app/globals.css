@@ -62,8 +62,13 @@
 
   /* Hot / deadline accent */
   --hot-color: #fb923c;
-}
 
+  /* Connected button */
+  --connected-bg: rgba(34,197,94,0.10);
+  --connected-color: #16a34a;
+
+
+}
 /* â”€â”€ DARK MODE OVERRIDE (for variant-a, minimal) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 [data-theme="dark"] {
   --bg: #09090b;
