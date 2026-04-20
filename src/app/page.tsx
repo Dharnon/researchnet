@@ -598,11 +598,12 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           display: "flex", alignItems: "center", gap: 6,
           padding: "7px 12px", borderRadius: 8, border: "none",
           fontSize: 12, fontWeight: 600, cursor: "pointer",
-          background: view === item.key ? "var(--accent-dim)" : "transparent",
-          color: view === item.key ? "var(--text-primary)" : "var(--text-subtle)",
+          background: view === item.key ? "rgba(180,83,9,0.12)" : "transparent",
+          color: view === item.key ? "#D97706" : "var(--text-muted)",
+          border: view === item.key ? "1px solid rgba(180,83,9,0.28)" : "1px solid transparent",
           transition: "all 0.15s", position: "relative", whiteSpace: "nowrap",
         }}>
-          <span style={{ color: view === item.key ? "var(--accent)" : "var(--text-subtle)", display: "flex" }}>
+          <span style={{ color: view === item.key ? "#D97706" : "var(--text-muted)", display: "flex" }}>
             {item.icon}
           </span>
           {item.label}
