@@ -706,8 +706,8 @@ export default function App() {
     <div style={{ background: "var(--bg)", minHeight: "100vh", color: "var(--text-primary)" }}>
 
       {/* HEADER */}
-      <header className="app-header" style={{
-        borderBottom: "1px solid var(--card-border)", padding: "0 24px", height: 60,
+      <header style={{
+        borderBottom: "1px solid var(--header-border)", padding: "0 24px", height: 60,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         position: "sticky" as const, top: 0, background: "var(--header-bg)",
         backdropFilter: "blur(20px)", zIndex: 50,
