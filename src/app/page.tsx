@@ -619,12 +619,12 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           display: "flex", alignItems: "center", gap: 6,
           padding: "7px 14px", borderRadius: 8,
           fontSize: 12, fontWeight: 600, cursor: "pointer",
-          background: view === item.key ? "rgba(101,163,13,0.08)" : "transparent",
-          color: view === item.key ? "#65a30d" : "var(--text-muted)",
-          border: view === item.key ? "1px solid rgba(101,163,13,0.18)" : "1px solid transparent",
-          transition: "all 0.15s", position: "relative", whiteSpace: "nowrap",
+          background: view === item.key ? "var(--accent-dim)" : "transparent",
+          color: view === item.key ? "var(--accent)" : "var(--text-muted)",
+          border: view === item.key ? "1px solid var(--accent-border)" : "1px solid transparent",
+          transition: "all 0.15s", position: "relative" as const, whiteSpace: "nowrap" as const,
         }}>
-          <span style={{ color: view === item.key ? "#65a30d" : "var(--text-muted)", display: "flex" }}>
+          <span style={{ color: view === item.key ? "var(--accent)" : "var(--text-muted)", display: "flex" }}>
             {item.icon}
           </span>
           {item.label}
@@ -639,7 +639,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           )}
           {view === item.key && (
             <div style={{
-              position: "absolute", bottom: -5, left: "50%", transform: "translateX(-50%)",
+              position: "absolute" as const, bottom: -5, left: "50%", transform: "translateX(-50%)",
               width: 20, height: 2, borderRadius: 2, background: "var(--accent)",
             }} />
           )}
