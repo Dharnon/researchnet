@@ -333,7 +333,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
   return (
     <div
       onClick={onSelect}
-      className="card-accent researcher-card"
+      className="vc-card"
       style={{
         background: "var(--surface)",
         border: "1px solid var(--border)",
@@ -345,7 +345,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         gap: 14,
       }}
     >
-      <div className="b-card-top">
+      <div className="vc-card-top">
         <Avatar initials={researcher.avatar} color={researcher.color} size={44} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
@@ -388,7 +388,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         </div>
         <button
           onClick={onConnect}
-          className={`b-connect-btn ${isConnected ? "connected" : ""}`}
+          className={`vc-connect-btn ${isConnected ? "connected" : ""}`}
         >
           {isConnected ? <><Check size={13} /> Conectado</> : "Conectar"}
         </button>
@@ -526,8 +526,8 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
   return (
     <div style={{ maxWidth: 700, margin: "0 auto", padding: "24px" }}>
       <div style={{ marginBottom: 24 }}>
-        <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "'Playfair Display', Georgia, serif" }}>Mensajes</h1>
-        <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Conversaciones con tus contactos</p>
+        <h1 className="vc-section-heading">Mensajes</h1>
+        <p className="vc-section-sub">Conversaciones con tus contactos</p>
       </div>
 
       {conversations.length === 0 ? (
@@ -795,8 +795,8 @@ export default function App() {
       {view === "discover" && (
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "'Playfair Display', Georgia, serif" }}>Descubrir investigadores</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Encuentra colaboradores para tu pr�ximo proyecto</p>
+            <h1 className="vc-section-heading">Descubrir investigadores</h1>
+            <p className="vc-section-sub">Encuentra colaboradores para tu pr�ximo proyecto</p>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" as const, marginBottom: 24 }}>
             <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
@@ -843,8 +843,8 @@ export default function App() {
       {view === "opportunities" && (
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "'Playfair Display', Georgia, serif" }}>Oportunidades</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Postdocs, becas, convocatorias y m�s</p>
+            <h1 className="vc-section-heading">Oportunidades</h1>
+            <p className="vc-section-sub">Postdocs, becas, convocatorias y m�s</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
             {opportunities.map((opp) => {
@@ -884,11 +884,11 @@ export default function App() {
       {view === "network" && (
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "'Playfair Display', Georgia, serif" }}>Tu red</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
+            <h1 className="vc-section-heading">Tu red</h1>
+            <p className="vc-section-sub">{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
           </div>
           {connectedResearchers.length === 0 ? (
-            <div className="empty-state">
+            <div className="vc-empty-state">
               <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={{ display: "block" }}>
                 {/* Central node */}
                 <circle cx="32" cy="32" r="8" stroke="#27272a" strokeWidth="1.5" fill="none"/>
@@ -961,8 +961,8 @@ export default function App() {
       {view === "profile" && (
         <div style={{ maxWidth: 800, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "'Playfair Display', Georgia, serif" }}>Tu perfil</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Gestiona tu informaci�n de investigador</p>
+            <h1 className="vc-section-heading">Tu perfil</h1>
+            <p className="vc-section-sub">Gestiona tu informaci�n de investigador</p>
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18, padding: 28, marginBottom: 16 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: 24 }}>

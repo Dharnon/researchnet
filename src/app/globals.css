@@ -174,9 +174,154 @@ button:focus-visible, input:focus-visible, select:focus-visible {
 .editorial-heading {
   font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
   font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+/* Variant-C warm editorial: Playfair as primary serif for all h1/h2 */
+.variant-c-editorial {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+/* ─── RESEARCHER CARD (variant-c warm) ─────────────────────────────────────── */
+.vc-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 22px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  transition:
+    box-shadow 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.25s ease,
+    transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.vc-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background: radial-gradient(ellipse at top left, rgba(201, 148, 90, 0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.vc-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(201, 148, 90, 0.30);
+  transform: translateY(-3px);
+}
+.vc-card:hover::before {
+  opacity: 1;
+}
+
+/* ─── OPEN BADGE (journal-label style for variant-c) ───────────────────────── */
+.vc-open-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 9px;
+  font-weight: 700;
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--open-dot);
+  background: var(--open-dot-bg);
+  border: 1px solid var(--open-dot-border);
+  padding: 2px 8px 2px 6px;
+  border-radius: 4px;
+}
+
+/* ─── MATCH BADGE (variant-c: warm, editorial) ─────────────────────────────── */
+.vc-match-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  padding: 3px 8px 3px 6px;
+  border-radius: 20px;
+  border: 1px solid;
+}
+.vc-match-high  { color: var(--match-high); background: var(--match-high-bg); border-color: var(--match-high-border); }
+.vc-match-mid  { color: var(--match-mid);  background: var(--match-mid-bg);  border-color: var(--match-mid-border);  }
+.vc-match-low   { color: var(--match-low);  background: var(--match-low-bg);  border-color: var(--match-low-border);  }
+
+/* ─── CARD TOP (avatar + name + meta row) ─────────────────────────────────── */
+.vc-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.vc-card-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ─── CONNECT BUTTON ───────────────────────────────────────────────────────── */
+.vc-connect-btn {
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+  letter-spacing: -0.01em;
+}
+.vc-connect-btn:not(.connected) {
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid transparent;
+}
+.vc-connect-btn:not(.connected):hover {
+  background: var(--accent-hover);
+  transform: scale(1.02);
+}
+.vc-connect-btn.connected {
+  background: var(--connected-bg);
+  color: var(--connected-color);
+  border: 1px solid var(--connected-border);
+}
+
+/* ─── SECTION HEADING (warm editorial) ─────────────────────────────────────── */
+.vc-section-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 26px;
+  font-weight: 600;
   letter-spacing: -0.025em;
   line-height: 1.2;
   color: var(--text-primary);
+  margin-bottom: 6px;
+}
+.vc-section-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+/* ─── EMPTY STATE ──────────────────────────────────────────────────────────── */
+.vc-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 24px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  gap: 14px;
+  text-align: center;
 }
 
 /* ─── HEADER ─────────────────────────────────────────────────────────────────── */
