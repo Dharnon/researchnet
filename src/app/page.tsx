@@ -353,11 +353,12 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         {researcher.open && (
           <span style={{
             display: "inline-flex", alignItems: "center", gap: 4,
-            fontSize: 9, fontWeight: 700, color: "#D97706",
-            background: "rgba(217,119,6,0.08)", padding: "2px 6px", borderRadius: 20,
+            fontSize: 9, fontWeight: 700, color: "var(--open-dot)",
+            background: "var(--open-dot-bg)", border: "1px solid var(--open-dot-border)",
+            padding: "2px 6px", borderRadius: 20,
             textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0, alignSelf: "flex-start",
           }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#D97706", display: "inline-block" }} />
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--open-dot)", display: "inline-block" }} />
             Open
           </span>
         )}
@@ -1012,7 +1013,7 @@ export default function App() {
                   border: "1px solid var(--border)", color: "var(--text-secondary)", fontSize: 12, fontWeight: 600,
                   cursor: "pointer", textAlign: "left", width: "100%",
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "#84cc1640"; (e.currentTarget as HTMLButtonElement).style.color = "var(--accent)"; }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "rgba(201,148,90,0.35)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--accent)"; }}
                 onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)"; }}
                 >
                   <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
