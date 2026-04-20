@@ -5,7 +5,7 @@ import {
   Search, Users, Zap, User, BookOpen,
   Briefcase, Clock, X, Globe,
   ExternalLink, ChevronRight, MessageCircle,
-  Send, ArrowLeft, Check, Circle,
+  Send, ArrowLeft, Check, Circle, Plus,
 } from "lucide-react";
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
@@ -346,7 +346,8 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         <Avatar initials={researcher.avatar} color={researcher.color} size={44} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.3, display: "block", marginBottom: 2 }}>{researcher.name}</span>
-          <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}— {researcher.dept}</p>
+          <p style={{ fontSize: 11, color: "var(--text-secondary)", lineHeight: 1.3, marginBottom: 1 }}>{researcher.role}</p>
+          <p style={{ fontSize: 10, color: "var(--text-tertiary)", lineHeight: 1.3 }}>{researcher.dept}</p>
         </div>
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
@@ -387,7 +388,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           className={`b-connect-btn ${isConnected ? "connected" : ""}`}
           style={{ "--btn-color": researcher.color } as React.CSSProperties}
         >
-          {isConnected ? <><Check size={13} /> Conectado</> : "Conectar"}
+          {isConnected ? <><Check size={13} /> Conectado</> : <><Plus size={12} /> Conectar</>}
         </button>
       </div>
     </div>
@@ -698,7 +699,7 @@ export default function App() {
       <header className="app-header" style={{
         borderBottom: "1px solid var(--card-border)", padding: "0 24px", height: 60,
         display: "flex", alignItems: "center", justifyContent: "space-between",
-        position: "sticky" as const, top: 0, background: "rgba(255,255,255,0.92)",
+        position: "sticky" as const, top: 0, background: "var(--header-bg)",
         backdropFilter: "blur(20px)", zIndex: 50,
       }}>
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -878,7 +879,7 @@ export default function App() {
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
                   <p style={{ fontSize: 11, color: "var(--text-muted)" }}>{opp.dept}</p>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto", paddingTop: 4 }}>
-                    <span style={{ fontSize: 11, color: "var(--hot-color)", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
+                    <span style={{ fontSize: 11, color: opp.hot ? "var(--hot-color)" : "var(--text-tertiary)", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
                       <Clock size={10} />{opp.deadline}
                     </span>
                     <span style={{ fontSize: 11, fontWeight: 600, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}>

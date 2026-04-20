@@ -67,6 +67,9 @@
   --connected-bg: rgba(34,197,94,0.10);
   --connected-color: #16a34a;
 
+  /* Header glass */
+  --header-bg: rgba(249,250,251,0.92);
+  --header-border: rgba(229,231,235,0.80);
 
 }
 /* â”€â”€ DARK MODE OVERRIDE (for variant-a, minimal) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -98,6 +101,10 @@
 
   --shadow-card: 0 0 0 1px #1e1e22;
   --shadow-card-hover: 0 0 0 1px #303038, 0 8px 40px rgba(0,0,0,0.55);
+
+  /* Header glass — dark */
+  --header-bg: rgba(9,9,11,0.88);
+  --header-border: rgba(30,30,34,0.90);
 }
 
 /* â”€â”€ SHIMMER ANIMATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -398,6 +405,10 @@ select:focus-visible {
   background: transparent;
   color: var(--accent);
   transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
 }
 .b-connect-btn:hover:not(.connected) {
   background: var(--accent);
