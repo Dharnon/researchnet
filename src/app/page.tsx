@@ -88,6 +88,34 @@ function MatchBadge({ score }: { score: number }) {
   );
 }
 
+// ─── SKELETON CARD ───────────────────────────────────────────────────────────
+function SkeletonCard() {
+  return (
+    <div style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
+      <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
+        <div className="skeleton-shimmer" style={{ width: 44, height: 44, borderRadius: 10 }} />
+        <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
+          <div className="skeleton-shimmer" style={{ width: "70%", height: 13, borderRadius: 4 }} />
+          <div className="skeleton-shimmer-dim" style={{ width: "50%", height: 10, borderRadius: 4 }} />
+          <div className="skeleton-shimmer-dim" style={{ width: "40%", height: 9, borderRadius: 4 }} />
+        </div>
+      </div>
+      <div style={{ display: "flex", gap: 6 }}>
+        <div className="skeleton-shimmer" style={{ width: 64, height: 20, borderRadius: 20 }} />
+        <div className="skeleton-shimmer-dim" style={{ width: 80, height: 20, borderRadius: 20 }} />
+        <div className="skeleton-shimmer" style={{ width: 56, height: 20, borderRadius: 20 }} />
+      </div>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 4 }}>
+        <div style={{ display: "flex", gap: 10 }}>
+          <div className="skeleton-shimmer-dim" style={{ width: 40, height: 10, borderRadius: 4 }} />
+          <div className="skeleton-shimmer-dim" style={{ width: 50, height: 10, borderRadius: 4 }} />
+        </div>
+        <div className="skeleton-shimmer" style={{ width: 72, height: 26, borderRadius: 8 }} />
+      </div>
+    </div>
+  );
+}
+
 // ─── SKELETON LOADER ────────────────────────────────────────────────────
 
 function SkeletonLoader() {
@@ -96,37 +124,16 @@ function SkeletonLoader() {
       {/* Header skeleton */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32, padding: "0 0 24px", borderBottom: "1px solid var(--border)" }}>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <div style={{ width: 28, height: 28, borderRadius: 8, background: "var(--border)" }} />
-          <div style={{ width: 90, height: 14, borderRadius: 4, background: "var(--border)" }} />
+          <div className="skeleton-shimmer" style={{ width: 28, height: 28, borderRadius: 8 }} />
+          <div className="skeleton-shimmer" style={{ width: 90, height: 14, borderRadius: 4 }} />
         </div>
-        <div style={{ width: 280, height: 36, borderRadius: 10, background: "var(--border)" }} />
-        <div style={{ width: 60, height: 14, borderRadius: 4, background: "var(--border)" }} />
+        <div className="skeleton-shimmer" style={{ width: 280, height: 36, borderRadius: 10 }} />
+        <div className="skeleton-shimmer" style={{ width: 60, height: 14, borderRadius: 4 }} />
       </div>
-      {/* Cards grid skeleton */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
-        {[1, 2, 3].map((i) => (
-          <div key={i} style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
-            <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-              <div style={{ width: 44, height: 44, borderRadius: 10, background: "var(--border)" }} />
-              <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
-                <div style={{ width: "70%", height: 13, borderRadius: 4, background: "var(--border)" }} />
-                <div style={{ width: "50%", height: 10, borderRadius: 4, background: "var(--border-subtle)" }} />
-                <div style={{ width: "40%", height: 9, borderRadius: 4, background: "var(--border-subtle)" }} />
-              </div>
-            </div>
-            <div style={{ display: "flex", gap: 6 }}>
-              <div style={{ width: 64, height: 20, borderRadius: 20, background: "var(--border)" }} />
-              <div style={{ width: 80, height: 20, borderRadius: 20, background: "var(--border-subtle)" }} />
-              <div style={{ width: 56, height: 20, borderRadius: 20, background: "var(--border)" }} />
-            </div>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 4 }}>
-              <div style={{ display: "flex", gap: 10 }}>
-                <div style={{ width: 40, height: 10, borderRadius: 4, background: "var(--border-subtle)" }} />
-                <div style={{ width: 50, height: 10, borderRadius: 4, background: "var(--border-subtle)" }} />
-              </div>
-              <div style={{ width: 72, height: 26, borderRadius: 8, background: "var(--border)" }} />
-            </div>
-          </div>
+      {/* Cards grid skeleton — 6 cards matching the real grid */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16 }}>
+        {[1, 2, 3, 4, 5, 6].map((i) => (
+          <SkeletonCard key={i} />
         ))}
       </div>
     </div>
