@@ -186,21 +186,23 @@ select:focus-visible {
   box-shadow: var(--shadow-card);
 }
 
-/* Slate-blue accent line that slides in from top on hover */
-.b-card::before {
+/* Left accent — amber, refined */
+.b-card::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, #B45309, #D97706);
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(180deg, #B45309, #D97706);
   opacity: 0;
   transition: opacity 0.2s ease;
+  border-radius: var(--radius) 0 0 var(--radius);
 }
 .b-card:hover {
-  border-color: rgba(180,83,9,0.40);
-  box-shadow: 0 8px 28px rgba(0,0,0,0.18), 0 0 0 1px rgba(180,83,9,0.22), 0 0 24px rgba(180,83,9,0.08);
+  border-color: rgba(180, 83, 9, 0.28);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 0 0 1px rgba(180,83,9,0.14), 0 0 16px rgba(180,83,9,0.06);
   transform: translateY(-2px);
 }
-.b-card:hover::before { opacity: 1; }
+.b-card:hover::after { opacity: 1; }
 
 .b-card-top {
   display: flex;
