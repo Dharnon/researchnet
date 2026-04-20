@@ -76,13 +76,15 @@ function MatchBadge({ score }: { score: number }) {
   const border = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   return (
     <span style={{
-      display: "inline-flex", alignItems: "center", gap: 3,
-      fontSize: 10, fontWeight: 700,
-      color, background: bg, border: `1px solid ${border}`,
-      padding: "2px 7px", borderRadius: 20,
+      display: "inline-flex", alignItems: "center", gap: 5,
+      fontSize: 10, fontWeight: 600,
+      color: isHigh ? "var(--match-high)" : isMid ? "var(--match-mid)" : "var(--match-low)",
+      background: isHigh ? "var(--match-high-bg)" : isMid ? "var(--match-mid-bg)" : "var(--match-low-bg)",
+      border: `1px solid ${isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)"}`,
+      padding: "3px 9px", borderRadius: 20,
       letterSpacing: "-0.01em",
     }}>
-      <span style={{ width: 5, height: 5, borderRadius: "50%", background: color, flexShrink: 0 }} />
+      <span style={{ width: 4, height: 4, borderRadius: "50%", background: isHigh ? "var(--match-high)" : isMid ? "var(--match-mid)" : "var(--match-low)", flexShrink: 0 }} />
       {score}%
     </span>
   );
@@ -615,13 +617,14 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
       {items.map((item) => (
         <button key={item.key} onClick={() => setView(item.key)} style={{
           display: "flex", alignItems: "center", gap: 6,
-          padding: "7px 16px", borderRadius: 8, border: "none",
+          padding: "7px 14px", borderRadius: 8, border: "none",
           fontSize: 12, fontWeight: 600, cursor: "pointer",
-          background: view === item.key ? "var(--accent-dim)" : "transparent",
-          color: view === item.key ? "var(--text-primary)" : "var(--text-subtle)",
+          background: view === item.key ? "rgba(101,163,13,0.08)" : "transparent",
+          color: view === item.key ? "#65a30d" : "var(--text-muted)",
+          border: view === item.key ? "1px solid rgba(101,163,13,0.18)" : "1px solid transparent",
           transition: "all 0.15s", position: "relative", whiteSpace: "nowrap",
         }}>
-          <span style={{ color: view === item.key ? "var(--accent)" : "var(--text-subtle)", display: "flex" }}>
+          <span style={{ color: view === item.key ? "#65a30d" : "var(--text-muted)", display: "flex" }}>
             {item.icon}
           </span>
           {item.label}
