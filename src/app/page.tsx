@@ -598,12 +598,12 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           display: "flex", alignItems: "center", gap: 6,
           padding: "7px 12px", borderRadius: 8,
           fontSize: 12, fontWeight: 600, cursor: "pointer",
-          background: view === item.key ? "rgba(180,83,9,0.12)" : "transparent",
-          color: view === item.key ? "#D97706" : "var(--text-muted)",
-          border: view === item.key ? "1px solid rgba(180,83,9,0.28)" : "1px solid transparent",
+          background: view === item.key ? "var(--accent-dim)" : "transparent",
+          color: view === item.key ? "var(--accent)" : "var(--text-muted)",
+          border: view === item.key ? "1px solid var(--accent-border)" : "1px solid transparent",
           transition: "all 0.15s", position: "relative", whiteSpace: "nowrap",
         }}>
-          <span style={{ color: view === item.key ? "#D97706" : "var(--text-muted)", display: "flex" }}>
+          <span style={{ color: view === item.key ? "var(--accent)" : "var(--text-muted)", display: "flex" }}>
             {item.icon}
           </span>
           {item.label}
@@ -685,8 +685,8 @@ export default function App() {
     <div style={{ background: "var(--bg)", minHeight: "100vh", color: "var(--text-primary)" }}>
 
       {/* HEADER */}
-      <header className="app-header" style={{
-        borderBottom: "1px solid var(--card-border)", padding: "0 24px", height: 60,
+      <header style={{
+        borderBottom: "1px solid var(--header-border)", padding: "0 24px", height: 60,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         position: "sticky" as const, top: 0, background: "var(--header-bg)",
         backdropFilter: "blur(20px)", zIndex: 50,
@@ -862,7 +862,7 @@ export default function App() {
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
                     <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
-                    {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={10} color="#fb923c" /></span>}
+                    {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={10} color="var(--hot-color)" /></span>}
                   </div>
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
                   <p style={{ fontSize: 11, color: "var(--text-muted)" }}>{opp.dept}</p>
