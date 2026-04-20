@@ -134,9 +134,11 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
 
 // ─── MATCH BADGE (warm: green ≥90, amber ≥70, gray <70) ─────────────────────
 function MatchBadge({ score }: { score: number }) {
-  const color = score >= 90 ? "#22c55e" : score >= 70 ? "#D97706" : "#9ca3af";
-  const bg = score >= 90 ? "rgba(34,197,94,0.08)" : score >= 70 ? "rgba(217,119,6,0.08)" : "rgba(156,163,175,0.08)";
-  const border = score >= 90 ? "rgba(34,197,94,0.18)" : score >= 70 ? "rgba(217,119,6,0.18)" : "rgba(156,163,175,0.18)";
+  const isHigh = score >= 90;
+  const isMid  = score >= 70 && score < 90;
+  const color  = isHigh ? "var(--match-high)" : isMid ? "var(--match-mid)" : "var(--match-low)";
+  const bg     = isHigh ? "var(--match-high-bg)" : isMid ? "var(--match-mid-bg)" : "var(--match-low-bg)";
+  const border = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   return (
     <span style={{
       display: "inline-flex", alignItems: "center", gap: 3,
@@ -198,11 +200,11 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 
           {/* Match score */}
           <div style={{
-            background: "rgba(217,119,6,0.06)", border: "1px solid rgba(217,119,6,0.18)",
+            background: "var(--match-mid-bg)", border: "1px solid var(--match-mid-border)",
             borderRadius: 10, padding: "10px 14px", display: "flex", alignItems: "baseline", gap: 6,
           }}>
-            <span style={{ fontSize: 28, fontWeight: 900, color: "#D97706", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
-            <span style={{ fontSize: 12, fontWeight: 600, color: "#D97706", opacity: 0.6 }}>% affinity</span>
+            <span style={{ fontSize: 28, fontWeight: 900, color: "var(--accent)", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
+            <span style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", opacity: 0.6 }}>% affinity</span>
           </div>
 
           {/* Bio */}
@@ -227,8 +229,8 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
               {researcher.groups.map((g) => (
                 <span key={g} style={{
-                  fontSize: 10, fontWeight: 600, color: "#D97706",
-                  background: "rgba(217,119,6,0.08)", padding: "3px 8px", borderRadius: 6,
+                  fontSize: 10, fontWeight: 600, color: "var(--accent)",
+                  background: "var(--accent-dim)", padding: "3px 8px", borderRadius: 6,
                 }}>{g}</span>
               ))}
             </div>
@@ -255,8 +257,8 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             style={{
               flex: 1, padding: "10px", borderRadius: 9, border: "none",
               fontSize: 12, fontWeight: 700, cursor: "pointer",
-              background: isConnected ? "rgba(34,197,94,0.10)" : "#D97706",
-              color: isConnected ? "#16a34a" : "#fff",
+              background: isConnected ? "var(--connected-bg)" : "var(--accent)",
+              color: isConnected ? "var(--connected-color)" : "#fff",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 5,
               transition: "all 0.15s",
             }}
@@ -691,9 +693,9 @@ export default function App() {
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <div style={{
             width: 28, height: 28, borderRadius: 8,
-            background: "linear-gradient(135deg, #D97706, #B45309)",
+            background: "linear-gradient(135deg, var(--accent), var(--accent-hover))",
             display: "flex", alignItems: "center", justifyContent: "center",
-            boxShadow: "0 0 20px rgba(217,119,6,0.25)",
+            boxShadow: "0 0 20px var(--accent-glow)",
           }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
               <circle cx="8" cy="12" r="3" fill="#fff" opacity="0.9"/>
@@ -728,9 +730,9 @@ export default function App() {
           }}>
             <div style={{
               width: 52, height: 52, borderRadius: 14,
-              background: "linear-gradient(135deg, #D97706, #92400E)",
+              background: "linear-gradient(135deg, var(--accent), var(--accent-hover))",
               display: "flex", alignItems: "center", justifyContent: "center",
-              margin: "0 auto 20px", boxShadow: "0 0 40px rgba(217,119,6,0.30)",
+              margin: "0 auto 20px", boxShadow: "0 0 40px var(--accent-glow)",
             }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <circle cx="8" cy="12" r="3" fill="#fff" opacity="0.95"/>
@@ -746,7 +748,7 @@ export default function App() {
               onClick={() => { setShowOnboarding(false); localStorage.setItem("rn_onboarding_skipped", "1"); }}
               style={{
                 width: "100%", padding: "13px 20px", borderRadius: 12,
-                border: "1px solid rgba(217,119,6,0.35)", background: "#D97706", color: "#fff",
+                border: "1px solid var(--accent-glow)", background: "var(--accent)", color: "#fff",
                 fontSize: 13, fontWeight: 800, cursor: "pointer",
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
                 marginBottom: 10,
@@ -805,9 +807,9 @@ export default function App() {
               {allDepts.map((d) => <option key={d} value={d}>{d}</option>)}
             </select>
             <button onClick={() => setOnlyOpen((p) => !p)} style={{
-              background: onlyOpen ? "rgba(217,119,6,0.08)" : "var(--surface)",
-              border: `1px solid ${onlyOpen ? "rgba(217,119,6,0.30)" : "var(--border)"}`,
-              borderRadius: 10, color: onlyOpen ? "#D97706" : "var(--text-muted)",
+              background: onlyOpen ? "var(--accent-dim)" : "var(--surface)",
+              border: `1px solid ${onlyOpen ? "var(--accent-glow)" : "var(--border)"}`,
+              borderRadius: 10, color: onlyOpen ? "var(--accent)" : "var(--text-muted)",
               fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
             }}>
               <span style={{ width: 6, height: 6, borderRadius: "50%", background: onlyOpen ? "var(--accent)" : "var(--text-tertiary)", display: "inline-block" }} />
@@ -890,7 +892,7 @@ export default function App() {
               <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={{ display: "block" }}>
                 {/* Central node */}
                 <circle cx="32" cy="32" r="8" stroke="#27272a" strokeWidth="1.5" fill="none"/>
-                <circle cx="32" cy="32" r="3" fill="#D97706" opacity="0.8"/>
+                <circle cx="32" cy="32" r="3" fill="var(--accent)" opacity="0.8"/>
                 {/* Satellite nodes */}
                 <circle cx="14" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
                 <circle cx="50" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
@@ -899,17 +901,17 @@ export default function App() {
                 <circle cx="32" cy="8" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
                 <circle cx="32" cy="56" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
                 {/* Connection lines */}
-                <line x1="24" y1="27" x2="18" y2="21" stroke="#D97706" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
-                <line x1="40" y1="27" x2="46" y2="21" stroke="#D97706" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
-                <line x1="24" y1="37" x2="18" y2="43" stroke="#D97706" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
-                <line x1="40" y1="37" x2="46" y2="43" stroke="#D97706" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
+                <line x1="24" y1="27" x2="18" y2="21" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
+                <line x1="40" y1="27" x2="46" y2="21" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
+                <line x1="24" y1="37" x2="18" y2="43" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
+                <line x1="40" y1="37" x2="46" y2="43" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
                 <line x1="32" y1="24" x2="32" y2="12" stroke="#27272a" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
                 <line x1="32" y1="40" x2="32" y2="52" stroke="#27272a" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
                 {/* Satellite node dots */}
-                <circle cx="14" cy="18" r="2" fill="#D97706" opacity="0.45"/>
-                <circle cx="50" cy="18" r="2" fill="#D97706" opacity="0.45"/>
-                <circle cx="14" cy="46" r="2" fill="#D97706" opacity="0.45"/>
-                <circle cx="50" cy="46" r="2" fill="#D97706" opacity="0.45"/>
+                <circle cx="14" cy="18" r="2" fill="var(--accent)" opacity="0.45"/>
+                <circle cx="50" cy="18" r="2" fill="var(--accent)" opacity="0.45"/>
+                <circle cx="14" cy="46" r="2" fill="var(--accent)" opacity="0.45"/>
+                <circle cx="50" cy="46" r="2" fill="var(--accent)" opacity="0.45"/>
               </svg>
               <p className="empty-title">Tu red está vacía</p>
               <p className="empty-sub">Explora investigadores y conéctate para construir tu red de colaboración.</p>

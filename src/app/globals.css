@@ -61,6 +61,25 @@
   --shadow-card-hover: 0 0 0 1px rgba(201,148,90,0.18), 0 8px 40px rgba(0,0,0,0.65);
   --shadow-elevated: 0 20px 60px rgba(0,0,0,0.75);
   --shadow-detail-panel: -8px 0 40px rgba(0,0,0,0.65);
+
+  /* Match score tiers */
+  --match-high: #4ade80;
+  --match-high-bg: rgba(74,222,128,0.08);
+  --match-high-border: rgba(74,222,128,0.18);
+  --match-mid: #c9945a;
+  --match-mid-bg: rgba(201,148,90,0.08);
+  --match-mid-border: rgba(201,148,90,0.18);
+  --match-low: #6b7280;
+  --match-low-bg: rgba(107,114,128,0.08);
+  --match-low-border: rgba(107,114,128,0.18);
+
+  /* Connected state */
+  --connected-color: #4ade80;
+  --connected-bg: rgba(74,222,128,0.10);
+  --connected-border: rgba(74,222,128,0.25);
+
+  /* Hot accent */
+  --hot-color: #c9733a;
 }
 
 /* ─── LIGHT MODE — Warm editorial paper ──────────────────────────────────────── */
@@ -100,6 +119,25 @@
   --nav-item-bg: #fdfaf6;
   --nav-item-color: #9c9488;
   --nav-item-active: #1c1916;
+
+  /* Match score tiers */
+  --match-high: #22c55e;
+  --match-high-bg: rgba(34,197,94,0.08);
+  --match-high-border: rgba(34,197,94,0.18);
+  --match-mid: #a67744;
+  --match-mid-bg: rgba(166,119,68,0.08);
+  --match-mid-border: rgba(166,119,68,0.18);
+  --match-low: #9ca3af;
+  --match-low-bg: rgba(156,163,175,0.08);
+  --match-low-border: rgba(156,163,175,0.18);
+
+  /* Connected state */
+  --connected-color: #22c55e;
+  --connected-bg: rgba(34,197,94,0.10);
+  --connected-border: rgba(34,197,94,0.25);
+
+  /* Hot accent */
+  --hot-color: #c9733a;
 }
 
 /* ─── BASE RESET ─────────────────────────────────────────────────────────────── */
