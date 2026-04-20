@@ -20,12 +20,12 @@ const researchers = [
 ];
 
 const opportunities = [
-  { id: 1, title: "Postdoc —“ IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posición postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomédica." },
+  { id: 1, title: "Postdoc —  IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posición postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomédica." },
   { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las áreas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigación en todas las áreas. Hasta $300.000 USD por proyecto, duración 4 años." },
-  { id: 3, title: "Colaboración EU Horizon —“ Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco colaborador para propuesta EU Horizon sobre computación cuántica aplicada a optimización combinatoria." },
-  { id: 4, title: "Tesis Doctoral —“ NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Búsqueda de estudiante doctoral para investigación en modelos de lenguaje multilingüe para lenguas minoritarias." },
-  { id: 5, title: "Research Engineer —“ Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robotics. Salario competitivo + equity." },
-  { id: 6, title: "Beca Marie Curie —“ Climate AI", dept: "Todas las áreas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio climático. Sin restricciones de nacionalidad." },
+  { id: 3, title: "Colaboración EU Horizon —  Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco colaborador para propuesta EU Horizon sobre computación cuántica aplicada a optimización combinatoria." },
+  { id: 4, title: "Tesis Doctoral —  NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Búsqueda de estudiante doctoral para investigación en modelos de lenguaje multilingüe para lenguas minoritarias." },
+  { id: 5, title: "Research Engineer —  Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robotics. Salario competitivo + equity." },
+  { id: 6, title: "Beca Marie Curie —  Climate AI", dept: "Todas las áreas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio climático. Sin restricciones de nacionalidad." },
 ];
 
 const mockMessages = [
@@ -117,7 +117,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
   const s = Math.round(size * 0.34);
   return (
     <div style={{
-      width: size, height: size, borderRadius: 10,
+      width: size, height: size, borderRadius: "50%",
       background: `${color}18`, border: `1px solid ${color}25`,
       display: "flex", alignItems: "center", justifyContent: "center",
       fontSize: s, fontWeight: 700, color,
@@ -233,7 +233,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 
           {/* Tags */}
           <div>
-            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Á  reas</p>
+            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Áreas</p>
             <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
               {researcher.tags.map((tag) => (
                 <span key={tag} style={{
