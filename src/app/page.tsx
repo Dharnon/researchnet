@@ -917,7 +917,7 @@ export default function App() {
               <p className="empty-sub">Explora investigadores y con�ctate para construir tu red de colaboraci�n.</p>
               <button onClick={() => setView("discover")} style={{
                 marginTop: 6, padding: "9px 20px", borderRadius: 9,
-                background: "var(--accent)", color: "#fff", border: "none",
+                background: "var(--accent)", color: "var(--text-primary)", border: "none",
                 fontSize: 13, fontWeight: 700, cursor: "pointer",
                 fontFamily: "inherit",
               }}>Descubrir investigadores</button>
