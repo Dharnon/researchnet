@@ -197,46 +197,44 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             </div>
           </div>
 
-          {/* Match score */}
+          {/* Match score — minimal metadata style, not a dominant block */}
           <div style={{
-            borderLeft: "3px solid var(--accent)",
-            background: "var(--accent-dim)",
-            border: "1px solid var(--accent-glow)",
-            borderRadius: 10, padding: "10px 14px",
-            display: "flex", flexDirection: "column", gap: 2,
+            background: "var(--surface-hover)", border: "1px solid var(--card-border)",
+            borderRadius: 8, padding: "8px 12px",
+            display: "flex", alignItems: "center", justifyContent: "space-between",
           }}>
-            <span style={{ fontSize: 9, fontWeight: 700, color: "var(--accent)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Match Score</span>
-            <div style={{ display: "flex", alignItems: "baseline", gap: 5 }}>
-              <span style={{ fontSize: 30, fontWeight: 900, color: "var(--accent)", letterSpacing: "-0.05em", lineHeight: 1 }}>{researcher.match}</span>
-              <span style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", opacity: 0.6 }}>%</span>
+            <span style={{ fontSize: 10, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Match</span>
+            <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
+              <span style={{ fontSize: 20, fontWeight: 900, color: researcher.match >= 90 ? "#22c55e" : researcher.match >= 70 ? "#f59e0b" : "var(--text-tertiary)", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
+              <span style={{ fontSize: 11, fontWeight: 600, color: "var(--text-tertiary)" }}>%</span>
             </div>
-            <span style={{ fontSize: 10, color: "var(--accent)", opacity: 0.5 }}>affinity based on shared areas</span>
           </div>
 
           {/* Bio */}
           <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.65 }}>{researcher.bio}</p>
 
           {/* Stats */}
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8 }}>
-            {[{ v: researcher.pubs, l: "papers" }, { v: researcher.projects, l: "projects" }, { v: researcher.groups.length, l: "groups" }].map((s) => (
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 6 }}>
+            {[{ v: researcher.pubs, l: "Papers" }, { v: researcher.projects, l: "Projects" }, { v: researcher.groups.length, l: "Groups" }].map((s) => (
               <div key={s.l} style={{
                 background: "var(--surface-hover)", border: "1px solid var(--card-border)",
-                borderRadius: 8, padding: "8px 6px", textAlign: "center",
+                borderRadius: 8, padding: "10px 6px", textAlign: "center",
               }}>
-                <div style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 2 }}>{s.v}</div>
-                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600 }}>{s.l}</div>
+                <div style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em", lineHeight: 1.2, marginBottom: 4 }}>{s.v}</div>
+                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 600 }}>{s.l}</div>
               </div>
             ))}
           </div>
 
           {/* Groups */}
           <div>
-            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Grupos</p>
-            <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>Groups</p>
+            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               {researcher.groups.map((g) => (
                 <span key={g} style={{
                   fontSize: 10, fontWeight: 600, color: researcher.color,
-                  background: `${researcher.color}10`, padding: "3px 8px", borderRadius: 6,
+                  background: `${researcher.color}10`, border: `1px solid ${researcher.color}25`,
+                  padding: "3px 9px", borderRadius: 6,
                 }}>{g}</span>
               ))}
             </div>
@@ -244,12 +242,13 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 
           {/* Tags */}
           <div>
-            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Áreas</p>
-            <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>Research Areas</p>
+            <div style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               {researcher.tags.map((tag) => (
                 <span key={tag} style={{
-                  fontSize: 10, color: "var(--tag-text)", background: "var(--tag-bg)",
-                  border: "1px solid var(--tag-border)", padding: "3px 8px", borderRadius: 20,
+                  fontSize: 10, color: "var(--tag-text)",
+                  background: "var(--tag-bg)", border: "1px solid var(--tag-border)",
+                  padding: "3px 9px", borderRadius: 20,
                 }}>{tag}</span>
               ))}
             </div>
@@ -1006,7 +1005,7 @@ export default function App() {
               ))}
             </div>
             <div>
-              <p style={{ fontSize: 10, fontWeight: 700, color: "var(--text-subtle)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Grupos de investigación</p>
+              <p style={{ fontSize: 10, fontWeight: 700, color: "var(--text-subtle)", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: 8 }}>Research Groups</p>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const }}>
                 {userProfile.groups.map((g) => (
                   <span key={g} style={{ fontSize: 11, fontWeight: 600, color: "var(--text-muted)", background: "var(--surface-hover)", border: "1px solid var(--border)", padding: "4px 10px", borderRadius: 8 }}>{g}</span>
@@ -1026,7 +1025,7 @@ export default function App() {
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: 20 }}>
             <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones rápidas</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {[{ label: "Ver mi perfil público", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
+              {[{ label: "View public profile", icon: <ExternalLink size={13} /> }, { label: "Invite a colleague", icon: <Users size={13} /> }, { label: "Export CV", icon: <BookOpen size={13} /> }].map((action) => (
                 <button key={action.label} style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                   padding: "12px 14px", borderRadius: 10, background: "var(--surface-hover)",
