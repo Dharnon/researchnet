@@ -20,6 +20,7 @@
   --accent-dim: rgba(201, 148, 90, 0.10);
   --accent-hover: #d9a96d;
   --accent-glow: rgba(201, 148, 90, 0.12);
+  --accent-border: rgba(201, 148, 90, 0.28);
 
   --tag-bg: #1c1916;
   --tag-border: #2c2824;
@@ -100,6 +101,7 @@
   --accent-dim: rgba(166, 119, 68, 0.09);
   --accent-hover: #8f6538;
   --accent-glow: rgba(166, 119, 68, 0.12);
+  --accent-border: rgba(166, 119, 68, 0.22);
 
   --tag-bg: #ede8e0;
   --tag-border: #ddd6ca;
