@@ -69,9 +69,11 @@ const researcherColors: Record<string, string> = {
 // ─── MATCH BADGE (color-coded pill) ────────────────────────────────────────
 
 function MatchBadge({ score }: { score: number }) {
-  const color = score >= 90 ? "#22c55e" : score >= 70 ? "#f59e0b" : "#9ca3af";
-  const bg = score >= 90 ? "rgba(34,197,94,0.08)" : score >= 70 ? "rgba(245,158,11,0.08)" : "rgba(156,163,175,0.08)";
-  const border = score >= 90 ? "rgba(34,197,94,0.18)" : score >= 70 ? "rgba(245,158,11,0.18)" : "rgba(156,163,175,0.18)";
+  const isHigh = score >= 90;
+  const isMid  = score >= 70 && score < 90;
+  const color  = isHigh ? "var(--match-high)" : isMid ? "var(--match-mid)" : "var(--match-low)";
+  const bg     = isHigh ? "var(--match-high-bg)" : isMid ? "var(--match-mid-bg)" : "var(--match-low-bg)";
+  const border = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   return (
     <span style={{
       display: "inline-flex", alignItems: "center", gap: 3,
@@ -310,10 +312,10 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
         }}>×</button>
         <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
           <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
-          {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#fb923c", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
+          {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "var(--hot-color)", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
         </div>
         <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
-        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} · Fecha ímite: <span style={{ color: "#fb923c", fontWeight: 700 }}>{opp.deadline}</span></p>
+        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} · Fecha ímite: <span style={{ color: "var(--hot-color)", fontWeight: 700 }}>{opp.deadline}</span></p>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 20 }}>{opp.desc}</p>
         <button style={{
           width: "100%", padding: "12px", borderRadius: 10, border: "none",
@@ -871,12 +873,12 @@ export default function App() {
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
                     <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
-                    {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={10} color="#fb923c" /></span>}
+                    {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={10} color="var(--hot-color)" /></span>}
                   </div>
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
                   <p style={{ fontSize: 11, color: "var(--text-muted)" }}>{opp.dept}</p>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto", paddingTop: 4 }}>
-                    <span style={{ fontSize: 11, color: "#fb923c", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
+                    <span style={{ fontSize: 11, color: "var(--hot-color)", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
                       <Clock size={10} />{opp.deadline}
                     </span>
                     <span style={{ fontSize: 11, fontWeight: 600, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}>
