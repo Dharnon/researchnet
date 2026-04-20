@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -161,9 +161,9 @@ body {
 .b-connect-btn {
   padding: 5px 13px;
   border-radius: 8px;
-  border: 1px solid #D97706;
+  border: 1px solid var(--accent);
   background: transparent;
-  color: #D97706;
+  color: var(--accent);
   font-size: 11px;
   font-weight: 700;
   cursor: pointer;
@@ -171,30 +171,30 @@ body {
   letter-spacing: 0.01em;
 }
 .b-connect-btn:hover:not(.connected) {
-  background: #D97706;
+  background: var(--accent);
   color: #fff;
-  border-color: #D97706;
+  border-color: var(--accent);
 }
 .b-connect-btn.connected {
-  background: rgba(217, 119, 6, 0.08);
-  border-color: rgba(217, 119, 6, 0.25);
-  color: #92400E;
+  background: var(--accent-dim);
+  border-color: rgba\(97,130,200,0\.25\);
+  color: var(--accent);
 }
 
 /* Variant C: Connect button dark mode */
 [data-theme="dark"] .b-connect-btn {
-  border-color: #fb923c;
-  color: #fb923c;
+  border-color: #6182c8;
+  color: #6182c8;
 }
 [data-theme="dark"] .b-connect-btn:hover:not(.connected) {
-  background: #fb923c;
+  background: #6182c8;
   color: #fff;
-  border-color: #fb923c;
+  border-color: #6182c8;
 }
 [data-theme="dark"] .b-connect-btn.connected {
-  background: rgba(251, 146, 60, 0.12);
-  border-color: rgba(251, 146, 60, 0.30);
-  color: #fb923c;
+  background: rgba\(97,130,200,0\.12\);
+  border-color: rgba\(97,130,200,0\.30\);
+  color: #6182c8;
 }
 
 /* Variant C: Network card disconnect — red danger state */
@@ -235,7 +235,7 @@ body {
 }
 .c-msg-btn:hover {
   border-color: rgba(217, 119, 6, 0.35);
-  color: #D97706;
+  color: var(--accent);
 }
 
 /* researcher-card: amber hover via CSS */
