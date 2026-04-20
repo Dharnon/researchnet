@@ -15,7 +15,7 @@ const researchers = [
   { id: 2, name: "Dr. Marcos Ibáñez", role: "Investigador Senior", dept: "Ciencias de la Computación", avatar: "MI", color: "#60a5fa", tags: ["NLP", "Large Language Models", "Ética en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multilingüe y los desafíos éticos que plantea la IA generativa." },
   { id: 3, name: "Dra. Sofía Ríos", role: "Profesora Asociada", dept: "Biología Molecular", avatar: "SR", color: "#f472b6", tags: ["Genómica", "CRISPR", "Bioinformática"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para análisis de variantes genéticas y edición génica." },
   { id: 4, name: "Dr. Andrés Leal", role: "Profesor Asociado", dept: "Física Computacional", avatar: "AL", color: "#c084fc", tags: ["Computación Cuántica", "Simulación", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Diseño algoritmos cuánticos para simulación de sistemas complejos y optimización combinatoria." },
-  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Postdoctoral", dept: "Salud Pública", avatar: "CF", color: "#fb923c", tags: ["Epidemiología", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiológicos para sistemas de alerta temprana." },
+  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Postdoctoral", dept: "Salud Pública", avatar: "CF", color: "var(--accent)", tags: ["Epidemiología", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiológicos para sistemas de alerta temprana." },
   { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Robótica e IA", avatar: "FM", color: "#34d399", tags: ["Robótica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepción visual para robots autónomos en entornos no estructurados." },
 ];
 
@@ -305,10 +305,10 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
         }}>×</button>
         <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
           <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
-          {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "#fb923c", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
+          {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
         </div>
         <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
-        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} Â   Fecha límite: <span style={{ color: "#fb923c", fontWeight: 700 }}>{opp.deadline}</span></p>
+        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} Â   Fecha límite: <span style={{ color: "var(--accent)", fontWeight: 700 }}>{opp.deadline}</span></p>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 20 }}>{opp.desc}</p>
         <button style={{
           width: "100%", padding: "12px", borderRadius: 10, border: "none",
@@ -866,7 +866,7 @@ export default function App() {
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
                   <p style={{ fontSize: 11, color: "var(--text-muted)" }}>{opp.dept}</p>
                   <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto", paddingTop: 4 }}>
-                    <span style={{ fontSize: 11, color: "#fb923c", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
+                    <span style={{ fontSize: 11, color: "var(--accent)", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
                       <Clock size={10} />{opp.deadline}
                     </span>
                     <span style={{ fontSize: 11, fontWeight: 600, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}>
