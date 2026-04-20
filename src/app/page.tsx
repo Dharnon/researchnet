@@ -118,10 +118,13 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
   return (
     <div style={{
       width: size, height: size, borderRadius: "50%",
-      background: `${color}18`, border: `1px solid ${color}25`,
+      background: `radial-gradient(circle at 35% 35%, ${color}cc, ${color}18)`,
+      border: `1.5px solid ${color}40`,
+      boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.10)`,
       display: "flex", alignItems: "center", justifyContent: "center",
       fontSize: s, fontWeight: 700, color,
       flexShrink: 0, letterSpacing: "-0.02em",
+      transition: "box-shadow 0.2s ease",
     }}>
       {initials}
     </div>
@@ -385,7 +388,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           onClick={onConnect}
           className={`b-connect-btn ${isConnected ? "connected" : ""}`}
         >
-          {isConnected ? "✓ Connected" : "Connect"}
+          {isConnected ? <><Check size={13} /> Conectado</> : "Conectar"}
         </button>
       </div>
     </div>
