@@ -520,7 +520,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
   return (
     <div style={{ maxWidth: 700, margin: "0 auto", padding: "24px" }}>
       <div style={{ marginBottom: 24 }}>
-        <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5 }}>Mensajes</h1>
+        <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "'Playfair Display', Georgia, serif" }}>Mensajes</h1>
         <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Conversaciones con tus contactos</p>
       </div>
 
@@ -789,7 +789,7 @@ export default function App() {
       {view === "discover" && (
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5 }}>Descubrir investigadores</h1>
+            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "'Playfair Display', Georgia, serif" }}>Descubrir investigadores</h1>
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Encuentra colaboradores para tu próximo proyecto</p>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" as const, marginBottom: 24 }}>
@@ -837,7 +837,7 @@ export default function App() {
       {view === "opportunities" && (
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5 }}>Oportunidades</h1>
+            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "'Playfair Display', Georgia, serif" }}>Oportunidades</h1>
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Postdocs, becas, convocatorias y más</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
@@ -878,7 +878,7 @@ export default function App() {
       {view === "network" && (
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5 }}>Tu red</h1>
+            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "'Playfair Display', Georgia, serif" }}>Tu red</h1>
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
           </div>
           {connectedResearchers.length === 0 ? (
@@ -955,7 +955,7 @@ export default function App() {
       {view === "profile" && (
         <div style={{ maxWidth: 800, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5 }}>Tu perfil</h1>
+            <h1 style={{ fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em", marginBottom: 5, fontFamily: "'Playfair Display', Georgia, serif" }}>Tu perfil</h1>
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Gestiona tu información de investigador</p>
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18, padding: 28, marginBottom: 16 }}>
