@@ -109,20 +109,20 @@
 
 /* â”€â”€ SHIMMER ANIMATION â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
 @keyframes shimmer {
-  0% { background-position: -400px 0; }
-  100% { background-position: 400px 0; }
+  0% { background-position: -300px 0; }
+  100% { background-position: 300px 0; }
 }
 
 .skeleton-shimmer {
-  background: linear-gradient(90deg, var(--border) 25%, rgba(255,255,255,0.03) 50%, var(--border) 75%);
-  background-size: 800px 100%;
-  animation: shimmer 1.4s ease-in-out infinite;
+  background: linear-gradient(90deg, var(--border) 25%, rgba(255,255,255,0.06) 50%, var(--border) 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
 }
 
 .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, var(--border-subtle) 25%, rgba(0,0,0,0.02) 50%, var(--border-subtle) 75%);
-  background-size: 800px 100%;
-  animation: shimmer 1.4s ease-in-out infinite 0.2s;
+  background: linear-gradient(90deg, var(--border-subtle) 25%, rgba(0,0,0,0.03) 50%, var(--border-subtle) 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.5s ease-in-out infinite 0.2s;
 }
 
 /* â”€â”€ RESET & BASE (Dark Premium) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
@@ -190,21 +190,23 @@ select:focus-visible {
 
 
 
-/* Lime accent line that slides in from top on hover */
-.b-card::before {
+/* Subtle left lime accent — cleaner than top bar */
+.b-card::after {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, #65a30d, #84cc16);
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(180deg, #65a30d, #84cc16);
   opacity: 0;
   transition: opacity 0.2s ease;
+  border-radius: var(--radius) 0 0 var(--radius);
 }
 .b-card:hover {
-  border-color: #84cc1635;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.10), 0 0 0 1px #84cc1620, 0 2px 6px rgba(0,0,0,0.04);
+  border-color: rgba(132, 204, 22, 0.22);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.05), 0 0 0 1px rgba(132,204,22,0.12);
   transform: translateY(-2px);
 }
-.b-card:hover::before { opacity: 1; }
+.b-card:hover::after { opacity: 1; }
 
 .b-card-top {
   display: flex;
