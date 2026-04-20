@@ -335,16 +335,6 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
     <div
       onClick={onSelect}
       className="vc-card"
-      style={{
-        background: "var(--surface)",
-        border: "1px solid var(--border)",
-        borderRadius: 14,
-        padding: 20,
-        cursor: "pointer",
-        display: "flex",
-        flexDirection: "column",
-        gap: 14,
-      }}
     >
       <div className="vc-card-top">
         <Avatar initials={researcher.avatar} color={researcher.color} size={44} />

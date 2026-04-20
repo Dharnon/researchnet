@@ -207,6 +207,7 @@ button:focus-visible, input:focus-visible, select:focus-visible {
     border-color 0.25s ease,
     transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+/* Radial amber glow — top-left corner warmth on hover */
 .vc-card::before {
   content: '';
   position: absolute;
@@ -214,17 +215,29 @@ button:focus-visible, input:focus-visible, select:focus-visible {
   border-radius: 16px;
   opacity: 0;
   transition: opacity 0.25s ease;
-  background: radial-gradient(ellipse at top left, rgba(201, 148, 90, 0.06) 0%, transparent 60%);
+  background: radial-gradient(ellipse at top left, rgba(201, 148, 90, 0.07) 0%, transparent 55%);
   pointer-events: none;
+  z-index: 0;
+}
+/* Left amber accent — journal column marker */
+.vc-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: linear-gradient(180deg, #c9945a, #d9a96d);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  border-radius: 16px 0 0 16px;
+  z-index: 1;
 }
 .vc-card:hover {
-  box-shadow: var(--shadow-card-hover), 0 0 48px rgba(201,148,90,0.06);
-  border-color: rgba(201, 148, 90, 0.30);
+  box-shadow: var(--shadow-card-hover), 0 0 40px rgba(201,148,90,0.05);
+  border-color: rgba(201, 148, 90, 0.28);
   transform: translateY(-3px);
 }
-.vc-card:hover::before {
-  opacity: 1;
-}
+.vc-card:hover::before { opacity: 1; }
+.vc-card:hover::after { opacity: 1; }
 
 /* ─── OPEN BADGE (journal-label style for variant-c) ───────────────────────── */
 .vc-open-badge {
