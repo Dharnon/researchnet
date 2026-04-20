@@ -382,7 +382,7 @@ select:focus-visible {
 }
 .b-connect-btn:hover:not(.connected) {
   background: var(--accent);
-  color: #fff;
+  color: #000;
   border-color: var(--accent);
 }
 .b-connect-btn.connected {
@@ -1218,6 +1218,44 @@ select:focus-visible {
 }
 
 /* ── HEADER TRANSITION ────────────────────────────────────────────────── */
+.app-header {
+  transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* empty-cta-btn: network view empty state CTA button */
+.empty-cta-btn {
+  margin-top: 4px;
+  padding: 10px 22px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #000;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  letter-spacing: 0.01em;
+  transition: background 0.15s, transform 0.15s;
+}
+.empty-cta-btn:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+/* empty-state-glow: subtle radial behind the network SVG icon */
+.empty-state-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(132,204,22,0.06) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* app-header transition for scroll/blur */
 .app-header {
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
