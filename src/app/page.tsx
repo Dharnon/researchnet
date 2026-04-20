@@ -617,7 +617,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
       {items.map((item) => (
         <button key={item.key} onClick={() => setView(item.key)} style={{
           display: "flex", alignItems: "center", gap: 6,
-          padding: "7px 14px", borderRadius: 8, border: "none",
+          padding: "7px 14px", borderRadius: 8,
           fontSize: 12, fontWeight: 600, cursor: "pointer",
           background: view === item.key ? "rgba(101,163,13,0.08)" : "transparent",
           color: view === item.key ? "#65a30d" : "var(--text-muted)",
