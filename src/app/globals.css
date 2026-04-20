@@ -2,6 +2,8 @@
 
 /* ─── WARM EDITORIAL PALETTE ─────────────────────────────────────────────────── */
 :root {
+  --font-serif: 'Playfair Display', Georgia, serif;
+
   /* Warm dark — deep charcoal with amber undertone */
   --bg: #0f0d0b;
   --bg-secondary: #13110f;
@@ -225,15 +227,15 @@ button:focus-visible, input:focus-visible, select:focus-visible {
   position: absolute;
   top: 0; left: 0;
   width: 3px; height: 100%;
-  background: linear-gradient(180deg, #c9945a, #d9a96d);
-  opacity: 0;
+  background: linear-gradient(180deg, #D97706, #F59E0B);
+  opacity: 0.7;
   transition: opacity 0.25s ease;
   border-radius: 16px 0 0 16px;
   z-index: 1;
 }
 .vc-card:hover {
-  box-shadow: var(--shadow-card-hover), 0 0 40px rgba(201,148,90,0.05);
-  border-color: rgba(201, 148, 90, 0.28);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.09), 0 1px 4px rgba(0,0,0,0.05), 0 0 0 1px rgba(132,204,22,0.12), inset 0 1px 0 rgba(255,255,255,0.08);
+  border-color: rgba(132,204,22,0.28);
   transform: translateY(-3px);
 }
 .vc-card:hover::before { opacity: 1; }
@@ -311,9 +313,9 @@ button:focus-visible, input:focus-visible, select:focus-visible {
 /* ─── SECTION HEADING (warm editorial) ─────────────────────────────────────── */
 .vc-section-heading {
   font-family: 'Playfair Display', Georgia, serif;
-  font-size: 26px;
-  font-weight: 600;
-  letter-spacing: -0.025em;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   line-height: 1.2;
   color: var(--text-primary);
   margin-bottom: 6px;

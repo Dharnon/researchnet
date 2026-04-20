@@ -118,7 +118,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
   return (
     <div style={{
       width: size, height: size, borderRadius: "50%",
-      background: `radial-gradient(circle at 35% 35%, ${color}cc, ${color}18)`,
+      background: `radial-gradient(circle at 35% 30%, ${color}ee, ${color}40 50%, ${color}10)`,
       border: `1.5px solid ${color}40`,
       boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.10)`,
       display: "flex", alignItems: "center", justifyContent: "center",
@@ -142,12 +142,12 @@ function MatchBadge({ score }: { score: number }) {
   return (
     <span style={{
       display: "inline-flex", alignItems: "center", gap: 3,
-      fontSize: 10, fontWeight: 700,
+      fontSize: 9, fontWeight: 700,
       color, background: bg, border: `1px solid ${border}`,
-      padding: "2px 7px", borderRadius: 20,
+      padding: "2px 6px", borderRadius: 20,
       letterSpacing: "-0.01em", flexShrink: 0,
     }}>
-      <span style={{ width: 5, height: 5, borderRadius: "50%", background: color, flexShrink: 0 }} />
+      {isHigh && <span style={{ width: 3, height: 3, borderRadius: "50%", background: color, flexShrink: 0 }} />}
       {score}%
     </span>
   );
@@ -182,8 +182,9 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           </span>
           <button onClick={onClose} style={{
             background: "none", border: "none", color: "var(--text-tertiary)",
-            cursor: "pointer", fontSize: 20, lineHeight: 1, padding: "0 4px",
-          }}>�</button>
+            cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+            lineHeight: 1, padding: "0 4px",
+          }}><X size={14} /></button>
         </div>
 
         {/* Body */}
@@ -192,7 +193,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
             <Avatar initials={researcher.avatar} color={researcher.color} size={52} />
             <div>
-              <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 2 }}>{researcher.name}</h2>
+              <h2 style={{ fontFamily: "var(--font-serif)", fontSize: 18, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 2 }}>{researcher.name}</h2>
               <p style={{ fontSize: 11, color: "var(--text-secondary)", marginBottom: 1 }}>{researcher.role}</p>
               <p style={{ fontSize: 10, color: "var(--text-tertiary)" }}>{researcher.dept}</p>
             </div>
@@ -204,7 +205,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             border: `1px solid ${researcher.match >= 90 ? "var(--match-high-border)" : researcher.match >= 70 ? "var(--match-mid-border)" : "var(--match-low-border)"}`,
             borderRadius: 10, padding: "10px 14px", display: "flex", alignItems: "baseline", gap: 6,
           }}>
-            <span style={{ fontSize: 28, fontWeight: 900, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
+            <span style={{ fontSize: 32, fontWeight: 900, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", letterSpacing: "-0.05em", lineHeight: 1, ["--detail-match-num" as string]: 32 }}>{researcher.match}</span>
             <span style={{ fontSize: 12, fontWeight: 600, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", opacity: 0.6 }}>% affinity</span>
           </div>
 
@@ -306,7 +307,7 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
         }}>�</button>
         <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
           <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
-          {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
+          {opp.hot && <span style={{ fontSize: 8, fontWeight: 700, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3, padding: "1px 5px", borderRadius: 20, background: "var(--accent-dim)" }}><Zap size={9} />Hot</span>}
         </div>
         <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
         <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} � Fecha l�mite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
@@ -401,8 +402,8 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
       borderRadius: 14, padding: 16, display: "flex", alignItems: "center",
       gap: 12, transition: "border-color 0.18s",
     }}
-    onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--accent-border)"; }}
-    onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--card-border)"; }}
+    onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--accent-border)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 0 0 1px var(--accent-border), 0 4px 16px rgba(0,0,0,0.3)"; }}
+    onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none"; }}
     >
       <Avatar initials={researcher.avatar} color={researcher.color} size={40} />
       <div style={{ flex: 1, minWidth: 0 }}>
@@ -852,7 +853,7 @@ export default function App() {
                 onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
-                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
+                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: opp.hot ? `${color}15` : "transparent", border: `1px solid ${color}40`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
                     {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={10} color="#fb923c" /></span>}
                   </div>
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
@@ -880,7 +881,8 @@ export default function App() {
             <p className="vc-section-sub">{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
           </div>
           {connectedResearchers.length === 0 ? (
-            <div className="vc-empty-state">
+            <div className="empty-state" style={{ position: "relative", overflow: "hidden" }}>
+              <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 40%, rgba(201,148,90,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
               <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={{ display: "block" }}>
                 {/* Central node */}
                 <circle cx="32" cy="32" r="8" stroke="#27272a" strokeWidth="1.5" fill="none"/>
@@ -961,7 +963,7 @@ export default function App() {
               <Avatar initials={userProfile.avatar} color={userProfile.color} size={64} />
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" as const }}>
-                  <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
+                  <h2 style={{ fontFamily: "var(--font-serif)", fontSize: 20, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
                   {userProfile.open && (
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${userProfile.color}12`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
