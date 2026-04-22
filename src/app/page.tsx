@@ -85,7 +85,7 @@ function SkeletonLoader() {
         {[1, 2, 3, 4, 5, 6].map((i) => (
           <div key={i} style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-              <div className="skeleton-shimmer" style={{ width: 44, height: 44, borderRadius: 10 }} />
+              <div className="skeleton-shimmer" style={{ width: 44, height: 44, borderRadius: "50%" }} />
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
                 <div className="skeleton-shimmer" style={{ width: "70%", height: 13, borderRadius: 4 }} />
                 <div className="skeleton-shimmer-dim" style={{ width: "50%", height: 10, borderRadius: 4 }} />
@@ -117,7 +117,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
   const s = Math.round(size * 0.34);
   return (
     <div style={{
-      width: size, height: size, borderRadius: 10,
+      width: size, height: size, borderRadius: "50%",
       background: `radial-gradient(circle at 35% 35%, ${color}cc, ${color}18)`,
       border: `1.5px solid ${color}40`,
       boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.10)`,
@@ -147,7 +147,7 @@ function MatchBadge({ score }: { score: number }) {
       padding: "2px 7px", borderRadius: 20,
       letterSpacing: "-0.01em", flexShrink: 0,
     }}>
-      <span style={{ width: 5, height: 5, borderRadius: 10, background: color, flexShrink: 0 }} />
+      <span style={{ width: 5, height: 5, borderRadius: "50%", background: color, flexShrink: 0 }} />
       {score}%
     </span>
   );
@@ -364,7 +364,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
             padding: "2px 6px", borderRadius: 20,
             textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0, alignSelf: "flex-start",
           }}>
-            <span style={{ width: 5, height: 5, borderRadius: 10, background: "var(--open-dot)", display: "inline-block" }} />
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--open-dot)", display: "inline-block" }} />
             Open
           </span>
         )}
@@ -511,7 +511,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
           <button
             onClick={onSendMessage}
             style={{
-              width: 40, height: 40, borderRadius: 10, border: "none",
+              width: 40, height: 40, borderRadius: "50%", border: "none",
               background: "var(--accent)", color: "#000", cursor: "pointer",
               display: "flex", alignItems: "center", justifyContent: "center",
               transition: "all 0.15s", flexShrink: 0,
@@ -814,7 +814,7 @@ export default function App() {
               borderRadius: 10, color: onlyOpen ? "var(--accent)" : "var(--text-muted)",
               fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
             }}>
-              <span style={{ width: 6, height: 6, borderRadius: 10, background: onlyOpen ? "var(--accent)" : "var(--text-tertiary)", display: "inline-block" }} />
+              <span style={{ width: 6, height: 6, borderRadius: "50%", background: onlyOpen ? "var(--accent)" : "var(--text-tertiary)", display: "inline-block" }} />
               Solo abiertos
             </button>
           </div>
@@ -974,7 +974,7 @@ export default function App() {
                   <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
                   {userProfile.open && (
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${userProfile.color}12`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                      <span style={{ width: 5, height: 5, borderRadius: 10, background: "var(--accent)", display: "inline-block" }} />
+                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
                       Abiertos a colaboracin
                     </span>
                   )}
