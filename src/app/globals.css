@@ -20,6 +20,10 @@
   --accent-border: rgba(180, 83, 9, 0.25);
   --accent-faint: rgba(99, 102, 241, 0.05);
 
+  --open-dot: #D97706;
+  --open-dot-bg: rgba(217, 119, 6, 0.08);
+  --open-dot-border: rgba(217, 119, 6, 0.20);
+
   --tag-bg: #F5F4F0;
   --tag-border: #E8E5DC;
   --tag-text: #78716C;
@@ -92,6 +96,11 @@
   --accent-dim: rgba(217, 169, 6, 0.10);
   --accent-hover: #a5b4fc;
   --accent-glow: rgba(217, 169, 6, 0.10);
+  --accent-border: rgba(217, 169, 6, 0.22);
+
+  --open-dot: #D97706;
+  --open-dot-bg: rgba(217, 119, 6, 0.12);
+  --open-dot-border: rgba(217, 119, 6, 0.25);
   --accent-border: rgba(129, 140, 248, 0.25);
   --accent-faint: rgba(129, 140, 248, 0.05);
 
