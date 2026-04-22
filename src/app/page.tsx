@@ -421,10 +421,7 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
       <button
         onClick={onDisconnect}
         title="Desconectar"
-        className="c-disconnect-btn"
-      >
-        
-      </button>
+        className="c-disconnect-btn"><X size={12} /></button>
     </div>
   );
 }
@@ -1029,6 +1026,7 @@ export default function App() {
     </div>
   );
 }
+
 
 
 
