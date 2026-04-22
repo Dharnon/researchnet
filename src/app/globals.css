@@ -1,4 +1,4 @@
-﻿/* ── CSS VARIABLES (variant-b: Dark Premium — Slate-Blue Accent) ── */
+﻿/* ── CSS VARIABLES (variant-a: Clean Classic — Lime Green Accent) ── */
 :root {
   --bg: #FAFAF8;
   --bg-secondary: #F5F4F0;
@@ -77,7 +77,7 @@
   --header-border: rgba(229,231,235,0.80);
 }
 
-/* ── DARK MODE (variant-b: Linear-style Dark Premium) ── */
+/* ── DARK MODE (variant-a: Clean Classic) ── */
 [data-theme="dark"] {
   --bg: #09090b;
   --bg-secondary: #0f0f10;
@@ -178,7 +178,7 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-/* ── RESEARCHER CARD (Dark Premium) ── */
+/* ── RESEARCHER CARD (Clean Classic) ── */
 .b-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
