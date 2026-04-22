@@ -92,17 +92,16 @@
   --text-muted: #a1a1aa;
   --text-subtle: #71717a;
 
-  --accent: #D97706;
-  --accent-dim: rgba(217, 169, 6, 0.10);
-  --accent-hover: #a5b4fc;
-  --accent-glow: rgba(217, 169, 6, 0.10);
-  --accent-border: rgba(217, 169, 6, 0.22);
+  --accent: #5b8fd4;
+  --accent-dim: rgba(91, 143, 212, 0.10);
+  --accent-hover: #7ba3e0;
+  --accent-glow: rgba(91, 143, 212, 0.10);
+  --accent-border: rgba(91, 143, 212, 0.22);
 
-  --open-dot: #D97706;
-  --open-dot-bg: rgba(217, 119, 6, 0.12);
-  --open-dot-border: rgba(217, 119, 6, 0.25);
-  --accent-border: rgba(129, 140, 248, 0.25);
-  --accent-faint: rgba(129, 140, 248, 0.05);
+  --open-dot: #5b8fd4;
+  --open-dot-bg: rgba(91, 143, 212, 0.12);
+  --open-dot-border: rgba(91, 143, 212, 0.25);
+  --accent-faint: rgba(91, 143, 212, 0.05);
 
   --tag-bg: #1a1a1e;
   --tag-border: #27272a;
@@ -171,7 +170,7 @@ button {
 
 a { color: inherit; text-decoration: none; }
 
-/* ── FOCUS VISIBLE ── */
+/* ── FOCUS VISIBLE (variant-b: slate-blue) ── */
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
@@ -195,7 +194,7 @@ select:focus-visible {
   box-shadow: var(--shadow-card);
 }
 
-/* Left accent — amber, refined */
+/* Left accent — slate-blue, refined */
 .b-card::after {
   content: '';
   position: absolute;
@@ -208,7 +207,7 @@ select:focus-visible {
 }
 .b-card:hover {
   border-color: rgba(91, 143, 212, 0.28);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 0 0 1px rgba(180,83,9,0.14), 0 0 16px rgba(180,83,9,0.06);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 0 0 1px rgba(91,143,212,0.14), 0 0 16px rgba(91,143,212,0.06);
   transform: translateY(-2px);
 }
 .b-card:hover::after { opacity: 1; }
@@ -271,7 +270,7 @@ select:focus-visible {
   transform: translate(-50%, -55%);
   width: 120px;
   height: 120px;
-  background: radial-gradient(circle, rgba(180,83,9,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(91,143,212,0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -282,7 +281,7 @@ select:focus-visible {
   transform: translate(-50%, -50%);
   width: 160px;
   height: 160px;
-  background: radial-gradient(circle, rgba(180,83,9,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(91,143,212,0.08) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
