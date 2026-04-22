@@ -85,7 +85,7 @@ function SkeletonLoader() {
         {[1, 2, 3, 4, 5, 6].map((i) => (
           <div key={i} style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-              <div className="skeleton-shimmer" style={{ width: 44, height: 44, borderRadius: 10 }} />
+              <div className="skeleton-shimmer" style={{ width: 44, height: 44, borderRadius: "50%" }} />
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
                 <div className="skeleton-shimmer" style={{ width: "70%", height: 13, borderRadius: 4 }} />
                 <div className="skeleton-shimmer-dim" style={{ width: "50%", height: 10, borderRadius: 4 }} />
@@ -200,11 +200,12 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 
           {/* Match score */}
           <div style={{
-            background: "var(--match-mid-bg)", border: "1px solid var(--match-mid-border)",
+            background: researcher.match >= 90 ? "var(--match-high-bg)" : researcher.match >= 70 ? "var(--match-mid-bg)" : "var(--match-low-bg)",
+            border: `1px solid ${researcher.match >= 90 ? "var(--match-high-border)" : researcher.match >= 70 ? "var(--match-mid-border)" : "var(--match-low-border)"}`,
             borderRadius: 10, padding: "10px 14px", display: "flex", alignItems: "baseline", gap: 6,
           }}>
-            <span style={{ fontSize: 28, fontWeight: 900, color: "var(--accent)", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
-            <span style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", opacity: 0.6 }}>% affinity</span>
+            <span style={{ fontSize: 28, fontWeight: 900, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
+            <span style={{ fontSize: 12, fontWeight: 600, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", opacity: 0.6 }}>% affinity</span>
           </div>
 
           {/* Bio */}
@@ -388,7 +389,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         </div>
         <button
           onClick={onConnect}
-          className={`b-connect-bún ${isConnected ? "connected" : ""}`}
+          className={`b-connect-btn ${isConnected ? "connected" : ""}`}
         >
           {isConnected ? <><Check size={13} /> Conectado</> : "Conectar"}
         </button>
