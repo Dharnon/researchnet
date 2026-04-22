@@ -175,7 +175,7 @@ a { color: inherit; text-decoration: none; }
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
-  outline: 2px solid #B45309;
+  outline: 2px solid var(--accent);
   outline-offset: 2px;
 }
 
@@ -201,7 +201,7 @@ select:focus-visible {
   position: absolute;
   top: 0; left: 0;
   width: 3px; height: 100%;
-  background: linear-gradient(180deg, #B45309, #D97706);
+  background: linear-gradient(180deg, var(--accent), var(--accent-hover));
   opacity: 0;
   transition: opacity 0.2s ease;
   border-radius: var(--radius) 0 0 var(--radius);
