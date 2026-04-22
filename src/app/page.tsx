@@ -216,7 +216,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           }}>
             <span style={{ fontSize: 10, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Match</span>
             <div style={{ display: "flex", alignItems: "baseline", gap: 4 }}>
-              <span style={{ fontSize: 20, fontWeight: 900, color: researcher.match >= 90 ? "#22c55e" : researcher.match >= 70 ? "#f59e0b" : "var(--text-tertiary)", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
+              <span style={{ fontSize: 20, fontWeight: 900, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--text-tertiary)", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
               <span style={{ fontSize: 11, fontWeight: 600, color: "var(--text-tertiary)" }}>%</span>
             </div>
           </div>
@@ -364,12 +364,12 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         {researcher.open && (
           <span style={{
             display: "inline-flex", alignItems: "center", gap: 3,
-            fontSize: 8, fontWeight: 700, color: "#4ade80",
-            background: "rgba(34,197,94,0.07)", border: "1px solid rgba(34,197,94,0.18)",
+            fontSize: 8, fontWeight: 700, color: "var(--accent)",
+            background: "var(--accent-dim)", border: "1px solid var(--accent-border)",
             padding: "2px 5px", borderRadius: 20,
             textTransform: "uppercase", letterSpacing: "0.06em",
           }}>
-            <span style={{ width: 4, height: 4, borderRadius: "50%", background: "#4ade80" }} />
+            <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--accent)" }} />
             Open
           </span>
         )}

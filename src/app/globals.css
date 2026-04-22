@@ -91,6 +91,7 @@
   --accent-dim: rgba(132,204,22,0.10);
   --accent-hover: #a3e635;
   --accent-glow: rgba(132,204,22,0.08);
+  --accent-border: rgba(132,204,22,0.22);
 
   --tag-bg: #1a1a1e;
   --tag-border: #27272a;
