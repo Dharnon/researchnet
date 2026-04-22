@@ -1,4 +1,4 @@
-"use client";
+﻿﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import {
@@ -16,14 +16,14 @@ const researchers = [
   { id: 3, name: "Dra. Sofía Ríos", role: "Profesora Asociada", dept: "Biología Molecular", avatar: "SR", color: "#f472b6", tags: ["Genómica", "CRISPR", "Bioinformática"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para anlisis de variantes genticas y edicin génica." },
   { id: 4, name: "Dr. Andrs Leal", role: "Profesor Asociado", dept: "Física Computacional", avatar: "AL", color: "#c084fc", tags: ["Computación Cuntica", "Simulacin", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Diseo algoritmos cunéticos para simulacin de sistemas complejos y optimización combinatoria." },
   { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Postdoctoral", dept: "Salud Pblica", avatar: "CF", color: "#D97706", tags: ["Epidemiología", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiolgicos para sistemas de alerta temprana." },
-  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Robótica e IA", avatar: "FM", color: "#34d399", tags: ["Robótica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepcin visual para robots auúnomos en entornos no estructurados." },
+  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Robótica e IA", avatar: "FM", color: "#34d399", tags: ["Robótica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepcin visual para robots auunomos en entornos no estructurados." },
 ];
 
 const opportunities = [
   { id: 1, title: "Postdoc — IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posición postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomdica." },
   { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las Áreas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigación en todas las Áreas. Hasta $300.000 USD por proyecto, duración 4 aos." },
   { id: 3, title: "Colaboracin EU Horizon — Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco colaborador para propuesta EU Horizon sobre computacin cuántica aplicada a optimización combinatoria." },
-  { id: 4, title: "Tesis Doctoral — NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Búsqueda de eestudiante doctoral para investigación en modelos de lenguaje multilinge para lenguas minoritarias." },
+  { id: 4, title: "Tesis Doctoral — NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Busqueda de eestudiante doctoral para investigación en modelos de lenguaje multilinge para lenguas minoritarias." },
   { id: 5, title: "Research Engineer — Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robotics. Salario competitivo + equity." },
   { id: 6, title: "Beca Marie Curie — Climate AI", dept: "Todas las Áreas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio climático. Sin restricciones de nacionalidad." },
 ];
@@ -85,7 +85,7 @@ function SkeletonLoader() {
         {[1, 2, 3, 4, 5, 6].map((i) => (
           <div key={i} style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-              <div className="skeleton-shimmer" style={{ width: 44, height: 44, borderRadius: "50%" }} />
+              <div className="skeleton-shimmer" style={{ width: 44, height: 44, borderRadius: 10 }} />
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
                 <div className="skeleton-shimmer" style={{ width: "70%", height: 13, borderRadius: 4 }} />
                 <div className="skeleton-shimmer-dim" style={{ width: "50%", height: 10, borderRadius: 4 }} />
@@ -117,7 +117,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
   const s = Math.round(size * 0.34);
   return (
     <div style={{
-      width: size, height: size, borderRadius: "50%",
+      width: size, height: size, borderRadius: 10,
       background: `radial-gradient(circle at 35% 35%, ${color}cc, ${color}18)`,
       border: `1.5px solid ${color}40`,
       boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.10)`,
@@ -147,7 +147,7 @@ function MatchBadge({ score }: { score: number }) {
       padding: "2px 7px", borderRadius: 20,
       letterSpacing: "-0.01em", flexShrink: 0,
     }}>
-      <span style={{ width: 5, height: 5, borderRadius: "50%", background: color, flexShrink: 0 }} />
+      <span style={{ width: 5, height: 5, borderRadius: 10, background: color, flexShrink: 0 }} />
       {score}%
     </span>
   );
@@ -364,7 +364,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
             padding: "2px 6px", borderRadius: 20,
             textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0, alignSelf: "flex-start",
           }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--open-dot)", display: "inline-block" }} />
+            <span style={{ width: 5, height: 5, borderRadius: 10, background: "var(--open-dot)", display: "inline-block" }} />
             Open
           </span>
         )}
@@ -422,7 +422,7 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
       <button
         onClick={onMessage}
         title="Enviar mensaje"
-        className="c-msg-bún"
+        className="c-msg-btn"
       >
         <MessageCircle size={13} />
       </button>
@@ -430,9 +430,9 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
       <button
         onClick={onDisconnect}
         title="Desconectar"
-        className="c-disconnect-bún"
+        className="c-disconnect-btn"
       >
-        
+        <X size={13} />
       </button>
     </div>
   );
@@ -511,7 +511,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
           <button
             onClick={onSendMessage}
             style={{
-              width: 40, height: 40, borderRadius: "50%", border: "none",
+              width: 40, height: 40, borderRadius: 10, border: "none",
               background: "var(--accent)", color: "#000", cursor: "pointer",
               display: "flex", alignItems: "center", justifyContent: "center",
               transition: "all 0.15s", flexShrink: 0,
@@ -814,7 +814,7 @@ export default function App() {
               borderRadius: 10, color: onlyOpen ? "var(--accent)" : "var(--text-muted)",
               fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
             }}>
-              <span style={{ width: 6, height: 6, borderRadius: "50%", background: onlyOpen ? "var(--accent)" : "var(--text-tertiary)", display: "inline-block" }} />
+              <span style={{ width: 6, height: 6, borderRadius: 10, background: onlyOpen ? "var(--accent)" : "var(--text-tertiary)", display: "inline-block" }} />
               Solo abiertos
             </button>
           </div>
@@ -974,7 +974,7 @@ export default function App() {
                   <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
                   {userProfile.open && (
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${userProfile.color}12`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
+                      <span style={{ width: 5, height: 5, borderRadius: 10, background: "var(--accent)", display: "inline-block" }} />
                       Abiertos a colaboracin
                     </span>
                   )}
