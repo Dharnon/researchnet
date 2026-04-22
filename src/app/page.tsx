@@ -11,40 +11,40 @@ import {
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
 const researchers = [
-  { id: 1, name: "Dra. Elena Vargas", role: "Profesora Titular", dept: "Ingenier�a Biom�dica", avatar: "EV", color: "#84cc16", tags: ["Machine Learning", "Neurociencia Computacional", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Investigo interfaces cerebro-computadora y modelos de aprendizaje profundo aplicados a se�ales neuronales." },
-  { id: 2, name: "Dr. Marcos Ib��ez", role: "Investigador Senior", dept: "Ciencias de la Computaci�n", avatar: "MI", color: "#60a5fa", tags: ["NLP", "Large Language Models", "�tica en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multiling�e y los desaf�os �ticos que plantea la IA generativa." },
-  { id: 3, name: "Dra. Sof�a R�os", role: "Profesora Asociada", dept: "Biolog�a Molecular", avatar: "SR", color: "#f472b6", tags: ["Gen�mica", "CRISPR", "Bioinform�tica"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para an�lisis de variantes gen�ticas y edici�n g�nica." },
-  { id: 4, name: "Dr. Andr�s Leal", role: "Profesor Asociado", dept: "F�sica Computacional", avatar: "AL", color: "#c084fc", tags: ["Computaci�n Cu�ntica", "Simulaci�n", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Dise�o algoritmos cu�nticos para simulaci�n de sistemas complejos y optimizaci�n combinatoria." },
-  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Postdoctoral", dept: "Salud P�blica", avatar: "CF", color: "#D97706", tags: ["Epidemiolog�a", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiol�gicos para sistemas de alerta temprana." },
-  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Rob�tica e IA", avatar: "FM", color: "#34d399", tags: ["Rob�tica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepci�n visual para robots aut�nomos en entornos no estructurados." },
+  { id: 1, name: "Dra. Elena Vargas", role: "Profesora Titular", dept: "Ingeniería Biomédica", avatar: "EV", color: "#84cc16", tags: ["Machine Learning", "Neurociencia Computacional", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Investigo interfaces cerebro-computadora y modelos de aprendizaje profundo aplicados a señales neuronales." },
+  { id: 2, name: "Dr. Marcos Ibáñez", role: "Investigador Senior", dept: "Ciencias de la Computación", avatar: "MI", color: "#60a5fa", tags: ["NLP", "Large Language Models", "tica en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multilingüe y los desafíos éticos que plantea la IA generativa." },
+  { id: 3, name: "Dra. Sofía Ríos", role: "Profesora Asociada", dept: "Biología Molecular", avatar: "SR", color: "#f472b6", tags: ["Genómica", "CRISPR", "Bioinformática"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para análisis de variantes genéticas y edición génica." },
+  { id: 4, name: "Dr. Andrés Leal", role: "Profesor Asociado", dept: "Física Computacional", avatar: "AL", color: "#c084fc", tags: ["Computación Cuántica", "Simulación", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Diseño algoritmos cunéticos para simulacin de sistemas complejos y optimización combinatoria." },
+  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Postdoctoral", dept: "Salud Pública", avatar: "CF", color: "#D97706", tags: ["Epidemiología", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiolgicos para sistemas de alerta temprana." },
+  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Robótica e IA", avatar: "FM", color: "#34d399", tags: ["Robótica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepcin visual para robots auúnomos en entornos no estructurados." },
 ];
 
 const opportunities = [
-  { id: 1, title: "Postdoc �  IA aplicada a salud", dept: "Biom�dica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posici�n postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biom�dica." },
-  { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las �reas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigaci�n en todas las �reas. Hasta $300.000 USD por proyecto, duraci�n 4 a�os." },
-  { id: 3, title: "Colaboraci�n EU Horizon �  Quantum", dept: "F�sica Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco colaborador para propuesta EU Horizon sobre computaci�n cu�ntica aplicada a optimizaci�n combinatoria." },
-  { id: 4, title: "Tesis Doctoral �  NLP Multiling�e", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "B�squeda de estudiante doctoral para investigaci�n en modelos de lenguaje multiling�e para lenguas minoritarias." },
-  { id: 5, title: "Research Engineer �  Vision Systems", dept: "Rob�tica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visi�n por computador en robotics. Salario competitivo + equity." },
-  { id: 6, title: "Beca Marie Curie �  Climate AI", dept: "Todas las �reas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio clim�tico. Sin restricciones de nacionalidad." },
+  { id: 1, title: "Postdoc — IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posición postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomédica." },
+  { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las Áreas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigación en todas las Áreas. Hasta $300.000 USD por proyecto, duración 4 años." },
+  { id: 3, title: "Colaboración EU Horizon — Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco colaborador para propuesta EU Horizon sobre computación cuántica aplicada a optimización combinatoria." },
+  { id: 4, title: "Tesis Doctoral — NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Búsqueda de estudiante doctoral para investigación en modelos de lenguaje multilingüe para lenguas minoritarias." },
+  { id: 5, title: "Research Engineer — Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robotics. Salario competitivo + equity." },
+  { id: 6, title: "Beca Marie Curie — Climate AI", dept: "Todas las Áreas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio climático. Sin restricciones de nacionalidad." },
 ];
 
 const mockMessages = [
   { orcid: "0000-0002-1234-5678", name: "Dra. Elena Vargas", avatar: "EV", color: "#84cc16", messages: [
-    { id: 1, from: "them", text: "Hola! Vi tu perfil y me interesa mucho tu trabajo en sistemas distribuidos. Estamos buscando colaboradors para un proyecto de IoT.", ts: "10:32" },
-    { id: 2, from: "me", text: "Hola Elena! Encantado de saludarte. Cu�ntame m�s sobre el proyecto, suena interesante.", ts: "10:35" },
-    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorizaci�n ambiental. No usamos LoRa y quer�amos explorar machine learning para fusionar datos.", ts: "10:37" },
+    { id: 1, from: "them", text: "Hola! Vi tu perfil y me interesa mucho tu trabajo en sistemas distribuidos. Estamos buscando colaboradores para un proyecto de IoT.", ts: "10:32" },
+    { id: 2, from: "me", text: "Hola Elena! Encantado de saludarte. Cuéntame ms sobre el proyecto, suena interesante.", ts: "10:35" },
+    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorizacin ambiental. No usamos LoRa y queramos explorar machine learning para fusionar datos.", ts: "10:37" },
   ]},
   { orcid: "0000-0003-9876-5432", name: "Dr. Felipe Mora", avatar: "FM", color: "#34d399", messages: [
-    { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podr�amos colaborar.", ts: "Ayer" },
+    { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podramos colaborar.", ts: "Ayer" },
   ]},
 ];
 
 const userProfile = {
   orcid: "0000-0001-2345-6789",
-  name: "Jos� Ignacio",
-  surname: "Hern�ndez",
+  name: "Jos Ignacio",
+  surname: "Hernndez",
   role: "Doctorando",
-  dept: "Ingenier�a de Sistemas",
+  dept: "Ingeniería de Sistemas",
   avatar: "JH",
   color: "#84cc16",
   tags: ["Sistemas Distribuidos", "IoT", "Machine Learning"],
@@ -58,12 +58,12 @@ const userProfile = {
 const allDepts = ["Todos", ...new Set(researchers.map((r) => r.dept))];
 
 const researcherColors: Record<string, string> = {
-  "Ingenier�a Biom�dica": "#10b981",
-  "Ciencias de la Computaci�n": "#3b82f6",
-  "Biolog�a Molecular": "#8b5cf6",
-  "F�sica Computacional": "#f59e0b",
-  "Salud P�blica": "#ef4444",
-  "Rob�tica e IA": "#6366f1",
+  "Ingeniería Biomédica": "#10b981",
+  "Ciencias de la Computación": "#3b82f6",
+  "Biología Molecular": "#8b5cf6",
+  "Física Computacional": "#f59e0b",
+  "Salud Pública": "#ef4444",
+  "Robótica e IA": "#6366f1",
 };
 
 // ─── SKELETON LOADER ─────────────────────────────────────────────────────────
@@ -240,7 +240,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 
           {/* Tags */}
           <div>
-            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>�reas</p>
+            <p style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 6 }}>Áreas</p>
             <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
               {researcher.tags.map((tag) => (
                 <span key={tag} style={{
@@ -304,20 +304,20 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
         <button onClick={onClose} style={{
           position: "absolute", top: 16, right: 16, background: "none", border: "none",
           color: "var(--text-tertiary)", cursor: "pointer", fontSize: 18,
-        }}>�</button>
+        }}></button>
         <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
           <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
           {opp.hot && <span style={{ fontSize: 8, fontWeight: 700, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3, padding: "1px 5px", borderRadius: 20, background: "var(--accent-dim)" }}><Zap size={9} />Hot</span>}
         </div>
         <h2 style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
-        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} � Fecha l�mite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
+        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept}  Fecha lmite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 20 }}>{opp.desc}</p>
         <button style={{
           width: "100%", padding: "12px", borderRadius: 10, border: "none",
           background: color, color: "#000", fontSize: 13, fontWeight: 700,
           cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
         }}>
-          <ExternalLink size={13} /> M�s informaci�n
+          <ExternalLink size={13} /> Ms informacin
         </button>
       </div>
     </>
@@ -380,7 +380,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         </div>
         <button
           onClick={onConnect}
-          className={`vc-connect-btn ${isConnected ? "connected" : ""}`}
+          className={`vc-connect-bún ${isConnected ? "connected" : ""}`}
         >
           {isConnected ? <><Check size={13} /> Conectado</> : "Conectar"}
         </button>
@@ -413,7 +413,7 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
       <button
         onClick={onMessage}
         title="Enviar mensaje"
-        className="c-msg-btn"
+        className="c-msg-bún"
       >
         <MessageCircle size={13} />
       </button>
@@ -421,9 +421,9 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
       <button
         onClick={onDisconnect}
         title="Desconectar"
-        className="c-disconnect-btn"
+        className="c-disconnect-bún"
       >
-        �
+        
       </button>
     </div>
   );
@@ -528,8 +528,8 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
           border: "1px solid var(--card-border)", borderRadius: 16,
         }}>
           <MessageCircle size={32} style={{ color: "var(--text-tertiary)", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
-          <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>Sin mensajes a�n</p>
-          <p style={{ fontSize: 12, color: "var(--text-muted)" }}>Con�ctate con investigadores y empieza una conversaci�n</p>
+          <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>Sin mensajes an</p>
+          <p style={{ fontSize: 12, color: "var(--text-muted)" }}>Conctate con investigadores y empieza una conversacin</p>
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -704,7 +704,7 @@ export default function App() {
         <div style={{ display: "flex", alignItems: "center", gap: 6, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 20, padding: "5px 12px" }}>
           <Globe size={11} color="var(--text-subtle)" />
           <span style={{ fontSize: 11, color: "var(--text-muted)", fontWeight: 600 }}>
-            {researchers.filter((r) => r.open).length} <span style={{ color: "var(--accent)" }}>open</span> �   {researchers.length} researchers
+            {researchers.filter((r) => r.open).length} <span style={{ color: "var(--accent)" }}>open</span>    {researchers.length} researchers
           </span>
         </div>
       </header>
@@ -736,7 +736,7 @@ export default function App() {
               </svg>
             </div>
             <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.03em" }}>Bienvenido a ResearchNet</h2>
-            <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.6, marginBottom: 28 }}>Conecta tu perfil ORCID para auto-completar tu informaci�n y empezar a descubrir colaboradores.</p>
+            <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.6, marginBottom: 28 }}>Conecta tu perfil ORCID para auto-completar tu informacin y empezar a descubrir colaboradores.</p>
             <button
               onClick={() => { setShowOnboarding(false); localStorage.setItem("rn_onboarding_skipped", "1"); }}
               style={{
@@ -758,7 +758,7 @@ export default function App() {
             >
               Omitir por ahora
             </button>
-            <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 20, lineHeight: 1.5 }}>ORCID es un identificador persistente. Tu informaci�n se mantiene privada.</p>
+            <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 20, lineHeight: 1.5 }}>ORCID es un identificador persistente. Tu informacin se mantiene privada.</p>
           </div>
         </div>
       )}
@@ -789,12 +789,12 @@ export default function App() {
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
             <h1 className="vc-section-heading">Descubrir investigadores</h1>
-            <p className="vc-section-sub">Encuentra colaboradores para tu pr�ximo proyecto</p>
+            <p className="vc-section-sub">Encuentra colaboradores para tu prximo proyecto</p>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" as const, marginBottom: 24 }}>
             <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
               <Search size={13} color="var(--text-subtle)" />
-              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, �rea o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "var(--text-primary)", fontSize: 13, flex: 1, width: "100%" }} />
+              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, Área o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "var(--text-primary)", fontSize: 13, flex: 1, width: "100%" }} />
             </div>
             <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none" as const, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, color: "var(--text-muted)", fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer" as const }}>
               {allDepts.map((d) => <option key={d} value={d}>{d}</option>)}
@@ -827,7 +827,7 @@ export default function App() {
             <div style={{ textAlign: "center", padding: "60px 20px", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 16 }}>
               <Search size={32} style={{ color: "var(--text-tertiary)", marginBottom: 14, display: "block", margin: "0 auto 14px" }} />
               <p style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 6 }}>Sin resultados</p>
-              <p style={{ fontSize: 12, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto" }}>Prueba con otros filtros o t�rmino de b�squeda</p>        </div>
+              <p style={{ fontSize: 12, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto" }}>Prueba con otros filtros o ttétérmino de bsqueda</p>        </div>
           )}
         </div>
       )}
@@ -837,7 +837,7 @@ export default function App() {
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
             <h1 className="vc-section-heading">Oportunidades</h1>
-            <p className="vc-section-sub">Postdocs, becas, convocatorias y m�s</p>
+            <p className="vc-section-sub">Postdocs, becas, convocatorias y ms</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
             {opportunities.map((opp) => {
@@ -863,7 +863,7 @@ export default function App() {
                       <Clock size={10} />{opp.deadline}
                     </span>
                     <span style={{ fontSize: 11, fontWeight: 600, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}>
-                      Ver m�s <ChevronRight size={10} />
+                      Ver ms <ChevronRight size={10} />
                     </span>
                   </div>
                 </div>
@@ -907,8 +907,8 @@ export default function App() {
                 <circle cx="14" cy="46" r="2" fill="var(--accent)" opacity="0.45"/>
                 <circle cx="50" cy="46" r="2" fill="var(--accent)" opacity="0.45"/>
               </svg>
-              <p className="empty-title">Tu red est� vac�a</p>
-              <p className="empty-sub">Explora investigadores y con�ctate para construir tu red de colaboraci�n.</p>
+              <p className="empty-title">Tu red est vaca</p>
+              <p className="empty-sub">Explora investigadores y conctate para construir tu red de colaboracin.</p>
               <button onClick={() => setView("discover")} style={{
                 marginTop: 6, padding: "9px 20px", borderRadius: 9,
                 background: "#D97706", color: "#fff", border: "none",
@@ -956,7 +956,7 @@ export default function App() {
         <div style={{ maxWidth: 800, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
             <h1 className="vc-section-heading">Tu perfil</h1>
-            <p className="vc-section-sub">Gestiona tu informaci�n de investigador</p>
+            <p className="vc-section-sub">Gestiona tu informacin de investigador</p>
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18, padding: 28, marginBottom: 16 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: 24 }}>
@@ -967,7 +967,7 @@ export default function App() {
                   {userProfile.open && (
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${userProfile.color}12`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
-                      Abiertos a colaboraci�n
+                      Abiertos a colaboracin
                     </span>
                   )}
                 </div>
@@ -985,7 +985,7 @@ export default function App() {
               ))}
             </div>
             <div>
-              <p style={{ fontSize: 10, fontWeight: 700, color: "var(--text-subtle)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Grupos de investigaci�n</p>
+              <p style={{ fontSize: 10, fontWeight: 700, color: "var(--text-subtle)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Grupos de investigación</p>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const }}>
                 {userProfile.groups.map((g) => (
                   <span key={g} style={{ fontSize: 11, fontWeight: 600, color: "var(--text-muted)", background: "var(--surface-hover)", border: "1px solid var(--border)", padding: "4px 10px", borderRadius: 8 }}>{g}</span>
@@ -1003,9 +1003,9 @@ export default function App() {
             ))}
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: 20 }}>
-            <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones r�pidas</p>
+            <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones rpidas</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {[{ label: "Ver mi perfil p�blico", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
+              {[{ label: "Ver mi perfil pblico", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
                 <button key={action.label} style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                   padding: "12px 14px", borderRadius: 10, background: "var(--surface-hover)",
