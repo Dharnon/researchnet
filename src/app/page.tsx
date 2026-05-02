@@ -46,7 +46,7 @@ const userProfile = {
   role: "Doctorando",
   dept: "Ingeniería de Sistemas",
   avatar: "JH",
-  color: "#84cc16",
+  color: "var(--accent)",
   tags: ["Sistemas Distribuidos", "IoT", "Machine Learning"],
   groups: ["DistributedSys Lab", "IoT Center"],
   projects: 2,
@@ -290,8 +290,8 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 // ─── OPPORTUNITY DETAIL MODAL ────────────────────────────────────────────────
 
 function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onClose: () => void }) {
-  const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#D97706", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
-  const color = typeColors[opp.type] ?? "#6b7280";
+  const typeColors: Record<string, string> = { Postdoc: "var(--type-postdoc-text)", Fondos: "var(--type-fondos-text)", Internacional: "var(--type-intl-text)", Doctorado: "var(--type-phd-text)", Laboral: "var(--type-laboral-text)" };
+  const color = typeColors[opp.type] ?? "var(--text-tertiary)";
   return (
     <>
       <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 200, backdropFilter: "blur(6px)" }} />
@@ -355,7 +355,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
             padding: "2px 6px", borderRadius: 20,
             textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0, alignSelf: "flex-start",
           }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--open-dot)", display: "inline-block" }} />
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--open-dot)", display: "inline-block", boxShadow: "0 0 0 2px var(--open-dot-bg), 0 0 8px 1px var(--open-dot)" }} />
             Open
           </span>
         )}
@@ -607,8 +607,9 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           )}
           {view === item.key && (
             <div style={{
-              position: "absolute", bottom: -5, left: "50%", transform: "translateX(-50%)",
-              width: 20, height: 2, borderRadius: 2, background: "var(--accent)",
+              position: "absolute", bottom: -6, left: "50%", transform: "translateX(-50%)",
+              width: 18, height: 1.5, borderRadius: 1, background: "var(--accent)",
+              boxShadow: "0 0 6px 1px var(--accent-glow)",
             }} />
           )}
         </button>
@@ -838,8 +839,8 @@ export default function App() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
             {opportunities.map((opp) => {
-              const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#D97706", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
-              const color = typeColors[opp.type] ?? "#6b7280";
+              const typeColors: Record<string, string> = { Postdoc: "var(--type-postdoc-text)", Fondos: "var(--type-fondos-text)", Internacional: "var(--type-intl-text)", Doctorado: "var(--type-phd-text)", Laboral: "var(--type-laboral-text)" };
+              const color = typeColors[opp.type] ?? "var(--text-tertiary)";
               return (
                 <div key={opp.id} onClick={() => setSelectedOpp(opp)} style={{
                   background: "var(--card-bg)", border: "1px solid var(--card-border)",
@@ -963,7 +964,7 @@ export default function App() {
                   <h2 style={{ fontFamily: "var(--font-serif)", fontSize: 20, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
                   {userProfile.open && (
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${userProfile.color}12`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
+                      <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block", boxShadow: "0 0 0 2px var(--accent-dim), 0 0 8px 1px var(--accent)" }} />
                       Abiertos a colaboracin
                     </span>
                   )}
