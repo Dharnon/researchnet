@@ -58,12 +58,12 @@ const userProfile = {
 const allDepts = ["Todos", ...new Set(researchers.map((r) => r.dept))];
 
 const researcherColors: Record<string, string> = {
-  "Ingeniería Biomédica": "#10b981",
-  "Ciencias de la Computación": "#3b82f6",
-  "Biología Molecular": "#8b5cf6",
-  "Física Computacional": "#f59e0b",
-  "Salud Poblica": "#ef4444",
-  "Robótica e IA": "#6366f1",
+  "Ingeniería Biomédica": "#c9945a",
+  "Ciencias de la Computación": "#dcbc78",
+  "Biología Molecular": "#b8977a",
+  "Física Computacional": "#a67744",
+  "Salud Pública": "#D97706",
+  "Robótica e IA": "#c9a05a",
 };
 
 // ─── SKELETON LOADER ─────────────────────────────────────────────────────────
@@ -71,14 +71,18 @@ const researcherColors: Record<string, string> = {
 function SkeletonLoader() {
   return (
     <div style={{ background: "var(--bg)", minHeight: "100vh", padding: "24px" }}>
-      {/* Header skeleton */}
+      {/* Header skeleton — matches actual: logo-left | navbar-center | stats-right */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32, padding: "0 0 24px", borderBottom: "1px solid var(--border)" }}>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
           <div className="skeleton-shimmer" style={{ width: 28, height: 28, borderRadius: 8 }} />
-          <div className="skeleton-shimmer" style={{ width: 90, height: 14, borderRadius: 4 }} />
+          <div className="skeleton-shimmer" style={{ width: 100, height: 14, borderRadius: 4 }} />
         </div>
-        <div className="skeleton-shimmer" style={{ width: 280, height: 36, borderRadius: 10 }} />
-        <div className="skeleton-shimmer" style={{ width: 60, height: 14, borderRadius: 4 }} />
+        <div style={{ display: "flex", gap: 4, background: "var(--surface-hover)", border: "1px solid var(--border)", borderRadius: 12, padding: "4px 4px" }}>
+          {[1, 2, 3, 4, 5].map((i) => (
+            <div key={i} className={i === 1 ? "skeleton-shimmer" : "skeleton-shimmer-dim"} style={{ width: 68, height: 28, borderRadius: 8 }} />
+          ))}
+        </div>
+        <div className="skeleton-shimmer" style={{ width: 90, height: 14, borderRadius: 20 }} />
       </div>
       {/* Cards grid skeleton */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
