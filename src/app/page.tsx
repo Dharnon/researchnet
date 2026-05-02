@@ -346,7 +346,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         gap: 14,
       }}
     >
-      <div className="b-card-top">
+      <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
         <Avatar initials={researcher.avatar} color={researcher.color} size={44} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
@@ -836,7 +836,7 @@ export default function App() {
             <div style={{ textAlign: "center", padding: "60px 20px", background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 16 }}>
               <Search size={32} style={{ color: "var(--text-tertiary)", marginBottom: 14, display: "block", margin: "0 auto 14px" }} />
               <p style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", marginBottom: 6 }}>Sin resultados</p>
-              <p style={{ fontSize: 12, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto" }}>Prueba con otros filtros o ttérmino de bsqueda</p>        </div>
+              <p style={{ fontSize: 12, color: "var(--text-muted)", maxWidth: 260, margin: "0 auto" }}>Prueba con otros filtros o términos de búsqueda</p>        </div>
           )}
         </div>
       )}
