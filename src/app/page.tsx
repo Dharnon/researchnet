@@ -141,13 +141,12 @@ function MatchBadge({ score }: { score: number }) {
   const border = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   return (
     <span style={{
-      display: "inline-flex", alignItems: "center", gap: 3,
-      fontSize: 10, fontWeight: 700,
+      display: "inline-flex", alignItems: "center",
+      fontSize: 9, fontWeight: 600,
       color, background: bg, border: `1px solid ${border}`,
-      padding: "2px 7px", borderRadius: 20,
-      letterSpacing: "-0.01em", flexShrink: 0,
+      padding: "1px 6px", borderRadius: 20,
+      letterSpacing: "0.02em", flexShrink: 0,
     }}>
-      <span style={{ width: 5, height: 5, borderRadius: "50%", background: color, flexShrink: 0 }} />
       {score}%
     </span>
   );
@@ -422,7 +421,7 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
       <button
         onClick={onMessage}
         title="Enviar mensaje"
-        className="c-msg-bún"
+        className="c-msg-btn"
       >
         <MessageCircle size={13} />
       </button>
@@ -430,9 +429,9 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
       <button
         onClick={onDisconnect}
         title="Desconectar"
-        className="c-disconnect-bún"
+        className="c-disconnect-btn"
       >
-        
+        <X size={13} />
       </button>
     </div>
   );
@@ -687,7 +686,7 @@ export default function App() {
 
       {/* HEADER */}
       <header style={{
-        borderBottom: "1px solid var(--header-border)", padding: "0 24px", height: 60,
+        borderBottom: "1px solid var(--border)", padding: "0 24px", height: 60,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         position: "sticky" as const, top: 0, background: "var(--header-bg)",
         backdropFilter: "blur(20px)", zIndex: 50,
@@ -858,8 +857,8 @@ export default function App() {
                   borderRadius: 14, padding: 18, cursor: "pointer",
                   transition: "all 0.2s ease", display: "flex", flexDirection: "column", gap: 9,
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = `${color}40`; (e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = `${color}50`; (e.currentTarget as HTMLDivElement).style.boxShadow = "0 4px 16px rgba(0,0,0,0.28), 0 0 0 1px " + color + "25"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLDivElement).style.boxShadow = "none"; }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
                     <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
@@ -971,7 +970,7 @@ export default function App() {
               <Avatar initials={userProfile.avatar} color={userProfile.color} size={64} />
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" as const }}>
-                  <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
+                  <h2 className="vc-profile-name">{userProfile.name} {userProfile.surname}</h2>
                   {userProfile.open && (
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${userProfile.color}12`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
@@ -1003,7 +1002,7 @@ export default function App() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 16 }}>
             {[{ value: userProfile.pubs, label: "Publicaciones", icon: <BookOpen size={16} /> }, { value: userProfile.projects, label: "Proyectos", icon: <Briefcase size={16} /> }, { value: connectedIds.length, label: "Conexiones", icon: <Users size={16} /> }].map((stat) => (
-              <div key={stat.label} style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: "20px 16px", textAlign: "center" }}>
+              <div key={stat.label} className="vc-stat-card">
                 <div style={{ color: "var(--text-subtle)", marginBottom: 8, display: "flex", justifyContent: "center" }}>{stat.icon}</div>
                 <div style={{ fontSize: 28, fontWeight: 900, color: "var(--text-primary)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 4 }}>{stat.value}</div>
                 <div style={{ fontSize: 11, color: "var(--text-subtle)", fontWeight: 600 }}>{stat.label}</div>
@@ -1024,7 +1023,7 @@ export default function App() {
                 onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)"; }}
                 >
                   <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <span style={{ color: "var(--accent)" }}>{action.icon}</span>
+                    <span style={{ color: "var(--text-tertiary)" }}>{action.icon}</span>
                     {action.label}
                   </span>
                   <ChevronRight size={12} color="#333" />
