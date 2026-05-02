@@ -132,7 +132,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
 }
 
 
-// --- MATCH BADGE (warm: green =90, amber =70, gray <70) ---------------------
+// --- MATCH BADGE (lime: green =90, amber =70, gray <70) ---------------------
 function MatchBadge({ score }: { score: number }) {
   const isHigh = score >= 90;
   const isMid  = score >= 70 && score < 90;
@@ -301,8 +301,13 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
       }}>
         <button onClick={onClose} style={{
           position: "absolute", top: 16, right: 16, background: "none", border: "none",
+<<<<<<< Updated upstream
           color: "var(--text-tertiary)", cursor: "pointer", fontSize: 18,
         }}>×</button>
+=======
+          color: "var(--text-tertiary)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
+        }}><X size={16} /></button>
+>>>>>>> Stashed changes
         <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
           <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
           {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
@@ -860,14 +865,24 @@ export default function App() {
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
                   el.style.borderColor = `${color}50`;
+<<<<<<< Updated upstream
                   el.style.transform = "translateY(-3px)";
                   el.style.boxShadow = `0 8px 24px rgba(0,0,0,0.10), 0 0 0 1px ${color}18`;
+=======
+                  el.style.transform = "translateY(-3px) scale(1.015)";
+                  el.style.boxShadow = "0 8px 24px rgba(28,25,22,0.10), 0 0 0 1px " + color + "18";
+                  el.style.borderLeft = "3px solid " + color;
+>>>>>>> Stashed changes
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
                   el.style.borderColor = "var(--card-border)";
-                  el.style.transform = "translateY(0)";
+                  el.style.transform = "translateY(0) scale(1)";
                   el.style.boxShadow = "none";
+                  el.style.borderLeft = "1px solid var(--card-border)";
+                  el.style.borderTop = "1px solid var(--card-border)";
+                  el.style.borderRight = "1px solid var(--card-border)";
+                  el.style.borderBottom = "1px solid var(--card-border)";
                 }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
