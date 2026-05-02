@@ -847,11 +847,21 @@ export default function App() {
                   borderRadius: 14, padding: 18, cursor: "pointer",
                   transition: "all 0.2s ease", display: "flex", flexDirection: "column", gap: 9,
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = `${color}40`; (e.currentTarget as HTMLDivElement).style.transform = "translateY(-2px)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--card-border)"; (e.currentTarget as HTMLDivElement).style.transform = "translateY(0)"; }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.borderColor = `${color}50`;
+                  el.style.transform = "translateY(-3px)";
+                  el.style.boxShadow = "0 8px 24px rgba(28,25,22,0.10), 0 0 0 1px " + color + "18";
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget as HTMLDivElement;
+                  el.style.borderColor = "var(--card-border)";
+                  el.style.transform = "translateY(0)";
+                  el.style.boxShadow = "none";
+                }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
-                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: opp.hot ? `${color}15` : "transparent", border: `1px solid ${color}40`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
+                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: opp.hot ? `${color}15` : "transparent", border: opp.hot ? `1px solid ${color}40` : `1px solid ${color}22`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
                     {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={10} color="#fb923c" /></span>}
                   </div>
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
