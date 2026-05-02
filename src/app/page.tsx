@@ -141,13 +141,12 @@ function MatchBadge({ score }: { score: number }) {
   const border = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   return (
     <span style={{
-      display: "inline-flex", alignItems: "center", gap: 3,
-      fontSize: 10, fontWeight: 700,
+      display: "inline-flex", alignItems: "center",
+      fontSize: 9, fontWeight: 600,
       color, background: bg, border: `1px solid ${border}`,
-      padding: "2px 7px", borderRadius: 20,
-      letterSpacing: "-0.01em", flexShrink: 0,
+      padding: "1px 6px", borderRadius: 20,
+      letterSpacing: "0.02em", flexShrink: 0,
     }}>
-      <span style={{ width: 5, height: 5, borderRadius: "50%", background: color, flexShrink: 0 }} />
       {score}%
     </span>
   );
@@ -687,7 +686,7 @@ export default function App() {
 
       {/* HEADER */}
       <header style={{
-        borderBottom: "1px solid var(--header-border)", padding: "0 24px", height: 60,
+        borderBottom: "1px solid var(--border)", padding: "0 24px", height: 60,
         display: "flex", alignItems: "center", justifyContent: "space-between",
         position: "sticky" as const, top: 0, background: "var(--header-bg)",
         backdropFilter: "blur(20px)", zIndex: 50,

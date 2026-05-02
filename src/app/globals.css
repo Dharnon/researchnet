@@ -50,9 +50,9 @@
   --radius-sm: 8px;
   --radius-xs: 5px;
 
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.05), 0 0 0 1px rgba(0,0,0,0.03);
-  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
-  --shadow-detail-panel: -8px 0 32px rgba(0,0,0,0.15);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
+  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.09), 0 8px 32px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.06);
+  --shadow-detail-panel: -8px 0 48px rgba(0,0,0,0.11);
 
   /* Match score tiers */
   --match-high: #22c55e;
@@ -111,8 +111,8 @@
   --card-bg: #111114;
   --card-border: #1e1e22;
 
-  --shadow-card: 0 0 0 1px #1e1e22;
-  --shadow-card-hover: 0 0 0 1px #303038, 0 8px 40px rgba(0,0,0,0.55);
+  --shadow-card: 0 0 0 1px rgba(255,255,255,0.05), 0 2px 12px rgba(0,0,0,0.55);
+  --shadow-card-hover: 0 0 0 1px rgba(100,100,100,0.25), 0 8px 40px rgba(0,0,0,0.65);
 
   /* Header glass — dark */
   --header-bg: rgba(9,9,11,0.88);
