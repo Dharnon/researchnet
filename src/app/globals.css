@@ -305,6 +305,48 @@ select:focus-visible {
   border-color: var(--connected-border);
 }
 
+/* ── VARIANT-B CONNECT BTN ── */
+.vc-connect-btn {
+  padding: 6px 14px;
+  border-radius: 9px;
+  border: 1px solid var(--accent-border);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  background: transparent;
+  color: var(--accent);
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
+}
+.vc-connect-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+  z-index: -1;
+}
+.vc-connect-btn:hover:not(.connected) {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: 0 2px 12px var(--accent-glow), 0 0 0 1px var(--accent-border);
+  transform: translateY(-1px);
+}
+.vc-connect-btn:hover::before { opacity: 1; }
+.vc-connect-btn.connected {
+  background: var(--connected-bg);
+  color: var(--connected-color);
+  border-color: var(--connected-border);
+}
+
 /* ── EMPTY STATE ── */
 .empty-state {
   display: flex;
