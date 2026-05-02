@@ -345,7 +345,6 @@ button:focus-visible, input:focus-visible, select:focus-visible {
   font-size: 13px;
   color: var(--text-muted);
   font-weight: 400;
-  margin-bottom: 24px;
 }
 
 /* ─── EMPTY STATE ──────────────────────────────────────────────────────────── */
