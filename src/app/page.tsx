@@ -304,7 +304,8 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
         <button onClick={onClose} style={{
           position: "absolute", top: 16, right: 16, background: "none", border: "none",
           color: "var(--text-tertiary)", cursor: "pointer", fontSize: 18,
-        }}></button>
+          display: "flex", alignItems: "center", justifyContent: "center",
+        }}>×</button>
         <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
           <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
           {opp.hot && <span style={{ fontSize: 8, fontWeight: 700, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3, padding: "1px 5px", borderRadius: 20, background: "var(--accent-dim)" }}><Zap size={9} />Hot</span>}
@@ -859,7 +860,7 @@ export default function App() {
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
                   el.style.borderColor = "var(--card-border)";
-                  el.style.borderLeft = "1px solid var(--card-border)";
+                  el.style.borderLeft = "";
                   el.style.transform = "translateY(0)";
                   el.style.boxShadow = "none";
                   const titleEl = el.querySelector("h3") as HTMLHeadingElement | null;
