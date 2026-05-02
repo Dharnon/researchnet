@@ -124,7 +124,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
       width: size, height: size, borderRadius: "50%",
       background: `radial-gradient(circle at 35% 30%, ${color}ee, ${color}40 50%, ${color}10)`,
       border: `1.5px solid ${color}40`,
-      boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.10)`,
+      boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.10), 0 2px 8px ${color}30`,
       display: "flex", alignItems: "center", justifyContent: "center",
       fontSize: s, fontWeight: 700, color,
       flexShrink: 0, letterSpacing: "-0.02em",
@@ -145,14 +145,14 @@ function MatchBadge({ score }: { score: number }) {
   const border = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   return (
     <span style={{
-      display: "inline-flex", alignItems: "center", gap: 3,
-      fontSize: 9, fontWeight: 700,
+      display: "inline-flex", alignItems: "center", gap: 2,
+      fontSize: 8, fontWeight: 700, letterSpacing: "-0.01em",
       color, background: bg, border: `1px solid ${border}`,
-      padding: "2px 6px", borderRadius: 20,
-      letterSpacing: "-0.01em", flexShrink: 0,
+      padding: "2px 5px", borderRadius: 20,
+      flexShrink: 0, lineHeight: 1.2,
     }}>
       {isHigh && <span style={{ width: 3, height: 3, borderRadius: "50%", background: color, flexShrink: 0 }} />}
-      {score}%
+      <span style={{ letterSpacing: "0.01em" }}>{score}%</span>
     </span>
   );
 }
