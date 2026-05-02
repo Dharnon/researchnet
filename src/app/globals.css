@@ -62,8 +62,8 @@
   --match-mid-bg: rgba(245,158,11,0.08);
   --match-mid-border: rgba(245,158,11,0.18);
   --match-low: #A8A29E;
-  --match-low-bg: rgba(156,163,175,0.08);
-  --match-low-border: rgba(156,163,175,0.18);
+  --match-low-bg: rgba(168,162,158,0.08);
+  --match-low-border: rgba(168,162,158,0.18);
 
   /* Hot / deadline accent */
   --hot-color: #fb923c;
