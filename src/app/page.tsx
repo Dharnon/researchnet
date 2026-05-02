@@ -141,14 +141,14 @@ function MatchBadge({ score }: { score: number }) {
   const border = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   return (
     <span style={{
-      display: "inline-flex", alignItems: "center", gap: 3,
-      fontSize: 9, fontWeight: 700,
+      display: "inline-flex", alignItems: "center", gap: 2,
+      fontSize: 8, fontWeight: 700, letterSpacing: "-0.01em",
       color, background: bg, border: `1px solid ${border}`,
-      padding: "2px 6px", borderRadius: 20,
-      letterSpacing: "-0.01em", flexShrink: 0,
+      padding: "2px 5px", borderRadius: 20,
+      flexShrink: 0, lineHeight: 1.2,
     }}>
       {isHigh && <span style={{ width: 3, height: 3, borderRadius: "50%", background: color, flexShrink: 0 }} />}
-      {score}%
+      <span style={{ letterSpacing: "0.01em" }}>{score}%</span>
     </span>
   );
 }
@@ -862,7 +862,7 @@ export default function App() {
                   el.style.transform = "translateY(-3px)";
                   el.style.boxShadow = "0 8px 24px rgba(28,25,22,0.10), 0 0 0 1px " + color + "18";
                   const titleEl = el.querySelector("h3") as HTMLHeadingElement | null;
-                  if (titleEl) { titleEl.style.color = "var(--accent)"; }
+                  if (titleEl) { titleEl.style.color = "var(--text-secondary)"; }
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
