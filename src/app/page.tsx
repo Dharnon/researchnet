@@ -46,7 +46,7 @@ const userProfile = {
   role: "Doctorando",
   dept: "Ingeniería de Sistemas",
   avatar: "JH",
-  color: "var(--accent)",
+  color: "#5b8fd4",
   tags: ["Sistemas Distribuidos", "IoT", "Machine Learning"],
   groups: ["DistributedSys Lab", "IoT Center"],
   projects: 2,
@@ -287,11 +287,19 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
   );
 }
 
+const TYPE_COLORS: Record<string, string> = {
+  Postdoc: "var(--type-postdoc-text)",
+  Fondos: "var(--type-fondos-text)",
+  Internacional: "var(--type-intl-text)",
+  Doctorado: "var(--type-phd-text)",
+  Laboral: "var(--type-laboral-text)",
+};
+const TYPE_COLORS_FALLBACK = "var(--text-tertiary)";
+
 // ─── OPPORTUNITY DETAIL MODAL ────────────────────────────────────────────────
 
 function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onClose: () => void }) {
-  const typeColors: Record<string, string> = { Postdoc: "var(--type-postdoc-text)", Fondos: "var(--type-fondos-text)", Internacional: "var(--type-intl-text)", Doctorado: "var(--type-phd-text)", Laboral: "var(--type-laboral-text)" };
-  const color = typeColors[opp.type] ?? "var(--text-tertiary)";
+  const color = TYPE_COLORS[opp.type] ?? TYPE_COLORS_FALLBACK;
   return (
     <>
       <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 200, backdropFilter: "blur(6px)" }} />
@@ -840,8 +848,7 @@ export default function App() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
             {opportunities.map((opp) => {
-              const typeColors: Record<string, string> = { Postdoc: "var(--type-postdoc-text)", Fondos: "var(--type-fondos-text)", Internacional: "var(--type-intl-text)", Doctorado: "var(--type-phd-text)", Laboral: "var(--type-laboral-text)" };
-              const color = typeColors[opp.type] ?? "var(--text-tertiary)";
+              const color = TYPE_COLORS[opp.type] ?? TYPE_COLORS_FALLBACK;
               return (
                 <div key={opp.id} onClick={() => setSelectedOpp(opp)} style={{
                   background: "var(--card-bg)", border: "1px solid var(--card-border)",
