@@ -120,7 +120,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
       width: size, height: size, borderRadius: "50%",
       background: `radial-gradient(circle at 35% 30%, ${color}ee, ${color}40 50%, ${color}10)`,
       border: `1.5px solid ${color}40`,
-      boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.10)`,
+      boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.10), 0 2px 8px ${color}30`,
       display: "flex", alignItems: "center", justifyContent: "center",
       fontSize: s, fontWeight: 700, color,
       flexShrink: 0, letterSpacing: "-0.02em",
