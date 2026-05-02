@@ -85,7 +85,7 @@ function SkeletonLoader() {
         {[1, 2, 3, 4, 5, 6].map((i) => (
           <div key={i} style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-              <div className="skeleton-shimmer" style={{ width: 44, height: 44, borderRadius: 10, border: "1.5px solid var(--border)" }} />
+              <div className="skeleton-shimmer" style={{ width: 44, height: 44, borderRadius: "50%" }} />
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
                 <div className="skeleton-shimmer" style={{ width: "70%", height: 13, borderRadius: 4 }} />
                 <div className="skeleton-shimmer-dim" style={{ width: "50%", height: 10, borderRadius: 4 }} />
