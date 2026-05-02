@@ -892,15 +892,15 @@ export default function App() {
             <div className="empty-state">
               <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={{ display: "block" }}>
                 {/* Central node */}
-                <circle cx="32" cy="32" r="8" stroke="#27272a" strokeWidth="1.5" fill="none"/>
+                <circle cx="32" cy="32" r="8" stroke="var(--border)" strokeWidth="1.5" fill="none"/>
                 <circle cx="32" cy="32" r="3" fill="var(--accent)" opacity="0.8"/>
                 {/* Satellite nodes */}
-                <circle cx="14" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <circle cx="50" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <circle cx="14" cy="46" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <circle cx="50" cy="46" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <circle cx="32" cy="8" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
-                <circle cx="32" cy="56" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
+                <circle cx="14" cy="18" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="50" cy="18" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="14" cy="46" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="50" cy="46" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="32" cy="8" r="4" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.5"/>
+                <circle cx="32" cy="56" r="4" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.5"/>
                 {/* Connection lines */}
                 <line x1="24" y1="27" x2="18" y2="21" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
                 <line x1="40" y1="27" x2="46" y2="21" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
