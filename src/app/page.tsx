@@ -190,7 +190,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
             <Avatar initials={researcher.avatar} color={researcher.color} size={52} />
             <div>
-              <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 2 }}>{researcher.name}</h2>
+              <h2 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 16, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 2 }}>{researcher.name}</h2>
               <p style={{ fontSize: 11, color: "var(--text-secondary)", marginBottom: 1 }}>{researcher.role}</p>
               <p style={{ fontSize: 10, color: "var(--text-tertiary)" }}>{researcher.dept}</p>
             </div>
@@ -338,7 +338,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2 }}>{researcher.name}</span>
-            <MatchBadge score={researcher.match} />
+            <div style={{ opacity: 0.7 }}><MatchBadge score={researcher.match} /></div>
           </div>
           <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
           <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 1 }}>{researcher.dept}</p>
@@ -492,7 +492,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
               fontSize: 13, outline: "none",
               transition: "border-color 0.15s, box-shadow 0.15s",
             }}
-            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow)"; }}
+            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow), 0 0 8px rgba(101,163,13,0.15)"; }}
             onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--card-border)"; i.style.boxShadow = "none"; }}
           />
           <button
@@ -607,7 +607,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           {view === item.key && (
             <div style={{
               position: "absolute", bottom: -5, left: "50%", transform: "translateX(-50%)",
-              width: 20, height: 2, borderRadius: 2, background: "var(--accent)",
+              width: 16, height: 2, borderRadius: 2, background: "var(--accent)",
             }} />
           )}
         </button>
@@ -846,9 +846,9 @@ export default function App() {
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = `${color}50`;
-el.style.transform = "translateY(-3px)";
-                  el.style.boxShadow = `0 8px 24px rgba(0,0,0,0.10), 0 0 0 1px ${color}18`;
+                  el.style.borderColor = "rgba(201,148,90,0.30)";
+                  el.style.transform = "translateY(-2px)";
+                  el.style.boxShadow = "0 8px 24px rgba(0,0,0,0.10), 0 0 12px rgba(201,148,90,0.18), 0 0 0 1px rgba(201,148,90,0.12)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
@@ -902,23 +902,23 @@ el.style.transform = "translateY(-3px)";
               }} />
               <svg width="56" height="56" viewBox="0 0 64 64" fill="none" style={{ display: "block", margin: "0 auto 20px", position: "relative" }}>
                 <circle cx="32" cy="32" r="8" stroke="var(--border)" strokeWidth="1.5" fill="none"/>
-                <circle cx="32" cy="32" r="3" fill="var(--accent)" opacity="0.7"/>
+                <circle cx="32" cy="32" r="3" fill="#5b8fd4" opacity="0.7"/>
                 <circle cx="14" cy="18" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
                 <circle cx="50" cy="18" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
                 <circle cx="14" cy="46" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
                 <circle cx="50" cy="46" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
                 <circle cx="32" cy="8" r="4" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.45"/>
                 <circle cx="32" cy="56" r="4" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.45"/>
-                <line x1="24" y1="27" x2="18" y2="21" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="40" y1="27" x2="46" y2="21" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="24" y1="37" x2="18" y2="43" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="40" y1="37" x2="46" y2="43" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="24" y1="27" x2="18" y2="21" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="40" y1="27" x2="46" y2="21" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="24" y1="37" x2="18" y2="43" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="40" y1="37" x2="46" y2="43" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
                 <line x1="32" y1="24" x2="32" y2="12" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.35"/>
                 <line x1="32" y1="40" x2="32" y2="52" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.35"/>
-                <circle cx="14" cy="18" r="2" fill="var(--accent)" opacity="0.40"/>
-                <circle cx="50" cy="18" r="2" fill="var(--accent)" opacity="0.40"/>
-                <circle cx="14" cy="46" r="2" fill="var(--accent)" opacity="0.40"/>
-                <circle cx="50" cy="46" r="2" fill="var(--accent)" opacity="0.40"/>
+                <circle cx="14" cy="18" r="2" fill="#5b8fd4" opacity="0.40"/>
+                <circle cx="50" cy="18" r="2" fill="#5b8fd4" opacity="0.40"/>
+                <circle cx="14" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
+                <circle cx="50" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
               </svg>
               <p style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.02em" }}>Tu red est&#160;vac&#237;a</p>
               <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y con&#769;ctate para construir tu red de colaboracio&#769;n.</p>
@@ -972,10 +972,10 @@ el.style.transform = "translateY(-3px)";
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18, padding: 28, marginBottom: 16 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: 24 }}>
-              <Avatar initials={userProfile.avatar} color={userProfile.color} size={64} />
+              <Avatar initials={userProfile.avatar} color={userProfile.color} size={72} />
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" as const }}>
-                  <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em" }}>{userProfile.name} {userProfile.surname}</h2>
+                  <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 22, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.025em" }}>{userProfile.name} {userProfile.surname}</h1>
                   {userProfile.open && (
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${userProfile.color}12`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
@@ -983,7 +983,7 @@ el.style.transform = "translateY(-3px)";
                     </span>
                   )}
                 </div>
-                <p style={{ fontSize: 13, color: "var(--text-muted)", marginBottom: 2 }}>{userProfile.role}</p>
+                <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontSize: 14, color: "var(--text-muted)", marginBottom: 2 }}>{userProfile.role}</p>
                 <p style={{ fontSize: 12, color: "var(--text-subtle)" }}>{userProfile.dept}</p>
               </div>
               <button style={{ padding: "8px 16px", borderRadius: 10, border: "1px solid var(--border)", background: "transparent", color: "var(--text-muted)", fontSize: 12, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>
@@ -1005,12 +1005,14 @@ el.style.transform = "translateY(-3px)";
               </div>
             </div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginBottom: 16 }}>
-            {[{ value: userProfile.pubs, label: "Publicaciones", icon: <BookOpen size={16} /> }, { value: userProfile.projects, label: "Proyectos", icon: <Briefcase size={16} /> }, { value: connectedIds.length, label: "Conexiones", icon: <Users size={16} /> }].map((stat) => (
-              <div key={stat.label} style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: "20px 16px", textAlign: "center" }}>
-                <div style={{ color: "var(--text-subtle)", marginBottom: 8, display: "flex", justifyContent: "center" }}>{stat.icon}</div>
-                <div style={{ fontSize: 28, fontWeight: 900, color: "var(--text-primary)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 4 }}>{stat.value}</div>
-                <div style={{ fontSize: 11, color: "var(--text-subtle)", fontWeight: 600 }}>{stat.label}</div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, marginBottom: 16, border: "1px solid var(--border)", borderRadius: 14, overflow: "hidden" }}>
+            {[{ value: userProfile.pubs, label: "Publicaciones", icon: <BookOpen size={15} /> }, { value: userProfile.projects, label: "Proyectos", icon: <Briefcase size={15} /> }, { value: connectedIds.length, label: "Conexiones", icon: <Users size={15} /> }].map((stat, i) => (
+              <div key={stat.label} style={{ background: "var(--surface)", padding: "20px 20px", display: "flex", alignItems: "center", gap: 14, borderLeft: i > 0 ? "1px solid var(--border-subtle)" : "none" }}>
+                <div style={{ color: "var(--text-subtle)", flexShrink: 0 }}>{stat.icon}</div>
+                <div style={{ textAlign: "left" }}>
+                  <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1, marginBottom: 4 }}>{stat.value}</div>
+                  <div style={{ fontSize: 10, color: "var(--text-subtle)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em" }}>{stat.label}</div>
+                </div>
               </div>
             ))}
           </div>

@@ -1,4 +1,6 @@
-﻿/* ── CSS VARIABLES (variant-a: Clean Classic - Lime Green Accent) ── */
+﻿@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap');
+
+/* ── CSS VARIABLES (variant-c: Warm Editorial - Amber) ── */
 :root {
   --bg: #FAFAF8;
   --bg-secondary: #F5F4F0;
@@ -252,17 +254,17 @@ select:focus-visible {
 .b-card:hover::after { opacity: 1; }
 
 /* Variant-B dark: slate-blue glow on card hover */
-/*[data-theme="dark"] .b-card:hover {*/
-/*  border-color: var(--slate-blue-border);*/
-/*  box-shadow:*/
-/*    0 0 0 1px var(--slate-blue-border),*/
-/*    0 8px 40px rgba(0,0,0,0.65),*/
-/*    0 0 16px var(--slate-blue-glow),*/
-/*    inset 0 0 20px rgba(113,114,154,0.04);*/
-/*}*/
-/*[data-theme="dark"] .b-card:hover::before {*/
-/*  background: linear-gradient(180deg, rgba(113,114,154,0.12) 0%, transparent 100%);*/
-/*}*/
+[data-theme="dark"] .b-card:hover {
+  border-color: rgba(91,143,212,0.35);
+  box-shadow:
+    0 0 0 1px rgba(91,143,212,0.20),
+    0 8px 40px rgba(0,0,0,0.65),
+    0 0 16px rgba(91,143,212,0.08),
+    inset 0 0 20px rgba(113,114,154,0.04);
+}
+[data-theme="dark"] .b-card:hover::before {
+  background: linear-gradient(180deg, rgba(113,114,154,0.12) 0%, transparent 100%);
+}
 
 .b-card-top {
   display: flex;
@@ -337,7 +339,7 @@ select:focus-visible {
   transform: translate(-50%, -55%);
   width: 120px;
   height: 120px;
-  background: radial-gradient(circle, rgba(101,163,13,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(91,143,212,0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -348,7 +350,7 @@ select:focus-visible {
   transform: translate(-50%, -50%);
   width: 160px;
   height: 160px;
-  background: radial-gradient(circle, rgba(101,163,13,0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(91,143,212,0.08) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -445,7 +447,7 @@ select:focus-visible {
   content: '';
   position: absolute;
   top: 0; left: 0;
-  width: 3px; height: 100%;
+  width: 2px; height: 100%;
   background: linear-gradient(180deg, var(--accent), var(--accent-hover));
   opacity: 0;
   transition: opacity 0.2s ease;
@@ -454,8 +456,8 @@ select:focus-visible {
   z-index: 1;
 }
 .researcher-card:hover {
-  box-shadow: var(--shadow-card-hover), 0 0 16px var(--accent-glow), 0 0 0 1px var(--accent-border), 0 10px 36px rgba(0,0,0,0.08);
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border), 0 0 10px rgba(101,163,13,0.06);
   border-color: var(--accent-border);
   transform: translateY(-2px);
 }
-.researcher-card:hover::after { opacity: 1; }
+.researcher-card:hover::after { opacity: 0.7; }
