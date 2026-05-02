@@ -251,34 +251,21 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
         </div>
 
         {/* Footer */}
-        <div style={{ padding: "14px 18px", borderTop: "1px solid var(--card-border)", display: "flex", gap: 8 }}>
+        <div style={{ padding: "14px 18px", borderTop: "1px solid var(--card-border)" }}>
           <button
             onClick={onConnect}
             style={{
-              flex: 1, padding: "10px", borderRadius: 9, border: "none",
-              fontSize: 12, fontWeight: 700, cursor: "pointer",
+              width: "100%", padding: "11px", borderRadius: 10, border: "none",
+              fontSize: 13, fontWeight: 700, cursor: "pointer",
               background: isConnected ? "var(--connected-bg)" : "var(--accent)",
               color: isConnected ? "var(--connected-color)" : "#fff",
-              display: "flex", alignItems: "center", justifyContent: "center", gap: 5,
-              transition: "all 0.15s",
+              display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
+              transition: "all 0.18s",
+              boxShadow: isConnected ? "none" : "0 2px 8px rgba(101,163,13,0.25)",
             }}
           >
-            {isConnected ? <><Check size={13} /> Conectado</> : "Conectar"}
+            {isConnected ? <><Check size={14} /> Conectado — Ver mensaje</> : <><Users size={14} /> Conectar</>}
           </button>
-          {!isConnected && (
-            <button
-              onClick={() => onConnect()}
-              style={{
-                flex: 1, padding: "10px", borderRadius: 9, border: "1px solid var(--card-border)",
-                fontSize: 12, fontWeight: 700, cursor: "pointer",
-                background: "var(--surface)", color: "var(--text-secondary)",
-                display: "flex", alignItems: "center", justifyContent: "center", gap: 5,
-                transition: "all 0.15s",
-              }}
-            >
-              <MessageCircle size={13} /> Mensaje
-            </button>
-          )}
         </div>
       </div>
     </>
@@ -301,13 +288,8 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
       }}>
         <button onClick={onClose} style={{
           position: "absolute", top: 16, right: 16, background: "none", border: "none",
-<<<<<<< Updated upstream
           color: "var(--text-tertiary)", cursor: "pointer", fontSize: 18,
         }}>×</button>
-=======
-          color: "var(--text-tertiary)", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center",
-        }}><X size={16} /></button>
->>>>>>> Stashed changes
         <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
           <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
           {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
@@ -865,24 +847,14 @@ export default function App() {
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
                   el.style.borderColor = `${color}50`;
-<<<<<<< Updated upstream
-                  el.style.transform = "translateY(-3px)";
+el.style.transform = "translateY(-3px)";
                   el.style.boxShadow = `0 8px 24px rgba(0,0,0,0.10), 0 0 0 1px ${color}18`;
-=======
-                  el.style.transform = "translateY(-3px) scale(1.015)";
-                  el.style.boxShadow = "0 8px 24px rgba(28,25,22,0.10), 0 0 0 1px " + color + "18";
-                  el.style.borderLeft = "3px solid " + color;
->>>>>>> Stashed changes
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
                   el.style.borderColor = "var(--card-border)";
-                  el.style.transform = "translateY(0) scale(1)";
+                  el.style.transform = "translateY(0)";
                   el.style.boxShadow = "none";
-                  el.style.borderLeft = "1px solid var(--card-border)";
-                  el.style.borderTop = "1px solid var(--card-border)";
-                  el.style.borderRight = "1px solid var(--card-border)";
-                  el.style.borderBottom = "1px solid var(--card-border)";
                 }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
