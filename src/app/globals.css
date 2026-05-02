@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap');
 
-/* ─── WARM EDITORIAL PALETTE ─────────────────────────────────────────────────── */
+/* ─── VARIANT-C: WARM EDITORIAL — AMBER ACCENT ──────────────────────────────── */
 :root {
   --font-serif: 'Playfair Display', Georgia, serif;
 
@@ -286,28 +286,46 @@ button:focus-visible, input:focus-visible, select:focus-visible {
 }
 
 /* ─── CONNECT BUTTON ───────────────────────────────────────────────────────── */
+/* ── VARIANT-C CONNECT BTN (warm amber) ── */
 .vc-connect-btn {
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 12px;
   padding: 6px 14px;
+  border-radius: 9px;
+  border: 1px solid var(--accent-border);
+  font-size: 11px;
+  font-weight: 700;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
-  letter-spacing: -0.01em;
+  background: transparent;
+  color: var(--accent);
+  transition: all 0.18s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  position: relative;
+  overflow: hidden;
 }
-.vc-connect-btn:not(.connected) {
+.vc-connect-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+  z-index: -1;
+}
+.vc-connect-btn:hover:not(.connected) {
   background: var(--accent);
   color: #fff;
-  border: 1px solid transparent;
+  border-color: var(--accent);
+  box-shadow: 0 2px 12px var(--accent-glow), 0 0 0 1px var(--accent-border);
+  transform: translateY(-1px);
 }
-.vc-connect-btn:not(.connected):hover {
-  background: var(--accent-hover);
-  transform: scale(1.02);
-}
+.vc-connect-btn:hover::before { opacity: 1; }
 .vc-connect-btn.connected {
   background: var(--connected-bg);
   color: var(--connected-color);
-  border: 1px solid var(--connected-border);
+  border-color: var(--connected-border);
 }
 
 /* ─── SECTION HEADING (warm editorial) ─────────────────────────────────────── */
@@ -320,6 +338,9 @@ button:focus-visible, input:focus-visible, select:focus-visible {
   color: var(--text-primary);
   margin-bottom: 6px;
 }
+/* ── PLAYFAIR DISPLAY (variant-c: serif for Warm Editorial) ── */
+.vc-section-heading,
+.playfair { font-family: 'Playfair Display', Georgia, serif; }
 .vc-section-sub {
   font-size: 13px;
   color: var(--text-muted);
