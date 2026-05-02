@@ -252,17 +252,17 @@ select:focus-visible {
 .b-card:hover::after { opacity: 1; }
 
 /* Variant-B dark: slate-blue glow on card hover */
-[data-theme="dark"] .b-card:hover {
-  border-color: var(--slate-blue-border);
-  box-shadow:
-    0 0 0 1px var(--slate-blue-border),
-    0 8px 40px rgba(0,0,0,0.65),
-    0 0 16px var(--slate-blue-glow),
-    inset 0 0 20px rgba(113,114,154,0.04);
-}
-[data-theme="dark"] .b-card:hover::before {
-  background: linear-gradient(180deg, rgba(113,114,154,0.12) 0%, transparent 100%);
-}
+/*[data-theme="dark"] .b-card:hover {*/
+/*  border-color: var(--slate-blue-border);*/
+/*  box-shadow:*/
+/*    0 0 0 1px var(--slate-blue-border),*/
+/*    0 8px 40px rgba(0,0,0,0.65),*/
+/*    0 0 16px var(--slate-blue-glow),*/
+/*    inset 0 0 20px rgba(113,114,154,0.04);*/
+/*}*/
+/*[data-theme="dark"] .b-card:hover::before {*/
+/*  background: linear-gradient(180deg, rgba(113,114,154,0.12) 0%, transparent 100%);*/
+/*}*/
 
 .b-card-top {
   display: flex;

@@ -271,11 +271,13 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
   );
 }
 
+// ─── TYPE COLORS (stable module-level constant) ───────────────────────────────
+const TYPE_COLORS: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#D97706", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
+
 // ─── OPPORTUNITY DETAIL MODAL ────────────────────────────────────────────────
 
 function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onClose: () => void }) {
-  const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#D97706", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
-  const color = typeColors[opp.type] ?? "#6b7280";
+  const color = TYPE_COLORS[opp.type] ?? "#6b7280";
   return (
     <>
       <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.55)", zIndex: 200, backdropFilter: "blur(6px)" }} />
@@ -835,8 +837,7 @@ export default function App() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
             {opportunities.map((opp) => {
-              const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#D97706", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
-              const color = typeColors[opp.type] ?? "#6b7280";
+              const color = TYPE_COLORS[opp.type] ?? "#6b7280";
               return (
                 <div key={opp.id} onClick={() => setSelectedOpp(opp)} style={{
                   background: "var(--card-bg)", border: "1px solid var(--card-border)",
