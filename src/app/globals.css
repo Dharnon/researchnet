@@ -182,6 +182,32 @@ select:focus-visible {
 }
 
 /* ── RESEARCHER CARD (Dark Premium) ── */
+.vc-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.vc-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-card-hover), 0 0 16px var(--accent-glow);
+  transform: translateY(-2px);
+}
+
+.vc-card-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
 .b-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -219,6 +245,22 @@ select:focus-visible {
   display: flex;
   align-items: flex-start;
   gap: 12px;
+}
+
+/* ── SECTION HEADINGS (variant-b) ── */
+.vc-section-heading {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+.vc-section-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 0;
 }
 
 /* ── CONNECT BUTTONS ── */
