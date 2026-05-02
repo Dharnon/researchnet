@@ -397,9 +397,9 @@ button:focus-visible, input:focus-visible, select:focus-visible {
   background: var(--accent-hover);
 }
 .b-connect-btn.connected {
-  background: var(--accent-dim);
-  color: var(--accent);
-  border: 1px solid rgba(201, 148, 90, 0.25);
+  background: var(--connected-bg);
+  color: var(--connected-color);
+  border-color: var(--connected-border);
 }
 
 .b-msg-btn {
