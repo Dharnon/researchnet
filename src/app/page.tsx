@@ -893,35 +893,36 @@ export default function App() {
               <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 50% 40%, rgba(201,148,90,0.08) 0%, transparent 70%)", pointerEvents: "none" }} />
               <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={{ display: "block" }}>
                 {/* Central node */}
-                <circle cx="32" cy="32" r="8" stroke="#27272a" strokeWidth="1.5" fill="none"/>
+                <circle cx="32" cy="32" r="8" stroke="var(--border)" strokeWidth="1.5" fill="none"/>
                 <circle cx="32" cy="32" r="3" fill="var(--accent)" opacity="0.8"/>
                 {/* Satellite nodes */}
-                <circle cx="14" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <circle cx="50" cy="18" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <circle cx="14" cy="46" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <circle cx="50" cy="46" r="5" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.6"/>
-                <circle cx="32" cy="8" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
-                <circle cx="32" cy="56" r="4" stroke="#27272a" strokeWidth="1.5" fill="none" opacity="0.5"/>
+                <circle cx="14" cy="18" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="50" cy="18" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="14" cy="46" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="50" cy="46" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.6"/>
+                <circle cx="32" cy="8" r="4" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.5"/>
+                <circle cx="32" cy="56" r="4" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.5"/>
                 {/* Connection lines */}
                 <line x1="24" y1="27" x2="18" y2="21" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
                 <line x1="40" y1="27" x2="46" y2="21" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
                 <line x1="24" y1="37" x2="18" y2="43" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
                 <line x1="40" y1="37" x2="46" y2="43" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.4"/>
-                <line x1="32" y1="24" x2="32" y2="12" stroke="#27272a" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
-                <line x1="32" y1="40" x2="32" y2="52" stroke="#27272a" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
+                <line x1="32" y1="24" x2="32" y2="12" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
+                <line x1="32" y1="40" x2="32" y2="52" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.4"/>
                 {/* Satellite node dots */}
                 <circle cx="14" cy="18" r="2" fill="var(--accent)" opacity="0.45"/>
                 <circle cx="50" cy="18" r="2" fill="var(--accent)" opacity="0.45"/>
                 <circle cx="14" cy="46" r="2" fill="var(--accent)" opacity="0.45"/>
                 <circle cx="50" cy="46" r="2" fill="var(--accent)" opacity="0.45"/>
               </svg>
-              <p className="empty-title">Tu red est vaca</p>
-              <p className="empty-sub">Explora investigadores y conctate para construir tu red de colaboracin.</p>
+              <p className="empty-title">Tu red est&#160;vac&#237;a</p>
+              <p className="empty-sub">Explora investigadores y con&#769;ctate para construir tu red de colaboracio&#769;n.</p>
               <button onClick={() => setView("discover")} style={{
-                marginTop: 6, padding: "9px 20px", borderRadius: 9,
-                background: "#D97706", color: "#fff", border: "none",
+                marginTop: 6, padding: "10px 22px", borderRadius: 10,
+                background: "var(--accent)", color: "#fff", border: "none",
                 fontSize: 13, fontWeight: 700, cursor: "pointer",
                 fontFamily: "inherit",
+                transition: "all 0.18s ease",
               }}>Descubrir investigadores</button>
             </div>
           ) : (
