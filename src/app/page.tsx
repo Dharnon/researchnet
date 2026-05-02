@@ -857,7 +857,7 @@ export default function App() {
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
                   el.style.borderColor = `${color}50`;
-                  el.style.transform = "translateY(-3px)";
+                  el.style.transform = "translateY(-2px)";
                   el.style.boxShadow = "0 8px 24px rgba(28,25,22,0.10), 0 0 0 1px " + color + "18";
                 }}
                 onMouseLeave={(e) => {
