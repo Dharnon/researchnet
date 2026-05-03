@@ -287,8 +287,8 @@ select:focus-visible {
   border-radius: var(--radius) 0 0 var(--radius);
 }
 .b-card:hover {
-  border-color: rgba(91,143,212,0.35);
-  box-shadow: 0 0 0 1px rgba(91,143,212,0.20), 0 8px 40px rgba(0,0,0,0.65), 0 0 16px rgba(91,143,212,0.08);
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border), 0 0 16px var(--accent-glow);
   transform: translateY(-2px);
 }
 .b-card:hover::before {
