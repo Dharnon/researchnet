@@ -299,7 +299,7 @@ select:focus-visible {
 }
 .b-card:hover {
   border-color: var(--accent-border);
-  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border), 0 0 16px var(--accent-glow);
+  box-shadow: var(--shadow-card-hover);
   transform: translateY(-2px);
 }
 /* Warm amber overlay on hover — no gray/purple */
@@ -597,7 +597,7 @@ select:focus-visible {
   z-index: 1;
 }
 .researcher-card:hover {
-  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border);
+  box-shadow: var(--shadow-card-hover);
   border-color: var(--accent-border);
   transform: translateY(-2px);
 }
