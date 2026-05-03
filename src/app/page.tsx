@@ -147,7 +147,6 @@ function MatchBadge({ score }: { score: number }) {
       padding: "2px 5px", borderRadius: 20,
       flexShrink: 0, lineHeight: 1.2,
     }}>
-      {isHigh && <span style={{ width: 3, height: 3, borderRadius: "50%", background: color, flexShrink: 0 }} />}
       <span style={{ letterSpacing: "0.01em" }}>{score}%</span>
     </span>
   );
@@ -695,7 +694,7 @@ export default function App() {
             width: 28, height: 28, borderRadius: 8,
             background: "linear-gradient(135deg, var(--accent), var(--accent-hover))",
             display: "flex", alignItems: "center", justifyContent: "center",
-            boxShadow: "0 0 20px var(--accent-glow)",
+            boxShadow: "none",
           }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
               <circle cx="8" cy="12" r="3" fill="#fff" opacity="0.9"/>
