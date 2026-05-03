@@ -118,13 +118,13 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
   return (
     <div style={{
       width: size, height: size, borderRadius: "50%",
-      background: `radial-gradient(circle at 35% 35%, ${color}cc, ${color}18)`,
-      border: `1.5px solid ${color}40`,
-      boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.10)`,
+      background: `radial-gradient(circle at 35% 35%, ${color}ee, ${color}55 45%, ${color}18)`,
+      border: `1.5px solid ${color}50`,
+      boxShadow: `0 0 0 1px ${color}25, inset 0 1px 2px rgba(255,255,255,0.12), 0 2px 8px ${color}30`,
       display: "flex", alignItems: "center", justifyContent: "center",
-      fontSize: s, fontWeight: 700, color,
-      flexShrink: 0, letterSpacing: "-0.02em",
-      transition: "box-shadow 0.2s ease",
+      fontSize: s, fontWeight: 800, color,
+      flexShrink: 0, letterSpacing: "-0.03em",
+      transition: "box-shadow 0.22s ease, transform 0.22s ease",
     }}>
       {initials}
     </div>
@@ -132,20 +132,23 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
 }
 
 
-// --- MATCH BADGE (lime: green =90, amber =70, gray <70) ---------------------
+// --- MATCH BADGE (variant-b: dark premium — green=90, amber=70, gray <70) ---
 function MatchBadge({ score }: { score: number }) {
   const isHigh = score >= 90;
   const isMid  = score >= 70 && score < 90;
+  const border = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   const color  = isHigh ? "var(--match-high)" : isMid ? "var(--match-mid)" : "var(--match-low)";
   const bg     = isHigh ? "var(--match-high-bg)" : isMid ? "var(--match-mid-bg)" : "var(--match-low-bg)";
   return (
     <span style={{
-      display: "inline-flex", alignItems: "center",
-      fontSize: 9, fontWeight: 700,
+      display: "inline-flex", alignItems: "center", gap: 3,
+      fontSize: 9.5, fontWeight: 800,
       color, background: bg,
-      padding: "2px 7px", borderRadius: 20,
-      letterSpacing: "0.02em", flexShrink: 0,
+      border: `1px solid ${border}`,
+      padding: "2.5px 7px", borderRadius: 20,
+      letterSpacing: "0.01em", flexShrink: 0, lineHeight: 1.2,
     }}>
+      {isHigh && <span style={{ width: 3, height: 3, borderRadius: "50%", background: color, flexShrink: 0, display: "inline-block" }} />}
       {score}%
     </span>
   );
