@@ -234,8 +234,8 @@ button:focus-visible, input:focus-visible, select:focus-visible {
   z-index: 1;
 }
 .vc-card:hover {
-  box-shadow: 0 8px 28px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 0 1px var(--accent-border);
-  border-color: rgba(201,148,90,0.40);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--accent-border);
   transform: translateY(-2px);
 }
 .vc-card:hover::before { opacity: 1; }
@@ -396,8 +396,8 @@ button:focus-visible, input:focus-visible, select:focus-visible {
 }
 .researcher-card:hover {
   box-shadow: var(--shadow-card-hover);
-  border-color: rgba(201, 148, 90, 0.28);
-  transform: translateY(-2px) scale(1.005);
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
 }
 
 /* ─── BUTTONS ────────────────────────────────────────────────────────────────── */
