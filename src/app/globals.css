@@ -147,6 +147,37 @@
   animation: shimmer 1.4s ease-in-out infinite 0.2s;
 }
 
+/* ── SKELETON CARD (variant-b dark premium lime shimmer) ── */
+.skeleton-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.skeleton-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: linear-gradient(90deg, transparent 0%, rgba(132,204,22,0.05) 50%, transparent 100%);
+  background-size: 800px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* ── DARK SKELETON SHIMMER (variant-b lime accent) ── */
+[data-theme="dark"] .skeleton-shimmer {
+  background: linear-gradient(90deg, var(--border) 25%, rgba(132,204,22,0.08) 50%, var(--border) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
 /* ── RESET & BASE ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
