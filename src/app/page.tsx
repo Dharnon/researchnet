@@ -231,8 +231,9 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
               {researcher.groups.map((g) => (
                 <span key={g} style={{
-                  fontSize: 10, fontWeight: 600, color: "var(--accent)",
-                  background: "var(--accent-dim)", padding: "3px 8px", borderRadius: 6,
+                  fontSize: 10, fontWeight: 600, color: "var(--text-secondary)",
+                  background: "var(--surface-hover)", border: "1px solid var(--border)",
+                  padding: "3px 8px", borderRadius: 6,
                 }}>{g}</span>
               ))}
             </div>
