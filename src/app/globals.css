@@ -1,4 +1,4 @@
-/* ── CSS VARIABLES (variant-b: Dark Premium — Slate-Blue Accent) ── */
+/* ── CSS VARIABLES (variant-c: Warm Editorial — Amber Accent) ── */
 :root {
   --bg: #FAFAF8;
   --bg-secondary: #F5F4F0;
@@ -13,16 +13,16 @@
   --text-muted: #78716C;
   --text-subtle: #A8A29E;
 
-  --accent: #5b8fd4;
-  --accent-dim: rgba(91, 143, 212, 0.08);
-  --accent-hover: #7ba3e0;
-  --accent-glow: rgba(91, 143, 212, 0.08);
-  --accent-border: rgba(91, 143, 212, 0.25);
+  --accent: #D97706;
+  --accent-dim: rgba(217, 119, 6, 0.08);
+  --accent-hover: #F59E0B;
+  --accent-glow: rgba(217, 119, 6, 0.12);
+  --accent-border: rgba(217, 119, 6, 0.22);
   --accent-faint: rgba(99, 102, 241, 0.05);
 
-  --open-dot: #5b8fd4;
-  --open-dot-bg: rgba(91, 143, 212, 0.08);
-  --open-dot-border: rgba(91, 143, 212, 0.20);
+  --open-dot: #D97706;
+  --open-dot-bg: rgba(217, 119, 6, 0.08);
+  --open-dot-border: rgba(217, 119, 6, 0.20);
 
   --tag-bg: #F5F4F0;
   --tag-border: #E8E5DC;
@@ -52,9 +52,9 @@
   --radius-sm: 8px;
   --radius-xs: 5px;
 
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
-  --shadow-card-hover: 0 8px 24px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.06);
-  --shadow-detail-panel: -8px 0 32px rgba(0,0,0,0.15);
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
+  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.09), 0 8px 32px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.06);
+  --shadow-detail-panel: -8px 0 48px rgba(0,0,0,0.11);
 
   /* Match score tiers */
   --match-high: #22c55e;
@@ -68,19 +68,19 @@
   --match-low-border: rgba(168,162,158,0.18);
 
   /* Hot / deadline accent */
-  --hot-color: #fb923c;
+  --hot-color: #D97706;
 
-  /* Connected button */
-  --connected-bg: rgba(91,143,212,0.10);
-  --connected-color: #5b8fd4;
-  --connected-border: rgba(91,143,212,0.25);
+  /* Connected button — amber for variant-c */
+  --connected-bg: rgba(217,119,6,0.10);
+  --connected-color: #B45309;
+  --connected-border: rgba(217,119,6,0.25);
 
   /* Header glass */
   --header-bg: rgba(249,250,251,0.92);
   --header-border: rgba(229,231,235,0.80);
 }
 
-/* ── DARK MODE (variant-b: Linear-style Dark Premium) ── */
+/* ── DARK MODE (variant-c: Warm Editorial — Amber Accent) ── */
 [data-theme="dark"] {
   --bg: #09090b;
   --bg-secondary: #0f0f10;
@@ -95,16 +95,16 @@
   --text-muted: #a1a1aa;
   --text-subtle: #71717a;
 
-  --accent: #5b8fd4;
-  --accent-dim: rgba(91, 143, 212, 0.10);
-  --accent-hover: #7ba3e0;
-  --accent-glow: rgba(91, 143, 212, 0.10);
-  --accent-border: rgba(91, 143, 212, 0.22);
+  --accent: #F59E0B;
+  --accent-dim: rgba(245, 158, 11, 0.10);
+  --accent-hover: #FBBF24;
+  --accent-glow: rgba(245, 158, 11, 0.10);
+  --accent-border: rgba(245, 158, 11, 0.22);
 
-  --open-dot: #5b8fd4;
-  --open-dot-bg: rgba(91, 143, 212, 0.12);
-  --open-dot-border: rgba(91, 143, 212, 0.25);
-  --accent-faint: rgba(91, 143, 212, 0.05);
+  --open-dot: #F59E0B;
+  --open-dot-bg: rgba(245, 158, 11, 0.12);
+  --open-dot-border: rgba(245, 158, 11, 0.25);
+  --accent-faint: rgba(245, 158, 11, 0.05);
 
   --tag-bg: #1a1a1e;
   --tag-border: #27272a;
@@ -113,12 +113,17 @@
   --card-bg: #111114;
   --card-border: #1e1e22;
 
-  --shadow-card: 0 0 0 1px #1e1e22, 0 4px 24px rgba(0,0,0,0.50);
-  --shadow-card-hover: 0 0 0 1px #303038, 0 12px 48px rgba(0,0,0,0.70), 0 0 24px rgba(91,143,212,0.06);
+  --shadow-card: 0 0 0 1px rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.50);
+  --shadow-card-hover: 0 0 0 1px rgba(245,158,11,0.15), 0 12px 48px rgba(0,0,0,0.70), 0 0 24px rgba(245,158,11,0.06);
 
   /* Header glass — dark */
   --header-bg: rgba(9,9,11,0.88);
   --header-border: rgba(30,30,34,0.90);
+
+  /* Connected button — amber for variant-c */
+  --connected-bg: rgba(245,158,11,0.10);
+  --connected-color: #F59E0B;
+  --connected-border: rgba(245,158,11,0.25);
 }
 
 /* ── SHIMMER ANIMATION ── */
