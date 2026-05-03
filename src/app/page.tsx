@@ -911,24 +911,24 @@ export default function App() {
                 <circle cx="14" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
                 <circle cx="50" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
               </svg>
-              <p style={{ fontSize: 16, fontWeight: 700, color: "var(--text-secondary)", marginBottom: 8, letterSpacing: "-0.02em" }}>Tu red est&#160;vac&#237;a</p>
-              <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y con&#769;ctate para construir tu red de colaboracio&#769;n.</p>
+              <p style={{ fontSize: 16, fontWeight: 600, color: "var(--text-secondary)", marginBottom: 8, letterSpacing: "-0.01em" }}>Tu red está vacía</p>
+              <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y contrate para construir tu red de colaboración.</p>
               <button
                 onClick={() => setView("discover")}
                 style={{
                   padding: "10px 22px", borderRadius: 10,
                   background: "var(--accent)", color: "#000", border: "none",
                   fontSize: 13, fontWeight: 700, cursor: "pointer",
-                  boxShadow: "0 0 20px rgba(132,204,22,0.18), 0 2px 8px rgba(0,0,0,0.3)",
+                  boxShadow: "0 2px 12px rgba(217,119,6,0.25), 0 0 20px rgba(217,119,6,0.10)",
                   transition: "all 0.18s ease",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-1px)";
-                  e.currentTarget.style.boxShadow = "0 4px 16px rgba(132,204,22,0.28), 0 2px 8px rgba(0,0,0,0.4)";
+                  e.currentTarget.style.boxShadow = "0 4px 16px rgba(217,119,6,0.35), 0 0 24px rgba(217,119,6,0.15)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "0 0 20px rgba(132,204,22,0.18), 0 2px 8px rgba(0,0,0,0.3)";
+                  e.currentTarget.style.boxShadow = "0 2px 12px rgba(217,119,6,0.25), 0 0 20px rgba(217,119,6,0.10)";
                 }}
               >Descubrir investigadores</button>
             </div>
