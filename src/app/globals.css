@@ -242,8 +242,8 @@ button:focus-visible, input:focus-visible, select:focus-visible {
   border-radius: var(--radius) 0 0 var(--radius);
 }
 .b-card:hover {
-  border-color: rgba(132,204,22,0.30);
-  box-shadow: 0 0 0 1px rgba(132,204,22,0.18), 0 8px 40px rgba(0,0,0,0.65);
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border), 0 0 20px var(--accent-glow);
   transform: translateY(-2px);
 }
 .b-card:hover::after { opacity: 1; }
@@ -381,8 +381,8 @@ button:focus-visible, input:focus-visible, select:focus-visible {
   pointer-events: none; z-index: 1;
 }
 .researcher-card:hover {
-  box-shadow: var(--shadow-card-hover);
-  border-color: rgba(132,204,22,0.35);
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border), 0 0 12px var(--accent-glow);
+  border-color: var(--accent-border);
   transform: translateY(-2px);
 }
 .researcher-card:hover::after { opacity: 0.8; }
