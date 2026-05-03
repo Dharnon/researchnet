@@ -545,5 +545,3 @@ select:focus-visible {
   border-color: var(--accent-border);
   transform: translateY(-2px);
 }
-.researcher-card:hover::after { opacity: 1; }
-

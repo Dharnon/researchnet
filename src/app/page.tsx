@@ -923,13 +923,6 @@ export default function App() {
                 <circle cx="14" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
                 <circle cx="50" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
               </svg>
-              <p style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.02em" }}>Tu red est&#160;vac&#237;a</p>
-              <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y con&#769;ctate para construir tu red de colaboracio&#769;n.</p>
-              <button onClick={() => setView("discover")} style={{
-                padding: "10px 22px", borderRadius: 10,
-                background: "var(--accent)", color: "#fff", border: "none",
-                fontSize: 13, fontWeight: 700, cursor: "pointer",
-              }}>Descubrir investigadores</button>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
