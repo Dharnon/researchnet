@@ -1,6 +1,6 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 
-/* ── CSS VARIABLES (variant-c: Warm Editorial - Amber) ── */
+/* -- CSS VARIABLES (variant-c: Warm Editorial - Amber) -- */
 :root {
   --bg: #FAFAF8;
   --bg-secondary: #F5F4F0;
@@ -80,7 +80,7 @@
   --header-border: rgba(229,231,235,0.80);
 }
 
-/* ── DARK MODE (variant-a: Clean Classic) ── */
+/* -- DARK MODE (variant-a: Clean Classic) -- */
 [data-theme="dark"] {
   --bg: #09090b;
   --bg-secondary: #0f0f10;
@@ -126,7 +126,7 @@
   --connected-border: rgba(132,204,22,0.28);
 }
 
-/* ── SHIMMER ANIMATION ── */
+/* -- SHIMMER ANIMATION -- */
 @keyframes shimmer {
   0% { background-position: -400px 0; }
   100% { background-position: 400px 0; }
@@ -163,7 +163,7 @@
   box-shadow: 0 0 12px rgba(113,114,154,0.08);
 }
 
-/* ── RESET & BASE ── */
+/* -- RESET & BASE -- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -182,7 +182,7 @@ body {
   min-height: 100vh;
 }
 
-/* ── SCROLLBAR ── */
+/* -- SCROLLBAR -- */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
@@ -197,7 +197,7 @@ button {
 
 a { color: inherit; text-decoration: none; }
 
-/* ── FOCUS VISIBLE ── */
+/* -- FOCUS VISIBLE -- */
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
@@ -205,7 +205,7 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-/* ── RESEARCHER CARD (Clean Classic) ── */
+/* -- RESEARCHER CARD (Clean Classic) -- */
 .b-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -233,7 +233,7 @@ select:focus-visible {
   pointer-events: none;
   z-index: 0;
 }
-/* Left accent — lime, refined */
+/* Left accent � lime, refined */
 .b-card::after {
   content: '';
   position: absolute;
@@ -246,24 +246,24 @@ select:focus-visible {
   z-index: 1;
 }
 .b-card:hover {
-  border-color: rgba(132, 204, 22, 0.35);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.10), 0 0 0 1px rgba(132,204,22,0.22), 0 0 20px rgba(132,204,22,0.10);
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border), 0 0 16px var(--accent-glow);
   transform: translateY(-2px);
 }
 .b-card:hover::before { opacity: 1; }
 .b-card:hover::after { opacity: 1; }
 
-/* Variant-B dark: slate-blue glow on card hover */
+/* Variant-B dark: refined dark mode card hover */
 [data-theme="dark"] .b-card:hover {
-  border-color: rgba(91,143,212,0.35);
+  border-color: rgba(132, 204, 22, 0.40);
   box-shadow:
-    0 0 0 1px rgba(91,143,212,0.15),
-    0 8px 40px rgba(0,0,0,0.60),
-    0 0 12px rgba(91,143,212,0.06),
-    inset 0 0 20px rgba(113,114,154,0.04);
+    var(--shadow-card-hover),
+    0 0 0 1px rgba(132, 204, 22, 0.20),
+    0 0 20px rgba(132, 204, 22, 0.08),
+    inset 0 0 20px rgba(113, 114, 154, 0.05);
 }
 [data-theme="dark"] .b-card:hover::before {
-  background: linear-gradient(180deg, rgba(113,114,154,0.12) 0%, transparent 100%);
+  background: linear-gradient(180deg, rgba(132, 204, 22, 0.08) 0%, transparent 100%);
 }
 
 .b-card-top {
@@ -272,7 +272,7 @@ select:focus-visible {
   gap: 12px;
 }
 
-/* ── CONNECT BUTTONS ── */
+/* -- CONNECT BUTTONS -- */
 .b-connect-btn {
   padding: 6px 14px;
   border-radius: 9px;
@@ -314,7 +314,7 @@ select:focus-visible {
   border-color: var(--connected-border);
 }
 
-/* ── EMPTY STATE ── */
+/* -- EMPTY STATE -- */
 .empty-state {
   display: flex;
   flex-direction: column;
@@ -388,7 +388,7 @@ select:focus-visible {
   transform: translateY(-1px);
 }
 
-/* ── HEADER TRANSITION ── */
+/* -- HEADER TRANSITION -- */
 .app-header {
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -456,13 +456,13 @@ select:focus-visible {
   z-index: 1;
 }
 .researcher-card:hover {
-  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border), 0 0 10px rgba(101,163,13,0.06);
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border), 0 0 10px var(--accent-glow);
   border-color: var(--accent-border);
   transform: translateY(-2px);
 }
 .researcher-card:hover::after { opacity: 0.7; }
 
-/* ── OPPORTUNITY CARD (variant-c: amber accent bar) ── */
+/* -- OPPORTUNITY CARD (variant-c: amber accent bar) -- */
 .opp-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -493,7 +493,7 @@ select:focus-visible {
 }
 .opp-card:hover::before { opacity: 1; }
 
-/* ── NETWORK EMPTY STATE (variant-c: warm premium) ── */
+/* -- NETWORK EMPTY STATE (variant-c: warm premium) -- */
 .warm-empty-icon {
   position: relative;
   display: flex;
@@ -549,7 +549,7 @@ select:focus-visible {
   box-shadow: 0 4px 16px rgba(217,119,6,0.35);
 }
 
-/* ── CONNECTED BUTTON (variant-c: warm amber) ── */
+/* -- CONNECTED BUTTON (variant-c: warm amber) -- */
 .variant-c-connected-btn {
   background: var(--connected-bg);
   color: var(--connected-color);
