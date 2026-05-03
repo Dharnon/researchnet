@@ -872,7 +872,7 @@ export default function App() {
                 }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
-                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: opp.hot ? `${color}15` : "transparent", border: opp.hot ? `1px solid ${color}40` : `1px solid ${color}22`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
+                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: opp.hot ? `color-mix(in srgb, ${color} 12%, transparent)` : "transparent", border: opp.hot ? `1px solid color-mix(in srgb, ${color} 30%, transparent)` : `1px solid ${color}22`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
                     {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={10} color="#fb923c" /></span>}
                   </div>
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
