@@ -132,7 +132,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
 }
 
 
-// --- MATCH BADGE (variant-a: lime accent, tiered) -----
+// --- MATCH BADGE (variant-b: dark premium — green=90, amber=70, gray <70) ---
 function MatchBadge({ score }: { score: number }) {
   const isHigh = score >= 90;
   const isMid  = score >= 70 && score < 90;
@@ -193,7 +193,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
             <Avatar initials={researcher.avatar} color={researcher.color} size={52} />
             <div>
-              <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", lineHeight: 1.3 }}>{researcher.name}</h2>
+              <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 2 }}>{researcher.name}</h2>
               <p style={{ fontSize: 11, color: "var(--text-secondary)", marginBottom: 1 }}>{researcher.role}</p>
               <p style={{ fontSize: 10, color: "var(--text-tertiary)" }}>{researcher.dept}</p>
             </div>
@@ -298,7 +298,7 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
           <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
           {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
         </div>
-        <h2 style={{ fontSize: 17, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", lineHeight: 1.3, marginBottom: 6 }}>{opp.title}</h2>
+        <h2 style={{ fontSize: 17, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", lineHeight: 1.3 }}>{opp.title}</h2>
         <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept}  Fecha lmite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 20 }}>{opp.desc}</p>
         <button style={{
@@ -978,7 +978,7 @@ export default function App() {
               <Avatar initials={userProfile.avatar} color={userProfile.color} size={72} />
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" as const }}>
-                  <h2 style={{ fontSize: 24, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.25, marginBottom: 2 }}>{userProfile.name} {userProfile.surname}</h2>
+                  <h2 style={{ fontSize: 24, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 2 }}>{userProfile.name} {userProfile.surname}</h2>
                   {userProfile.open && (
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${userProfile.color}12`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
@@ -986,7 +986,7 @@ export default function App() {
                     </span>
                   )}
                 </div>
-                <p style={{ fontSize: 14, color: "var(--text-muted)", lineHeight: 1.4, marginBottom: 2 }}>{userProfile.role}</p>
+                <p style={{ fontSize: 14, color: "var(--text-muted)", marginBottom: 2 }}>{userProfile.role}</p>
                 <p style={{ fontSize: 12, color: "var(--text-subtle)" }}>{userProfile.dept}</p>
               </div>
               <button style={{ padding: "8px 16px", borderRadius: 10, border: "1px solid var(--border)", background: "transparent", color: "var(--text-muted)", fontSize: 12, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>
