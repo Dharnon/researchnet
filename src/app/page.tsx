@@ -122,13 +122,13 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
   return (
     <div style={{
       width: size, height: size, borderRadius: "50%",
-      background: `radial-gradient(circle at 35% 30%, ${color}ee, ${color}40 50%, ${color}10)`,
-      border: `1.5px solid ${color}40`,
-      boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.10), 0 2px 8px ${color}30`,
+      background: `radial-gradient(circle at 35% 30%, ${color}ee, ${color}50 50%, ${color}12)`,
+      border: `1.5px solid ${color}50`,
+      boxShadow: `0 0 0 1px ${color}28, inset 0 1px 2px rgba(255,255,255,0.12), 0 2px 8px ${color}35`,
       display: "flex", alignItems: "center", justifyContent: "center",
-      fontSize: s, fontWeight: 700, color,
-      flexShrink: 0, letterSpacing: "-0.02em",
-      transition: "box-shadow 0.2s ease",
+      fontSize: s, fontWeight: 800, color,
+      flexShrink: 0, letterSpacing: "-0.03em",
+      transition: "box-shadow 0.22s ease",
     }}>
       {initials}
     </div>
@@ -145,13 +145,13 @@ function MatchBadge({ score }: { score: number }) {
   const border = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   return (
     <span style={{
-      display: "inline-flex", alignItems: "center", gap: 2,
-      fontSize: 8, fontWeight: 700, letterSpacing: "-0.01em",
+      display: "inline-flex", alignItems: "center", gap: 3,
+      fontSize: 9.5, fontWeight: 800, letterSpacing: "-0.01em",
       color, background: bg, border: `1px solid ${border}`,
-      padding: "2px 5px", borderRadius: 20,
+      padding: "2.5px 7px", borderRadius: 20,
       flexShrink: 0, lineHeight: 1.2,
     }}>
-      {isHigh && <span style={{ width: 3, height: 3, borderRadius: "50%", background: color, flexShrink: 0 }} />}
+      {isHigh && <span style={{ width: 3, height: 3, borderRadius: "50%", background: color, flexShrink: 0, display: "inline-block" }} />}
       <span style={{ letterSpacing: "0.01em" }}>{score}%</span>
     </span>
   );
