@@ -871,7 +871,7 @@ export default function App() {
                     <span style={{ fontSize: 11, color: opp.hot ? "var(--hot-color)" : "var(--text-tertiary)", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
                       <Clock size={10} />{opp.deadline}
                     </span>
-                    <span style={{ fontSize: 11, fontWeight: 600, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}>
+                    <span style={{ fontSize: 11, fontWeight: 600, color, display: "flex", alignItems: "center", gap: 3 }}>
                       Ver ms <ChevronRight size={10} />
                     </span>
                   </div>
