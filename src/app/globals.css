@@ -113,8 +113,8 @@
   --card-bg: #111114;
   --card-border: #1e1e22;
 
-  --shadow-card: 0 0 0 1px #1e1e22;
-  --shadow-card-hover: 0 0 0 1px #303038, 0 8px 40px rgba(0,0,0,0.55);
+  --shadow-card: 0 0 0 1px #1e1e22, 0 4px 24px rgba(0,0,0,0.50);
+  --shadow-card-hover: 0 0 0 1px #303038, 0 12px 48px rgba(0,0,0,0.70), 0 0 24px rgba(91,143,212,0.06);
 
   /* Header glass — dark */
   --header-bg: rgba(9,9,11,0.88);
