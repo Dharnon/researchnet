@@ -986,7 +986,7 @@ export default function App() {
                     </span>
                   )}
                 </div>
-                <p style={{ fontSize: 14, fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", color: "var(--text-muted)", marginBottom: 2 }}>{userProfile.role}</p>
+                <p style={{ fontSize: 14, color: "var(--text-muted)", marginBottom: 2 }}>{userProfile.role}</p>
                 <p style={{ fontSize: 12, color: "var(--text-subtle)" }}>{userProfile.dept}</p>
               </div>
               <button style={{ padding: "8px 16px", borderRadius: 10, border: "1px solid var(--border)", background: "transparent", color: "var(--text-muted)", fontSize: 12, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>

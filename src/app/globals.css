@@ -1,5 +1,5 @@
-/* ── Google Fonts (variant-c: Warm Editorial) ── */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+/* ── Google Fonts (variant-a: Lime accent) ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 
 /* ── CSS VARIABLES (variant-c: Warm Editorial — Amber Accent) ── */
 :root {
@@ -248,8 +248,8 @@ select:focus-visible {
   border-radius: 14px 14px 0 0;
 }
 .vc-card:hover {
-  border-color: rgba(91,143,212,0.30);
-  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(101,163,13,0.30);
+  box-shadow: 0 4px 12px rgba(101,163,13,0.10), 0 8px 32px rgba(0,0,0,0.06), 0 0 0 1px rgba(101,163,13,0.18);
   transform: translateY(-2px);
 }
 .vc-card:hover::before { opacity: 1; }
