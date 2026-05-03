@@ -158,9 +158,9 @@
   animation: shimmer 1.4s ease-in-out infinite 0.2s;
 }
 
-/* Variant-B dark: skeleton cards get a subtle slate-blue inner glow */
+/* Variant-B dark: skeleton cards get a subtle lime inner glow */
 [data-theme="dark"] .skeleton-shimmer {
-  box-shadow: 0 0 12px rgba(113,114,154,0.08);
+  box-shadow: 0 0 12px rgba(132,204,22,0.07);
 }
 
 /* -- RESET & BASE -- */
@@ -247,7 +247,7 @@ select:focus-visible {
 }
 .b-card:hover {
   border-color: var(--accent-border);
-  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border), 0 0 16px var(--accent-glow);
+  box-shadow: var(--shadow-card-hover);
   transform: translateY(-2px);
 }
 .b-card:hover::before { opacity: 1; }
@@ -256,11 +256,7 @@ select:focus-visible {
 /* Variant-B dark: refined dark mode card hover */
 [data-theme="dark"] .b-card:hover {
   border-color: rgba(132, 204, 22, 0.40);
-  box-shadow:
-    var(--shadow-card-hover),
-    0 0 0 1px rgba(132, 204, 22, 0.20),
-    0 0 20px rgba(132, 204, 22, 0.08),
-    inset 0 0 20px rgba(113, 114, 154, 0.05);
+  box-shadow: var(--shadow-card-hover);
 }
 [data-theme="dark"] .b-card:hover::before {
   background: linear-gradient(180deg, rgba(132, 204, 22, 0.08) 0%, transparent 100%);
@@ -456,11 +452,11 @@ select:focus-visible {
   z-index: 1;
 }
 .researcher-card:hover {
-  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border), 0 0 10px var(--accent-glow);
+  box-shadow: var(--shadow-card-hover);
   border-color: var(--accent-border);
   transform: translateY(-2px);
 }
-.researcher-card:hover::after { opacity: 0.7; }
+.researcher-card:hover::after { opacity: 1; }
 
 /* -- OPPORTUNITY CARD (variant-c: amber accent bar) -- */
 .opp-card {
