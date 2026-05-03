@@ -246,8 +246,8 @@ select:focus-visible {
   z-index: 1;
 }
 .b-card:hover {
-  border-color: rgba(132, 204, 22, 0.30);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.12), 0 0 0 1px rgba(132,204,22,0.18), 0 0 20px rgba(132,204,22,0.08);
+  border-color: rgba(132, 204, 22, 0.35);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.10), 0 0 0 1px rgba(132,204,22,0.22), 0 0 20px rgba(132,204,22,0.10);
   transform: translateY(-2px);
 }
 .b-card:hover::before { opacity: 1; }
