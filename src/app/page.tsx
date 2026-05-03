@@ -120,7 +120,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
       width: size, height: size, borderRadius: "50%",
       background: `radial-gradient(circle at 35% 35%, ${color}ee, ${color}55 45%, ${color}18)`,
       border: `1.5px solid ${color}50`,
-      boxShadow: `0 0 0 1px ${color}25, inset 0 1px 2px rgba(255,255,255,0.12), 0 2px 8px ${color}30`,
+      boxShadow: `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.08), 0 2px 6px rgba(0,0,0,0.4)`,
       display: "flex", alignItems: "center", justifyContent: "center",
       fontSize: s, fontWeight: 800, color,
       flexShrink: 0, letterSpacing: "-0.03em",
@@ -842,23 +842,11 @@ export default function App() {
             {opportunities.map((opp) => {
               const color = TYPE_COLORS[opp.type] ?? "#6b7280";
               return (
-                <div key={opp.id} onClick={() => setSelectedOpp(opp)} style={{
-                  background: "var(--card-bg)", border: "1px solid var(--card-border)",
-                  borderRadius: 14, padding: 18, cursor: "pointer",
-                  transition: "all 0.2s ease", display: "flex", flexDirection: "column", gap: 9,
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "rgba(201,148,90,0.30)";
-                  el.style.transform = "translateY(-2px)";
-                  el.style.boxShadow = "0 8px 24px rgba(0,0,0,0.10), 0 0 12px rgba(201,148,90,0.18), 0 0 0 1px rgba(201,148,90,0.12)";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "var(--card-border)";
-                  el.style.transform = "translateY(0)";
-                  el.style.boxShadow = "none";
-                }}
+                <div
+                  key={opp.id}
+                  onClick={() => setSelectedOpp(opp)}
+                  className="opp-card"
+                  style={{ "--opp-accent": color } as React.CSSProperties}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
                     <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>

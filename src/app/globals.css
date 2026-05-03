@@ -1,4 +1,4 @@
-﻿@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 
 /* ── CSS VARIABLES (variant-c: Warm Editorial - Amber) ── */
 :root {
@@ -71,8 +71,8 @@
   --hot-color: #fb923c;
 
   /* Connected button - lime green for variant-a */
-  --connected-bg: rgba(132,204,22,0.12);
-  --connected-color: #65a30d;
+  --connected-bg: rgba(132,204,22,0.10);
+  --connected-color: #84cc16;
   --connected-border: rgba(132,204,22,0.30);
 
   /* Header glass */
@@ -257,9 +257,9 @@ select:focus-visible {
 [data-theme="dark"] .b-card:hover {
   border-color: rgba(91,143,212,0.35);
   box-shadow:
-    0 0 0 1px rgba(91,143,212,0.20),
-    0 8px 40px rgba(0,0,0,0.65),
-    0 0 16px rgba(91,143,212,0.08),
+    0 0 0 1px rgba(91,143,212,0.15),
+    0 8px 40px rgba(0,0,0,0.60),
+    0 0 12px rgba(91,143,212,0.06),
     inset 0 0 20px rgba(113,114,154,0.04);
 }
 [data-theme="dark"] .b-card:hover::before {
@@ -461,3 +461,34 @@ select:focus-visible {
   transform: translateY(-2px);
 }
 .researcher-card:hover::after { opacity: 0.7; }
+
+/* ── OPPORTUNITY CARD (variant-a: lime accent bar) ── */
+.opp-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 18px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.opp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--opp-accent, var(--accent));
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+.opp-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+.opp-card:hover::before { opacity: 1; }
