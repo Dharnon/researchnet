@@ -919,16 +919,16 @@ export default function App() {
                   padding: "10px 22px", borderRadius: 10,
                   background: "var(--accent)", color: "#000", border: "none",
                   fontSize: 13, fontWeight: 700, cursor: "pointer",
-                  boxShadow: "0 2px 12px rgba(217,119,6,0.25), 0 0 20px rgba(217,119,6,0.10)",
+                  boxShadow: "0 2px 12px rgba(132,204,22,0.28), 0 0 20px rgba(132,204,22,0.10)",
                   transition: "all 0.18s ease",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-1px)";
-                  e.currentTarget.style.boxShadow = "0 4px 16px rgba(217,119,6,0.35), 0 0 24px rgba(217,119,6,0.15)";
+                  e.currentTarget.style.boxShadow = "0 4px 16px rgba(132,204,22,0.38), 0 0 24px rgba(132,204,22,0.16)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "0 2px 12px rgba(217,119,6,0.25), 0 0 20px rgba(217,119,6,0.10)";
+                  e.currentTarget.style.boxShadow = "0 2px 12px rgba(132,204,22,0.28), 0 0 20px rgba(132,204,22,0.10)";
                 }}
               >Descubrir investigadores</button>
             </div>
