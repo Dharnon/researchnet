@@ -264,7 +264,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
               color: isConnected ? "var(--connected-color)" : "#fff",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
               transition: "all 0.18s",
-              boxShadow: isConnected ? "none" : "0 2px 8px rgba(101,163,13,0.25)",
+              boxShadow: isConnected ? "none" : "0 2px 8px var(--accent-glow)",
             }}
           >
             {isConnected ? <><Check size={14} /> Conectado — Ver mensaje</> : <><Users size={14} /> Conectar</>}
@@ -496,7 +496,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
               fontSize: 13, outline: "none",
               transition: "border-color 0.15s, box-shadow 0.15s",
             }}
-            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow), 0 0 8px rgba(101,163,13,0.15)"; }}
+            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow), 0 0 8px var(--accent-glow)"; }}
             onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--card-border)"; i.style.boxShadow = "none"; }}
           />
           <button
@@ -850,9 +850,9 @@ export default function App() {
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "rgba(201,148,90,0.30)";
+                  el.style.borderColor = "rgba(132,204,22,0.28)";
                   el.style.transform = "translateY(-2px)";
-                  el.style.boxShadow = "0 8px 24px rgba(0,0,0,0.10), 0 0 12px rgba(201,148,90,0.18), 0 0 0 1px rgba(201,148,90,0.12)";
+                  el.style.boxShadow = "0 8px 24px rgba(0,0,0,0.12), 0 0 12px rgba(132,204,22,0.12), 0 0 0 1px rgba(132,204,22,0.10)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
@@ -871,7 +871,7 @@ export default function App() {
                     <span style={{ fontSize: 11, color: opp.hot ? "var(--hot-color)" : "var(--text-tertiary)", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
                       <Clock size={10} />{opp.deadline}
                     </span>
-                    <span style={{ fontSize: 11, fontWeight: 600, color, display: "flex", alignItems: "center", gap: 3 }}>
+                    <span style={{ fontSize: 11, fontWeight: 600, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}>
                       Ver ms <ChevronRight size={10} />
                     </span>
                   </div>
