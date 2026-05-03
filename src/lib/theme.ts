@@ -19,23 +19,23 @@ export const light = {
 };
 
 export const dark: typeof light = {
-  bg: "#0c0c0e",
+  bg: "#09090b",
   surface: "#141416",
   surfaceHover: "#1c1c20",
   border: "#242428",
   textPrimary: "#ededef",
   textSecondary: "#8b8b96",
   textTertiary: "#45454d",
-  accent: "#5b8fd4",
-  accentLight: "rgba(91,143,212,0.10)",
+  accent: "#84cc16",
+  accentLight: "rgba(132,204,22,0.10)",
   orange: "#fb923c",
   headerBg: "rgba(12,12,14,0.97)",
   headerText: "#ededef",
   navBg: "#0c0c0e",
   navItemBg: "#1c1c20",
   navItemColor: "#6b6b78",
-  shadowCard: "0 0 0 1px #242428",
-  shadowHover: "0 0 0 1px #303038, 0 8px 40px rgba(0,0,0,0.55)",
+  shadowCard: "0 0 0 1px rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.50)",
+  shadowHover: "0 0 0 1px rgba(132,204,22,0.15), 0 8px 40px rgba(0,0,0,0.55), 0 0 20px rgba(132,204,22,0.06)",
 };
 
 export type Theme = typeof light;
