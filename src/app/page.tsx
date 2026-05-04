@@ -35,7 +35,7 @@ const mockMessages = [
     { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorización ambiental. No usamos LoRa y queríamos explorar machine learning para fusionar datos.", ts: "10:37" },
   ]},
   { orcid: "0000-0003-9876-5432", name: "Dr. Felipe Mora", avatar: "FM", color: "#34d399", messages: [
-    { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podramos colaborar.", ts: "Ayer" },
+    { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podríamos colaborar.", ts: "Ayer" },
   ]},
 ];
 
@@ -985,7 +985,7 @@ export default function App() {
                 <circle cx="51" cy="47" r="1.8" fill="var(--accent)" opacity="0.50"/>
               </svg>
               <p style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.02em" }}>Tu red está vacía</p>
-              <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y contrate para construir tu red de colaboración.</p>
+              <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y conéctate para construir tu red de colaboración.</p>
               <button onClick={() => setView("discover")} style={{
                 padding: "10px 22px", borderRadius: 10,
                 background: "var(--accent)", color: "#000", border: "none",
