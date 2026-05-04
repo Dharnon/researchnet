@@ -83,14 +83,14 @@
   --header-border: rgba(229,231,235,0.80);
 }
 
-/* ── DARK MODE (variant-c: Warm Editorial — Amber Accent) ── */
+/* ── DARK MODE (variant-b: Dark Premium — Lime accent, Linear-inspired) ── */
 [data-theme="dark"] {
   --bg: #09090b;
-  --bg-secondary: #0f0f10;
+  --bg-secondary: #0f0f12;
   --surface: #111114;
-  --surface-hover: #18181b;
-  --border: #1e1e22;
-  --border-subtle: #141416;
+  --surface-hover: #1a1a1f;
+  --border: #1f1f26;
+  --border-subtle: #16161a;
 
   --text-primary: #ededef;
   --text-secondary: #a1a1aa;
@@ -98,35 +98,81 @@
   --text-muted: #a1a1aa;
   --text-subtle: #71717a;
 
-  --accent: #F59E0B;
-  --accent-dim: rgba(245, 158, 11, 0.10);
-  --accent-hover: #FBBF24;
-  --accent-glow: rgba(245, 158, 11, 0.10);
-  --accent-border: rgba(245, 158, 11, 0.28);
+  --accent: #84cc16;
+  --accent-dim: rgba(132, 204, 22, 0.10);
+  --accent-hover: #a3e635;
+  --accent-glow: rgba(132, 204, 22, 0.14);
+  --accent-border: rgba(132, 204, 22, 0.28);
 
-  --open-dot: #F59E0B;
-  --open-dot-bg: rgba(245, 158, 11, 0.12);
-  --open-dot-border: rgba(245, 158, 11, 0.25);
-  --accent-faint: rgba(245, 158, 11, 0.05);
+  --open-dot: #84cc16;
+  --open-dot-bg: rgba(132, 204, 22, 0.12);
+  --open-dot-border: rgba(132, 204, 22, 0.28);
+  --accent-faint: rgba(132, 204, 22, 0.05);
 
-  --tag-bg: #1a1a1e;
-  --tag-border: #27272a;
+  --tag-bg: #18181f;
+  --tag-border: #27272e;
   --tag-text: #a1a1aa;
 
   --card-bg: #111114;
-  --card-border: #1e1e22;
+  --card-border: #1f1f26;
 
-  --shadow-card: 0 0 0 1px rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.50);
-  --shadow-card-hover: 0 0 0 1px rgba(245,158,11,0.15), 0 12px 48px rgba(0,0,0,0.70), 0 0 24px rgba(245,158,11,0.06);
+  --shadow-card: 0 0 0 1px rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.55);
+  --shadow-card-hover: 0 0 0 1px rgba(132,204,22,0.18), 0 16px 56px rgba(0,0,0,0.75), 0 0 28px rgba(132,204,22,0.07);
 
-  /* Header glass — dark */
-  --header-bg: rgba(9,9,11,0.88);
-  --header-border: rgba(30,30,34,0.90);
+  /* Header glass — dark premium */
+  --header-bg: rgba(9,9,11,0.92);
+  --header-border: rgba(31,31,38,0.90);
 
-  /* Connected button — amber for variant-c */
-  --connected-bg: rgba(245,158,11,0.10);
-  --connected-color: #F59E0B;
-  --connected-border: rgba(245,158,11,0.25);
+  /* Connected button — lime for variant-b */
+  --connected-bg: rgba(132,204,22,0.10);
+  --connected-color: #84cc16;
+  --connected-border: rgba(132,204,22,0.28);
+}
+
+/* ── DARK: SKELETON SHIMMER (variant-b: dark premium lime shimmer) ── */
+[data-theme="dark"] .skeleton-shimmer {
+  background: linear-gradient(90deg, var(--border) 25%, rgba(132,204,22,0.06) 50%, var(--border) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+  box-shadow: 0 0 16px rgba(132,204,22,0.08);
+}
+
+/* ── DARK: RESEARCHER CARD (variant-b: premium dark hover glow) ── */
+[data-theme="dark"] .researcher-card:hover {
+  border-color: rgba(132, 204, 22, 0.35);
+  box-shadow: 0 0 0 1px rgba(132,204,22,0.15), 0 16px 56px rgba(0,0,0,0.75), 0 0 28px rgba(132,204,22,0.06);
+}
+
+/* ── DARK: B-CARD HOVER (variant-b: refined dark hover) ── */
+[data-theme="dark"] .b-card:hover {
+  border-color: rgba(132, 204, 22, 0.35);
+  box-shadow: 0 0 0 1px rgba(132,204,22,0.18), 0 16px 56px rgba(0,0,0,0.75), 0 0 28px rgba(132,204,22,0.07);
+}
+[data-theme="dark"] .b-card:hover::before {
+  background: linear-gradient(180deg, rgba(132,204,22,0.07) 0%, transparent 100%);
+}
+[data-theme="dark"] .b-card:hover::after {
+  background: linear-gradient(180deg, var(--accent), var(--accent-hover));
+}
+
+/* ── DARK: OPPORTUNITY CARD (variant-b: dark premium) ── */
+[data-theme="dark"] .opp-card:hover {
+  border-color: rgba(132, 204, 22, 0.30);
+  box-shadow: 0 0 0 1px rgba(132,204,22,0.14), 0 16px 56px rgba(0,0,0,0.75), 0 0 24px rgba(132,204,22,0.06);
+}
+
+/* ── DARK: NETWORK EMPTY STATE (variant-b: premium dark) ── */
+[data-theme="dark"] .warm-empty-icon {
+  background: rgba(132,204,22,0.08);
+  border-color: rgba(132,204,22,0.22);
+}
+[data-theme="dark"] .warm-empty-icon::before {
+  background: radial-gradient(circle, rgba(132,204,22,0.15) 0%, transparent 65%);
+}
+
+/* ── DARK: HOT COLOR (variant-b: lime) ── */
+[data-theme="dark"] {
+  --hot-color: #84cc16;
 }
 
 /* ── SHIMMER ANIMATION (variant-c: warm amber shimmer) ── */
