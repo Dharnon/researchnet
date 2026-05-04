@@ -336,7 +336,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         flexDirection: "column",
         gap: 14,
         boxShadow: hovered
-          ? "0 8px 24px rgba(0,0,0,0.10), 0 20px 48px rgba(0,0,0,0.06), 0 0 0 1px rgba(132,204,22,0.22)"
+          ? "0 8px 24px rgba(0,0,0,0.10), 0 20px 48px rgba(0,0,0,0.06), 0 0 0 1px var(--accent-border)"
           : "0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04)",
         transform: hovered ? "translateY(-3px)" : "translateY(0)",
         transition: "all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1)",
@@ -441,7 +441,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
             display: "flex", alignItems: "center", gap: 4,
             transition: "all 0.18s ease",
             letterSpacing: "0.01em",
-            boxShadow: !isConnected && hovered ? "0 2px 10px rgba(132,204,22,0.30)" : "none",
+            boxShadow: !isConnected && hovered ? "0 2px 10px var(--accent-glow)" : "none",
           }}
         >
           {isConnected ? <><Check size={12} /> Conectado</> : "Conectar"}
@@ -536,7 +536,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
                 fontSize: 13, lineHeight: 1.5,
                 borderBottomRightRadius: msg.from === "me" ? "4px" : "16px",
                 borderBottomLeftRadius: msg.from === "me" ? "16px" : "4px",
-                boxShadow: msg.from === "me" ? "0 2px 8px rgba(132,204,22,0.20)" : "0 1px 3px rgba(0,0,0,0.06)",
+                boxShadow: msg.from === "me" ? "0 2px 8px var(--accent-glow)" : "0 1px 3px rgba(0,0,0,0.06)",
               }}>
                 {msg.text}
                 <div style={{ fontSize: 9, opacity: 0.5, marginTop: 3, textAlign: "right" }}>{msg.ts}</div>
@@ -816,7 +816,7 @@ export default function App() {
                 e.currentTarget.style.background = "var(--accent)";
                 e.currentTarget.style.color = "#1a2e00";
                 e.currentTarget.style.borderColor = "var(--accent)";
-                e.currentTarget.style.boxShadow = "0 4px 16px rgba(132,204,22,0.30)";
+                e.currentTarget.style.boxShadow = "0 4px 16px var(--accent-glow)";
                 e.currentTarget.style.transform = "translateY(-1px)";
               }}
               onMouseLeave={(e) => {
@@ -934,7 +934,7 @@ export default function App() {
                   onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLDivElement;
                     el.style.borderColor = "var(--accent-border)";
-                    el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(132,204,22,0.10)";
+                    el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px var(--accent-border)";
                     el.style.transform = "translateY(-2px)";
                   }}
                   onMouseLeave={(e) => {
@@ -1025,7 +1025,7 @@ export default function App() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-1px)";
-                  e.currentTarget.style.boxShadow = "0 4px 16px rgba(132,204,22,0.38), 0 0 24px rgba(132,204,22,0.16)";
+                  e.currentTarget.style.boxShadow = "0 4px 16px var(--accent-glow), 0 0 24px var(--accent-glow)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
