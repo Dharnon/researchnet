@@ -261,7 +261,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
               color: isConnected ? "var(--connected-color)" : "#fff",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
               transition: "all 0.18s",
-              boxShadow: isConnected ? "none" : "0 2px 8px rgba(101,163,13,0.25)",
+              boxShadow: isConnected ? "var(--connected-shadow)" : "0 2px 8px var(--accent-glow)",
             }}
           >
             {isConnected ? <><Check size={14} /> Conectado - Ver mensaje</> : <><Users size={14} /> Conectar</>}
@@ -335,7 +335,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       className="card-accent"
       style={{
         background: "var(--card-bg)",
-        border: `1px solid ${hovered ? "rgba(217,119,6,0.40)" : "var(--card-border)"}`,
+        border: `1px solid ${hovered ? "var(--accent-border)" : "var(--card-border)"}`,
         borderRadius: 16,
         padding: "22px",
         cursor: "pointer",
@@ -343,7 +343,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         flexDirection: "column",
         gap: 16,
         boxShadow: hovered
-          ? "0 4px 16px rgba(0,0,0,0.35), 0 12px 40px rgba(0,0,0,0.20), 0 0 0 1px rgba(217,119,6,0.20), 0 0 20px rgba(217,119,6,0.07)"
+          ? "0 4px 16px rgba(0,0,0,0.35), 0 12px 40px rgba(0,0,0,0.20), 0 0 0 1px var(--accent-border), 0 0 20px var(--accent-glow)"
           : "0 1px 3px rgba(0,0,0,0.25), 0 4px 16px rgba(0,0,0,0.12), 0 0 0 1px rgba(255,255,255,0.03)",
         transform: hovered ? "translateY(-3px)" : "translateY(0)",
         transition: "all 0.24s cubic-bezier(0.34, 1.56, 0.64, 1)",
@@ -382,7 +382,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           fontSize: 14, fontWeight: 800, color: researcher.color,
           flexShrink: 0, letterSpacing: "-0.03em",
           transition: "box-shadow 0.22s ease",
-          filter: hovered ? `drop-shadow(0 0 10px rgba(217,119,6,0.45))` : "none",
+          filter: hovered ? "drop-shadow(0 0 10px var(--accent-border))" : "none",
         }}>
           {researcher.avatar}
         </div>
@@ -441,15 +441,15 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           style={{
             padding: "7px 16px",
             borderRadius: 9,
-            border: `1px solid ${isConnected ? "rgba(217,119,6,0.28)" : hovered ? "rgba(217,119,6,0.60)" : "rgba(217,119,6,0.25)"}`,
+            border: `1px solid ${isConnected ? "var(--connected-border)" : hovered ? "var(--accent-border)" : "var(--accent-faint)"}`,
             fontSize: 11, fontWeight: 700,
             cursor: "pointer",
-            background: isConnected ? "rgba(217,119,6,0.10)" : hovered ? "var(--accent)" : "transparent",
-            color: isConnected ? "#92400e" : hovered ? "#fff" : "var(--accent)",
+            background: isConnected ? "var(--connected-bg)" : hovered ? "var(--accent)" : "transparent",
+            color: isConnected ? "var(--connected-color)" : hovered ? "#fff" : "var(--accent)",
             display: "flex", alignItems: "center", gap: 4,
             transition: "all 0.18s ease",
             letterSpacing: "0.01em",
-            boxShadow: !isConnected && hovered ? "0 3px 14px rgba(217,119,6,0.35)" : "none",
+            boxShadow: !isConnected && hovered ? "0 3px 14px var(--accent-glow)" : "none",
           }}
         >
           {isConnected ? <><Check size={12} /> Conectado</> : "Conectar"}
@@ -566,7 +566,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
               fontSize: 13, outline: "none",
               transition: "border-color 0.15s, box-shadow 0.15s",
             }}
-            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow), 0 0 8px rgba(101,163,13,0.15)"; }}
+            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow)"; }}
             onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--card-border)"; i.style.boxShadow = "none"; }}
           />
           <button

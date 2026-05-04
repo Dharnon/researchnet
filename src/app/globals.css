@@ -77,6 +77,10 @@
   --connected-bg: rgba(217,119,6,0.10);
   --connected-color: #92400e;
   --connected-border: rgba(217,119,6,0.28);
+  --connected-hover-bg: rgba(217,119,6,0.18);
+  --connected-hover-color: #92400e;
+  --connected-hover-border: rgba(217,119,6,0.45);
+  --connected-shadow: none;
 
   /* Header glass */
   --header-bg: rgba(249,250,251,0.92);
@@ -128,6 +132,10 @@
   --connected-bg: rgba(217,119,6,0.12);
   --connected-color: #F59E0B;
   --connected-border: rgba(217,119,6,0.28);
+  --connected-hover-bg: rgba(217,119,6,0.20);
+  --connected-hover-color: #F59E0B;
+  --connected-hover-border: rgba(217,119,6,0.45);
+  --connected-shadow: none;
 }
 
 /* ── SHIMMER ANIMATION ── */
