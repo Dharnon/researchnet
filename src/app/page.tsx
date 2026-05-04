@@ -1,4 +1,4 @@
-﻿"use client";
+﻿﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import {
@@ -6,7 +6,7 @@ import {
   Briefcase, Clock, X, Globe,
   ExternalLink, ChevronRight, MessageCircle,
   Send, ArrowLeft, Check, Circle,
-  GraduationCap, Wallet, Globe2, Briefcase as JobIcon, Award,
+  GraduationCap, Wallet, Globe2, Briefcase as JobIcon,
 } from "lucide-react";
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
@@ -84,7 +84,7 @@ function SkeletonLoader() {
       {/* Cards grid skeleton */}
       <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
         {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} className="skeleton-card" style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
+          <div key={i} style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
               <div className="skeleton-shimmer" style={{ width: 44, height: 44, borderRadius: "50%" }} />
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
@@ -121,7 +121,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
       width: size, height: size, borderRadius: "50%",
       background: `radial-gradient(circle at 35% 35%, ${color}ee, ${color}55 45%, ${color}18)`,
       border: `1.5px solid ${color}50`,
-      boxShadow: `0 0 0 1px ${color}25, inset 0 1px 2px rgba(255,255,255,0.12), 0 2px 8px ${color}30`,
+      boxShadow: `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.08), 0 2px 6px rgba(0,0,0,0.4)`,
       display: "flex", alignItems: "center", justifyContent: "center",
       fontSize: s, fontWeight: 800, color,
       flexShrink: 0, letterSpacing: "-0.03em",
@@ -133,7 +133,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
 }
 
 
-// --- MATCH BADGE (variant-b: dark premium — green=90, amber=70, gray <70) ---
+// --- MATCH BADGE (variant-a: lime accent, tiered) -----
 function MatchBadge({ score }: { score: number }) {
   const isHigh = score >= 90;
   const isMid  = score >= 70 && score < 90;
@@ -232,9 +232,8 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
               {researcher.groups.map((g) => (
                 <span key={g} style={{
-                  fontSize: 10, fontWeight: 600, color: "var(--text-secondary)",
-                  background: "var(--surface-hover)", border: "1px solid var(--border)",
-                  padding: "3px 8px", borderRadius: 6,
+                  fontSize: 10, fontWeight: 600, color: "var(--accent)",
+                  background: "var(--accent-dim)", padding: "3px 8px", borderRadius: 6,
                 }}>{g}</span>
               ))}
             </div>
@@ -265,7 +264,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
               color: isConnected ? "var(--connected-color)" : "#fff",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
               transition: "all 0.18s",
-              boxShadow: isConnected ? "none" : "0 2px 8px var(--accent-glow)",
+              boxShadow: isConnected ? "none" : "0 2px 8px rgba(101,163,13,0.25)",
             }}
           >
             {isConnected ? <><Check size={14} /> Conectado — Ver mensaje</> : <><Users size={14} /> Conectar</>}
@@ -297,18 +296,11 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
           color: "var(--text-tertiary)", cursor: "pointer", fontSize: 18,
         }}>×</button>
         <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
-          <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
-            {opp.type === "Postdoc" && <><GraduationCap size={10} />Postdoc</>}
-            {opp.type === "Doctorado" && <><GraduationCap size={10} />Doctorado</>}
-            {opp.type === "Fondos" && <><Wallet size={10} />Fondos</>}
-            {opp.type === "Internacional" && <><Globe2 size={10} />Internacional</>}
-            {opp.type === "Laboral" && <><JobIcon size={10} />Laboral</>}
-            {!["Postdoc","Doctorado","Fondos","Internacional","Laboral"].includes(opp.type) && opp.type}
-          </span>
+          <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
           {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
         </div>
-        <h2 style={{ fontSize: 17, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", lineHeight: 1.3 }}>{opp.title}</h2>
-        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} — <Clock size={10} style={{ display: "inline", verticalAlign: "middle", marginRight: 2 }} />Fecha límite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
+        <h2 style={{ fontSize: 17, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
+        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept}  Fecha lmite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 20 }}>{opp.desc}</p>
         <button style={{
           width: "100%", padding: "12px", borderRadius: 10, border: "none",
@@ -334,9 +326,9 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
   return (
     <div
       onClick={onSelect}
+      className="card-accent researcher-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className="card-accent"
       style={{
         background: "var(--card-bg)",
         border: `1px solid ${hovered ? "rgba(132,204,22,0.40)" : "var(--card-border)"}`,
@@ -347,26 +339,26 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         flexDirection: "column",
         gap: 14,
         boxShadow: hovered
-          ? "0 0 0 1px rgba(132,204,22,0.18), 0 16px 56px rgba(0,0,0,0.75), 0 0 28px rgba(132,204,22,0.07)"
-          : "0 0 0 1px rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.55)",
+          ? "0 8px 24px rgba(0,0,0,0.10), 0 20px 48px rgba(0,0,0,0.06), 0 0 0 1px rgba(132,204,22,0.22)"
+          : "0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04)",
         transform: hovered ? "translateY(-3px)" : "translateY(0)",
         transition: "all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1)",
         position: "relative",
         overflow: "hidden",
       }}
     >
-      {/* Dark glow shimmer at top */}
+      {/* Top gradient shine */}
       <div style={{
         position: "absolute", top: 0, left: 0, right: 0, height: 80,
-        background: "linear-gradient(180deg, rgba(132,204,22,0.06) 0%, transparent 100%)",
+        background: "linear-gradient(180deg, rgba(255,255,255,0.07) 0%, transparent 100%)",
         opacity: hovered ? 1 : 0,
         transition: "opacity 0.22s ease",
         pointerEvents: "none",
         borderRadius: "16px 16px 0 0",
       }} />
-      {/* Left accent bar — refined, not flashy */}
+      {/* Left accent bar */}
       <div style={{
-        position: "absolute", top: 0, left: 0, width: 2, height: "100%",
+        position: "absolute", top: 0, left: 0, width: 3, height: "100%",
         background: "linear-gradient(180deg, var(--accent), var(--accent-hover))",
         opacity: hovered ? 1 : 0,
         transition: "opacity 0.22s ease",
@@ -374,25 +366,25 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         pointerEvents: "none",
       }} />
 
+      {/* Card content */}
       <div style={{ display: "flex", alignItems: "flex-start", gap: 12, position: "relative" }}>
-        {/* Avatar with dark glow */}
         <div style={{
           width: 48, height: 48, borderRadius: "50%",
           background: `radial-gradient(circle at 35% 35%, ${researcher.color}ee, ${researcher.color}55 45%, ${researcher.color}18)`,
-          border: `1.5px solid ${researcher.color}50`,
-          boxShadow: `0 0 0 1px ${researcher.color}25, inset 0 1px 2px rgba(255,255,255,0.12), 0 2px 8px ${researcher.color}30, 0 0 0 1px rgba(255,255,255,0.04)`,
+          border: `1.5px solid ${researcher.color}40`,
+          boxShadow: `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.10), 0 3px 10px rgba(0,0,0,0.35)`,
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: 14, fontWeight: 800, color: researcher.color,
           flexShrink: 0, letterSpacing: "-0.03em",
           transition: "box-shadow 0.22s ease",
-          filter: hovered ? `drop-shadow(0 0 10px ${researcher.color}45)` : "none",
+          filter: hovered ? `drop-shadow(0 0 8px ${researcher.color}40)` : "none",
         }}>
           {researcher.avatar}
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2, letterSpacing: "-0.01em" }}>{researcher.name}</span>
-            <div style={{ opacity: 0.7 }}><MatchBadge score={researcher.match} /></div>
+            <div style={{ opacity: 0.8 }}><MatchBadge score={researcher.match} /></div>
           </div>
           <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
           <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 1 }}>{researcher.dept}</p>
@@ -410,6 +402,8 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           </span>
         )}
       </div>
+
+      {/* Tags */}
       <p style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.6, overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>
         {researcher.bio}
       </p>
@@ -419,10 +413,13 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           <span key={tag} style={{
             fontSize: 10, fontWeight: 600, color: "var(--tag-text)",
             background: "var(--tag-bg)", border: "1px solid var(--tag-border)",
-            padding: "3px 8px", borderRadius: 20, letterSpacing: "0.01em",
+            padding: "3px 8px", borderRadius: 20,
+            letterSpacing: "0.01em",
           }}>{tag}</span>
         ))}
       </div>
+
+      {/* Footer */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", position: "relative" }}>
         <div style={{ display: "flex", gap: 12 }}>
           <span style={{ fontSize: 11, color: "var(--text-subtle)", display: "flex", alignItems: "center", gap: 4 }}>
@@ -439,15 +436,15 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           style={{
             padding: "6px 14px",
             borderRadius: 9,
-            border: `1px solid ${isConnected ? "rgba(132,204,22,0.28)" : hovered ? "rgba(132,204,22,0.55)" : "rgba(132,204,22,0.25)"}`,
+            border: `1px solid ${isConnected ? "var(--connected-border)" : hovered ? "rgba(132,204,22,0.5)" : "rgba(132,204,22,0.25)"}`,
             fontSize: 11, fontWeight: 700,
             cursor: "pointer",
-            background: isConnected ? "rgba(132,204,22,0.10)" : hovered ? "var(--accent)" : "transparent",
-            color: isConnected ? "#84cc16" : hovered ? "#000" : "#84cc16",
+            background: isConnected ? "var(--connected-bg)" : hovered ? "var(--accent)" : "transparent",
+            color: isConnected ? "var(--connected-color)" : hovered ? "#000" : "var(--accent)",
             display: "flex", alignItems: "center", gap: 4,
             transition: "all 0.18s ease",
             letterSpacing: "0.01em",
-            boxShadow: !isConnected && hovered ? "0 2px 12px rgba(132,204,22,0.35)" : "none",
+            boxShadow: !isConnected && hovered ? "0 2px 10px rgba(132,204,22,0.30)" : "none",
           }}
         >
           {isConnected ? <><Check size={12} /> Conectado</> : "Conectar"}
@@ -564,7 +561,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
               fontSize: 13, outline: "none",
               transition: "border-color 0.15s, box-shadow 0.15s",
             }}
-            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow), 0 0 8px var(--accent-glow)"; }}
+            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow), 0 0 8px rgba(101,163,13,0.15)"; }}
             onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--card-border)"; i.style.boxShadow = "none"; }}
           />
           <button
@@ -911,23 +908,26 @@ export default function App() {
             {opportunities.map((opp) => {
               const color = TYPE_COLORS[opp.type] ?? "#6b7280";
               return (
-                <div key={opp.id} onClick={() => setSelectedOpp(opp)} style={{
-                  background: "var(--card-bg)", border: "1px solid var(--card-border)",
-                  borderRadius: 14, padding: 18, cursor: "pointer",
-                  transition: "all 0.2s ease", display: "flex", flexDirection: "column", gap: 9,
-                }}
-                onMouseEnter={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "rgba(132,204,22,0.35)";
-                  el.style.transform = "translateY(-2px) scale(1.01)";
-                  el.style.boxShadow = "0 0 0 1px rgba(132,204,22,0.14), 0 16px 56px rgba(0,0,0,0.65), 0 0 24px rgba(132,204,22,0.07)";
-                }}
-                onMouseLeave={(e) => {
-                  const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "var(--card-border)";
-                  el.style.transform = "translateY(0) scale(1)";
-                  el.style.boxShadow = "none";
-                }}
+                <div
+                  key={opp.id}
+                  onClick={() => setSelectedOpp(opp)}
+                  style={{
+                    background: "var(--card-bg)", border: "1px solid var(--card-border)",
+                    borderRadius: 14, padding: 18, cursor: "pointer",
+                    transition: "all 0.2s ease", display: "flex", flexDirection: "column", gap: 9,
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.borderColor = "rgba(132,204,22,0.35)";
+                    el.style.transform = "translateY(-2px) scale(1.01)";
+                    el.style.boxShadow = "0 0 0 1px rgba(132,204,22,0.14), 0 16px 56px rgba(0,0,0,0.65), 0 0 24px rgba(132,204,22,0.07)";
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.borderColor = "var(--card-border)";
+                    el.style.transform = "translateY(0) scale(1)";
+                    el.style.boxShadow = "none";
+                  }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
                     <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
@@ -975,37 +975,48 @@ export default function App() {
               <div style={{
                 position: "absolute", top: "50%", left: "50%",
                 transform: "translate(-50%, -55%)",
-                width: 160, height: 160,
+                width: 140, height: 140,
                 background: "radial-gradient(circle, var(--accent-dim) 0%, transparent 70%)",
                 pointerEvents: "none",
               }} />
-              <svg width="52" height="52" viewBox="0 0 64 64" fill="none" style={{ display: "block", margin: "0 auto 20px", position: "relative" }}>
-                <circle cx="32" cy="32" r="7" stroke="var(--border)" strokeWidth="1.5" fill="none"/>
-                <circle cx="32" cy="32" r="2.5" fill="var(--accent)" opacity="0.8"/>
-                <circle cx="13" cy="17" r="4.5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
-                <circle cx="51" cy="17" r="4.5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
-                <circle cx="13" cy="47" r="4.5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
-                <circle cx="51" cy="47" r="4.5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
-                <circle cx="32" cy="7" r="3.5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.40"/>
-                <circle cx="32" cy="57" r="3.5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.40"/>
-                <line x1="25.5" y1="26" x2="17.5" y2="20" stroke="var(--accent)" strokeWidth="1.2" strokeDasharray="3 2.5" opacity="0.50"/>
-                <line x1="38.5" y1="26" x2="46.5" y2="20" stroke="var(--accent)" strokeWidth="1.2" strokeDasharray="3 2.5" opacity="0.50"/>
-                <line x1="25.5" y1="38" x2="17.5" y2="44" stroke="var(--accent)" strokeWidth="1.2" strokeDasharray="3 2.5" opacity="0.50"/>
-                <line x1="38.5" y1="38" x2="46.5" y2="44" stroke="var(--accent)" strokeWidth="1.2" strokeDasharray="3 2.5" opacity="0.50"/>
-                <line x1="32" y1="24.5" x2="32" y2="11" stroke="var(--border)" strokeWidth="1.2" strokeDasharray="2.5 2.5" opacity="0.30"/>
-                <line x1="32" y1="39.5" x2="32" y2="53" stroke="var(--border)" strokeWidth="1.2" strokeDasharray="2.5 2.5" opacity="0.30"/>
-                <circle cx="13" cy="17" r="1.8" fill="var(--accent)" opacity="0.50"/>
-                <circle cx="51" cy="17" r="1.8" fill="var(--accent)" opacity="0.50"/>
-                <circle cx="13" cy="47" r="1.8" fill="var(--accent)" opacity="0.50"/>
-                <circle cx="51" cy="47" r="1.8" fill="var(--accent)" opacity="0.50"/>
+              <svg width="56" height="56" viewBox="0 0 64 64" fill="none" style={{ display: "block", margin: "0 auto 20px", position: "relative" }}>
+                <circle cx="32" cy="32" r="8" stroke="var(--border)" strokeWidth="1.5" fill="none"/>
+                <circle cx="32" cy="32" r="3" fill="#5b8fd4" opacity="0.7"/>
+                <circle cx="14" cy="18" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
+                <circle cx="50" cy="18" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
+                <circle cx="14" cy="46" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
+                <circle cx="50" cy="46" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
+                <circle cx="32" cy="8" r="4" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.45"/>
+                <circle cx="32" cy="56" r="4" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.45"/>
+                <line x1="24" y1="27" x2="18" y2="21" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="40" y1="27" x2="46" y2="21" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="24" y1="37" x2="18" y2="43" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="40" y1="37" x2="46" y2="43" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <line x1="32" y1="24" x2="32" y2="12" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.35"/>
+                <line x1="32" y1="40" x2="32" y2="52" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.35"/>
+                <circle cx="14" cy="18" r="2" fill="#5b8fd4" opacity="0.40"/>
+                <circle cx="50" cy="18" r="2" fill="#5b8fd4" opacity="0.40"/>
+                <circle cx="14" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
+                <circle cx="50" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
               </svg>
-              <p style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.02em" }}>Tu red está vacía</p>
+              <p style={{ fontSize: 16, fontWeight: 600, color: "var(--text-secondary)", marginBottom: 8, letterSpacing: "-0.01em" }}>Tu red está vacía</p>
               <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y conéctate para construir tu red de colaboración.</p>
-              <button onClick={() => setView("discover")} style={{
-                padding: "10px 22px", borderRadius: 10,
-                background: "var(--accent)", color: "#000", border: "none",
-                fontSize: 13, fontWeight: 700, cursor: "pointer",
-              }}>Descubrir investigadores</button>
+              <button
+                onClick={() => setView("discover")}
+                style={{
+                  padding: "10px 22px", borderRadius: 10,
+                  background: "var(--accent)", color: "#000", border: "none",
+                  fontSize: 13, fontWeight: 700, cursor: "pointer",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-1px)";
+                  e.currentTarget.style.boxShadow = "0 4px 16px rgba(132,204,22,0.38), 0 0 24px rgba(132,204,22,0.16)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >Descubrir investigadores</button>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
@@ -1054,7 +1065,7 @@ export default function App() {
               <Avatar initials={userProfile.avatar} color={userProfile.color} size={72} />
               <div style={{ flex: 1 }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4, flexWrap: "wrap" as const }}>
-                  <h2 style={{ fontSize: 24, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 2 }}>{userProfile.name} {userProfile.surname}</h2>
+                  <h2 style={{ fontSize: 24, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", lineHeight: 1.25, marginBottom: 2 }}>{userProfile.name} {userProfile.surname}</h2>
                   {userProfile.open && (
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${userProfile.color}12`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />

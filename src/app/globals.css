@@ -1,7 +1,6 @@
-/* ── Google Fonts (variant-c: Warm Editorial — Playfair Display + DM Sans) ── */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 
-/* ── CSS VARIABLES (variant-b: Dark Premium — Lime Accent, Linear-inspired) ── */
+/* -- CSS VARIABLES (variant-a-clean: White bg, Lime Accent #84cc16) -- */
 :root {
   --bg: #FAFAF8;
   --bg-secondary: #F5F4F0;
@@ -17,15 +16,15 @@
   --text-subtle: #A8A29E;
 
   --accent: #84cc16;
-  --accent-dim: rgba(132, 204, 22, 0.08);
+  --accent-dim: rgba(132,204,22,0.08);
   --accent-hover: #a3e635;
-  --accent-glow: rgba(132, 204, 22, 0.12);
-  --accent-border: rgba(132, 204, 22, 0.22);
-  --accent-faint: rgba(132, 204, 22, 0.05);
+  --accent-glow: rgba(132,204,22,0.12);
+  --accent-border: rgba(132,204,22,0.22);
+  --accent-faint: rgba(132,204,22,0.05);
 
   --open-dot: #84cc16;
-  --open-dot-bg: rgba(132, 204, 22, 0.08);
-  --open-dot-border: rgba(132, 204, 22, 0.20);
+  --open-dot-bg: rgba(132,204,22,0.08);
+  --open-dot-border: rgba(132,204,22,0.20);
 
   --tag-bg: #F5F4F0;
   --tag-border: #E8E5DC;
@@ -56,7 +55,7 @@
   --radius-xs: 5px;
 
   --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
-  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.09), 0 8px 32px rgba(0,0,0,0.06), 0 0 0 1px rgba(132,204,22,0.15), 0 0 16px rgba(132,204,22,0.06);
+  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.09), 0 8px 32px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.06);
   --shadow-detail-panel: -8px 0 48px rgba(0,0,0,0.11);
 
   /* Match score tiers */
@@ -73,7 +72,7 @@
   /* Hot / deadline accent */
   --hot-color: #84cc16;
 
-  /* Connected button — lime for variant-b */
+  /* Connected button — lime for variant-a */
   --connected-bg: rgba(132,204,22,0.10);
   --connected-color: #65a30d;
   --connected-border: rgba(132,204,22,0.25);
@@ -83,14 +82,14 @@
   --header-border: rgba(229,231,235,0.80);
 }
 
-/* ── DARK MODE (variant-b: Dark Premium — Lime accent, Linear-inspired) ── */
+/* -- DARK MODE (variant-a-clean: White bg, Lime Accent #84cc16) -- */
 [data-theme="dark"] {
   --bg: #09090b;
-  --bg-secondary: #0f0f12;
+  --bg-secondary: #0f0f10;
   --surface: #111114;
-  --surface-hover: #1a1a1f;
-  --border: #1f1f26;
-  --border-subtle: #16161a;
+  --surface-hover: #18181b;
+  --border: #1e1e22;
+  --border-subtle: #141416;
 
   --text-primary: #ededef;
   --text-secondary: #a1a1aa;
@@ -101,88 +100,42 @@
   --accent: #84cc16;
   --accent-dim: rgba(132, 204, 22, 0.10);
   --accent-hover: #a3e635;
-  --accent-glow: rgba(132, 204, 22, 0.14);
-  --accent-border: rgba(132, 204, 22, 0.28);
+  --accent-glow: rgba(132, 204, 22, 0.10);
+  --accent-border: rgba(132, 204, 22, 0.22);
 
   --open-dot: #84cc16;
   --open-dot-bg: rgba(132, 204, 22, 0.12);
-  --open-dot-border: rgba(132, 204, 22, 0.28);
+  --open-dot-border: rgba(132, 204, 22, 0.25);
   --accent-faint: rgba(132, 204, 22, 0.05);
 
-  --tag-bg: #18181f;
-  --tag-border: #27272e;
+  --tag-bg: #1a1a1e;
+  --tag-border: #27272a;
   --tag-text: #a1a1aa;
 
   --card-bg: #111114;
-  --card-border: #1f1f26;
+  --card-border: #1e1e22;
 
-  --shadow-card: 0 0 0 1px rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.55);
-  --shadow-card-hover: 0 0 0 1px rgba(132,204,22,0.18), 0 16px 56px rgba(0,0,0,0.75), 0 0 28px rgba(132,204,22,0.07);
+  --shadow-card: 0 0 0 1px rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.50);
+  --shadow-card-hover: 0 0 0 1px rgba(132,204,22,0.15), 0 12px 48px rgba(0,0,0,0.70), 0 0 24px rgba(132,204,22,0.06);
 
-  /* Header glass — dark premium */
-  --header-bg: rgba(9,9,11,0.92);
-  --header-border: rgba(31,31,38,0.90);
+  /* Header glass — dark */
+  --header-bg: rgba(9,9,11,0.88);
+  --header-border: rgba(30,30,34,0.90);
 
-  /* Connected button — lime for variant-b */
+  /* Connected button — lime for variant-a */
   --connected-bg: rgba(132,204,22,0.10);
-  --connected-color: #84cc16;
-  --connected-border: rgba(132,204,22,0.28);
+  --connected-color: #a3e635;
+  --connected-border: rgba(132,204,22,0.25);
 }
 
-/* ── DARK: SKELETON SHIMMER (variant-b: dark premium lime shimmer) ── */
-[data-theme="dark"] .skeleton-shimmer {
-  background: linear-gradient(90deg, var(--border) 25%, rgba(132,204,22,0.06) 50%, var(--border) 75%);
-  background-size: 800px 100%;
-  animation: shimmer 1.4s ease-in-out infinite;
-  box-shadow: 0 0 16px rgba(132,204,22,0.08);
-}
-
-/* ── DARK: RESEARCHER CARD (variant-b: premium dark hover glow) ── */
-[data-theme="dark"] .researcher-card:hover {
-  border-color: rgba(132, 204, 22, 0.35);
-  box-shadow: 0 0 0 1px rgba(132,204,22,0.15), 0 16px 56px rgba(0,0,0,0.75), 0 0 28px rgba(132,204,22,0.06);
-}
-
-/* ── DARK: B-CARD HOVER (variant-b: refined dark hover) ── */
-[data-theme="dark"] .b-card:hover {
-  border-color: rgba(132, 204, 22, 0.35);
-  box-shadow: 0 0 0 1px rgba(132,204,22,0.18), 0 16px 56px rgba(0,0,0,0.75), 0 0 28px rgba(132,204,22,0.07);
-}
-[data-theme="dark"] .b-card:hover::before {
-  background: linear-gradient(180deg, rgba(132,204,22,0.07) 0%, transparent 100%);
-}
-[data-theme="dark"] .b-card:hover::after {
-  background: linear-gradient(180deg, var(--accent), var(--accent-hover));
-}
-
-/* ── DARK: OPPORTUNITY CARD (variant-b: dark premium) ── */
-[data-theme="dark"] .opp-card:hover {
-  border-color: rgba(132, 204, 22, 0.30);
-  box-shadow: 0 0 0 1px rgba(132,204,22,0.14), 0 16px 56px rgba(0,0,0,0.75), 0 0 24px rgba(132,204,22,0.06);
-}
-
-/* ── DARK: NETWORK EMPTY STATE (variant-b: premium dark) ── */
-[data-theme="dark"] .warm-empty-icon {
-  background: rgba(132,204,22,0.08);
-  border-color: rgba(132,204,22,0.22);
-}
-[data-theme="dark"] .warm-empty-icon::before {
-  background: radial-gradient(circle, rgba(132,204,22,0.15) 0%, transparent 65%);
-}
-
-/* ── DARK: HOT COLOR (variant-b: lime) ── */
-[data-theme="dark"] {
-  --hot-color: #84cc16;
-}
-
-/* ── SHIMMER ANIMATION (variant-b: dark premium lime shimmer) ── */
+/* -- SHIMMER ANIMATION -- */
 @keyframes shimmer {
   0% { background-position: -400px 0; }
   100% { background-position: 400px 0; }
 }
 
 .skeleton-shimmer {
-  background: linear-gradient(90deg, var(--border) 25%, rgba(132,204,22,0.06) 50%, var(--border) 75%);
+  background: linear-gradient(90deg, var(--border) 25%, rgba(255,255,255,0.03) 50%, var(--border) 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
@@ -193,7 +146,7 @@
   animation: shimmer 1.4s ease-in-out infinite 0.2s;
 }
 
-/* ── SKELETON CARD (warm editorial shimmer) ── */
+/* -- SKELETON CARD (variant-a: lime shimmer) -- */
 .skeleton-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -211,13 +164,20 @@
   position: absolute;
   inset: 0;
   border-radius: 14px;
-  background: linear-gradient(90deg, transparent 0%, var(--accent-dim) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(132,204,22,0.04) 50%, transparent 100%);
   background-size: 800px 100%;
   animation: shimmer 1.6s ease-in-out infinite;
   pointer-events: none;
 }
 
-/* ── RESET & BASE ── */
+/* -- DARK SKELETON SHIMMER (variant-a lime) -- */
+[data-theme="dark"] .skeleton-shimmer {
+  background: linear-gradient(90deg, var(--border) 25%, rgba(132,204,22,0.08) 50%, var(--border) 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* -- RESET & BASE -- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -236,7 +196,7 @@ body {
   min-height: 100vh;
 }
 
-/* ── SCROLLBAR ── */
+/* -- SCROLLBAR -- */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
@@ -251,7 +211,7 @@ button {
 
 a { color: inherit; text-decoration: none; }
 
-/* ── FOCUS VISIBLE (variant-b: lime) ── */
+/* -- FOCUS VISIBLE -- */
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
@@ -259,24 +219,7 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-/* ── SECTION HEADINGS (variant-a: Clean Classic — DM Sans) ── */
-.vc-section-heading {
-  font-family: 'DM Sans', system-ui, sans-serif;
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--text-primary);
-  letter-spacing: -0.035em;
-  line-height: 1.2;
-  margin-bottom: 5px;
-}
-
-/* ── PROFILE ROLE (variant-c: Playfair Display italic for editorial feel) ── */
-.vc-profile-role {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-style: italic;
-}
-
-/* ── RESEARCHER CARD (variant-c: warm editorial, amber accent) ── */
+/* -- RESEARCHER CARD -- */
 .vc-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -291,21 +234,20 @@ select:focus-visible {
   box-shadow: var(--shadow-card);
   transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
-/* Warm lime top frost on hover */
 .vc-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
   height: 100px;
-  background: linear-gradient(180deg, var(--accent-dim) 0%, transparent 100%);
+  background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, transparent 100%);
   opacity: 0;
   transition: opacity 0.2s ease;
   pointer-events: none;
   border-radius: 14px 14px 0 0;
 }
 .vc-card:hover {
-  border-color: var(--accent-border);
-  box-shadow: var(--shadow-card-hover);
+  border-color: rgba(132,204,22,0.35);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.09), 0 8px 32px rgba(0,0,0,0.06), 0 0 0 1px rgba(132,204,22,0.20);
   transform: translateY(-2px);
 }
 .vc-card:hover::before { opacity: 1; }
@@ -316,7 +258,6 @@ select:focus-visible {
   gap: 12px;
 }
 
-/* ── B-CARD (warm editorial card) ── */
 .b-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -332,7 +273,6 @@ select:focus-visible {
   box-shadow: var(--shadow-card);
 }
 
-/* Lime left accent bar on hover */
 .b-card::after {
   content: '';
   position: absolute;
@@ -345,16 +285,15 @@ select:focus-visible {
 }
 .b-card:hover {
   border-color: var(--accent-border);
-  box-shadow: var(--shadow-card-hover);
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border), 0 0 16px var(--accent-glow);
   transform: translateY(-2px);
 }
-/* Lime overlay on hover — warm premium glow */
 .b-card:hover::before {
   content: '';
   position: absolute;
   inset: 0;
   border-radius: var(--radius);
-  background: linear-gradient(180deg, var(--accent-dim) 0%, transparent 60%);
+  background: linear-gradient(180deg, rgba(132,204,22,0.06) 0%, transparent 100%);
   opacity: 1;
   pointer-events: none;
   z-index: 0;
@@ -367,7 +306,24 @@ select:focus-visible {
   gap: 12px;
 }
 
-/* ── CONNECT BUTTONS (variant-b: lime) ── */
+/* -- SECTION HEADINGS (variant-c: serif) -- */
+.vc-section-heading {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+.vc-section-sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 0;
+}
+
+/* -- CONNECT BUTTONS -- */
 .b-connect-btn {
   padding: 6px 14px;
   border-radius: 9px;
@@ -409,12 +365,6 @@ select:focus-visible {
   border-color: var(--connected-border);
 }
 
-/* ── CONNECT BTN POLISH (variant-a: premium lime) ── */
-.b-connect-btn:hover:not(.connected) {
-  box-shadow: 0 4px 16px rgba(132,204,22,0.28), 0 0 0 1px rgba(132,204,22,0.20);
-}
-
-/* ── VARIANT-C CONNECT BTN ── */
 .vc-connect-btn {
   padding: 6px 14px;
   border-radius: 9px;
@@ -442,7 +392,7 @@ select:focus-visible {
   border-color: var(--connected-border);
 }
 
-/* ── EMPTY STATE (variant-c: warm editorial) ── */
+/* -- EMPTY STATE -- */
 .empty-state {
   display: flex;
   flex-direction: column;
@@ -467,7 +417,7 @@ select:focus-visible {
   transform: translate(-50%, -55%);
   width: 120px;
   height: 120px;
-  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(132,204,22,0.07) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -478,13 +428,12 @@ select:focus-visible {
   transform: translate(-50%, -50%);
   width: 160px;
   height: 160px;
-  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(132,204,22,0.07) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
 
 .empty-title {
-  font-family: 'DM Sans', system-ui, sans-serif;
   font-size: 16px;
   font-weight: 600;
   color: var(--text-secondary);
@@ -517,72 +466,12 @@ select:focus-visible {
   transform: translateY(-1px);
 }
 
-/* ── WARM EMPTY STATE (variant-c premium) ── */
-.warm-empty-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  background: var(--accent-dim);
-  border: 1.5px solid var(--accent-border);
-  position: relative;
-  margin-bottom: 20px;
-}
-.warm-empty-icon::before {
-  content: '';
-  position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-glow) 0%, transparent 65%);
-  animation: warm-pulse 2.8s ease-in-out infinite;
-}
-@keyframes warm-pulse {
-  0%, 100% { opacity: 0.6; transform: scale(1); }
-  50% { opacity: 1; transform: scale(1.08); }
-}
-
-.warm-empty-title {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--text-secondary);
-  letter-spacing: -0.01em;
-}
-
-.warm-empty-sub {
-  font-size: 13px;
-  color: var(--text-tertiary);
-  max-width: 260px;
-  line-height: 1.6;
-}
-
-.warm-empty-cta {
-  margin-top: 8px;
-  padding: 10px 22px;
-  border-radius: 10px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
-  font-family: inherit;
-  letter-spacing: 0.01em;
-  transition: background 0.15s, transform 0.15s;
-}
-.warm-empty-cta:hover {
-  background: var(--accent-hover);
-  transform: translateY(-1px);
-}
-
-/* ── HEADER TRANSITION ── */
+/* -- HEADER TRANSITION -- */
 .app-header {
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ── NETWORK CARD BUTTONS ── */
+/* -- NETWORK CARD BUTTONS -- */
 .c-msg-btn {
   width: 32px;
   height: 32px;
@@ -623,13 +512,13 @@ select:focus-visible {
   color: #ef4444;
 }
 
-/* ── CARD ACCENT (hover + cursor) ── */
+/* -- CARD ACCENT (hover + cursor) -- */
 .card-accent {
   cursor: pointer;
   transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
-/* ── RESEARCHER CARD (variant-b: dark premium lime accent bar on hover) ── */
+/* -- RESEARCHER CARD (variant-c warm amber accent) -- */
 .researcher-card {
   box-shadow: var(--shadow-card);
   position: relative;
@@ -648,64 +537,10 @@ select:focus-visible {
   z-index: 1;
 }
 .researcher-card:hover {
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--accent-border);
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px rgba(132,204,22,0.25);
+  border-color: rgba(132,204,22,0.35);
   transform: translateY(-2px);
 }
-.researcher-card:hover::after { opacity: 1; }
-
-/* ── MESSAGE INPUT CONTAINER (focus-within keyboard nav) ── */
-.msg-input-container:focus-within {
-  outline: none;
-}
-.msg-input-container:focus-within input[type="text"],
-.msg-input-container:focus-within input:not([type]) {
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow), 0 0 8px var(--accent-glow);
-}
-.msg-input-container input {
-  transition: border-color 0.15s, box-shadow 0.15s;
-}
-
-/* ── WARM EDITORIAL: PROFILE STATS ROW (variant-c: refined grid) ── */
-.warm-profile-stats {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  margin-bottom: 16px;
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  overflow: hidden;
-  background: var(--border);
-}
-.warm-profile-stats > * {
-  background: var(--surface);
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-
-/* ── WARM EDITORIAL: QUICK ACTIONS (variant-c: warm editorial refinement) ── */
-.warm-quick-action {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 14px;
-  border-radius: 10px;
-  background: var(--surface-hover);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-  font-size: 12px;
-  font-weight: 600;
-  cursor: pointer;
-  text-align: left;
-  width: 100%;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
-  font-family: 'DM Sans', system-ui, sans-serif;
-}
-.warm-quick-action:hover {
-  border-color: var(--accent-border);
-  color: var(--accent);
-  background: var(--accent-dim);
+.researcher-card:hover::after {
+  opacity: 1;
 }
