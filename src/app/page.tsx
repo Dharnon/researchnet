@@ -655,36 +655,38 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
 
   return (
     <div style={{
-      display: "flex", gap: 2, background: "var(--bg-secondary)",
-      border: "1px solid var(--border)", borderRadius: 12, padding: 4,
+      display: "flex", gap: 1,
+      background: "var(--surface-hover)",
+      border: "1px solid var(--card-border)",
+      borderRadius: 10, padding: 3,
     }}>
       {items.map((item) => (
         <button key={item.key} onClick={() => setView(item.key)} style={{
-          display: "flex", alignItems: "center", gap: 6,
-          padding: "7px 12px", borderRadius: 8,
+          position: "relative", width: 38, height: 34,
+          borderRadius: 7, border: "none",
           fontSize: 12, fontWeight: 600, cursor: "pointer",
           background: view === item.key ? "var(--accent-dim)" : "transparent",
-          color: view === item.key ? "var(--accent)" : "var(--text-muted)",
-          border: view === item.key ? "1px solid var(--accent-border)" : "1px solid transparent",
-          transition: "all 0.15s", position: "relative", whiteSpace: "nowrap",
+          color: view === item.key ? "var(--accent)" : "var(--text-tertiary)",
+          transition: "all 0.15s",
+          display: "flex", alignItems: "center", justifyContent: "center",
         }}>
-          <span style={{ color: view === item.key ? "var(--accent)" : "var(--text-muted)", display: "flex" }}>
-            {item.icon}
-          </span>
-          {item.label}
+          {item.icon}
           {item.badge !== undefined && item.badge > 0 && (
             <span style={{
+              position: "absolute", top: 2, right: 2,
               background: item.key === "messages" ? "#ef4444" : "var(--accent)",
-              color: "#000", fontSize: 9, fontWeight: 800, padding: "1px 5px",
-              borderRadius: 20, minWidth: 16, textAlign: "center",
+              color: "#000", fontSize: 7, fontWeight: 800,
+              padding: "0.5px 3.5px", borderRadius: 20, minWidth: 13,
+              textAlign: "center", lineHeight: 1.4,
             }}>
-              {item.badge}
+              {item.badge > 9 ? "9+" : item.badge}
             </span>
           )}
           {view === item.key && (
             <div style={{
-              position: "absolute", bottom: -5, left: "50%", transform: "translateX(-50%)",
+              position: "absolute", bottom: 2, left: "50%", transform: "translateX(-50%)",
               width: 16, height: 2, borderRadius: 2, background: "var(--accent)",
+              boxShadow: "0 0 8px var(--accent-glow)",
             }} />
           )}
         </button>
