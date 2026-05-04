@@ -261,7 +261,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
               color: isConnected ? "var(--connected-color)" : "#fff",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
               transition: "all 0.18s",
-              boxShadow: isConnected ? "none" : "0 2px 8px rgba(101,163,13,0.25)",
+              boxShadow: isConnected ? "none" : "0 2px 8px var(--accent-glow)",
             }}
           >
             {isConnected ? <><Check size={14} /> Conectado — Ver mensaje</> : <><Users size={14} /> Conectar</>}
@@ -297,7 +297,7 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
           {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
         </div>
         <h2 style={{ fontSize: 17, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
-        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept}  Fecha lmite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
+        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept}  Fecha límite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 20 }}>{opp.desc}</p>
         <button style={{
           width: "100%", padding: "12px", borderRadius: 10, border: "none",
@@ -559,7 +559,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
               fontSize: 13, outline: "none",
               transition: "border-color 0.15s, box-shadow 0.15s",
             }}
-            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow), 0 0 8px rgba(101,163,13,0.15)"; }}
+            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow)"; }}
             onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--card-border)"; i.style.boxShadow = "none"; }}
           />
           <button
