@@ -1,22 +1,44 @@
-// Fix variant-c: fix encoding in UI text strings (bio preview already exists)
-const fs = require('fs');
-const path = 'C:\\Users\\josei\\researchnet\\src\\app\\page.tsx';
-let content = fs.readFileSync(path, 'utf8');
+const fs = require("fs");
+let content = fs.readFileSync("src/app/page.tsx", "utf8");
 
-// Fix encoding issues in UI text strings
-content = content.replace(/Sin mensajes an/g, 'Sin mensajes aún');
-content = content.replace(/Conctate con investigadores y empieza una conversacin/g, 'Conéctate con investigadores y empieza una conversación');
-content = content.replace(/Ver ms <ChevronRight/g, 'Ver más <ChevronRight');
-content = content.replace(/Ms informacin/g, 'Más información');
-content = content.replace(/informacin de investigador/g, 'información de investigador');
-content = content.replace(/Abiertos a colaboracin/g, 'Abiertos a colaboración');
-content = content.replace(/Acciones rpidas/g, 'Acciones rápidas');
-content = content.replace(/Ver mi perfil pblico/g, 'Ver mi perfil público');
-content = content.replace(/Invitar a un colega/g, 'Invitar a un colega');
-content = content.replace(/Exportar mi CV/g, 'Exportar mi CV');
-content = content.replace(/Tu informacin se mantiene privada/g, 'Tu información se mantiene privada');
-content = content.replace(/auto-completar tu informacin/g, 'auto-completar tu información');
-content = content.replace(/l.mite:/g, 'límite:');
+// Fix mojibake in researcher data
+const fixes = [
+  ["Dr. Marcos Ib��ez", "Dr. Marcos Ibáñez"],
+  ["Ciencias de la Computaci�n", "Ciencias de la Computación"],
+  ["Lenguaje multiling�e", "Lenguaje multilingüe"],
+  ["desaf�os �ticos", "desafíos éticos"],
+  ["Dr. Andrs Leal", "Dr. Andrés Leal"],
+  ["F�sica Computacional", "Física Computacional"],
+  ["Computaci�n Cu�ntica", "Computación Cuántica"],
+  ["Simulaci�n", "Simulación"],
+  ["Dise�o algoritmos cu�nticos", "Diseño algoritmos cuánticos"],
+  ["simulaci�n", "simulación"],
+  ["optimizaci�n", "optimización"],
+  ["Dra. Carmen Fuentes", "Dra. Carmen Fuentes"],
+  ["Salud Pblica", "Salud Pública"],
+  ["epidemiolgicos", "epidemiológicos"],
+  ["percepcin", "percepción"],
+  ["auunomos", "autónomos"],
+  ["Biom�dica", "Biomédica"],
+  ["biomdica", "biomédica"],
+  ["b�squeda", "búsqueda"],
+  ["investigaci�n", "investigación"],
+  ["multilinge", "multilingüe"],
+  ["Postdoc - IA", "Postdoc — IA"],
+  ["Tesis Doctoral - NLP", "Tesis Doctoral — NLP"],
+  ["computacin", "computación"],
+  ["Hot", "Hot"],
+  ["Ms información", "Más información"],
+  ["Fecha lmite", "Fecha límite"],
+];
 
-fs.writeFileSync(path, content, 'utf8');
-console.log('variant-c page.tsx updated');
+let changed = 0;
+for (const [bad, good] of fixes) {
+  if (content.includes(bad)) {
+    content = content.split(bad).join(good);
+    changed++;
+  }
+}
+
+fs.writeFileSync("src/app/page.tsx", content, "utf8");
+console.log(`Fixed ${changed} mojibake instances`);
