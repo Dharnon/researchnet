@@ -980,23 +980,23 @@ export default function App() {
               }} />
               <svg width="56" height="56" viewBox="0 0 64 64" fill="none" style={{ display: "block", margin: "0 auto 20px", position: "relative" }}>
                 <circle cx="32" cy="32" r="8" stroke="var(--border)" strokeWidth="1.5" fill="none"/>
-                <circle cx="32" cy="32" r="3" fill="#5b8fd4" opacity="0.7"/>
-                <circle cx="14" cy="18" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
-                <circle cx="50" cy="18" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
-                <circle cx="14" cy="46" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
-                <circle cx="50" cy="46" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
-                <circle cx="32" cy="8" r="4" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.45"/>
-                <circle cx="32" cy="56" r="4" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.45"/>
-                <line x1="24" y1="27" x2="18" y2="21" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="40" y1="27" x2="46" y2="21" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="24" y1="37" x2="18" y2="43" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="40" y1="37" x2="46" y2="43" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
+                <circle cx="32" cy="32" r="3" fill="var(--accent)" opacity="0.6"/>
+                <circle cx="14" cy="18" r="5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.45"/>
+                <circle cx="50" cy="18" r="5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.45"/>
+                <circle cx="14" cy="46" r="5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.45"/>
+                <circle cx="50" cy="46" r="5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.45"/>
+                <circle cx="32" cy="8" r="4" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.35"/>
+                <circle cx="32" cy="56" r="4" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.35"/>
+                <line x1="24" y1="27" x2="18" y2="21" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.25"/>
+                <line x1="40" y1="27" x2="46" y2="21" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.25"/>
+                <line x1="24" y1="37" x2="18" y2="43" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.25"/>
+                <line x1="40" y1="37" x2="46" y2="43" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.25"/>
                 <line x1="32" y1="24" x2="32" y2="12" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.35"/>
                 <line x1="32" y1="40" x2="32" y2="52" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.35"/>
-                <circle cx="14" cy="18" r="2" fill="#5b8fd4" opacity="0.40"/>
-                <circle cx="50" cy="18" r="2" fill="#5b8fd4" opacity="0.40"/>
-                <circle cx="14" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
-                <circle cx="50" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
+                <circle cx="14" cy="18" r="2" fill="var(--accent)" opacity="0.35"/>
+                <circle cx="50" cy="18" r="2" fill="var(--accent)" opacity="0.35"/>
+                <circle cx="14" cy="46" r="2" fill="var(--accent)" opacity="0.35"/>
+                <circle cx="50" cy="46" r="2" fill="var(--accent)" opacity="0.35"/>
               </svg>
               <p style={{ fontSize: 16, fontWeight: 600, color: "var(--text-secondary)", marginBottom: 8, letterSpacing: "-0.01em" }}>Tu red está vacía</p>
               <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y conéctate para construir tu red de colaboración.</p>
