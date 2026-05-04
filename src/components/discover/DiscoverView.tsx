@@ -213,7 +213,7 @@ export function DiscoverView({
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Busca por nombre, área, departamento o keyword…"
+          placeholder="Busca por nombre, área, departamento o keyword..."
           style={{
             background: "transparent",
             border: "none",
@@ -298,7 +298,7 @@ function AllTab({
   if (loading && byArea.length === 0 && areas.length === 0) {
     return (
       <div style={{ padding: 60, textAlign: "center", color: t.textTertiary, fontSize: 13 }}>
-        Cargando descubrimientos…
+        Cargando descubrimientos...
       </div>
     );
   }
@@ -414,7 +414,7 @@ function ResearchersTab({
             aria-label="Quitar filtro de área"
             style={{ background: "transparent", border: "none", cursor: "pointer", color: t.accent, fontSize: 14, lineHeight: 1, padding: 2 }}
           >
-            ×
+            ✕
           </button>
         </div>
       )}
