@@ -355,7 +355,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       {/* Warm top gradient */}
       <div style={{
         position: "absolute", top: 0, left: 0, right: 0, height: 80,
-        background: "linear-gradient(180deg, rgba(217,119,6,0.05) 0%, transparent 100%)",
+        background: "linear-gradient(180deg, var(--accent-faint) 0%, transparent 100%)",
         opacity: hovered ? 1 : 0,
         transition: "opacity 0.24s ease",
         pointerEvents: "none",
@@ -922,9 +922,9 @@ export default function App() {
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "rgba(217,119,6,0.35)";
+                  el.style.borderColor = "var(--accent-border)";
                   el.style.transform = "translateY(-2px)";
-                  el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.12), 0 0 0 1px rgba(217,119,6,0.10)";
+                  el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.12), 0 0 0 1px var(--accent-border)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
