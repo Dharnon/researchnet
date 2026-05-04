@@ -261,7 +261,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
               color: isConnected ? "var(--connected-color)" : "#fff",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
               transition: "all 0.18s",
-              boxShadow: isConnected ? "none" : "0 2px 8px rgba(101,163,13,0.25)",
+              boxShadow: isConnected ? "none" : "0 2px 8px var(--accent-glow)",
             }}
           >
             {isConnected ? <><Check size={14} /> Conectado — Ver mensaje</> : <><Users size={14} /> Conectar</>}
@@ -433,7 +433,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           style={{
             padding: "6px 14px",
             borderRadius: 9,
-            border: `1px solid ${isConnected ? "var(--connected-border)" : hovered ? "var(--accent-border)" : "rgba(132,204,22,0.25)"}`,
+            border: `1px solid ${isConnected ? "var(--connected-border)" : hovered ? "var(--accent-border)" : "var(--accent-faint)"}`,
             fontSize: 11, fontWeight: 700,
             cursor: "pointer",
             background: isConnected ? "var(--connected-bg)" : hovered ? "var(--accent)" : "transparent",
@@ -558,7 +558,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
               fontSize: 13, outline: "none",
               transition: "border-color 0.15s, box-shadow 0.15s",
             }}
-            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow), 0 0 8px rgba(101,163,13,0.15)"; }}
+            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow)"; }}
             onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--card-border)"; i.style.boxShadow = "none"; }}
           />
           <button
