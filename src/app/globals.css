@@ -363,6 +363,11 @@ select:focus-visible {
   border-color: var(--connected-border);
 }
 
+/* ── CONNECT BTN POLISH (variant-a: premium lime) ── */
+.b-connect-btn:hover:not(.connected) {
+  box-shadow: 0 4px 16px rgba(132,204,22,0.28), 0 0 0 1px rgba(132,204,22,0.20);
+}
+
 /* ── VARIANT-C CONNECT BTN ── */
 .vc-connect-btn {
   padding: 6px 14px;
