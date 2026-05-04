@@ -306,7 +306,7 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
           background: color, color: "#000", fontSize: 13, fontWeight: 700,
           cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
         }}>
-          <ExternalLink size={13} /> Ms informacin
+          <ExternalLink size={13} /> Más información
         </button>
       </div>
     </>
@@ -403,6 +403,10 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       </div>
 
       {/* Tags */}
+      <p style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.6, overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>
+        {researcher.bio}
+      </p>
+
       <div style={{ display: "flex", gap: 5, flexWrap: "wrap", position: "relative" }}>
         {researcher.tags.slice(0, 3).map((tag) => (
           <span key={tag} style={{
@@ -588,8 +592,8 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
           border: "1px solid var(--card-border)", borderRadius: 16,
         }}>
           <MessageCircle size={32} style={{ color: "var(--text-tertiary)", marginBottom: 12, display: "block", margin: "0 auto 12px" }} />
-          <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>Sin mensajes an</p>
-          <p style={{ fontSize: 12, color: "var(--text-muted)" }}>Conctate con investigadores y empieza una conversacin</p>
+          <p style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", marginBottom: 4 }}>Sin mensajes aún</p>
+          <p style={{ fontSize: 12, color: "var(--text-muted)" }}>Conéctate con investigadores y empieza una conversación</p>
         </div>
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
@@ -796,7 +800,7 @@ export default function App() {
               </svg>
             </div>
             <h2 style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.03em" }}>Bienvenido a ResearchNet</h2>
-            <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.6, marginBottom: 28 }}>Conecta tu perfil ORCID para auto-completar tu informacin y empezar a descubrir colaboradores.</p>
+            <p style={{ fontSize: 13, color: "var(--text-muted)", lineHeight: 1.6, marginBottom: 28 }}>Conecta tu perfil ORCID para auto-completar tu información y empezar a descubrir colaboradores.</p>
             <button
               onClick={() => { setShowOnboarding(false); localStorage.setItem("rn_onboarding_skipped", "1"); }}
               style={{
@@ -818,7 +822,7 @@ export default function App() {
             >
               Omitir por ahora
             </button>
-            <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 20, lineHeight: 1.5 }}>ORCID es un identificador persistente. Tu informacin se mantiene privada.</p>
+            <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 20, lineHeight: 1.5 }}>ORCID es un identificador persistente. Tu información se mantiene privada.</p>
           </div>
         </div>
       )}
@@ -920,7 +924,7 @@ export default function App() {
                       <Clock size={10} />{opp.deadline}
                     </span>
                     <span style={{ fontSize: 11, fontWeight: 600, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}>
-                      Ver ms <ChevronRight size={10} />
+                      Ver más <ChevronRight size={10} />
                     </span>
                   </div>
                 </div>
@@ -973,7 +977,7 @@ export default function App() {
                 <circle cx="50" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
               </svg>
               <p style={{ fontSize: 16, fontWeight: 600, color: "var(--text-secondary)", marginBottom: 8, letterSpacing: "-0.01em" }}>Tu red está vacía</p>
-              <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y contrate para construir tu red de colaboración.</p>
+              <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y contráctate para construir tu red de colaboración.</p>
               <button
                 onClick={() => setView("discover")}
                 style={{
@@ -1033,7 +1037,7 @@ export default function App() {
         <div style={{ maxWidth: 800, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
             <h1 className="vc-section-heading">Tu perfil</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Gestiona tu informacin de investigador</p>
+            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Gestiona tu información de investigador</p>
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18, padding: 28, marginBottom: 16 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: 24 }}>
@@ -1044,7 +1048,7 @@ export default function App() {
                   {userProfile.open && (
                     <span style={{ display: "inline-flex", alignItems: "center", gap: 5, fontSize: 9, fontWeight: 700, color: "var(--accent)", background: `${userProfile.color}12`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>
                       <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
-                      Abiertos a colaboracin
+                      Abiertos a colaboración
                     </span>
                   )}
                 </div>
@@ -1082,9 +1086,9 @@ export default function App() {
             ))}
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: 20 }}>
-            <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones rpidas</p>
+            <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones rápidas</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-              {[{ label: "Ver mi perfil pblico", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
+              {[{ label: "Ver mi perfil público", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
                 <button key={action.label} style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                   padding: "12px 14px", borderRadius: 10, background: "var(--surface-hover)",
