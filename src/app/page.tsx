@@ -331,7 +331,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       onMouseLeave={() => setHovered(false)}
       style={{
         background: "var(--card-bg)",
-        border: `1px solid ${hovered ? "rgba(132,204,22,0.40)" : "var(--card-border)"}`,
+        border: `1px solid ${hovered ? "var(--accent-border)" : "var(--card-border)"}`,
         borderRadius: 16,
         padding: "20px",
         cursor: "pointer",
@@ -436,7 +436,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           style={{
             padding: "6px 14px",
             borderRadius: 9,
-            border: `1px solid ${isConnected ? "var(--connected-border)" : hovered ? "rgba(132,204,22,0.5)" : "rgba(132,204,22,0.25)"}`,
+            border: `1px solid ${isConnected ? "var(--connected-border)" : hovered ? "var(--accent-border)" : "var(--accent-faint)"}`,
             fontSize: 11, fontWeight: 700,
             cursor: "pointer",
             background: isConnected ? "var(--connected-bg)" : hovered ? "var(--accent)" : "transparent",
