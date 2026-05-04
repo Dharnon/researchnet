@@ -385,7 +385,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           fontSize: 14, fontWeight: 800, color: researcher.color,
           flexShrink: 0, letterSpacing: "-0.03em",
           transition: "box-shadow 0.22s ease",
-          filter: hovered ? `drop-shadow(0 0 10px ${researcher.color}45)` : "none",
+          filter: hovered ? `drop-shadow(0 0 10px rgba(217,119,6,0.45))` : "none",
         }}>
           {researcher.avatar}
         </div>
