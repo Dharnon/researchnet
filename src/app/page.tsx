@@ -297,7 +297,7 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
           {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
         </div>
         <h2 style={{ fontSize: 17, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 6, lineHeight: 1.3 }}>{opp.title}</h2>
-        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept}  Fecha lmite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
+        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept}  Fecha límite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 20 }}>{opp.desc}</p>
         <button style={{
           width: "100%", padding: "12px", borderRadius: 10, border: "none",
@@ -328,7 +328,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       onMouseLeave={() => setHovered(false)}
       style={{
         background: "var(--card-bg)",
-        border: `1px solid ${hovered ? "rgba(132,204,22,0.40)" : "var(--card-border)"}`,
+        border: `1px solid ${hovered ? "var(--accent-border)" : "var(--card-border)"}`,
         borderRadius: 16,
         padding: "20px",
         cursor: "pointer",
@@ -336,7 +336,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         flexDirection: "column",
         gap: 14,
         boxShadow: hovered
-          ? "0 8px 24px rgba(0,0,0,0.10), 0 20px 48px rgba(0,0,0,0.06), 0 0 0 1px rgba(132,204,22,0.22)"
+          ? "0 8px 24px rgba(0,0,0,0.10), 0 20px 48px rgba(0,0,0,0.06), 0 0 0 1px var(--accent-border)"
           : "0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04)",
         transform: hovered ? "translateY(-3px)" : "translateY(0)",
         transition: "all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1)",
@@ -433,7 +433,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           style={{
             padding: "6px 14px",
             borderRadius: 9,
-            border: `1px solid ${isConnected ? "var(--connected-border)" : hovered ? "rgba(132,204,22,0.5)" : "rgba(132,204,22,0.25)"}`,
+            border: `1px solid ${isConnected ? "var(--connected-border)" : hovered ? "var(--accent-border)" : "rgba(132,204,22,0.25)"}`,
             fontSize: 11, fontWeight: 700,
             cursor: "pointer",
             background: isConnected ? "var(--connected-bg)" : hovered ? "var(--accent)" : "transparent",
@@ -441,7 +441,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
             display: "flex", alignItems: "center", gap: 4,
             transition: "all 0.18s ease",
             letterSpacing: "0.01em",
-            boxShadow: !isConnected && hovered ? "0 2px 10px rgba(132,204,22,0.30)" : "none",
+            boxShadow: !isConnected && hovered ? "0 2px 10px var(--accent-glow)" : "none",
           }}
         >
           {isConnected ? <><Check size={12} /> Conectado</> : "Conectar"}
@@ -654,7 +654,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           position: "relative", width: 38, height: 34,
           borderRadius: 7, border: "none",
           fontSize: 12, fontWeight: 600, cursor: "pointer",
-          background: view === item.key ? "rgba(132,204,22,0.10)" : "transparent",
+          background: view === item.key ? "var(--accent-dim)" : "transparent",
           color: view === item.key ? "var(--accent)" : "rgba(255,255,255,0.30)",
           transition: "all 0.15s",
           display: "flex", alignItems: "center", justifyContent: "center",
@@ -674,8 +674,8 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           {view === item.key && (
             <div style={{
               position: "absolute", bottom: 2, left: "50%", transform: "translateX(-50%)",
-              width: 16, height: 2, borderRadius: 2, background: "#84cc16",
-              boxShadow: "0 0 8px rgba(132,204,22,0.60)",
+              width: 16, height: 2, borderRadius: 2, background: "var(--accent)",
+              boxShadow: "0 0 8px var(--accent-glow)",
             }} />
           )}
         </button>
@@ -917,9 +917,9 @@ export default function App() {
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLDivElement;
-                    el.style.borderColor = "rgba(132,204,22,0.35)";
+                    el.style.borderColor = "var(--accent-border)";
                     el.style.transform = "translateY(-2px)";
-                    el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.20), 0 0 0 1px rgba(132,204,22,0.12)";
+                    el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.20), 0 0 0 1px var(--accent-border)";
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget as HTMLDivElement;
@@ -1009,7 +1009,7 @@ export default function App() {
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-1px)";
-                  e.currentTarget.style.boxShadow = "0 4px 16px rgba(132,204,22,0.38), 0 0 24px rgba(132,204,22,0.16)";
+                  e.currentTarget.style.boxShadow = "0 4px 16px var(--accent-glow), 0 0 24px var(--accent-glow)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
