@@ -532,7 +532,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
               <div style={{
                 maxWidth: "70%", padding: "10px 14px", borderRadius: 16,
                 background: msg.from === "me" ? "var(--accent)" : "var(--surface)",
-                color: msg.from === "me" ? "#1a2e00" : "var(--text-primary)",
+                color: msg.from === "me" ? "#000" : "var(--text-primary)",
                 fontSize: 13, lineHeight: 1.5,
                 borderBottomRightRadius: msg.from === "me" ? "4px" : "16px",
                 borderBottomLeftRadius: msg.from === "me" ? "16px" : "4px",
