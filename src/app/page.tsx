@@ -21,12 +21,12 @@ const researchers = [
 ];
 
 const opportunities = [
-  { id: 1, title: "Postdoc — IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posición postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomédica." },
+  { id: 1, title: "Postdoc - IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posición postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomédica." },
   { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las Áreas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigación en todas las Áreas. Hasta $300.000 USD por proyecto, duración 4 años." },
-  { id: 3, title: "Colaboración EU Horizon — Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco colaborador para propuesta EU Horizon sobre computación cuántica aplicada a optimización combinatoria." },
-  { id: 4, title: "Tesis Doctoral — NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Búsqueda de estudiante doctoral para investigación en modelos de lenguaje multilingüe para lenguas minoritarias." },
-  { id: 5, title: "Research Engineer — Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robotics. Salario competitivo + equity." },
-  { id: 6, title: "Beca Marie Curie — Climate AI", dept: "Todas las Áreas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio climático. Sin restricciones de nacionalidad." },
+  { id: 3, title: "Colaboración EU Horizon - Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco colaborador para propuesta EU Horizon sobre computación cuántica aplicada a optimización combinatoria." },
+  { id: 4, title: "Tesis Doctoral - NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Búsqueda de estudiante doctoral para investigación en modelos de lenguaje multilingüe para lenguas minoritarias." },
+  { id: 5, title: "Research Engineer - Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robotics. Salario competitivo + equity." },
+  { id: 6, title: "Beca Marie Curie - Climate AI", dept: "Todas las Áreas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio climático. Sin restricciones de nacionalidad." },
 ];
 
 const mockMessages = [
@@ -133,7 +133,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
 }
 
 
-// --- MATCH BADGE (variant-b: dark premium — green=90, amber=70, gray <70) ---
+// --- MATCH BADGE (variant-c: warm amber tiered) ---
 function MatchBadge({ score }: { score: number }) {
   const isHigh = score >= 90;
   const isMid  = score >= 70 && score < 90;
@@ -267,7 +267,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
               boxShadow: isConnected ? "none" : "0 2px 8px rgba(101,163,13,0.25)",
             }}
           >
-            {isConnected ? <><Check size={14} /> Conectado — Ver mensaje</> : <><Users size={14} /> Conectar</>}
+            {isConnected ? <><Check size={14} /> Conectado - Ver mensaje</> : <><Users size={14} /> Conectar</>}
           </button>
         </div>
       </div>
@@ -307,7 +307,7 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
           {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
         </div>
         <h2 style={{ fontSize: 17, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", lineHeight: 1.3 }}>{opp.title}</h2>
-        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} — <Clock size={10} style={{ display: "inline", verticalAlign: "middle", marginRight: 2 }} />Fecha límite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
+        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} - <Clock size={10} style={{ display: "inline", verticalAlign: "middle", marginRight: 2 }} />Fecha límite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 20 }}>{opp.desc}</p>
         <button style={{
           width: "100%", padding: "12px", borderRadius: 10, border: "none",
@@ -364,7 +364,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         pointerEvents: "none",
         borderRadius: "16px 16px 0 0",
       }} />
-      {/* Left amber bar — editorial accent */}
+      {/* Left amber bar - editorial accent */}
       <div style={{
         position: "absolute", top: 0, left: 0, width: 3, height: "100%",
         background: "linear-gradient(180deg, var(--accent), var(--accent-hover))",
@@ -375,7 +375,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       }} />
 
       <div style={{ display: "flex", alignItems: "flex-start", gap: 14, position: "relative" }}>
-        {/* Avatar — warm glow on hover */}
+        {/* Avatar - warm glow on hover */}
         <div style={{
           width: 48, height: 48, borderRadius: "50%",
           background: `radial-gradient(circle at 35% 35%, ${researcher.color}ee, ${researcher.color}55 45%, ${researcher.color}18)`,
