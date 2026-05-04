@@ -1,5 +1,5 @@
 /* ── Google Fonts (variant-c: Warm Editorial — Playfair Display + DM Sans) ── */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 
 /* ── CSS VARIABLES (variant-c: Warm Editorial — Amber Accent) ── */
 :root {
@@ -136,7 +136,7 @@
 }
 
 .skeleton-shimmer {
-  background: linear-gradient(90deg, var(--border) 25%, var(--accent-faint) 50%, var(--border) 75%);
+  background: linear-gradient(90deg, var(--border-subtle) 25%, rgba(132,204,22,0.06) 50%, var(--border-subtle) 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
@@ -213,13 +213,13 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-/* ── SECTION HEADINGS (variant-c: Playfair Display — editorial serif) ── */
+/* ── SECTION HEADINGS (variant-a: Clean Classic — DM Sans) ── */
 .vc-section-heading {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: 26px;
-  font-weight: 700;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
   color: var(--text-primary);
-  letter-spacing: -0.03em;
+  letter-spacing: -0.035em;
   line-height: 1.2;
   margin-bottom: 5px;
 }
@@ -614,4 +614,47 @@ select:focus-visible {
 }
 .msg-input-container input {
   transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+/* ── WARM EDITORIAL: PROFILE STATS ROW (variant-c: refined grid) ── */
+.warm-profile-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  margin-bottom: 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  background: var(--border);
+}
+.warm-profile-stats > * {
+  background: var(--surface);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* ── WARM EDITORIAL: QUICK ACTIONS (variant-c: warm editorial refinement) ── */
+.warm-quick-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  font-family: 'DM Sans', system-ui, sans-serif;
+}
+.warm-quick-action:hover {
+  border-color: var(--accent-border);
+  color: var(--accent);
+  background: var(--accent-dim);
 }
