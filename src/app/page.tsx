@@ -6,6 +6,7 @@ import {
   Briefcase, Clock, X, Globe,
   ExternalLink, ChevronRight, MessageCircle,
   Send, ArrowLeft, Check, Circle,
+  GraduationCap, Wallet, Globe2, Briefcase as JobIcon, Award,
 } from "lucide-react";
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
@@ -296,11 +297,18 @@ function OppDetailModal({ opp, onClose }: { opp: (typeof opportunities)[0]; onCl
           color: "var(--text-tertiary)", cursor: "pointer", fontSize: 18,
         }}>×</button>
         <div style={{ display: "flex", gap: 6, marginBottom: 14 }}>
-          <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
+          <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
+            {opp.type === "Postdoc" && <><GraduationCap size={10} />Postdoc</>}
+            {opp.type === "Doctorado" && <><GraduationCap size={10} />Doctorado</>}
+            {opp.type === "Fondos" && <><Wallet size={10} />Fondos</>}
+            {opp.type === "Internacional" && <><Globe2 size={10} />Internacional</>}
+            {opp.type === "Laboral" && <><JobIcon size={10} />Laboral</>}
+            {!["Postdoc","Doctorado","Fondos","Internacional","Laboral"].includes(opp.type) && opp.type}
+          </span>
           {opp.hot && <span style={{ fontSize: 10, fontWeight: 700, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}><Zap size={9} />Hot</span>}
         </div>
         <h2 style={{ fontSize: 17, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", lineHeight: 1.3 }}>{opp.title}</h2>
-        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept}  Fecha lmite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
+        <p style={{ fontSize: 12, color: "var(--text-muted)", marginBottom: 16 }}>{opp.dept} — <Clock size={10} style={{ display: "inline", verticalAlign: "middle", marginRight: 2 }} />Fecha límite: <span style={{ color: opp.hot ? "var(--accent)" : "var(--text-tertiary)", fontWeight: 700 }}>{opp.deadline}</span></p>
         <p style={{ fontSize: 13, color: "var(--text-secondary)", lineHeight: 1.7, marginBottom: 20 }}>{opp.desc}</p>
         <button style={{
           width: "100%", padding: "12px", borderRadius: 10, border: "none",
@@ -910,19 +918,26 @@ export default function App() {
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
-                  el.style.borderColor = "rgba(132,204,22,0.28)";
-                  el.style.transform = "translateY(-2px)";
-                  el.style.boxShadow = "0 8px 24px rgba(0,0,0,0.12), 0 0 12px rgba(132,204,22,0.12), 0 0 0 1px rgba(132,204,22,0.10)";
+                  el.style.borderColor = "rgba(132,204,22,0.35)";
+                  el.style.transform = "translateY(-2px) scale(1.01)";
+                  el.style.boxShadow = "0 0 0 1px rgba(132,204,22,0.14), 0 16px 56px rgba(0,0,0,0.65), 0 0 24px rgba(132,204,22,0.07)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
                   el.style.borderColor = "var(--card-border)";
-                  el.style.transform = "translateY(0)";
+                  el.style.transform = "translateY(0) scale(1)";
                   el.style.boxShadow = "none";
                 }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
-                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
+                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
+                      {opp.type === "Postdoc" && <><GraduationCap size={10} />Postdoc</>}
+                      {opp.type === "Doctorado" && <><GraduationCap size={10} />Doctorado</>}
+                      {opp.type === "Fondos" && <><Wallet size={10} />Fondos</>}
+                      {opp.type === "Internacional" && <><Globe2 size={10} />Internacional</>}
+                      {opp.type === "Laboral" && <><JobIcon size={10} />Laboral</>}
+                      {!["Postdoc","Doctorado","Fondos","Internacional","Laboral"].includes(opp.type) && opp.type}
+                    </span>
                     {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={10} color="var(--hot-color)" /></span>}
                   </div>
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
