@@ -137,19 +137,16 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
 function MatchBadge({ score }: { score: number }) {
   const isHigh = score >= 90;
   const isMid  = score >= 70 && score < 90;
-  const border = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   const color  = isHigh ? "var(--match-high)" : isMid ? "var(--match-mid)" : "var(--match-low)";
   const bg     = isHigh ? "var(--match-high-bg)" : isMid ? "var(--match-mid-bg)" : "var(--match-low-bg)";
   return (
     <span style={{
-      display: "inline-flex", alignItems: "center", gap: 3,
-      fontSize: 9.5, fontWeight: 800,
+      display: "inline-flex", alignItems: "center",
+      fontSize: 10, fontWeight: 700,
       color, background: bg,
-      border: `1px solid ${border}`,
-      padding: "2.5px 7px", borderRadius: 20,
-      letterSpacing: "0.01em", flexShrink: 0, lineHeight: 1.2,
+      padding: "2px 7px", borderRadius: 20,
+      letterSpacing: "0.01em", flexShrink: 0,
     }}>
-      {isHigh && <span style={{ width: 3, height: 3, borderRadius: "50%", background: color, flexShrink: 0, display: "inline-block" }} />}
       {score}%
     </span>
   );
@@ -535,10 +532,11 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
               <div style={{
                 maxWidth: "70%", padding: "10px 14px", borderRadius: 16,
                 background: msg.from === "me" ? "var(--accent)" : "var(--surface)",
-                color: msg.from === "me" ? "#000" : "var(--text-primary)",
+                color: msg.from === "me" ? "#1a2e00" : "var(--text-primary)",
                 fontSize: 13, lineHeight: 1.5,
                 borderBottomRightRadius: msg.from === "me" ? "4px" : "16px",
                 borderBottomLeftRadius: msg.from === "me" ? "16px" : "4px",
+                boxShadow: msg.from === "me" ? "0 2px 8px rgba(132,204,22,0.20)" : "0 1px 3px rgba(0,0,0,0.06)",
               }}>
                 {msg.text}
                 <div style={{ fontSize: 9, opacity: 0.5, marginTop: 3, textAlign: "right" }}>{msg.ts}</div>
@@ -808,10 +806,25 @@ export default function App() {
               onClick={() => { setShowOnboarding(false); localStorage.setItem("rn_onboarding_skipped", "1"); }}
               style={{
                 width: "100%", padding: "13px 20px", borderRadius: 12,
-                border: "1px solid var(--accent-glow)", background: "var(--accent)", color: "#fff",
-                fontSize: 13, fontWeight: 800, cursor: "pointer",
+                border: "1px solid var(--card-border)", background: "var(--surface-hover)",
+                color: "var(--text-primary)",
+                fontSize: 13, fontWeight: 700, cursor: "pointer",
                 display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-                marginBottom: 10,
+                marginBottom: 10, transition: "all 0.18s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "var(--accent)";
+                e.currentTarget.style.color = "#1a2e00";
+                e.currentTarget.style.borderColor = "var(--accent)";
+                e.currentTarget.style.boxShadow = "0 4px 16px rgba(132,204,22,0.30)";
+                e.currentTarget.style.transform = "translateY(-1px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "var(--surface-hover)";
+                e.currentTarget.style.color = "var(--text-primary)";
+                e.currentTarget.style.borderColor = "var(--card-border)";
+                e.currentTarget.style.boxShadow = "none";
+                e.currentTarget.style.transform = "translateY(0)";
               }}
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
@@ -825,7 +838,7 @@ export default function App() {
             >
               Omitir por ahora
             </button>
-            <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 20, lineHeight: 1.5 }}>ORCID es un identificador persistente. Tu información se mantiene privada.</p>
+            <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 20, lineHeight: 1.5 }}>ORCID es un identificador persistente. Tu informacion se mantiene privada.</p>
           </div>
         </div>
       )}
@@ -916,18 +929,18 @@ export default function App() {
                   style={{
                     background: "var(--card-bg)", border: "1px solid var(--card-border)",
                     borderRadius: 14, padding: 18, cursor: "pointer",
-                    transition: "all 0.2s ease", display: "flex", flexDirection: "column", gap: 9,
+                    transition: "all 0.22s ease", display: "flex", flexDirection: "column", gap: 9,
                   }}
                   onMouseEnter={(e) => {
                     const el = e.currentTarget as HTMLDivElement;
-                    el.style.borderColor = "rgba(132,204,22,0.35)";
-                    el.style.transform = "translateY(-2px) scale(1.01)";
-                    el.style.boxShadow = "0 0 0 1px rgba(132,204,22,0.14), 0 16px 56px rgba(0,0,0,0.65), 0 0 24px rgba(132,204,22,0.07)";
+                    el.style.borderColor = "var(--accent-border)";
+                    el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(132,204,22,0.10)";
+                    el.style.transform = "translateY(-2px)";
                   }}
                   onMouseLeave={(e) => {
                     const el = e.currentTarget as HTMLDivElement;
                     el.style.borderColor = "var(--card-border)";
-                    el.style.transform = "translateY(0) scale(1)";
+                    el.style.transform = "translateY(0)";
                     el.style.boxShadow = "none";
                   }}
                 >
