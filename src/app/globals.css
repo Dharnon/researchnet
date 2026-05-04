@@ -83,7 +83,7 @@
   --header-border: rgba(229,231,235,0.80);
 }
 
-/* ── DARK MODE (variant-c: Warm Editorial — Amber Accent) ── */
+/* ── DARK MODE (variant-a-clean: White, Lime Accent #84cc16) ── */
 [data-theme="dark"] {
   --bg: #09090b;
   --bg-secondary: #0f0f10;
@@ -98,16 +98,16 @@
   --text-muted: #a1a1aa;
   --text-subtle: #71717a;
 
-  --accent: #F59E0B;
-  --accent-dim: rgba(245, 158, 11, 0.10);
-  --accent-hover: #FBBF24;
-  --accent-glow: rgba(245, 158, 11, 0.10);
-  --accent-border: rgba(245, 158, 11, 0.22);
+  --accent: #84cc16;
+  --accent-dim: rgba(132, 204, 22, 0.10);
+  --accent-hover: #a3e635;
+  --accent-glow: rgba(132, 204, 22, 0.10);
+  --accent-border: rgba(132, 204, 22, 0.22);
 
-  --open-dot: #F59E0B;
-  --open-dot-bg: rgba(245, 158, 11, 0.12);
-  --open-dot-border: rgba(245, 158, 11, 0.25);
-  --accent-faint: rgba(245, 158, 11, 0.05);
+  --open-dot: #84cc16;
+  --open-dot-bg: rgba(132, 204, 22, 0.12);
+  --open-dot-border: rgba(132, 204, 22, 0.25);
+  --accent-faint: rgba(132, 204, 22, 0.05);
 
   --tag-bg: #1a1a1e;
   --tag-border: #27272a;
@@ -117,16 +117,16 @@
   --card-border: #1e1e22;
 
   --shadow-card: 0 0 0 1px rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.50);
-  --shadow-card-hover: 0 0 0 1px rgba(245,158,11,0.15), 0 12px 48px rgba(0,0,0,0.70), 0 0 24px rgba(245,158,11,0.06);
+  --shadow-card-hover: 0 0 0 1px rgba(132,204,22,0.15), 0 12px 48px rgba(0,0,0,0.70), 0 0 24px rgba(132,204,22,0.06);
 
   /* Header glass — dark */
   --header-bg: rgba(9,9,11,0.88);
   --header-border: rgba(30,30,34,0.90);
 
-  /* Connected button — amber for variant-c */
-  --connected-bg: rgba(245,158,11,0.10);
-  --connected-color: #F59E0B;
-  --connected-border: rgba(245,158,11,0.25);
+  /* Connected button — lime for variant-a */
+  --connected-bg: rgba(132,204,22,0.10);
+  --connected-color: #a3e635;
+  --connected-border: rgba(132,204,22,0.25);
 }
 
 /* ── SHIMMER ANIMATION ── */
@@ -147,7 +147,7 @@
   animation: shimmer 1.4s ease-in-out infinite 0.2s;
 }
 
-/* ── SKELETON CARD (variant-b dark premium lime shimmer) ── */
+/* ── SKELETON CARD (variant-a: lime shimmer) ── */
 .skeleton-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -165,15 +165,15 @@
   position: absolute;
   inset: 0;
   border-radius: 14px;
-  background: linear-gradient(90deg, transparent 0%, rgba(217,119,6,0.04) 50%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(132,204,22,0.04) 50%, transparent 100%);
   background-size: 800px 100%;
   animation: shimmer 1.6s ease-in-out infinite;
   pointer-events: none;
 }
 
-/* ── DARK SKELETON SHIMMER (variant-c warm amber) ── */
+/* ── DARK SKELETON SHIMMER (variant-a lime) ── */
 [data-theme="dark"] .skeleton-shimmer {
-  background: linear-gradient(90deg, var(--border) 25%, rgba(217,119,6,0.08) 50%, var(--border) 75%);
+  background: linear-gradient(90deg, var(--border) 25%, rgba(132,204,22,0.08) 50%, var(--border) 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
@@ -541,7 +541,7 @@ select:focus-visible {
   z-index: 1;
 }
 .researcher-card:hover {
-  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border);
-  border-color: var(--accent-border);
+  box-shadow: var(--shadow-card-hover), 0 0 0 1px rgba(132,204,22,0.25);
+  border-color: rgba(132,204,22,0.35);
   transform: translateY(-2px);
 }
