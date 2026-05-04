@@ -658,7 +658,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           borderRadius: 7, border: "none",
           fontSize: 12, fontWeight: 600, cursor: "pointer",
           background: view === item.key ? "rgba(132,204,22,0.10)" : "transparent",
-          color: view === item.key ? "#84cc16" : "rgba(255,255,255,0.30)",
+          color: view === item.key ? "var(--accent)" : "rgba(255,255,255,0.30)",
           transition: "all 0.15s",
           display: "flex", alignItems: "center", justifyContent: "center",
         }}>
@@ -666,7 +666,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           {item.badge !== undefined && item.badge > 0 && (
             <span style={{
               position: "absolute", top: 2, right: 2,
-              background: item.key === "messages" ? "#ef4444" : "#84cc16",
+              background: item.key === "messages" ? "#ef4444" : "var(--accent)",
               color: "#000", fontSize: 7, fontWeight: 800,
               padding: "0.5px 3.5px", borderRadius: 20, minWidth: 13,
               textAlign: "center", lineHeight: 1.4,

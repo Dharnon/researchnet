@@ -26,12 +26,12 @@
   --open-dot-bg: rgba(132,204,22,0.08);
   --open-dot-border: rgba(132,204,22,0.20);
 
-  --tag-bg: #F5F4F0;
-  --tag-border: #E8E5DC;
-  --tag-text: #78716C;
+  --tag-bg: #1a1a1e;
+  --tag-border: #27272a;
+  --tag-text: #a1a1aa;
 
-  --card-bg: #FFFFFF;
-  --card-border: #E8E5DC;
+  --card-bg: #18181b;
+  --card-border: #1e1e22;
 
   --type-postdoc-bg: rgba(96, 165, 250, 0.10);
   --type-postdoc-text: #2563eb;
@@ -78,8 +78,8 @@
   --connected-border: rgba(132,204,22,0.25);
 
   /* Header glass */
-  --header-bg: rgba(249,250,251,0.92);
-  --header-border: rgba(229,231,235,0.80);
+  --header-bg: rgba(9,9,11,0.88);
+  --header-border: rgba(30,30,34,0.90);
 }
 
 /* -- LIGHT OVERRIDE (variant-b: never shown in practice, kept for completeness) -- */
