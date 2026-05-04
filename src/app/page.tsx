@@ -12,27 +12,27 @@ import {
 
 const researchers = [
   { id: 1, name: "Dra. Elena Vargas", role: "Profesora Titular", dept: "Ingeniería Biomédica", avatar: "EV", color: "#84cc16", tags: ["Machine Learning", "Neurociencia Computacional", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Investigo interfaces cerebro-computadora y modelos de aprendizaje profundo aplicados a señales neuronales." },
-  { id: 2, name: "Dr. Marcos Ibáñez", role: "Investigador Senior", dept: "Ciencias de la Computación", avatar: "MI", color: "#60a5fa", tags: ["NLP", "Large Language Models", "tica en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multilinge y los desafíos éticos que plantea la IA generativa." },
-  { id: 3, name: "Dra. Sofía Ríos", role: "Profesora Asociada", dept: "Biología Molecular", avatar: "SR", color: "#f472b6", tags: ["Genómica", "CRISPR", "Bioinformática"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para anlisis de variantes genticas y edicin génica." },
-  { id: 4, name: "Dr. Andrs Leal", role: "Profesor Asociado", dept: "Física Computacional", avatar: "AL", color: "#c084fc", tags: ["Computación Cuntica", "Simulacin", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Diseo algoritmos cunéticos para simulacin de sistemas complejos y optimización combinatoria." },
-  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Postdoctoral", dept: "Salud Pblica", avatar: "CF", color: "#D97706", tags: ["Epidemiología", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiolgicos para sistemas de alerta temprana." },
-  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Robótica e IA", avatar: "FM", color: "#34d399", tags: ["Robótica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepcin visual para robots auunomos en entornos no estructurados." },
+  { id: 2, name: "Dr. Marcos Ibáñez", role: "Investigador Senior", dept: "Ciencias de la Computación", avatar: "MI", color: "#60a5fa", tags: ["NLP", "Large Language Models", "Ética en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multilingüe y los desafíos éticos que plantea la IA generativa." },
+  { id: 3, name: "Dra. Sofía Ríos", role: "Profesora Asociada", dept: "Biología Molecular", avatar: "SR", color: "#f472b6", tags: ["Genómica", "CRISPR", "Bioinformática"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para análisis de variantes genéticas y edición génica." },
+  { id: 4, name: "Dr. Andrés Leal", role: "Profesor Asociado", dept: "Física Computacional", avatar: "AL", color: "#c084fc", tags: ["Computación Cuántica", "Simulación", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Diseño algoritmos cuánticos para simulación de sistemas complejos y optimización combinatoria." },
+  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Postdoctoral", dept: "Salud Pública", avatar: "CF", color: "#D97706", tags: ["Epidemiología", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiológicos para sistemas de alerta temprana." },
+  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Robótica e IA", avatar: "FM", color: "#34d399", tags: ["Robótica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepción visual para robots autónomos en entornos no estructurados." },
 ];
 
 const opportunities = [
-  { id: 1, title: "Postdoc — IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posición postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomdica." },
-  { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las Áreas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigación en todas las Áreas. Hasta $300.000 USD por proyecto, duración 4 aos." },
-  { id: 3, title: "Colaboracin EU Horizon — Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco colaborador para propuesta EU Horizon sobre computacin cuántica aplicada a optimización combinatoria." },
-  { id: 4, title: "Tesis Doctoral — NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Busqueda de eestudiante doctoral para investigación en modelos de lenguaje multilinge para lenguas minoritarias." },
-  { id: 5, title: "Research Engineer — Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robotics. Salario competitivo + equity." },
+  { id: 1, title: "Postdoc — IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posición postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomédica." },
+  { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las Áreas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigación en todas las áreas. Hasta $300.000 USD por proyecto, duración 4 años." },
+  { id: 3, title: "Colaboración EU Horizon — Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco colaborador para propuesta EU Horizon sobre computación cuántica aplicada a optimización combinatoria." },
+  { id: 4, title: "Tesis Doctoral — NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Búsqueda de estudiante doctoral para investigación en modelos de lenguaje multilingüe para lenguas minoritarias." },
+  { id: 5, title: "Research Engineer — Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robótica. Salario competitivo + equity." },
   { id: 6, title: "Beca Marie Curie — Climate AI", dept: "Todas las Áreas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio climático. Sin restricciones de nacionalidad." },
 ];
 
 const mockMessages = [
   { orcid: "0000-0002-1234-5678", name: "Dra. Elena Vargas", avatar: "EV", color: "#84cc16", messages: [
     { id: 1, from: "them", text: "Hola! Vi tu perfil y me interesa mucho tu trabajo en sistemas distribuidos. Estamos buscando colaboradores para un proyecto de IoT.", ts: "10:32" },
-    { id: 2, from: "me", text: "Hola Elena! Encantado de saludarte. Cuéntame ms sobre el proyecto, suena interesante.", ts: "10:35" },
-    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorizacin ambiental. No usamos LoRa y queramos explorar machine learning para fusionar datos.", ts: "10:37" },
+    { id: 2, from: "me", text: "Hola Elena! Encantado de saludarte. Cuéntame más sobre el proyecto, suena interesante.", ts: "10:35" },
+    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorización ambiental. No usamos LoRa y queríamos explorar machine learning para fusionar datos.", ts: "10:37" },
   ]},
   { orcid: "0000-0003-9876-5432", name: "Dr. Felipe Mora", avatar: "FM", color: "#34d399", messages: [
     { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podramos colaborar.", ts: "Ayer" },
@@ -41,8 +41,8 @@ const mockMessages = [
 
 const userProfile = {
   orcid: "0000-0001-2345-6789",
-  name: "Jos Ignacio",
-  surname: "Hernndez",
+  name: "José Ignacio",
+  surname: "Hernández",
   role: "Doctorando",
   dept: "Ingeniería de Sistemas",
   avatar: "JH",
@@ -960,35 +960,35 @@ export default function App() {
               <div style={{
                 position: "absolute", top: "50%", left: "50%",
                 transform: "translate(-50%, -55%)",
-                width: 140, height: 140,
+                width: 160, height: 160,
                 background: "radial-gradient(circle, var(--accent-dim) 0%, transparent 70%)",
                 pointerEvents: "none",
               }} />
-              <svg width="56" height="56" viewBox="0 0 64 64" fill="none" style={{ display: "block", margin: "0 auto 20px", position: "relative" }}>
-                <circle cx="32" cy="32" r="8" stroke="var(--border)" strokeWidth="1.5" fill="none"/>
-                <circle cx="32" cy="32" r="3" fill="#5b8fd4" opacity="0.7"/>
-                <circle cx="14" cy="18" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
-                <circle cx="50" cy="18" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
-                <circle cx="14" cy="46" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
-                <circle cx="50" cy="46" r="5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
-                <circle cx="32" cy="8" r="4" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.45"/>
-                <circle cx="32" cy="56" r="4" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.45"/>
-                <line x1="24" y1="27" x2="18" y2="21" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="40" y1="27" x2="46" y2="21" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="24" y1="37" x2="18" y2="43" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="40" y1="37" x2="46" y2="43" stroke="#5b8fd4" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="32" y1="24" x2="32" y2="12" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.35"/>
-                <line x1="32" y1="40" x2="32" y2="52" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.35"/>
-                <circle cx="14" cy="18" r="2" fill="#5b8fd4" opacity="0.40"/>
-                <circle cx="50" cy="18" r="2" fill="#5b8fd4" opacity="0.40"/>
-                <circle cx="14" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
-                <circle cx="50" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
+              <svg width="52" height="52" viewBox="0 0 64 64" fill="none" style={{ display: "block", margin: "0 auto 20px", position: "relative" }}>
+                <circle cx="32" cy="32" r="7" stroke="var(--border)" strokeWidth="1.5" fill="none"/>
+                <circle cx="32" cy="32" r="2.5" fill="var(--accent)" opacity="0.8"/>
+                <circle cx="13" cy="17" r="4.5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
+                <circle cx="51" cy="17" r="4.5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
+                <circle cx="13" cy="47" r="4.5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
+                <circle cx="51" cy="47" r="4.5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.55"/>
+                <circle cx="32" cy="7" r="3.5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.40"/>
+                <circle cx="32" cy="57" r="3.5" stroke="var(--border)" strokeWidth="1.5" fill="none" opacity="0.40"/>
+                <line x1="25.5" y1="26" x2="17.5" y2="20" stroke="var(--accent)" strokeWidth="1.2" strokeDasharray="3 2.5" opacity="0.50"/>
+                <line x1="38.5" y1="26" x2="46.5" y2="20" stroke="var(--accent)" strokeWidth="1.2" strokeDasharray="3 2.5" opacity="0.50"/>
+                <line x1="25.5" y1="38" x2="17.5" y2="44" stroke="var(--accent)" strokeWidth="1.2" strokeDasharray="3 2.5" opacity="0.50"/>
+                <line x1="38.5" y1="38" x2="46.5" y2="44" stroke="var(--accent)" strokeWidth="1.2" strokeDasharray="3 2.5" opacity="0.50"/>
+                <line x1="32" y1="24.5" x2="32" y2="11" stroke="var(--border)" strokeWidth="1.2" strokeDasharray="2.5 2.5" opacity="0.30"/>
+                <line x1="32" y1="39.5" x2="32" y2="53" stroke="var(--border)" strokeWidth="1.2" strokeDasharray="2.5 2.5" opacity="0.30"/>
+                <circle cx="13" cy="17" r="1.8" fill="var(--accent)" opacity="0.50"/>
+                <circle cx="51" cy="17" r="1.8" fill="var(--accent)" opacity="0.50"/>
+                <circle cx="13" cy="47" r="1.8" fill="var(--accent)" opacity="0.50"/>
+                <circle cx="51" cy="47" r="1.8" fill="var(--accent)" opacity="0.50"/>
               </svg>
-              <p style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.02em" }}>Tu red est&#160;vac&#237;a</p>
-              <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y con&#769;ctate para construir tu red de colaboracio&#769;n.</p>
+              <p style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", marginBottom: 8, letterSpacing: "-0.02em" }}>Tu red está vacía</p>
+              <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y contrate para construir tu red de colaboración.</p>
               <button onClick={() => setView("discover")} style={{
                 padding: "10px 22px", borderRadius: 10,
-                background: "var(--accent)", color: "#fff", border: "none",
+                background: "var(--accent)", color: "#000", border: "none",
                 fontSize: 13, fontWeight: 700, cursor: "pointer",
               }}>Descubrir investigadores</button>
             </div>
