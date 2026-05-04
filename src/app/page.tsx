@@ -32,18 +32,18 @@ const opportunities = [
 const mockMessages = [
   { orcid: "0000-0002-1234-5678", name: "Dra. Elena Vargas", avatar: "EV", color: "#84cc16", messages: [
     { id: 1, from: "them", text: "Hola! Vi tu perfil y me interesa mucho tu trabajo en sistemas distribuidos. Estamos buscando colaboradores para un proyecto de IoT.", ts: "10:32" },
-    { id: 2, from: "me", text: "Hola Elena! Encantado de saludarte. Cuéntame ms sobre el proyecto, suena interesante.", ts: "10:35" },
-    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorizacin ambiental. No usamos LoRa y queramos explorar machine learning para fusionar datos.", ts: "10:37" },
+    { id: 2, from: "me", text: "Hola Elena! Encantado de saludarte. Cuéntame más sobre el proyecto, suena interesante.", ts: "10:35" },
+    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorizacin ambiental. No usamos LoRa y queríamos explorar machine learning para fusionar datos.", ts: "10:37" },
   ]},
   { orcid: "0000-0003-9876-5432", name: "Dr. Felipe Mora", avatar: "FM", color: "#34d399", messages: [
-    { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podramos colaborar.", ts: "Ayer" },
+    { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podríamos colaborar.", ts: "Ayer" },
   ]},
 ];
 
 const userProfile = {
   orcid: "0000-0001-2345-6789",
-  name: "Jos Ignacio",
-  surname: "Hernndez",
+  name: "José Ignacio",
+  surname: "Hernández",
   role: "Doctorando",
   dept: "Ingeniería de Sistemas",
   avatar: "JH",
