@@ -321,37 +321,80 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
   onConnect: (e: React.MouseEvent) => void;
   isConnected: boolean;
 }) {
+  const [hovered, setHovered] = useState(false);
   return (
     <div
       onClick={onSelect}
-      className="card-accent researcher-card"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="card-accent"
       style={{
-        background: "var(--surface)",
-        border: "1px solid var(--border)",
-        borderRadius: 14,
-        padding: 20,
+        background: "var(--card-bg)",
+        border: `1px solid ${hovered ? "rgba(217,119,6,0.40)" : "var(--card-border)"}`,
+        borderRadius: 16,
+        padding: "22px",
         cursor: "pointer",
         display: "flex",
         flexDirection: "column",
-        gap: 14,
+        gap: 16,
+        boxShadow: hovered
+          ? "0 4px 16px rgba(0,0,0,0.35), 0 12px 40px rgba(0,0,0,0.20), 0 0 0 1px rgba(217,119,6,0.20), 0 0 20px rgba(217,119,6,0.07)"
+          : "0 1px 3px rgba(0,0,0,0.25), 0 4px 16px rgba(0,0,0,0.12), 0 0 0 1px rgba(255,255,255,0.03)",
+        transform: hovered ? "translateY(-3px)" : "translateY(0)",
+        transition: "all 0.24s cubic-bezier(0.34, 1.56, 0.64, 1)",
+        position: "relative",
+        overflow: "hidden",
+        fontFamily: "'DM Sans', system-ui, sans-serif",
       }}
     >
-      <div style={{ display: "flex", alignItems: "flex-start", gap: 12 }}>
-        <Avatar initials={researcher.avatar} color={researcher.color} size={44} />
+      {/* Warm top gradient */}
+      <div style={{
+        position: "absolute", top: 0, left: 0, right: 0, height: 80,
+        background: "linear-gradient(180deg, rgba(217,119,6,0.05) 0%, transparent 100%)",
+        opacity: hovered ? 1 : 0,
+        transition: "opacity 0.24s ease",
+        pointerEvents: "none",
+        borderRadius: "16px 16px 0 0",
+      }} />
+      {/* Left amber bar — editorial accent */}
+      <div style={{
+        position: "absolute", top: 0, left: 0, width: 3, height: "100%",
+        background: "linear-gradient(180deg, var(--accent), var(--accent-hover))",
+        opacity: hovered ? 1 : 0,
+        transition: "opacity 0.24s ease",
+        borderRadius: "16px 0 0 16px",
+        pointerEvents: "none",
+      }} />
+
+      <div style={{ display: "flex", alignItems: "flex-start", gap: 14, position: "relative" }}>
+        {/* Avatar — warm glow on hover */}
+        <div style={{
+          width: 48, height: 48, borderRadius: "50%",
+          background: `radial-gradient(circle at 35% 35%, ${researcher.color}ee, ${researcher.color}55 45%, ${researcher.color}18)`,
+          border: `1.5px solid ${researcher.color}50`,
+          boxShadow: `0 0 0 1px ${researcher.color}20, inset 0 1px 2px rgba(255,255,255,0.12), 0 3px 10px ${researcher.color}25`,
+          display: "flex", alignItems: "center", justifyContent: "center",
+          fontSize: 14, fontWeight: 800, color: researcher.color,
+          flexShrink: 0, letterSpacing: "-0.03em",
+          transition: "box-shadow 0.22s ease",
+          filter: hovered ? `drop-shadow(0 0 10px ${researcher.color}45)` : "none",
+        }}>
+          {researcher.avatar}
+        </div>
         <div style={{ flex: 1, minWidth: 0 }}>
-          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
-            <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2 }}>{researcher.name}</span>
-            <div style={{ opacity: 0.7 }}><MatchBadge score={researcher.match} /></div>
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 4 }}>
+            <span style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.25, letterSpacing: "-0.01em" }}>{researcher.name}</span>
+            <div style={{ opacity: 0.8 }}><MatchBadge score={researcher.match} /></div>
           </div>
           <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
-          <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 1 }}>{researcher.dept}</p>
+          <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 2 }}>{researcher.dept}</p>
         </div>
         {researcher.open && (
           <span style={{
             display: "inline-flex", alignItems: "center", gap: 4,
             fontSize: 9, fontWeight: 700, color: "var(--open-dot)",
             background: "var(--open-dot-bg)", border: "1px solid var(--open-dot-border)",
-            padding: "2px 6px", borderRadius: 20,
+            padding: "3px 7px", borderRadius: 20,
             textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0, alignSelf: "flex-start",
           }}>
             <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--open-dot)", display: "inline-block" }} />
@@ -359,29 +402,52 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           </span>
         )}
       </div>
-      <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
+
+      {/* Bio preview */}
+      <p style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.6, overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", position: "relative" }}>
+        {researcher.bio}
+      </p>
+
+      {/* Tags */}
+      <div style={{ display: "flex", gap: 5, flexWrap: "wrap", position: "relative" }}>
         {researcher.tags.slice(0, 3).map((tag) => (
           <span key={tag} style={{
             fontSize: 10, fontWeight: 600, color: "var(--tag-text)",
             background: "var(--tag-bg)", border: "1px solid var(--tag-border)",
-            padding: "3px 8px", borderRadius: 20,
+            padding: "3px 8px", borderRadius: 20, letterSpacing: "0.01em",
           }}>{tag}</span>
         ))}
       </div>
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <div style={{ display: "flex", gap: 10 }}>
-          <span style={{ fontSize: 11, color: "var(--text-subtle)" }}>
+
+      {/* Footer */}
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", position: "relative" }}>
+        <div style={{ display: "flex", gap: 12 }}>
+          <span style={{ fontSize: 11, color: "var(--text-subtle)", display: "flex", alignItems: "center", gap: 4 }}>
+            <BookOpen size={10} color="var(--text-tertiary)" />
             <span style={{ fontWeight: 700, color: "var(--text-muted)" }}>{researcher.pubs}</span> papers
           </span>
-          <span style={{ fontSize: 11, color: "var(--text-subtle)" }}>
+          <span style={{ fontSize: 11, color: "var(--text-subtle)", display: "flex", alignItems: "center", gap: 4 }}>
+            <Briefcase size={10} color="var(--text-tertiary)" />
             <span style={{ fontWeight: 700, color: "var(--text-muted)" }}>{researcher.projects}</span> projects
           </span>
         </div>
         <button
-          onClick={onConnect}
-          className={`b-connect-btn ${isConnected ? "connected" : ""}`}
+          onClick={(e) => { e.stopPropagation(); onConnect(e); }}
+          style={{
+            padding: "7px 16px",
+            borderRadius: 9,
+            border: `1px solid ${isConnected ? "rgba(217,119,6,0.28)" : hovered ? "rgba(217,119,6,0.60)" : "rgba(217,119,6,0.25)"}`,
+            fontSize: 11, fontWeight: 700,
+            cursor: "pointer",
+            background: isConnected ? "rgba(217,119,6,0.10)" : hovered ? "var(--accent)" : "transparent",
+            color: isConnected ? "#92400e" : hovered ? "#fff" : "var(--accent)",
+            display: "flex", alignItems: "center", gap: 4,
+            transition: "all 0.18s ease",
+            letterSpacing: "0.01em",
+            boxShadow: !isConnected && hovered ? "0 3px 14px rgba(217,119,6,0.35)" : "none",
+          }}
         >
-          {isConnected ? <><Check size={13} /> Conectado</> : "Conectar"}
+          {isConnected ? <><Check size={12} /> Conectado</> : "Conectar"}
         </button>
       </div>
     </div>
