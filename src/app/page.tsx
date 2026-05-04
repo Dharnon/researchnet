@@ -137,19 +137,16 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
 function MatchBadge({ score }: { score: number }) {
   const isHigh = score >= 90;
   const isMid  = score >= 70 && score < 90;
-  const border = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   const color  = isHigh ? "var(--match-high)" : isMid ? "var(--match-mid)" : "var(--match-low)";
   const bg     = isHigh ? "var(--match-high-bg)" : isMid ? "var(--match-mid-bg)" : "var(--match-low-bg)";
   return (
     <span style={{
-      display: "inline-flex", alignItems: "center", gap: 3,
-      fontSize: 9.5, fontWeight: 800,
+      display: "inline-flex", alignItems: "center",
+      fontSize: 10, fontWeight: 700,
       color, background: bg,
-      border: `1px solid ${border}`,
-      padding: "2.5px 7px", borderRadius: 20,
-      letterSpacing: "0.01em", flexShrink: 0, lineHeight: 1.2,
+      padding: "2px 7px", borderRadius: 20,
+      letterSpacing: "0.01em", flexShrink: 0,
     }}>
-      {isHigh && <span style={{ width: 3, height: 3, borderRadius: "50%", background: color, flexShrink: 0, display: "inline-block" }} />}
       {score}%
     </span>
   );
@@ -926,13 +923,13 @@ export default function App() {
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
                   el.style.borderColor = "rgba(217,119,6,0.35)";
-                  el.style.transform = "translateY(-2px) scale(1.01)";
-                  el.style.boxShadow = "0 0 0 1px rgba(217,119,6,0.14), 0 16px 56px rgba(0,0,0,0.65), 0 0 24px rgba(217,119,6,0.07)";
+                  el.style.transform = "translateY(-2px)";
+                  el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.12), 0 0 0 1px rgba(217,119,6,0.10)";
                 }}
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLDivElement;
                   el.style.borderColor = "var(--card-border)";
-                  el.style.transform = "translateY(0) scale(1)";
+                  el.style.transform = "translateY(0)";
                   el.style.boxShadow = "none";
                 }}
                 >
