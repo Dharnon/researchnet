@@ -6,43 +6,44 @@ import {
   Briefcase, Clock, X, Globe,
   ExternalLink, ChevronRight, MessageCircle,
   Send, ArrowLeft, Check, Circle,
+  GraduationCap, Wallet, Globe2, Briefcase as JobIcon,
 } from "lucide-react";
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
 const researchers = [
   { id: 1, name: "Dra. Elena Vargas", role: "Profesora Titular", dept: "Ingeniería Biomédica", avatar: "EV", color: "#84cc16", tags: ["Machine Learning", "Neurociencia Computacional", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Investigo interfaces cerebro-computadora y modelos de aprendizaje profundo aplicados a señales neuronales." },
-  { id: 2, name: "Dr. Marcos Ibáñez", role: "Investigador Senior", dept: "Ciencias de la Computación", avatar: "MI", color: "#60a5fa", tags: ["NLP", "Large Language Models", "tica en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multilinge y los desafíos éticos que plantea la IA generativa." },
-  { id: 3, name: "Dra. Sofía Ríos", role: "Profesora Asociada", dept: "Biología Molecular", avatar: "SR", color: "#f472b6", tags: ["Genómica", "CRISPR", "Bioinformática"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para anlisis de variantes genticas y edicin génica." },
-  { id: 4, name: "Dr. Andrs Leal", role: "Profesor Asociado", dept: "Física Computacional", avatar: "AL", color: "#c084fc", tags: ["Computación Cuntica", "Simulacin", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Diseo algoritmos cunéticos para simulacin de sistemas complejos y optimización combinatoria." },
-  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Postdoctoral", dept: "Salud Pblica", avatar: "CF", color: "#D97706", tags: ["Epidemiología", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiolgicos para sistemas de alerta temprana." },
-  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Robótica e IA", avatar: "FM", color: "#34d399", tags: ["Robótica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepcin visual para robots auunomos en entornos no estructurados." },
+  { id: 2, name: "Dr. Marcos Ibáñez", role: "Investigador Senior", dept: "Ciencias de la Computación", avatar: "MI", color: "#60a5fa", tags: ["NLP", "Large Language Models", "Ética en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multilingüe y los desafíos éticos que plantea la IA generativa." },
+  { id: 3, name: "Dra. Sofía Ríos", role: "Profesora Asociada", dept: "Biología Molecular", avatar: "SR", color: "#f472b6", tags: ["Genómica", "CRISPR", "Bioinformática"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para análisis de variantes genéticas y edición génica." },
+  { id: 4, name: "Dr. Andrés Leal", role: "Profesor Asociado", dept: "Física Computacional", avatar: "AL", color: "#c084fc", tags: ["Computación Cuántica", "Simulación", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Diseño algoritmos cuánticos para simulación de sistemas complejos y optimización combinatoria." },
+  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Postdoctoral", dept: "Salud Pública", avatar: "CF", color: "#D97706", tags: ["Epidemiología", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiológicos para sistemas de alerta temprana." },
+  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Robótica e IA", avatar: "FM", color: "#34d399", tags: ["Robótica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepción visual para robots autónomos en entornos no estructurados." },
 ];
 
 const opportunities = [
-  { id: 1, title: "Postdoc — IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posición postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomdica." },
-  { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las Áreas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigación en todas las Áreas. Hasta $300.000 USD por proyecto, duración 4 aos." },
-  { id: 3, title: "Colaboracin EU Horizon — Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco colaborador para propuesta EU Horizon sobre computacin cuántica aplicada a optimización combinatoria." },
-  { id: 4, title: "Tesis Doctoral — NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Busqueda de eestudiante doctoral para investigación en modelos de lenguaje multilinge para lenguas minoritarias." },
-  { id: 5, title: "Research Engineer — Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robotics. Salario competitivo + equity." },
+  { id: 1, title: "Postdoc — IA aplicada a salud", dept: "Biomédica + CS", deadline: "30 Abr", type: "Postdoc", hot: true, desc: "Posición postdoctoral para investigar aplicaciones de machine learning en datos de salud. Requiere doctorado reciente en CS o biomédica." },
+  { id: 2, title: "Convocatoria ANID Fondecyt Regular 2026", dept: "Todas las Áreas", deadline: "15 May", type: "Fondos", hot: true, desc: "Fondos regulares para proyectos de investigación en todas las áreas. Hasta $300.000 USD por proyecto, duración 4 años." },
+  { id: 3, title: "Colaboración EU Horizon — Quantum", dept: "Física Comp.", deadline: "1 Jun", type: "Internacional", hot: false, desc: "Busco colaborador para propuesta EU Horizon sobre computación cuántica aplicada a optimización combinatoria." },
+  { id: 4, title: "Tesis Doctoral — NLP Multilingüe", dept: "CS", deadline: "20 May", type: "Doctorado", hot: false, desc: "Búsqueda de estudiante doctoral para investigación en modelos de lenguaje multilingüe para lenguas minoritarias." },
+  { id: 5, title: "Research Engineer — Vision Systems", dept: "Robótica e IA", deadline: "10 May", type: "Laboral", hot: true, desc: "Research engineer para desarrollar sistemas de visión por computador en robótica. Salario competitivo + equity." },
   { id: 6, title: "Beca Marie Curie — Climate AI", dept: "Todas las Áreas", deadline: "25 Jun", type: "Internacional", hot: false, desc: "Beca postdoctoral europea para proyectos de IA aplicada al cambio climático. Sin restricciones de nacionalidad." },
 ];
 
 const mockMessages = [
   { orcid: "0000-0002-1234-5678", name: "Dra. Elena Vargas", avatar: "EV", color: "#84cc16", messages: [
     { id: 1, from: "them", text: "Hola! Vi tu perfil y me interesa mucho tu trabajo en sistemas distribuidos. Estamos buscando colaboradores para un proyecto de IoT.", ts: "10:32" },
-    { id: 2, from: "me", text: "Hola Elena! Encantado de saludarte. Cuéntame ms sobre el proyecto, suena interesante.", ts: "10:35" },
-    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorizacin ambiental. No usamos LoRa y queramos explorar machine learning para fusionar datos.", ts: "10:37" },
+    { id: 2, from: "me", text: "Hola Elena! Encantado de saludarte. Cuéntame más sobre el proyecto, suena interesante.", ts: "10:35" },
+    { id: 3, from: "them", text: "Es un proyecto sobre sensores distribuidos para monitorización ambiental. No usamos LoRa y queríamos explorar machine learning para fusionar datos.", ts: "10:37" },
   ]},
   { orcid: "0000-0003-9876-5432", name: "Dr. Felipe Mora", avatar: "FM", color: "#34d399", messages: [
-    { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podramos colaborar.", ts: "Ayer" },
+    { id: 1, from: "them", text: "Hey! Tu perfil de IoT me interesa. Tengo un proyecto de robotics donde podríamos colaborar.", ts: "Ayer" },
   ]},
 ];
 
 const userProfile = {
   orcid: "0000-0001-2345-6789",
-  name: "Jos Ignacio",
-  surname: "Hernndez",
+  name: "José Ignacio",
+  surname: "Hernández",
   role: "Doctorando",
   dept: "Ingeniería de Sistemas",
   avatar: "JH",
@@ -910,11 +911,33 @@ export default function App() {
                 <div
                   key={opp.id}
                   onClick={() => setSelectedOpp(opp)}
-                  className="opp-card"
-                  style={{ "--opp-accent": color } as React.CSSProperties}
+                  style={{
+                    background: "var(--card-bg)", border: "1px solid var(--card-border)",
+                    borderRadius: 14, padding: 18, cursor: "pointer",
+                    transition: "all 0.2s ease", display: "flex", flexDirection: "column", gap: 9,
+                  }}
+                  onMouseEnter={(e) => {
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.borderColor = "rgba(132,204,22,0.35)";
+                    el.style.transform = "translateY(-2px) scale(1.01)";
+                    el.style.boxShadow = "0 0 0 1px rgba(132,204,22,0.14), 0 16px 56px rgba(0,0,0,0.65), 0 0 24px rgba(132,204,22,0.07)";
+                  }}
+                  onMouseLeave={(e) => {
+                    const el = e.currentTarget as HTMLDivElement;
+                    el.style.borderColor = "var(--card-border)";
+                    el.style.transform = "translateY(0) scale(1)";
+                    el.style.boxShadow = "none";
+                  }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
-                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em" }}>{opp.type}</span>
+                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
+                      {opp.type === "Postdoc" && <><GraduationCap size={10} />Postdoc</>}
+                      {opp.type === "Doctorado" && <><GraduationCap size={10} />Doctorado</>}
+                      {opp.type === "Fondos" && <><Wallet size={10} />Fondos</>}
+                      {opp.type === "Internacional" && <><Globe2 size={10} />Internacional</>}
+                      {opp.type === "Laboral" && <><JobIcon size={10} />Laboral</>}
+                      {!["Postdoc","Doctorado","Fondos","Internacional","Laboral"].includes(opp.type) && opp.type}
+                    </span>
                     {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={10} color="var(--hot-color)" /></span>}
                   </div>
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
@@ -977,15 +1000,13 @@ export default function App() {
                 <circle cx="50" cy="46" r="2" fill="#5b8fd4" opacity="0.40"/>
               </svg>
               <p style={{ fontSize: 16, fontWeight: 600, color: "var(--text-secondary)", marginBottom: 8, letterSpacing: "-0.01em" }}>Tu red está vacía</p>
-              <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y contráctate para construir tu red de colaboración.</p>
+              <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y conéctate para construir tu red de colaboración.</p>
               <button
                 onClick={() => setView("discover")}
                 style={{
                   padding: "10px 22px", borderRadius: 10,
                   background: "var(--accent)", color: "#000", border: "none",
                   fontSize: 13, fontWeight: 700, cursor: "pointer",
-                  boxShadow: "0 2px 12px rgba(132,204,22,0.28), 0 0 20px rgba(132,204,22,0.10)",
-                  transition: "all 0.18s ease",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "translateY(-1px)";
@@ -993,7 +1014,7 @@ export default function App() {
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "0 2px 12px rgba(132,204,22,0.28), 0 0 20px rgba(132,204,22,0.10)";
+                  e.currentTarget.style.boxShadow = "none";
                 }}
               >Descubrir investigadores</button>
             </div>
@@ -1052,7 +1073,7 @@ export default function App() {
                     </span>
                   )}
                 </div>
-                <p style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontSize: 14, color: "var(--text-muted)", marginBottom: 2 }}>{userProfile.role}</p>
+                <p style={{ fontSize: 14, color: "var(--text-muted)", marginBottom: 2 }}>{userProfile.role}</p>
                 <p style={{ fontSize: 12, color: "var(--text-subtle)" }}>{userProfile.dept}</p>
               </div>
               <button style={{ padding: "8px 16px", borderRadius: 10, border: "1px solid var(--border)", background: "transparent", color: "var(--text-muted)", fontSize: 12, fontWeight: 700, cursor: "pointer", flexShrink: 0 }}>
