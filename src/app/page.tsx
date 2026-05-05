@@ -337,16 +337,6 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         pointerEvents: "none",
         borderRadius: "16px 16px 0 0",
       }} />
-      {/* Left accent bar */}
-      <div style={{
-        position: "absolute", top: 0, left: 0, width: 3, height: "100%",
-        background: "linear-gradient(180deg, var(--accent), var(--accent-hover))",
-        opacity: 0,
-        transition: "opacity 0.22s ease",
-        borderRadius: "16px 0 0 16px",
-        pointerEvents: "none",
-      }} />
-
       {/* Card content */}
       <div style={{ display: "flex", alignItems: "flex-start", gap: 12, position: "relative" }}>
         <div style={{
@@ -510,8 +500,8 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
             }}>
               <div style={{
                 maxWidth: "70%", padding: "10px 14px", borderRadius: 16,
-                background: msg.from === "me" ? "var(--accent)" : "var(--surface)",
-                color: msg.from === "me" ? "#000" : "var(--text-primary)",
+                background: msg.from === "me" ? "#1a1a2e" : "var(--surface)",
+                color: msg.from === "me" ? "#e2e8f0" : "var(--text-primary)",
                 fontSize: 13, lineHeight: 1.5,
                 borderBottomRightRadius: msg.from === "me" ? "4px" : "16px",
                 borderBottomLeftRadius: msg.from === "me" ? "16px" : "4px",
@@ -888,8 +878,8 @@ export default function App() {
       {view === "opportunities" && (
         <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 className="style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 5 }}>Oportunidades</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Postdocs, becas, convocatorias y más</p
+            <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 5 }}>Oportunidades</h1>
+            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Postdocs, becas, convocatorias y más</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
             {opportunities.map((opp) => {
@@ -932,8 +922,8 @@ export default function App() {
       {view === "network" && (
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 className="style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 5 }}>Tu red</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p
+            <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 5 }}>Tu red</h1>
+            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
           </div>
           {connectedResearchers.length === 0 ? (
             <div style={{
@@ -1016,8 +1006,8 @@ export default function App() {
       {view === "profile" && (
         <div style={{ maxWidth: 800, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 className="style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 5 }}>Tu perfil</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Gestiona tu información de investigador</p
+            <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontSize: 26, fontWeight: 600, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 5 }}>Tu perfil</h1>
+            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Gestiona tu información de investigador</p>
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18, padding: 28, marginBottom: 16 }}>
             <div style={{ display: "flex", alignItems: "flex-start", gap: 20, marginBottom: 24 }}>
