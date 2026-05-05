@@ -661,3 +661,37 @@ select:focus-visible {
 }
 .send-btn:hover { background: var(--accent-hover); box-shadow: 0 2px 8px rgba(217,119,6,0.25); }
 .send-btn:active { transform: scale(0.96); }
+
+/* ─── MSG INPUT DARK (variant-c) ─── */
+.msg-input-dark {
+  background: var(--surface) !important;
+  border: 1.5px solid var(--border) !important;
+  border-radius: 10px !important;
+  color: var(--text-primary) !important;
+  font-size: 13px !important;
+  font-family: 'DM Sans', system-ui, sans-serif !important;
+  padding: 9px 14px !important;
+  outline: none !important;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  width: 100%;
+}
+.msg-input-dark::placeholder { color: var(--text-tertiary); }
+.msg-input-dark:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-dim) !important;
+}
+
+/* ─── CONNECTION DISCONNECT BUTTON ─── */
+.c-disconnect-btn {
+  width: 28px; height: 28px; border-radius: 7px;
+  border: 1px solid var(--border); background: transparent;
+  color: var(--text-tertiary); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all 0.15s; flex-shrink: 0;
+}
+.c-disconnect-btn:hover {
+  background: rgba(239,68,68,0.10); color: #ef4444;
+  border-color: rgba(239,68,68,0.30);
+}
+
+/* ─── HOT TOP STRIPE OVERRIDE FOR OPP CARDS ─── */
+.opp-card.hot::after { opacity: 1 !important; }
