@@ -115,18 +115,24 @@ function SkeletonLoader() {
 // ─── AVATAR ───────────────────────────────────────────────────────────────────
 
 function Avatar({ initials, color, size = 44 }: { initials: string; color: string; size?: number }) {
+  const [hovered, setHovered] = useState(false);
   const s = Math.round(size * 0.34);
   return (
-    <div style={{
-      width: size, height: size, borderRadius: "50%",
-      background: `radial-gradient(circle at 35% 35%, ${color}ee, ${color}55 45%, ${color}18)`,
-      border: `1.5px solid ${color}50`,
-      boxShadow: `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.08), 0 2px 6px rgba(0,0,0,0.4)`,
-      display: "flex", alignItems: "center", justifyContent: "center",
-      fontSize: s, fontWeight: 800, color,
-      flexShrink: 0, letterSpacing: "-0.03em",
-      transition: "box-shadow 0.22s ease, transform 0.22s ease",
-    }}>
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        width: size, height: size, borderRadius: "50%",
+        background: `radial-gradient(circle at 35% 35%, ${color}ee, ${color}55 45%, ${color}18)`,
+        border: `1.5px solid ${color}50`,
+        boxShadow: `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.08), 0 2px 6px rgba(0,0,0,0.4)${hovered ? `, 0 0 12px ${color}30` : ""}`,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        fontSize: s, fontWeight: 800, color,
+        flexShrink: 0, letterSpacing: "-0.03em",
+        transition: "box-shadow 0.22s ease, transform 0.22s ease",
+        transform: hovered ? "scale(1.05)" : "scale(1)",
+        cursor: "default",
+      }}>
       {initials}
     </div>
   );
@@ -343,19 +349,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
 
       {/* Card content */}
       <div style={{ display: "flex", alignItems: "flex-start", gap: 12, position: "relative" }}>
-        <div style={{
-          width: 48, height: 48, borderRadius: "50%",
-          background: `radial-gradient(circle at 35% 35%, ${researcher.color}ee, ${researcher.color}55 45%, ${researcher.color}18)`,
-          border: `1.5px solid ${researcher.color}40`,
-          boxShadow: `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.10), 0 3px 10px rgba(0,0,0,0.35)`,
-          display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: 14, fontWeight: 800, color: researcher.color,
-          flexShrink: 0, letterSpacing: "-0.03em",
-          transition: "box-shadow 0.22s ease",
-          filter: hovered ? `drop-shadow(0 0 8px ${researcher.color}40)` : "none",
-        }}>
-          {researcher.avatar}
-        </div>
+        <Avatar initials={researcher.avatar} color={researcher.color} size={48} />
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2, letterSpacing: "-0.01em" }}>{researcher.name}</span>
