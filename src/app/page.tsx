@@ -115,18 +115,24 @@ function SkeletonLoader() {
 // ─── AVATAR ───────────────────────────────────────────────────────────────────
 
 function Avatar({ initials, color, size = 44 }: { initials: string; color: string; size?: number }) {
+  const [hovered, setHovered] = useState(false);
   const s = Math.round(size * 0.34);
   return (
-    <div style={{
-      width: size, height: size, borderRadius: "50%",
-      background: `radial-gradient(circle at 35% 35%, ${color}ee, ${color}55 45%, ${color}18)`,
-      border: `1.5px solid ${color}50`,
-      boxShadow: `0 0 0 1px ${color}25, inset 0 1px 2px rgba(255,255,255,0.12), 0 2px 8px ${color}30`,
-      display: "flex", alignItems: "center", justifyContent: "center",
-      fontSize: s, fontWeight: 800, color,
-      flexShrink: 0, letterSpacing: "-0.03em",
-      transition: "box-shadow 0.22s ease, transform 0.22s ease",
-    }}>
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        width: size, height: size, borderRadius: "50%",
+        background: `radial-gradient(circle at 35% 35%, ${color}ee, ${color}55 45%, ${color}18)`,
+        border: `1.5px solid ${color}50`,
+        boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.12), 0 2px 8px rgba(0,0,0,0.15)${hovered ? `, 0 0 14px ${color}30` : ""}`,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        fontSize: s, fontWeight: 800, color,
+        flexShrink: 0, letterSpacing: "-0.03em",
+        transition: "box-shadow 0.22s ease, transform 0.22s ease",
+        transform: hovered ? "scale(1.05)" : "scale(1)",
+        cursor: "default",
+      }}>
       {initials}
     </div>
   );
@@ -875,7 +881,7 @@ export default function App() {
             {opportunities.map((opp, i) => {
               const color = TYPE_COLORS[opp.type] ?? "#6b7280";
               return (
-                <div key={opp.id} onClick={() => setSelectedOpp(opp)} className="opp-card">
+                <div key={opp.id} onClick={() => setSelectedOpp(opp)} className="opp-card card-enter" style={{ animationDelay: `${Math.min(i, 5) * 60}ms` }}>
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
                     <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
                       {opp.type === "Postdoc" && <><GraduationCap size={10} />Postdoc</>}
