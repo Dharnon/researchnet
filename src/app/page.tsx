@@ -518,7 +518,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
                 maxWidth: "70%", padding: "10px 14px", borderRadius: 16,
                 background: msg.from === "me" ? "var(--accent)" : "var(--surface)",
                 color: msg.from === "me" ? "#000" : "var(--text-primary)",
-                fontSize: 13, lineHeight: 1.5,
+                fontSize: 13, lineHeight: 1.55, fontWeight: 500,
                 borderBottomRightRadius: msg.from === "me" ? "4px" : "16px",
                 borderBottomLeftRadius: msg.from === "me" ? "16px" : "4px",
                 boxShadow: msg.from === "me" ? "inset 0 1px 1px rgba(255,255,255,0.12), 0 2px 8px var(--accent-glow)" : "inset 0 1px 1px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06)",
@@ -538,14 +538,8 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
             onChange={(e) => setNewMessage(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && onSendMessage()}
             placeholder="Escribe un mensaje..."
-            style={{
-              flex: 1, background: "var(--surface)", border: "1px solid var(--card-border)",
-              borderRadius: 24, padding: "10px 16px", color: "var(--text-primary)",
-              fontSize: 13, outline: "none",
-              transition: "border-color 0.15s, box-shadow 0.15s",
-            }}
-            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow)"; }}
-            onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--card-border)"; i.style.boxShadow = "none"; }}
+            style={{ flex: 1 }}
+            className="msg-input-dark"
           />
           <button
             onClick={onSendMessage}
