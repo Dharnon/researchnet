@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect, useRef } from "react";
 import {
@@ -273,7 +273,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 }
 
 // ─── TYPE COLORS (stable module-level constant) ───────────────────────────────
-const TYPE_COLORS: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#D97706", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };
+const TYPE_COLORS: Record<string, string> = { Postdoc: "var(--type-postdoc-text)", Fondos: "var(--type-fondos-text)", Internacional: "var(--type-intl-text)", Doctorado: "var(--type-phd-text)", Laboral: "var(--type-laboral-text)" };
 
 // ─── OPPORTUNITY DETAIL MODAL ────────────────────────────────────────────────
 
@@ -500,8 +500,8 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
             }}>
               <div style={{
                 maxWidth: "70%", padding: "10px 14px", borderRadius: 16,
-                background: msg.from === "me" ? "#1a1a2e" : "var(--surface)",
-                color: msg.from === "me" ? "#e2e8f0" : "var(--text-primary)",
+                background: msg.from === "me" ? "var(--accent)" : "var(--surface)",
+                color: msg.from === "me" ? "#1a2e00" : "var(--text-primary)",
                 fontSize: 13, lineHeight: 1.5,
                 borderBottomRightRadius: msg.from === "me" ? "4px" : "16px",
                 borderBottomLeftRadius: msg.from === "me" ? "16px" : "4px",
@@ -1074,3 +1074,5 @@ export default function App() {
     </div>
   );
 }
+
+
