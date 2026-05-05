@@ -323,26 +323,9 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
   return (
     <div
       onClick={onSelect}
-      className="card-accent researcher-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{
-        background: "var(--card-bg)",
-        border: `1px solid ${hovered ? "var(--accent-border)" : "var(--card-border)"}`,
-        borderRadius: 16,
-        padding: "20px",
-        cursor: "pointer",
-        display: "flex",
-        flexDirection: "column",
-        gap: 14,
-        boxShadow: hovered
-          ? "0 8px 24px rgba(0,0,0,0.10), 0 20px 48px rgba(0,0,0,0.06), 0 0 0 1px var(--accent-border)"
-          : "0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04)",
-        transform: hovered ? "translateY(-3px)" : "translateY(0)",
-        transition: "all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1)",
-        position: "relative",
-        overflow: "hidden",
-      }}
+      className={hovered ? "researcher-card-b is-hovered" : "researcher-card-b"}
     >
       {/* Top gradient shine */}
       <div style={{
