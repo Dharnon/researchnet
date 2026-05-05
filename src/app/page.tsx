@@ -500,12 +500,12 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
             }}>
               <div style={{
                 maxWidth: "70%", padding: "10px 14px", borderRadius: 16,
-                background: msg.from === "me" ? "#C2410C" : "var(--surface)",
-                color: msg.from === "me" ? "#FAF7F2" : "var(--text-primary)",
+                background: msg.from === "me" ? "var(--accent)" : "var(--surface)",
+                color: msg.from === "me" ? "#000" : "var(--text-primary)",
                 fontSize: 13, lineHeight: 1.5,
                 borderBottomRightRadius: msg.from === "me" ? "4px" : "16px",
                 borderBottomLeftRadius: msg.from === "me" ? "16px" : "4px",
-                boxShadow: msg.from === "me" ? "0 2px 8px rgba(194,65,12,0.25)" : "0 1px 3px rgba(44,24,16,0.06)",
+                boxShadow: msg.from === "me" ? "inset 0 1px 1px rgba(255,255,255,0.12), 0 2px 8px var(--accent-glow)" : "inset 0 1px 1px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06)",
                 fontFamily: "'Source Serif 4', Georgia, serif",
               }}>
                 {msg.text}
