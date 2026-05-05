@@ -328,7 +328,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       onMouseLeave={() => setHovered(false)}
       style={{
         background: "var(--card-bg)",
-        border: `1px solid ${hovered ? "rgba(132,204,22,0.30)" : "var(--card-border)"}`,
+        border: `1px solid ${hovered ? "var(--accent-border)" : "var(--card-border)"}`,
         borderRadius: 16,
         padding: "20px",
         cursor: "pointer",
@@ -336,7 +336,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         flexDirection: "column",
         gap: 14,
         boxShadow: hovered
-          ? "0 6px 20px rgba(0,0,0,0.09), 0 2px 6px rgba(0,0,0,0.05), 0 0 0 1px rgba(132,204,22,0.28)"
+          ? "0 6px 20px rgba(0,0,0,0.09), 0 2px 6px rgba(0,0,0,0.05), 0 0 0 1px var(--accent-border)"
           : "0 1px 2px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.03), 0 0 0 1px rgba(0,0,0,0.04)",
         transform: hovered ? "translateY(-2px)" : "translateY(0)",
         transition: "all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1)",
@@ -347,7 +347,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       {/* Top gradient shine */}
       <div style={{
         position: "absolute", top: 0, left: 0, right: 0, height: 80,
-        background: "linear-gradient(180deg, rgba(132,204,22,0.05) 0%, transparent 100%)",
+        background: "linear-gradient(180deg, var(--accent-faint) 0%, transparent 100%)",
         opacity: hovered ? 1 : 0,
         transition: "opacity 0.22s ease",
         pointerEvents: "none",
@@ -881,7 +881,7 @@ export default function App() {
             </select>
             <button onClick={() => setOnlyOpen((p) => !p)} style={{
               background: onlyOpen ? "var(--accent-dim)" : "var(--surface)",
-              border: `1px solid ${onlyOpen ? "rgba(132,204,22,0.18)" : "var(--border)"}`,
+              border: `1px solid ${onlyOpen ? "var(--accent-border)" : "var(--border)"}`,
               borderRadius: 10, color: onlyOpen ? "var(--accent)" : "var(--text-muted)",
               fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer", display: "flex", alignItems: "center", gap: 6,
             }}>
