@@ -614,7 +614,11 @@ select:focus-visible {
   gap: 12px;
   transition: border-color 0.18s ease;
 }
-.network-card:hover { border-color: var(--card-border); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+.network-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
+}
 
 /* -- CONVERSATION LIST ITEM -- */
 .conv-item {
