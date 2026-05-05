@@ -443,13 +443,8 @@ function NetworkCard({ researcher, onDisconnect, onMessage }: {
   onMessage: () => void;
 }) {
   return (
-    <div style={{
-      background: "var(--card-bg)", border: "1px solid var(--card-border)",
-      borderRadius: 14, padding: 16, display: "flex", alignItems: "center",
-      gap: 12, transition: "border-color 0.18s",
-    }}
-    onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--accent-border)"; }}
-    onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--card-border)"; }}
+    <div
+      className="network-card"
     >
       <Avatar initials={researcher.avatar} color={researcher.color} size={40} />
       <div style={{ flex: 1, minWidth: 0 }}>
@@ -581,15 +576,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
       ) : (
         <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
           {conversations.map((conv) => (
-            <div key={conv.orcid} onClick={() => onSelectConversation(conv.orcid)} style={{
-              display: "flex", alignItems: "center", gap: 12,
-              background: "var(--card-bg)", border: "1px solid var(--card-border)",
-              borderRadius: 14, padding: "14px 16px", cursor: "pointer",
-              transition: "all 0.15s",
-            }}
-            onMouseEnter={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = `${conv.color}30`; }}
-            onMouseLeave={(e) => { (e.currentTarget as HTMLDivElement).style.borderColor = "var(--card-border)"; }}
-            >
+            <div key={conv.orcid} onClick={() => onSelectConversation(conv.orcid)} className="conv-item">
               <Avatar initials={conv.avatar} color={conv.color} size={44} />
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 2 }}>
@@ -912,23 +899,7 @@ export default function App() {
                 <div
                   key={opp.id}
                   onClick={() => setSelectedOpp(opp)}
-                  style={{
-                    background: "var(--card-bg)", border: "1px solid var(--card-border)",
-                    borderRadius: 14, padding: 18, cursor: "pointer",
-                    transition: "all 0.22s ease", display: "flex", flexDirection: "column", gap: 9,
-                  }}
-                  onMouseEnter={(e) => {
-                    const el = e.currentTarget as HTMLDivElement;
-                    el.style.borderColor = "var(--accent-border)";
-                    el.style.boxShadow = "0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px var(--accent-border)";
-                    el.style.transform = "translateY(-2px)";
-                  }}
-                  onMouseLeave={(e) => {
-                    const el = e.currentTarget as HTMLDivElement;
-                    el.style.borderColor = "var(--card-border)";
-                    el.style.transform = "translateY(0)";
-                    el.style.boxShadow = "none";
-                  }}
+                  className="opp-card"
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
                     <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
@@ -1004,19 +975,7 @@ export default function App() {
               <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, margin: "0 auto 20px", lineHeight: 1.65 }}>Explora investigadores y conéctate para construir tu red de colaboración.</p>
               <button
                 onClick={() => setView("discover")}
-                style={{
-                  padding: "10px 22px", borderRadius: 10,
-                  background: "var(--accent)", color: "#000", border: "none",
-                  fontSize: 13, fontWeight: 700, cursor: "pointer",
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = "translateY(-1px)";
-                  e.currentTarget.style.boxShadow = "0 4px 16px var(--accent-glow), 0 0 24px var(--accent-glow)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
+                className="network-empty-cta"
               >Descubrir investigadores</button>
             </div>
           ) : (
@@ -1111,15 +1070,7 @@ export default function App() {
             <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones rápidas</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {[{ label: "Ver mi perfil público", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
-                <button key={action.label} style={{
-                  display: "flex", alignItems: "center", justifyContent: "space-between",
-                  padding: "12px 14px", borderRadius: 10, background: "var(--surface-hover)",
-                  border: "1px solid var(--border)", color: "var(--text-secondary)", fontSize: 12, fontWeight: 600,
-                  cursor: "pointer", textAlign: "left", width: "100%",
-                }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--accent-border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--accent)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.borderColor = "var(--border)"; (e.currentTarget as HTMLButtonElement).style.color = "var(--text-secondary)"; }}
-                >
+                <button key={action.label} className="quick-action-btn">
                   <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{ color: "var(--accent)" }}>{action.icon}</span>
                     {action.label}
