@@ -559,8 +559,8 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
               fontSize: 13, outline: "none",
               transition: "border-color 0.15s, box-shadow 0.15s",
             }}
-            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow)"; }}
-            onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--card-border)"; i.style.boxShadow = "none"; }}
+            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow)"; i.style.borderRadius = "24px"; }}
+            onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--card-border)"; i.style.boxShadow = "none"; i.style.borderRadius = "24px"; }}
           />
           <button
             onClick={onSendMessage}
@@ -703,6 +703,7 @@ export default function App() {
 
   useEffect(() => {
     setMounted(true);
+    document.documentElement.setAttribute("data-theme", "dark");
     const skipped = localStorage.getItem("rn_onboarding_skipped");
     if (!skipped) setShowOnboarding(true);
 
@@ -874,7 +875,10 @@ export default function App() {
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" as const, marginBottom: 24 }}>
             <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
               <Search size={13} color="var(--text-subtle)" />
-              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, Área o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "var(--text-primary)", fontSize: 13, flex: 1, width: "100%" }} />
+              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, Área o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "var(--text-primary)", fontSize: 13, flex: 1, width: "100%" }}
+              onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.parentElement!.style.borderColor = "var(--accent)"; i.parentElement!.style.boxShadow = "0 0 0 3px var(--accent-glow)"; }}
+              onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.parentElement!.style.borderColor = "var(--border)"; i.parentElement!.style.boxShadow = "none"; }}
+              />
             </div>
             <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none" as const, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, color: "var(--text-muted)", fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer" as const }}>
               {allDepts.map((d) => <option key={d} value={d}>{d}</option>)}
@@ -961,7 +965,7 @@ export default function App() {
                     <span style={{ fontSize: 11, color: opp.hot ? "var(--hot-color)" : "var(--text-tertiary)", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
                       <Clock size={10} />{opp.deadline}
                     </span>
-                    <span style={{ fontSize: 11, fontWeight: 600, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}>
+                    <span style={{ fontSize: 11, fontWeight: 600, color: "var(--text-muted)", display: "flex", alignItems: "center", gap: 3 }}>
                       Ver más <ChevronRight size={10} />
                     </span>
                   </div>
