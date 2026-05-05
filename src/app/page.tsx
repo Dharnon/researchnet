@@ -219,7 +219,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
                 borderRadius: 8, padding: "8px 6px", textAlign: "center",
               }}>
                 <div style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 2 }}>{s.v}</div>
-                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600 }}>{s.l}</div>
+                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 500 }}>{s.l}</div>
               </div>
             ))}
           </div>
@@ -353,7 +353,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
             <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2, letterSpacing: "-0.01em" }}>{researcher.name}</span>
-            <div style={{ opacity: 0.8 }}><MatchBadge score={researcher.match} /></div>
+            <div style={{ opacity: 0.8, fontWeight: 500, letterSpacing: "0.03em" }}><MatchBadge score={researcher.match} /></div>
           </div>
           <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
           <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 1 }}>{researcher.dept}</p>
