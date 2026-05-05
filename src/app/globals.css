@@ -151,12 +151,12 @@
 }
 
 .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, var(--border-subtle) 25%, rgba(251,191,36,0.05) 50%, var(--border-subtle) 75%);
+  background: linear-gradient(90deg, var(--border-subtle) 25%, rgba(217,119,6,0.05) 50%, var(--border-subtle) 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite 0.2s;
 }
 
-/* â”€â”€ SKELETON CARD (variant-a: lime shimmer) â”€â”€ */
+/* â”€â”€ SKELETON CARD (variant-c-warm: amber shimmer) â”€â”€ */
 .skeleton-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -180,11 +180,41 @@
   pointer-events: none;
 }
 
-/* â”€â”€ DARK SKELETON SHIMMER (variant-a lime) â”€â”€ */
+/* â”€â”€ DARK SKELETON SHIMMER (variant-c-warm: amber) â”€â”€ */
 [data-theme="dark"] .skeleton-shimmer {
   background: linear-gradient(90deg, var(--border) 25%, rgba(217,119,6,0.08) 50%, var(--border) 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* â”€â”€ ONBOARDING ORCID BUTTON (variant-c-warm: amber) â”€â”€ */
+.onboard-orcid-btn {
+  width: 100%;
+  padding: 13px 20px;
+  border-radius: 12;
+  border: 1px solid var(--card-border);
+  background: var(--surface-hover);
+  color: var(--text-primary);
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  transition: background 0.18s ease, color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+.onboard-orcid-btn:hover {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px var(--accent-glow);
+  transform: translateY(-1px);
+}
+.onboard-orcid-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 /* â”€â”€ RESET & BASE â”€â”€ */
