@@ -56,7 +56,7 @@
   --radius-xs: 5px;
 
   --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
-  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.09), 0 8px 32px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.06);
+  --shadow-card-hover: 0 6px 20px rgba(0,0,0,0.10), 0 12px 40px rgba(0,0,0,0.06), 0 0 0 1px rgba(217,119,6,0.22), 0 0 20px rgba(217,119,6,0.07);
   --shadow-detail-panel: -8px 0 48px rgba(0,0,0,0.11);
 
   /* Match score tiers â€” amber for variant-c */
@@ -70,7 +70,7 @@
   --match-low-bg: rgba(168,162,158,0.08);
   --match-low-border: rgba(168,162,158,0.18);
 
-  /* Hot / deadline accent */
+  /* Hot / deadline accent — amber for variant-c */
   --hot-color: #D97706;
 
   /* Connected button â€” amber for variant-c */
@@ -145,13 +145,13 @@
 }
 
 .skeleton-shimmer {
-  background: linear-gradient(90deg, var(--border) 25%, rgba(217,119,6,0.05) 50%, var(--border) 75%);
+  background: linear-gradient(90deg, var(--border) 25%, rgba(217,119,6,0.08) 50%, var(--border) 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
 
 .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, var(--border-subtle) 25%, rgba(251,191,36,0.03) 50%, var(--border-subtle) 75%);
+  background: linear-gradient(90deg, var(--border-subtle) 25%, rgba(251,191,36,0.05) 50%, var(--border-subtle) 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite 0.2s;
 }
