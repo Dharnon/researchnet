@@ -224,7 +224,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
                 borderRadius: 8, padding: "8px 6px", textAlign: "center",
               }}>
                 <div style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 2 }}>{s.v}</div>
-                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600 }}>{s.l}</div>
+                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 500 }}>{s.l}</div>
               </div>
             ))}
           </div>
