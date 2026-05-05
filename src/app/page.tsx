@@ -204,7 +204,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             borderRadius: 8, padding: "8px 12px", display: "flex", alignItems: "baseline", gap: 5,
           }}>
             <span style={{ fontSize: 22, fontWeight: 900, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
-            <span style={{ fontSize: 10, fontWeight: 600, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", opacity: 0.55 }}>% affinity</span>
+            <span style={{ fontSize: 10, fontWeight: 500, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", opacity: 0.50, letterSpacing: "0.04em" }}>% affinity</span>
           </div>
 
           {/* Bio */}
@@ -218,7 +218,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
                 borderRadius: 8, padding: "8px 6px", textAlign: "center",
               }}>
                 <div style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 2 }}>{s.v}</div>
-                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600 }}>{s.l}</div>
+                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 500 }}>{s.l}</div>
               </div>
             ))}
           </div>
