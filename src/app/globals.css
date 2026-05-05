@@ -116,14 +116,14 @@ body {
   100% { background-position: 400px 0; }
 }
 .skeleton-shimmer {
-  background: linear-gradient(90deg, #1a2035 25%, #1e2840 50%, #1a2035 75%);
+  background: linear-gradient(90deg, var(--border) 25%, var(--accent-faint) 50%, var(--border) 75%);
   background-size: 800px 100%;
-  animation: shimmer 1.4s infinite;
+  animation: shimmer 1.4s ease-in-out infinite;
 }
 .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, #151c2a 25%, #1a2035 50%, #151c2a 75%);
+  background: linear-gradient(90deg, var(--border-subtle) 25%, var(--accent-faint) 50%, var(--border-subtle) 75%);
   background-size: 800px 100%;
-  animation: shimmer 1.6s infinite;
+  animation: shimmer 1.4s ease-in-out infinite 0.2s;
 }
 
 /* â”€â”€ ONBOARDING ORCID BUTTON (variant-a-clean) â”€â”€ */
