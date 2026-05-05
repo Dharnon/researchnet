@@ -825,13 +825,14 @@ export default function App() {
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 14 }}>
             {filteredResearchers.map((r, i) => (
-              <ResearcherCard
-                key={r.id}
-                researcher={r}
-                onSelect={() => setSelectedResearcher(r)}
-                onConnect={(e) => { e.stopPropagation(); setConnectedIds((p) => p.includes(r.id) ? p.filter((x) => x !== r.id) : [...p, r.id]); }}
-                isConnected={connectedIds.includes(r.id)}
-              />
+              <div key={r.id} className="card-enter" style={{ animationDelay: `${Math.min(i, 5) * 60}ms` }}>
+                <ResearcherCard
+                  researcher={r}
+                  onSelect={() => setSelectedResearcher(r)}
+                  onConnect={(e) => { e.stopPropagation(); setConnectedIds((p) => p.includes(r.id) ? p.filter((x) => x !== r.id) : [...p, r.id]); }}
+                  isConnected={connectedIds.includes(r.id)}
+                />
+              </div>
             ))}
           </div>
           {filteredResearchers.length === 0 && (
@@ -857,7 +858,8 @@ export default function App() {
                 <div
                   key={opp.id}
                   onClick={() => setSelectedOpp(opp)}
-                  className="opp-card"
+                  className="opp-card card-enter"
+                  style={{ animationDelay: `${Math.min(i, 5) * 60}ms` }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
                     <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
