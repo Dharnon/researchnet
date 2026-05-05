@@ -656,6 +656,16 @@ export default function App() {
   const [newMessage, setNewMessage] = useState("");
   const [conversations, setConversations] = useState(mockMessages);
   const [mounted, setMounted] = useState(false);
+  const [cardCount, setCardCount] = useState(0);
+  const [toast, setToast] = useState<{ text: string; leaving: boolean } | null>(null);
+
+  // ─── TOAST HELPER ────────────────────────────────────────────
+  const showToast = (text: string) => {
+    if (toast) return; // debounce
+    setToast({ text, leaving: false });
+    setTimeout(() => setToast((t) => t ? { ...t, leaving: true } : null), 2800);
+    setTimeout(() => setToast(null), 3100);
+  };
 
   useEffect(() => {
     setMounted(true);
@@ -850,14 +860,20 @@ export default function App() {
             {filteredResearchers.length} investigador{filteredResearchers.length !== 1 ? "es" : ""}
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 14 }}>
-            {filteredResearchers.map((r) => (
-              <ResearcherCard
-                key={r.id}
-                researcher={r}
-                onSelect={() => setSelectedResearcher(r)}
-                onConnect={(e) => { e.stopPropagation(); setConnectedIds((p) => p.includes(r.id) ? p.filter((x) => x !== r.id) : [...p, r.id]); }}
-                isConnected={connectedIds.includes(r.id)}
-              />
+            {filteredResearchers.map((r, i) => (
+              <div key={r.id} className="card-enter" style={{ animationDelay: `${Math.min(i, 5) * 60}ms` }}>
+                <ResearcherCard
+                  researcher={r}
+                  onSelect={() => setSelectedResearcher(r)}
+                  onConnect={(e) => {
+                    e.stopPropagation();
+                    const wasConnected = connectedIds.includes(r.id);
+                    setConnectedIds((p) => wasConnected ? p.filter((x) => x !== r.id) : [...p, r.id]);
+                    if (!wasConnected) showToast(`Conectado con ${r.name.split(" ")[1]}`);
+                  }}
+                  isConnected={connectedIds.includes(r.id)}
+                />
+              </div>
             ))}
           </div>
           {filteredResearchers.length === 0 && (
@@ -877,13 +893,14 @@ export default function App() {
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Postdocs, becas, convocatorias y más</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
-            {opportunities.map((opp) => {
+            {opportunities.map((opp, i) => {
               const color = TYPE_COLORS[opp.type] ?? "#6b7280";
               return (
                 <div
                   key={opp.id}
                   onClick={() => setSelectedOpp(opp)}
-                  className="opp-card"
+                  className="opp-card card-enter"
+                  style={{ animationDelay: `${Math.min(i, 5) * 60}ms` }}
                 >
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
                     <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
@@ -1064,6 +1081,16 @@ export default function App() {
               ))}
             </div>
           </div>
+        </div>
+      )}
+
+      {/* ─── TOAST ────────────────────────────────────────────────── */}
+      {toast && (
+        <div className={`toast${toast.leaving ? " leaving" : ""}`}>
+          <div className="toast-icon">
+            <Check size={14} color="#0B0E17" />
+          </div>
+          <span style={{ fontSize: 13, fontWeight: 600, color: "var(--bg)" }}>{toast.text}</span>
         </div>
       )}
     </div>
