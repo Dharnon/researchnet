@@ -719,7 +719,7 @@ export default function App() {
             width: 28, height: 28, borderRadius: 8,
             background: "linear-gradient(135deg, var(--accent), var(--accent-hover))",
             display: "flex", alignItems: "center", justifyContent: "center",
-            boxShadow: "0 0 20px var(--accent-glow)",
+            boxShadow: "0 2px 12px rgba(0,0,0,0.12)",
           }}>
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
               <circle cx="8" cy="12" r="3" fill="#fff" opacity="0.9"/>
@@ -756,7 +756,7 @@ export default function App() {
               width: 52, height: 52, borderRadius: 14,
               background: "linear-gradient(135deg, var(--accent), var(--accent-hover))",
               display: "flex", alignItems: "center", justifyContent: "center",
-              margin: "0 auto 20px", boxShadow: "0 0 40px var(--accent-glow)",
+              margin: "0 auto 20px", boxShadow: "0 4px 20px rgba(0,0,0,0.15)",
             }}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <circle cx="8" cy="12" r="3" fill="#fff" opacity="0.95"/>
