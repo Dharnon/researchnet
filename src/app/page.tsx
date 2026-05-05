@@ -377,7 +377,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 4 }}>
             <span style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.25, letterSpacing: "-0.01em" }}>{researcher.name}</span>
-            <div style={{ opacity: 0.8 }}><MatchBadge score={researcher.match} /></div>
+            <div style={{ opacity: 0.8, fontWeight: 500, letterSpacing: "0.03em" }}><MatchBadge score={researcher.match} /></div>
           </div>
           <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
           <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 2 }}>{researcher.dept}</p>
