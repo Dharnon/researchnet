@@ -1,4 +1,4 @@
-﻿﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import {
@@ -323,26 +323,10 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
   return (
     <div
       onClick={onSelect}
-      className="card-accent researcher-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      style={{
-        background: "var(--card-bg)",
-        border: `1px solid ${hovered ? "var(--accent-border)" : "var(--card-border)"}`,
-        borderRadius: 16,
-        padding: "20px",
-        cursor: "pointer",
-        display: "flex",
-        flexDirection: "column",
-        gap: 14,
-        boxShadow: hovered
-          ? "0 6px 20px rgba(0,0,0,0.09), 0 2px 6px rgba(0,0,0,0.05), 0 0 0 1px var(--accent-border)"
-          : "0 1px 2px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.03), 0 0 0 1px rgba(0,0,0,0.04)",
-        transform: hovered ? "translateY(-2px)" : "translateY(0)",
-        transition: "all 0.22s cubic-bezier(0.34, 1.56, 0.64, 1)",
-        position: "relative",
-        overflow: "hidden",
-      }}
+      className={hovered ? "researcher-card-a is-hovered" : "researcher-card-a"}
+      style={{ gap: 14 }}
     >
       {/* Top gradient shine */}
       <div style={{
@@ -374,7 +358,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           fontSize: 14, fontWeight: 800, color: researcher.color,
           flexShrink: 0, letterSpacing: "-0.03em",
           transition: "box-shadow 0.22s ease, filter 0.22s ease",
-          filter: hovered ? `drop-shadow(0 0 6px ${researcher.color}30)` : "none",
+          filter: `drop-shadow(0 0 6px ${researcher.color}30)`,
         }}>
           {researcher.avatar}
         </div>
@@ -873,11 +857,9 @@ export default function App() {
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Encuentra colaboradores para tu próximo proyecto</p>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" as const, marginBottom: 24 }}>
-            <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
+            <div className="search-input-wrap">
               <Search size={13} color="var(--text-subtle)" />
               <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, Área o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "var(--text-primary)", fontSize: 13, flex: 1, width: "100%" }}
-              onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.parentElement!.style.borderColor = "var(--accent)"; i.parentElement!.style.boxShadow = "0 0 0 3px var(--accent-glow)"; }}
-              onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.parentElement!.style.borderColor = "var(--border)"; i.parentElement!.style.boxShadow = "none"; }}
               />
             </div>
             <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none" as const, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, color: "var(--text-muted)", fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer" as const }}>
