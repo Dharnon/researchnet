@@ -116,12 +116,12 @@ body {
   100% { background-position: 400px 0; }
 }
 .skeleton-shimmer {
-  background: linear-gradient(90deg, #1e1e23 25%, #27272a 50%, #1e1e23 75%);
+  background: linear-gradient(90deg, var(--border) 25%, var(--surface-hover) 50%, var(--border) 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s infinite;
 }
 .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, #18181b 25%, #1e1e23 50%, #18181b 75%);
+  background: linear-gradient(90deg, var(--bg-secondary) 25%, var(--surface) 50%, var(--bg-secondary) 75%);
   background-size: 800px 100%;
   animation: shimmer 1.6s infinite;
 }
@@ -928,3 +928,38 @@ body {
 .match-high { color: var(--match-high); background: var(--match-high-bg); border-color: var(--match-high-border); }
 .match-mid  { color: var(--match-mid);  background: var(--match-mid-bg);  border-color: var(--match-mid-border); }
 .match-low  { color: var(--match-low);  background: var(--match-low-bg);  border-color: var(--match-low-border); }
+
+/* ─── SECTION HEADINGS (variant-b-dark: DM Sans, premium dark) ─── */
+.vc-section-heading {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--text-primary);
+  font-family: 'DM Sans', system-ui, sans-serif;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+
+/* ─── NETWORK EMPTY CTA (variant-b-dark) ─── */
+.network-empty-cta {
+  padding: 10px 22px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #1a2e00;
+  border: none;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'DM Sans', system-ui, sans-serif;
+  letter-spacing: 0.01em;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  box-shadow: 0 0 0 1px var(--accent-border), 0 4px 16px var(--accent-glow);
+}
+.network-empty-cta:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px var(--accent-border), 0 6px 24px var(--accent-glow);
+}
+.network-empty-cta:active {
+  transform: translateY(0);
+}
