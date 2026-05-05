@@ -16,15 +16,15 @@
   --text-subtle: #A8A29E;
 
   --accent: #84cc16;
-  --accent-dim: rgba(132,204,22,0.08);
+  --accent-dim: rgba(132,204,22,0.07);
   --accent-hover: #a3e635;
-  --accent-glow: rgba(132,204,22,0.12);
-  --accent-border: rgba(132,204,22,0.22);
-  --accent-faint: rgba(132,204,22,0.05);
+  --accent-glow: rgba(132,204,22,0.10);
+  --accent-border: rgba(132,204,22,0.20);
+  --accent-faint: rgba(132,204,22,0.04);
 
   --open-dot: #84cc16;
-  --open-dot-bg: rgba(132,204,22,0.08);
-  --open-dot-border: rgba(132,204,22,0.20);
+  --open-dot-bg: rgba(132,204,22,0.07);
+  --open-dot-border: rgba(132,204,22,0.18);
 
   --tag-bg: #F5F4F0;
   --tag-border: #E8E5DC;
@@ -54,8 +54,8 @@
   --radius-sm: 8px;
   --radius-xs: 5px;
 
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
-  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.09), 0 8px 32px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.06);
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.04), 0 2px 12px rgba(0,0,0,0.03), 0 0 0 1px rgba(0,0,0,0.04);
+  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.08), 0 8px 28px rgba(0,0,0,0.06), 0 0 0 1px rgba(132,204,22,0.22);
   --shadow-detail-panel: -8px 0 48px rgba(0,0,0,0.11);
 
   /* Match score tiers */
@@ -73,9 +73,9 @@
   --hot-color: #84cc16;
 
   /* Connected button — lime for variant-a */
-  --connected-bg: rgba(132,204,22,0.10);
+  --connected-bg: rgba(132,204,22,0.08);
   --connected-color: #65a30d;
-  --connected-border: rgba(132,204,22,0.25);
+  --connected-border: rgba(132,204,22,0.22);
 
   /* Header glass */
   --header-bg: rgba(249,250,251,0.92);
@@ -115,17 +115,17 @@
   --card-bg: #111114;
   --card-border: #1e1e22;
 
-  --shadow-card: 0 0 0 1px rgba(255,255,255,0.04), 0 4px 24px rgba(0,0,0,0.50);
-  --shadow-card-hover: 0 0 0 1px rgba(132,204,22,0.15), 0 12px 48px rgba(0,0,0,0.70), 0 0 24px rgba(132,204,22,0.06);
+  --shadow-card: 0 0 0 1px rgba(255,255,255,0.04), 0 2px 16px rgba(0,0,0,0.50);
+  --shadow-card-hover: 0 0 0 1px rgba(132,204,22,0.14), 0 8px 40px rgba(0,0,0,0.72), 0 0 20px rgba(132,204,22,0.06);
 
   /* Header glass — dark */
   --header-bg: rgba(9,9,11,0.88);
   --header-border: rgba(30,30,34,0.90);
 
   /* Connected button — lime for variant-a */
-  --connected-bg: rgba(132,204,22,0.10);
+  --connected-bg: rgba(132,204,22,0.08);
   --connected-color: #a3e635;
-  --connected-border: rgba(132,204,22,0.25);
+  --connected-border: rgba(132,204,22,0.22);
 }
 
 /* -- SHIMMER ANIMATION -- */
