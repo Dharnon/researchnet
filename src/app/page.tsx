@@ -500,12 +500,13 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
             }}>
               <div style={{
                 maxWidth: "70%", padding: "10px 14px", borderRadius: 16,
-                background: msg.from === "me" ? "var(--accent)" : "var(--surface)",
-                color: msg.from === "me" ? "#1a2e00" : "var(--text-primary)",
+                background: msg.from === "me" ? "#C2410C" : "var(--surface)",
+                color: msg.from === "me" ? "#FAF7F2" : "var(--text-primary)",
                 fontSize: 13, lineHeight: 1.5,
                 borderBottomRightRadius: msg.from === "me" ? "4px" : "16px",
                 borderBottomLeftRadius: msg.from === "me" ? "16px" : "4px",
-                boxShadow: msg.from === "me" ? "0 2px 8px var(--accent-glow)" : "0 1px 3px rgba(0,0,0,0.06)",
+                boxShadow: msg.from === "me" ? "0 2px 8px rgba(194,65,12,0.25)" : "0 1px 3px rgba(44,24,16,0.06)",
+                fontFamily: "'Source Serif 4', Georgia, serif",
               }}>
                 {msg.text}
                 <div style={{ fontSize: 9, opacity: 0.5, marginTop: 3, textAlign: "right" }}>{msg.ts}</div>
@@ -522,14 +523,8 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
             onChange={(e) => setNewMessage(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && onSendMessage()}
             placeholder="Escribe un mensaje..."
-            style={{
-              flex: 1, background: "var(--surface)", border: "1px solid var(--card-border)",
-              borderRadius: 24, padding: "10px 16px", color: "var(--text-primary)",
-              fontSize: 13, outline: "none",
-              transition: "border-color 0.15s, box-shadow 0.15s",
-            }}
-            onFocus={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--accent)"; i.style.boxShadow = "0 0 0 3px var(--accent-glow)"; i.style.borderRadius = "24px"; }}
-            onBlur={(e) => { const i = e.currentTarget as HTMLInputElement; i.style.borderColor = "var(--card-border)"; i.style.boxShadow = "none"; i.style.borderRadius = "24px"; }}
+            className="msg-input-dark"
+            style={{ flex: 1, padding: "10px 16px", fontSize: 13, outline: "none", width: "100%" }}
           />
           <button
             onClick={onSendMessage}
@@ -700,7 +695,7 @@ export default function App() {
   if (!mounted) return <SkeletonLoader />;
 
   return (
-    <div style={{ background: "var(--bg)", minHeight: "100vh", color: "var(--text-primary)" }}>
+    <div style={{ background: "var(--bg)", minHeight: "100vh", color: "var(--text-primary)", fontFamily: "'Source Serif 4', Georgia, serif" }}>
 
       {/* HEADER */}
       <header style={{
@@ -908,7 +903,7 @@ export default function App() {
                       <Clock size={10} />{opp.deadline}
                     </span>
                     <span style={{ fontSize: 11, fontWeight: 600, color: "var(--text-muted)", display: "flex", alignItems: "center", gap: 3 }}>
-                      Ver más <ChevronRight size={10} />
+                      Ver más <ChevronRight size={10} color="var(--text-tertiary)" />
                     </span>
                   </div>
                 </div>
