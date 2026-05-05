@@ -59,7 +59,7 @@
   --shadow-card-hover: 0 6px 24px rgba(0,0,0,0.50), 0 12px 40px rgba(0,0,0,0.32), 0 0 0 1px rgba(132,204,22,0.28);
   --shadow-detail-panel: -10px 0 52px rgba(0,0,0,0.55);
 
-  /* Match score tiers; lime for variant-b-dark */
+  /* Match score tiers; lime for variant-a-clean */
   --match-high: #84cc16;
   --match-high-bg: rgba(132,204,22,0.10);
   --match-high-border: rgba(132,204,22,0.24);
@@ -70,10 +70,10 @@
   --match-low-bg: rgba(100,116,139,0.08);
   --match-low-border: rgba(100,116,139,0.18);
 
-  /* Hot / deadline accent */
+  /* Hot / deadline accent; lime for variant-a-clean */
   --hot-color: #f87171;
 
-  /* Connected button; lime for variant-b-dark */
+  /* Connected button; lime for variant-a-clean */
   --connected-bg: rgba(132,204,22,0.08);
   --connected-color: #84cc16;
   --connected-border: rgba(132,204,22,0.28);
@@ -130,7 +130,7 @@ body {
 .onboard-orcid-btn {
   width: 100%;
   padding: 13px 20px;
-  border-radius: 12;
+  border-radius: var(--radius);
   border: 1px solid var(--card-border);
   background: var(--surface-hover);
   color: var(--text-primary);

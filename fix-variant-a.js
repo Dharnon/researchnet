@@ -1,71 +1,52 @@
-// fix-variant-a.js — Replace hardcoded #84cc16 in detail panel with var(--accent)
+// Read the globals.css file and fix the garbled variant comments
 const fs = require('fs');
-const content = fs.readFileSync('src/app/page.tsx', 'utf8');
-let newContent = content;
+const path = 'src/app/globals.css';
 
-// Fix typeColors: replace Fondos #84cc16 with var(--accent)
-const oldTC = 'const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "#84cc16", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };';
-const newTC = 'const typeColors: Record<string, string> = { Postdoc: "#60a5fa", Fondos: "var(--accent)", Internacional: "#c084fc", Doctorado: "#f472b6", Laboral: "#34d399" };';
-let tcCount = 0;
-while (newContent.includes(oldTC)) {
-  newContent = newContent.split(oldTC).join(newTC);
-  tcCount++;
-}
-console.log(`typeColors fixed in ${tcCount} location(s)`);
+let content = fs.readFileSync(path, 'utf8');
 
-// Fix DetailPanel match section - find it by searching for the specific block
-// Match block: lines with hardcoded #84cc16 in the match score div
-const dpMatchStart = newContent.indexOf('borderLeft: "3px solid #84cc16"');
-if (dpMatchStart >= 0) {
-  newContent = newContent.split('borderLeft: "3px solid #84cc16"').join('borderLeft: "3px solid var(--accent)"');
-  console.log('borderLeft fixed');
-}
-const dpBgStart = newContent.indexOf('background: "#84cc160a"');
-if (dpBgStart >= 0) {
-  newContent = newContent.split('background: "#84cc160a"').join('background: "var(--accent-dim)"');
-  console.log('background fixed');
-}
-const dpBorderStart = newContent.indexOf('border: "1px solid #84cc1620"');
-if (dpBorderStart >= 0) {
-  newContent = newContent.split('border: "1px solid #84cc1620"').join('border: "1px solid var(--accent-glow)"');
-  console.log('border fixed');
-}
+// Fix the garbled comments in variant-a-clean branch
+// The file has "variant-b-dark" in comments and vars declarations when it should be "variant-a-clean"
+// Lines 1-2: Google Fonts and CSS VARIABLES comments
+content = content.replace(
+  '/* â\u0080\u009E\u0080\u009E Google Fonts (variant-b-dark: Deep Navy + Lime) â\u0080\u009E\u0080\u009E */',
+  '/* â\u0080\u009E\u0080\u009E Google Fonts (variant-a-clean: Clean Classic, Dark Navy + Lime #84cc16) â\u0080\u009E\u0080\u009E */'
+);
+content = content.replace(
+  '/* â\u0080\u009E\u0080\u009E CSS VARIABLES (variant-b-dark: Deep Navy Dark, Lime Accent #84cc16) â\u0080\u009E\u0080\u009E */',
+  '/* â\u0080\u009E\u0080\u009E CSS VARIABLES (variant-a-clean: Deep Navy #0B0E17, Lime Accent #84cc16) â\u0080\u009E\u0080\u009E */'
+);
 
-// Fix match score text label
-const oldLabel = 'color: "#84cc16", textTransform: "uppercase", letterSpacing: "0.08em"';
-const newLabel = 'color: "var(--accent)", textTransform: "uppercase", letterSpacing: "0.08em"';
-const labelIdx = newContent.indexOf(oldLabel);
-if (labelIdx >= 0) {
-  newContent = newContent.split(oldLabel).join(newLabel);
-  console.log('label color fixed');
-}
+// Fix the comment referencing variant-b-dark for match/connected/hot variables
+content = content.replace(
+  '/* Match score tiers; lime for variant-b-dark */',
+  '/* Match score tiers; lime for variant-a-clean */'
+);
+content = content.replace(
+  '/* Connected button; lime for variant-b-dark */',
+  '/* Connected button; lime for variant-a-clean */'
+);
+content = content.replace(
+  '/* Hot / deadline accent */',
+  '/* Hot / deadline accent; lime for variant-a-clean */'
+);
 
-// Fix large match number
-const oldMatchNum = '<span style={{ fontSize: 30, fontWeight: 900, color: "#84cc16", letterSpacing: "-0.05em", lineHeight: 1 }}>{researcher.match}</span>';
-const newMatchNum = '<span style={{ fontSize: 30, fontWeight: 900, color: "var(--accent)", letterSpacing: "-0.05em", lineHeight: 1 }}>{researcher.match}</span>';
-const matchNumIdx = newContent.indexOf(oldMatchNum);
-if (matchNumIdx >= 0) {
-  newContent = newContent.split(oldMatchNum).join(newMatchNum);
-  console.log('Large match number fixed');
-}
+// Fix the skeleton shimmer comment
+content = content.replace(
+  '/* â\u0080\u009E\u0080\u009E SKELETON SHIMMER (variant-a-clean: Deep Navy + Lime #84cc16) â\u0080\u009E\u0080\u009E */',
+  '/* â\u0080\u009E\u0080\u009E SKELETON SHIMMER (variant-a-clean: Deep Navy + Lime #84cc16) â\u0080\u009E\u0080\u009E */'
+);
 
-// Fix % after large match
-const oldPct = '<span style={{ fontSize: 12, fontWeight: 600, color: "#84cc16", opacity: 0.6 }}>%</span>';
-const newPct = '<span style={{ fontSize: 12, fontWeight: 600, color: "var(--accent)", opacity: 0.6 }}>%</span>';
-const pctIdx = newContent.indexOf(oldPct);
-if (pctIdx >= 0) {
-  newContent = newContent.split(oldPct).join(newPct);
-  console.log('Match % fixed');
-}
+// Fix onboarding button comment
+content = content.replace(
+  '/* â\u0080\u009E\u0080\u009E ONBOARDING ORCID BUTTON (variant-a-clean) â\u0080\u009E\u0080\u009E */',
+  '/* â\u0080\u009E\u0080\u009E ONBOARDING ORCID BUTTON (variant-a-clean) â\u0080\u009E\u0080\u009E */'
+);
 
-// Fix "affinity" subtitle
-const oldAffinity = '<span style={{ fontSize: 10, color: "#84cc16", opacity: 0.5 }}>affinity based on shared areas</span>';
-const newAffinity = '<span style={{ fontSize: 10, color: "var(--accent)", opacity: 0.5 }}>affinity based on shared areas</span>';
-const affinityIdx = newContent.indexOf(oldAffinity);
-if (affinityIdx >= 0) {
-  newContent = newContent.split(oldAffinity).join(newAffinity);
-  console.log('Affinity subtitle fixed');
-}
+// Also fix border-radius: 12 to border-radius: var(--radius)
+content = content.replace(
+  'border-radius: 12;',
+  'border-radius: var(--radius);'
+);
 
-fs.writeFileSync('src/app/page.tsx', newContent, 'utf8');
-console.log('Done');
+fs.writeFileSync(path, content, 'utf8');
+console.log('Fixed variant-a-clean globals.css');
