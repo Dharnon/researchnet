@@ -56,7 +56,7 @@
   --radius-xs: 5px;
 
   --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.04);
-  --shadow-card-hover: 0 6px 20px rgba(0,0,0,0.10), 0 12px 40px rgba(0,0,0,0.06), 0 0 0 1px rgba(217,119,6,0.22), 0 0 20px rgba(217,119,6,0.07);
+  --shadow-card-hover: 0 6px 20px rgba(0,0,0,0.09), 0 12px 40px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.06);
   --shadow-detail-panel: -8px 0 48px rgba(0,0,0,0.11);
 
   /* Match score tiers â€” amber for variant-c */
@@ -297,7 +297,7 @@ select:focus-visible {
 }
 .b-card:hover {
   border-color: var(--accent-border);
-  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border), 0 0 16px var(--accent-glow);
+  box-shadow: var(--shadow-card-hover);
   transform: translateY(-2px);
 }
 .b-card:hover::before {
@@ -550,7 +550,7 @@ select:focus-visible {
   z-index: 1;
 }
 .researcher-card:hover {
-  box-shadow: var(--shadow-card-hover), 0 0 0 1px var(--accent-border);
+  box-shadow: var(--shadow-card-hover);
   border-color: var(--accent-border);
   transform: translateY(-2px);
 }
@@ -598,7 +598,7 @@ select:focus-visible {
 }
 .researcher-card-c.is-hovered {
   border-color: var(--accent-border);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.35), 0 12px 40px rgba(0,0,0,0.20), 0 0 0 1px var(--accent-border), 0 0 20px var(--accent-glow);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25), 0 12px 40px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.08);
   transform: translateY(-3px);
 }
 .researcher-card-c.is-hovered::before { opacity: 1; }
@@ -614,7 +614,7 @@ select:focus-visible {
   gap: 12px;
   transition: border-color 0.18s ease;
 }
-.network-card:hover { border-color: var(--accent-border); }
+.network-card:hover { border-color: var(--card-border); box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
 
 /* -- CONVERSATION LIST ITEM -- */
 .conv-item {
@@ -645,7 +645,7 @@ select:focus-visible {
 .opp-card:hover {
   border-color: var(--accent-border);
   transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.20), 0 0 0 1px var(--accent-border);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
 }
 
 /* -- QUICK ACTION BUTTON -- */

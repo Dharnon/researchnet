@@ -853,7 +853,7 @@ export default function App() {
           <p style={{ fontSize: 12, color: "var(--text-subtle)", marginBottom: 14, fontWeight: 500 }}>
             {filteredResearchers.length} investigador{filteredResearchers.length !== 1 ? "es" : ""}
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 14 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 20 }}>
             {filteredResearchers.map((r) => (
               <ResearcherCard
                 key={r.id}
@@ -880,7 +880,7 @@ export default function App() {
             <h1 className="vc-section-heading">Oportunidades</h1>
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Postdocs, becas, convocatorias y ms</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
             {opportunities.map((opp) => {
               const color = TYPE_COLORS[opp.type] ?? "#6b7280";
               return (
