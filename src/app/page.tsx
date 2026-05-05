@@ -843,7 +843,7 @@ export default function App() {
             {filteredResearchers.length} investigador{filteredResearchers.length !== 1 ? "es" : ""}
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 20 }}>
-            {filteredResearchers.map((r) => (
+            {filteredResearchers.map((r, i) => (
               <ResearcherCard
                 key={r.id}
                 researcher={r}
@@ -870,7 +870,7 @@ export default function App() {
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Postdocs, becas, convocatorias y ms</p>
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
-            {opportunities.map((opp) => {
+            {opportunities.map((opp, i) => {
               const color = TYPE_COLORS[opp.type] ?? "#6b7280";
               return (
                 <div key={opp.id} onClick={() => setSelectedOpp(opp)} className="opp-card">
