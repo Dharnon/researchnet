@@ -201,10 +201,10 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
           <div style={{
             background: researcher.match >= 90 ? "var(--match-high-bg)" : researcher.match >= 70 ? "var(--match-mid-bg)" : "var(--match-low-bg)",
             border: `1px solid ${researcher.match >= 90 ? "var(--match-high-border)" : researcher.match >= 70 ? "var(--match-mid-border)" : "var(--match-low-border)"}`,
-            borderRadius: 10, padding: "10px 14px", display: "flex", alignItems: "baseline", gap: 6,
+            borderRadius: 8, padding: "8px 12px", display: "flex", alignItems: "baseline", gap: 5,
           }}>
-            <span style={{ fontSize: 28, fontWeight: 900, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
-            <span style={{ fontSize: 12, fontWeight: 600, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", opacity: 0.6 }}>% affinity</span>
+            <span style={{ fontSize: 22, fontWeight: 900, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
+            <span style={{ fontSize: 10, fontWeight: 600, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", opacity: 0.55 }}>% affinity</span>
           </div>
 
           {/* Bio */}
