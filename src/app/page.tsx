@@ -844,13 +844,15 @@ export default function App() {
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 20 }}>
             {filteredResearchers.map((r, i) => (
-              <ResearcherCard
-                key={r.id}
-                researcher={r}
-                onSelect={() => setSelectedResearcher(r)}
-                onConnect={(e) => { e.stopPropagation(); setConnectedIds((p) => p.includes(r.id) ? p.filter((x) => x !== r.id) : [...p, r.id]); }}
-                isConnected={connectedIds.includes(r.id)}
-              />
+              <div key={r.id} className="card-enter" style={{ animationDelay: Math.min(i, 5) * 60 + 'ms' }}>
+                <ResearcherCard
+                  key={r.id}
+                  researcher={r}
+                  onSelect={() => setSelectedResearcher(r)}
+                  onConnect={(e) => { e.stopPropagation(); setConnectedIds((p) => p.includes(r.id) ? p.filter((x) => x !== r.id) : [...p, r.id]); }}
+                  isConnected={connectedIds.includes(r.id)}
+                />
+              </div>
             ))}
           </div>
           {filteredResearchers.length === 0 && (
