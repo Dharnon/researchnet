@@ -1,7 +1,7 @@
-/* ── Google Fonts (variant-c: Warm Editorial — Playfair Display + DM Sans) ── */
+/* â”€â”€ Google Fonts (variant-c: Warm Editorial â€” Playfair Display + DM Sans) â”€â”€ */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 
-/* ── CSS VARIABLES (variant-c-warm: Cream, Amber Accent #D97706) ── */
+/* â”€â”€ CSS VARIABLES (variant-c-warm: Cream, Amber Accent #D97706) â”€â”€ */
 :root {
   --bg: #FAFAF8;
   --bg-secondary: #F5F4F0;
@@ -59,7 +59,7 @@
   --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.09), 0 8px 32px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.06);
   --shadow-detail-panel: -8px 0 48px rgba(0,0,0,0.11);
 
-  /* Match score tiers — amber for variant-c */
+  /* Match score tiers â€” amber for variant-c */
   --match-high: #D97706;
   --match-high-bg: rgba(217,119,6,0.10);
   --match-high-border: rgba(217,119,6,0.22);
@@ -73,7 +73,7 @@
   /* Hot / deadline accent */
   --hot-color: #D97706;
 
-  /* Connected button — amber for variant-c */
+  /* Connected button â€” amber for variant-c */
   --connected-bg: rgba(217,119,6,0.10);
   --connected-color: #92400e;
   --connected-border: rgba(217,119,6,0.28);
@@ -87,7 +87,7 @@
   --header-border: rgba(229,231,235,0.80);
 }
 
-/* ── DARK MODE (variant-c-warm: Warm editorial — cream, amber accent) ── */
+/* â”€â”€ DARK MODE (variant-c-warm: Warm editorial â€” cream, amber accent) â”€â”€ */
 [data-theme="dark"] {
   --bg: #0f0e0c;
   --bg-secondary: #1a1814;
@@ -124,11 +124,11 @@
   --shadow-card: 0 1px 3px rgba(0,0,0,0.25), 0 4px 16px rgba(0,0,0,0.12), 0 0 0 1px rgba(255,255,255,0.03);
   --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.35), 0 12px 40px rgba(0,0,0,0.20), 0 0 0 1px rgba(217,119,6,0.20), 0 0 20px rgba(217,119,6,0.07);
 
-  /* Header glass — warm dark */
+  /* Header glass â€” warm dark */
   --header-bg: rgba(15,14,12,0.90);
   --header-border: rgba(46,42,36,0.90);
 
-  /* Connected button — amber for variant-c */
+  /* Connected button â€” amber for variant-c */
   --connected-bg: rgba(217,119,6,0.12);
   --connected-color: #F59E0B;
   --connected-border: rgba(217,119,6,0.28);
@@ -138,7 +138,7 @@
   --connected-shadow: none;
 }
 
-/* ── SHIMMER ANIMATION ── */
+/* â”€â”€ SHIMMER ANIMATION â”€â”€ */
 @keyframes shimmer {
   0% { background-position: -400px 0; }
   100% { background-position: 400px 0; }
@@ -156,7 +156,7 @@
   animation: shimmer 1.4s ease-in-out infinite 0.2s;
 }
 
-/* ── SKELETON CARD (variant-a: lime shimmer) ── */
+/* â”€â”€ SKELETON CARD (variant-a: lime shimmer) â”€â”€ */
 .skeleton-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -180,14 +180,14 @@
   pointer-events: none;
 }
 
-/* ── DARK SKELETON SHIMMER (variant-a lime) ── */
+/* â”€â”€ DARK SKELETON SHIMMER (variant-a lime) â”€â”€ */
 [data-theme="dark"] .skeleton-shimmer {
   background: linear-gradient(90deg, var(--border) 25%, rgba(217,119,6,0.08) 50%, var(--border) 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
 
-/* ── RESET & BASE ── */
+/* â”€â”€ RESET & BASE â”€â”€ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -206,7 +206,7 @@ body {
   min-height: 100vh;
 }
 
-/* ── SCROLLBAR ── */
+/* â”€â”€ SCROLLBAR â”€â”€ */
 ::-webkit-scrollbar { width: 5px; height: 5px; }
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
@@ -221,7 +221,7 @@ button {
 
 a { color: inherit; text-decoration: none; }
 
-/* ── FOCUS VISIBLE (variant-b: slate-blue) ── */
+/* â”€â”€ FOCUS VISIBLE (variant-b: slate-blue) â”€â”€ */
 button:focus-visible,
 input:focus-visible,
 select:focus-visible {
@@ -229,7 +229,7 @@ select:focus-visible {
   outline-offset: 2px;
 }
 
-/* ── RESEARCHER CARD (Dark Premium) ── */
+/* â”€â”€ RESEARCHER CARD (Dark Premium) â”€â”€ */
 .vc-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -284,7 +284,7 @@ select:focus-visible {
   box-shadow: var(--shadow-card);
 }
 
-/* Left accent — slate-blue, refined */
+/* Left accent â€” slate-blue, refined */
 .b-card::after {
   content: '';
   position: absolute;
@@ -318,7 +318,7 @@ select:focus-visible {
   gap: 12px;
 }
 
-/* ── SECTION HEADINGS (variant-b) ── */
+/* â”€â”€ SECTION HEADINGS (variant-b) â”€â”€ */
 .vc-section-heading {
   font-size: 26px;
   font-weight: 700;
@@ -335,7 +335,7 @@ select:focus-visible {
   margin-bottom: 0;
 }
 
-/* ── CONNECT BUTTONS ── */
+/* â”€â”€ CONNECT BUTTONS â”€â”€ */
 .b-connect-btn {
   padding: 6px 14px;
   border-radius: 9px;
@@ -377,7 +377,7 @@ select:focus-visible {
   border-color: var(--connected-border);
 }
 
-/* ── VARIANT-B CONNECT BTN ── */
+/* â”€â”€ VARIANT-B CONNECT BTN â”€â”€ */
 .vc-connect-btn {
   padding: 6px 14px;
   border-radius: 9px;
@@ -405,7 +405,7 @@ select:focus-visible {
   border-color: var(--connected-border);
 }
 
-/* ── EMPTY STATE ── */
+/* â”€â”€ EMPTY STATE â”€â”€ */
 .empty-state {
   display: flex;
   flex-direction: column;
@@ -479,12 +479,12 @@ select:focus-visible {
   transform: translateY(-1px);
 }
 
-/* ── HEADER TRANSITION ── */
+/* â”€â”€ HEADER TRANSITION â”€â”€ */
 .app-header {
   transition: background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ── NETWORK CARD BUTTONS ── */
+/* â”€â”€ NETWORK CARD BUTTONS â”€â”€ */
 .c-msg-btn {
   width: 32px;
   height: 32px;
@@ -525,13 +525,13 @@ select:focus-visible {
   color: #ef4444;
 }
 
-/* ── CARD ACCENT (hover + cursor) ── */
+/* â”€â”€ CARD ACCENT (hover + cursor) â”€â”€ */
 .card-accent {
   cursor: pointer;
   transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
-/* ── RESEARCHER CARD (variant-b: Dark Premium — slate-blue accent bar) ── */
+/* â”€â”€ RESEARCHER CARD (variant-b: Dark Premium â€” slate-blue accent bar) â”€â”€ */
 .researcher-card {
   box-shadow: var(--shadow-card);
   position: relative;
@@ -603,3 +603,70 @@ select:focus-visible {
 }
 .researcher-card-c.is-hovered::before { opacity: 1; }
 .researcher-card-c.is-hovered::after { opacity: 1; }
+/* -- NETWORK CARD -- */
+.network-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: border-color 0.18s ease;
+}
+.network-card:hover { border-color: var(--accent-border); }
+
+/* -- CONVERSATION LIST ITEM -- */
+.conv-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+.conv-item:hover { border-color: var(--accent-border); }
+
+/* -- OPPORTUNITY CARD -- */
+.opp-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 18px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.opp-card:hover {
+  border-color: var(--accent-border);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.20), 0 0 0 1px var(--accent-border);
+}
+
+/* -- QUICK ACTION BUTTON -- */
+.quick-action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: 10px;
+  background: var(--surface-hover);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  font-family: inherit;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+.quick-action-btn:hover {
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
