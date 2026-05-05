@@ -55,9 +55,9 @@
   --radius-sm: 8px;
   --radius-xs: 5px;
 
-  --shadow-card: 0 1px 2px rgba(0,0,0,0.30), 0 4px 16px rgba(0,0,0,0.20), 0 0 0 1px rgba(255,255,255,0.03);
-  --shadow-card-hover: 0 4px 20px rgba(0,0,0,0.45), 0 8px 32px rgba(0,0,0,0.30), 0 0 0 1px rgba(132,204,22,0.30);
-  --shadow-detail-panel: -8px 0 48px rgba(0,0,0,0.50);
+  --shadow-card: 0 1px 2px rgba(0,0,0,0.25), 0 4px 16px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.04);
+  --shadow-card-hover: 0 6px 24px rgba(0,0,0,0.50), 0 12px 40px rgba(0,0,0,0.32), 0 0 0 1px rgba(132,204,22,0.28);
+  --shadow-detail-panel: -10px 0 52px rgba(0,0,0,0.55);
 
   /* Match score tiers; lime for variant-b-dark */
   --match-high: #84cc16;
@@ -386,7 +386,6 @@ body {
 }
 .researcher-card-a:hover {
   box-shadow: var(--shadow-card-hover);
-  border-color: rgba(132,204,22,0.35);
   transform: translateY(-2px);
 }
 .card-top {
