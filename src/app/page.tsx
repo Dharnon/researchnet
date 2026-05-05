@@ -521,6 +521,7 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
                 fontSize: 13, lineHeight: 1.5,
                 borderBottomRightRadius: msg.from === "me" ? "4px" : "16px",
                 borderBottomLeftRadius: msg.from === "me" ? "16px" : "4px",
+                boxShadow: msg.from === "me" ? "inset 0 1px 1px rgba(255,255,255,0.12), 0 2px 8px var(--accent-glow)" : "inset 0 1px 1px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06)",
               }}>
                 {msg.text}
                 <div style={{ fontSize: 9, opacity: 0.5, marginTop: 3, textAlign: "right" }}>{msg.ts}</div>
