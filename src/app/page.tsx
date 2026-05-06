@@ -641,7 +641,6 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
         >
           {item.icon}
           <span>{item.label}</span>
-          {item.icon}
           {item.badge !== undefined && item.badge > 0 && (
             <span style={{
               position: "absolute", top: 4, right: 4,
