@@ -160,14 +160,16 @@ function MatchBadge({ score }: { score: number }) {
   const isMid  = score >= 70 && score < 90;
   const color  = isHigh ? "var(--match-high)" : isMid ? "var(--match-mid)" : "var(--match-low)";
   const bg     = isHigh ? "var(--match-high-bg)" : isMid ? "var(--match-mid-bg)" : "var(--match-low-bg)";
+  const border = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   return (
     <span style={{
       display: "inline-flex", alignItems: "center",
-      fontSize: 10, fontWeight: 600,
+      fontSize: 10, fontWeight: 700,
       color, background: bg,
       padding: "1px 6px", borderRadius: 20,
       letterSpacing: "0.02em", flexShrink: 0,
-      opacity: 0.70,
+      border: `1px solid ${border}`,
+      boxShadow: isHigh ? `0 0 8px ${color}20` : "none",
     }}>
       {score}%
     </span>
