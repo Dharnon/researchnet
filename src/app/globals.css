@@ -149,20 +149,20 @@
 
 /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ SHIMMER ANIMATION ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
 @keyframes shimmer {
-  0% { background-position: -400px 0; }
-  100% { background-position: 400px 0; }
+  0% { background-position: -300px 0; }
+  100% { background-position: 300px 0; }
 }
 
 .skeleton-shimmer {
   background: linear-gradient(90deg, #f5f0e8 0%, #ede6d8 25%, #f5f0e8 50%, #ede6d8 75%, #f5f0e8 100%);
-  background-size: 1200px 100%;
-  animation: shimmer 1.5s ease-in-out infinite;
+  background-size: 900px 100%;
+  animation: shimmer 2.0s ease-in-out infinite;
 }
 
 .skeleton-shimmer-dim {
   background: linear-gradient(90deg, #faf8f4 0%, #f0ebe0 25%, #faf8f4 50%, #f0ebe0 75%, #faf8f4 100%);
-  background-size: 1200px 100%;
-  animation: shimmer 1.8s ease-in-out infinite;
+  background-size: 900px 100%;
+  animation: shimmer 2.4s ease-in-out infinite;
 }
 
 /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ SKELETON CARD (variant-c-warm: amber shimmer) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
