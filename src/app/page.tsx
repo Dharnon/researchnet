@@ -115,18 +115,27 @@ function SkeletonLoader() {
 // ─── AVATAR ───────────────────────────────────────────────────────────────────
 
 function Avatar({ initials, color, size = 44 }: { initials: string; color: string; size?: number }) {
+  const [hovered, setHovered] = useState(false);
   const s = Math.round(size * 0.34);
   return (
-    <div style={{
-      width: size, height: size, borderRadius: "50%",
-      background: `radial-gradient(circle at 35% 35%, ${color}ee, ${color}55 45%, ${color}18)`,
-      border: `1.5px solid ${color}50`,
-      boxShadow: `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.08), 0 2px 6px rgba(0,0,0,0.4)`,
-      display: "flex", alignItems: "center", justifyContent: "center",
-      fontSize: s, fontWeight: 800, color,
-      flexShrink: 0, letterSpacing: "-0.03em",
-      transition: "box-shadow 0.22s ease, transform 0.22s ease",
-    }}>
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        width: size, height: size, borderRadius: "50%",
+        background: `radial-gradient(circle at 35% 35%, ${color}ee, ${color}55 45%, ${color}18)`,
+        border: `1.5px solid ${hovered ? color + "80" : color + "50"}`,
+        boxShadow: hovered
+          ? `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.08), 0 2px 6px rgba(0,0,0,0.4), 0 0 ${size * 0.3}px ${color}40`
+          : `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.08), 0 2px 6px rgba(0,0,0,0.4)`,
+        display: "flex", alignItems: "center", justifyContent: "center",
+        fontSize: s, fontWeight: 800, color,
+        flexShrink: 0, letterSpacing: "-0.03em",
+        transition: "box-shadow 0.22s ease, border-color 0.22s ease, transform 0.22s ease",
+        transform: hovered ? "scale(1.06)" : "scale(1)",
+        cursor: "default",
+      }}
+    >
       {initials}
     </div>
   );
