@@ -231,10 +231,11 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             {[{ v: researcher.pubs, l: "papers" }, { v: researcher.projects, l: "projects" }, { v: researcher.groups.length, l: "groups" }].map((s) => (
               <div key={s.l} style={{
                 background: "var(--surface-hover)", border: "1px solid var(--card-border)",
-                borderRadius: 8, padding: "8px 6px", textAlign: "center",
+                borderRadius: 10, padding: "10px 8px", textAlign: "center",
+                position: "relative", overflow: "hidden",
               }}>
-                <div style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 2 }}>{s.v}</div>
-                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 500 }}>{s.l}</div>
+                <div style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em", lineHeight: 1.1, marginBottom: 3 }}>{s.v}</div>
+                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.07em", fontWeight: 600 }}>{s.l}</div>
               </div>
             ))}
           </div>
