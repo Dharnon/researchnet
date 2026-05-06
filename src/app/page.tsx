@@ -63,8 +63,8 @@ const researcherColors: Record<string, string> = {
   "Ciencias de la Computación": "#3b82f6",
   "Biología Molecular": "#8b5cf6",
   "Física Computacional": "#f59e0b",
-  "Salud Pblica": "#ef4444",
-  "Robótica e IA": "#6366f1",
+  "Salud Pública": "#f59e0b",
+  "Robótica e IA": "#a78bfa",
 };
 
 // ─── SKELETON LOADER ─────────────────────────────────────────────────────────

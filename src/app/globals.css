@@ -1,12 +1,7 @@
 ﻿/* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ Google Fonts (variant-b-dark: Premium Dark + Lime ΓÇö DM Sans) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 
-/* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ CSS VARIABLES (variant-b-dark: Premium Dark #09090b, Lime #84cc16) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
-
-/* ═══════════════════════════════════════════════
-   VARIANT-C: WARM EDITORIAL — overrides above
-   Warm stone/amber palette, editorial typography
-   ═══════════════════════════════════════════════ */
+/* CSS VARIABLES (variant-b-dark: Premium Dark #09090b, Lime #84cc16) */
 :root {
   --bg: #0c0a09;
   --bg-secondary: #1c1917;
@@ -127,12 +122,12 @@ body {
   100% { background-position: 400px 0; }
 }
 .skeleton-shimmer {
-  background: linear-gradient(90deg, #1c1917 25%, #292524 50%, #1c1917 75%);
+  background: linear-gradient(90deg, #0c0a09 25%, #1c1917 50%, #0c0a09 75%);
   background-size: 800px 100%;
   animation: shimmer 1.8s ease-in-out infinite;
 }
 .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, #161412 25%, #1c1917 50%, #161412 75%);
+  background: linear-gradient(90deg, #090807 25%, #141210 50%, #090807 75%);
   background-size: 800px 100%;
   animation: shimmer 2.2s ease-in-out infinite;
 }
