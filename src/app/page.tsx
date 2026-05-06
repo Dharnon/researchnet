@@ -282,7 +282,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
 }
 
 // ─── TYPE COLORS (stable module-level constant) ───────────────────────────────
-const TYPE_COLORS: Record<string, string> = { Postdoc: "var(--type-postdoc-text)", Fondos: "var(--type-fondos-text)", Internacional: "var(--type-intl-text)", Doctorado: "var(--type-phd-text)", Laboral: "var(--type-laboral-text)" };
+const TYPE_COLORS: Record<string, string> = { Postdoc: "#2563eb", Fondos: "#B45309", Internacional: "#7c3aed", Doctorado: "#be185d", Laboral: "#059669" };
 
 // ─── OPPORTUNITY DETAIL MODAL ────────────────────────────────────────────────
 
@@ -611,22 +611,23 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
   return (
     <div style={{
       display: "flex", gap: 2, background: "var(--bg-secondary)",
-      border: "1px solid var(--border)", borderRadius: 10, padding: 3,
+      border: "1px solid var(--border)", borderRadius: 10, padding: 4,
     }}>
       {items.map((item) => (
         <button key={item.key} onClick={() => setView(item.key)} style={{
           display: "flex", alignItems: "center", justifyContent: "center",
-          position: "relative", width: 36, height: 34,
+          position: "relative", minWidth: 56, height: 34, padding: "0 10px",
           borderRadius: 7,
           fontSize: 12, fontWeight: 600, cursor: "pointer",
           background: view === item.key ? "var(--accent-dim)" : "transparent",
           color: view === item.key ? "var(--accent)" : "var(--text-tertiary)",
           border: view === item.key ? "1px solid var(--accent-border)" : "1px solid transparent",
-          transition: "all 0.15s",
+          transition: "all 0.15s", gap: 5, flexShrink: 0,
         }}
         title={item.label}
         >
           {item.icon}
+          <span>{item.label}</span>
           {item.badge !== undefined && item.badge > 0 && (
             <span style={{
               position: "absolute", top: 2, right: 2,
@@ -640,8 +641,8 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           )}
           {view === item.key && (
             <div style={{
-              position: "absolute", bottom: -4, left: "50%", transform: "translateX(-50%)",
-              width: 14, height: 2, borderRadius: 2, background: "var(--accent)",
+              position: "absolute", bottom: -3, left: "50%", transform: "translateX(-50%)",
+              width: 16, height: 2, borderRadius: 2, background: "var(--accent)",
             }} />
           )}
         </button>
