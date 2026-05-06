@@ -350,11 +350,11 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       className={hovered ? "researcher-card-c is-hovered" : "researcher-card-c"}
       style={hovered ? { borderColor: "var(--accent-border)", boxShadow: "0 8px 32px rgba(0,0,0,0.13), 0 20px 56px rgba(0,0,0,0.08), 0 0 0 1px var(--accent-border)", transform: "translateY(-4px)" } : undefined}
     >
-      {/* Warm top gradient */}
+      {/* Subtle warm top line on hover */}
       <div style={{
-        position: "absolute", top: 0, left: 0, right: 0, height: 80,
-        background: "linear-gradient(180deg, var(--accent-faint) 0%, transparent 100%)",
-        opacity: hovered ? 1 : 0,
+        position: "absolute", top: 0, left: 0, right: 0, height: 2,
+        background: "linear-gradient(90deg, var(--accent), var(--accent-hover))",
+        opacity: hovered ? 0.6 : 0,
         transition: "opacity 0.24s ease",
         pointerEvents: "none",
         borderRadius: "16px 16px 0 0",
@@ -377,7 +377,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           border: `1.5px solid ${researcher.color}50`,
           boxShadow: `0 0 0 1px ${researcher.color}20, inset 0 1px 2px rgba(255,255,255,0.12), 0 3px 10px ${researcher.color}25, ${hovered ? `0 0 20px ${researcher.color}30, 0 4px 16px rgba(0,0,0,0.15)` : "0 2px 8px rgba(0,0,0,0.10)"}`,
           display: "flex", alignItems: "center", justifyContent: "center",
-          fontSize: 14, fontWeight: 800, color: researcher.color,
+          fontSize: 13, fontWeight: 700, color: researcher.color,
           flexShrink: 0, letterSpacing: "-0.03em",
           transition: "box-shadow 0.22s ease, transform 0.22s ease",
           transform: hovered ? "scale(1.06)" : "scale(1)",
@@ -386,7 +386,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 4 }}>
-            <span style={{ fontSize: 15, fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.25, letterSpacing: "-0.01em" }}>{researcher.name}</span>
+            <span style={{ fontSize: 14, fontFamily: "'Playfair Display', Georgia, serif", fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.3, letterSpacing: "-0.01em" }}>{researcher.name}</span>
             <div style={{ fontWeight: 500, letterSpacing: "0.03em" }}><MatchBadge score={researcher.match} /></div>
           </div>
           <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
