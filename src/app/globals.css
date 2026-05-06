@@ -110,7 +110,25 @@ body {
 /* â”€â”€ SELECTION â”€â”€ */
 ::selection { background: var(--accent-dim); color: var(--accent-hover); }
 
-/* â”€â”€ SKELETON SHIMMER â”€â”€ */
+/* ─── SEARCH INPUT WRAPPER (variant-a: clean classic) ─── */
+.search-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  flex: 1;
+  min-width: 200px;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.search-input-wrap:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+
+/* ─── SKELETON SHIMMER ─── */
 @keyframes shimmer {
   0% { background-position: -400px 0; }
   100% { background-position: 400px 0; }
@@ -587,9 +605,9 @@ body {
   overflow: hidden;
 }
 .opp-card:hover {
-  box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.06);
-  border-color: #D1D5DB;
-  transform: translateY(-2px);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.10), 0 12px 40px rgba(0,0,0,0.06), 0 0 0 1px var(--accent-border);
+  border-color: var(--accent-border);
+  transform: translateY(-3px);
 }
 .opp-card::after {
   content: '';
