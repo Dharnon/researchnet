@@ -139,19 +139,24 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
 }
 
 
-// --- MATCH BADGE (variant-c: warm amber tiered) ---
+// --- MATCH BADGE (variant-c: warm amber tiered — refined glow) ---
 function MatchBadge({ score }: { score: number }) {
   const isHigh = score >= 90;
   const isMid  = score >= 70 && score < 90;
-  const color  = isHigh ? "var(--match-high)" : isMid ? "var(--match-mid)" : "var(--match-low)";
-  const bg     = isHigh ? "var(--match-high-bg)" : isMid ? "var(--match-mid-bg)" : "var(--match-low-bg)";
+  const isLow  = score < 70;
+  const color   = isHigh ? "var(--match-high)" : isMid ? "var(--match-mid)" : "var(--match-low)";
+  const bg      = isHigh ? "var(--match-high-bg)" : isMid ? "var(--match-mid-bg)" : "var(--match-low-bg)";
+  const border  = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   return (
     <span style={{
       display: "inline-flex", alignItems: "center",
       fontSize: 10, fontWeight: 700,
       color, background: bg,
+      border: `1px solid ${border}`,
       padding: "2px 7px", borderRadius: 20,
       letterSpacing: "0.01em", flexShrink: 0,
+      boxShadow: isHigh ? `0 0 8px ${color}25` : "none",
+      transition: "box-shadow 0.2s ease",
     }}>
       {score}%
     </span>
@@ -208,6 +213,7 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             background: researcher.match >= 90 ? "var(--match-high-bg)" : researcher.match >= 70 ? "var(--match-mid-bg)" : "var(--match-low-bg)",
             border: `1px solid ${researcher.match >= 90 ? "var(--match-high-border)" : researcher.match >= 70 ? "var(--match-mid-border)" : "var(--match-low-border)"}`,
             borderRadius: 10, padding: "10px 14px", display: "flex", alignItems: "baseline", gap: 6,
+            boxShadow: researcher.match >= 90 ? "0 0 16px var(--match-high-border)" : "none",
           }}>
             <span style={{ fontSize: 28, fontWeight: 900, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
             <span style={{ fontSize: 12, fontWeight: 600, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", opacity: 0.6 }}>% affinity</span>
@@ -267,8 +273,11 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
               color: isConnected ? "var(--connected-color)" : "#fff",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
               transition: "all 0.18s",
-              boxShadow: isConnected ? "var(--connected-shadow)" : "0 2px 8px var(--accent-glow)",
+              boxShadow: isConnected ? "none" : "0 4px 16px var(--accent-glow), 0 0 0 1px var(--accent-border)",
+              transform: "translateY(0)",
             }}
+            onMouseEnter={e => { if (!isConnected) (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-1px)"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLButtonElement).style.transform = "translateY(0)"; }}
           >
             {isConnected ? <><Check size={14} /> Conectado - Ver mensaje</> : <><Users size={14} /> Conectar</>}
           </button>
@@ -365,19 +374,18 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
           width: 48, height: 48, borderRadius: "50%",
           background: `radial-gradient(circle at 35% 35%, ${researcher.color}ee, ${researcher.color}55 45%, ${researcher.color}18)`,
           border: `1.5px solid ${researcher.color}50`,
-          boxShadow: `0 0 0 1px ${researcher.color}20, inset 0 1px 2px rgba(255,255,255,0.12), 0 3px 10px ${researcher.color}25`,
+          boxShadow: `0 0 0 1px ${researcher.color}20, inset 0 1px 2px rgba(255,255,255,0.12), 0 3px 10px ${researcher.color}25, ${hovered ? `0 0 16px var(--accent-border)` : "none"}`,
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: 14, fontWeight: 800, color: researcher.color,
           flexShrink: 0, letterSpacing: "-0.03em",
           transition: "box-shadow 0.22s ease",
-          filter: hovered ? "drop-shadow(0 0 10px var(--accent-border))" : "none",
         }}>
           {researcher.avatar}
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 4 }}>
             <span style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.25, letterSpacing: "-0.01em" }}>{researcher.name}</span>
-            <div style={{ opacity: 0.8, fontWeight: 500, letterSpacing: "0.03em" }}><MatchBadge score={researcher.match} /></div>
+            <div style={{ fontWeight: 500, letterSpacing: "0.03em" }}><MatchBadge score={researcher.match} /></div>
           </div>
           <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
           <p style={{ fontSize: 10, color: "var(--text-subtle)", marginTop: 2 }}>{researcher.dept}</p>
