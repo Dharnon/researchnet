@@ -750,6 +750,7 @@ body {
   flex-shrink: 0;
 }
 .send-btn:hover { background: var(--accent-hover); box-shadow: 0 2px 8px var(--accent-glow); }
+.send-btn:active { transform: scale(0.95); }
 .send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
 /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ PROFILE HEADER ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
