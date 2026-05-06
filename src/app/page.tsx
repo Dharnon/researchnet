@@ -238,8 +238,9 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             <div style={{ display: "flex", gap: 5, flexWrap: "wrap" }}>
               {researcher.groups.map((g) => (
                 <span key={g} style={{
-                  fontSize: 10, fontWeight: 600, color: "var(--accent)",
-                  background: "var(--accent-dim)", padding: "3px 8px", borderRadius: 6,
+                  fontSize: 10, fontWeight: 600, color: "var(--text-secondary)",
+                  background: "var(--surface-hover)", padding: "3px 8px", borderRadius: 6,
+                  border: "1px solid var(--border)",
                 }}>{g}</span>
               ))}
             </div>
@@ -1040,7 +1041,7 @@ export default function App() {
               <p style={{ fontSize: 10, fontWeight: 700, color: "var(--text-subtle)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 8 }}>Grupos de investigación</p>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap" as const }}>
                 {userProfile.groups.map((g) => (
-                  <span key={g} style={{ fontSize: 11, fontWeight: 600, color: "var(--text-muted)", background: "var(--surface-hover)", border: "1px solid var(--border)", padding: "4px 10px", borderRadius: 8 }}>{g}</span>
+                  <span key={g} style={{ fontSize: 11, fontWeight: 500, color: "var(--text-secondary)", background: "var(--surface-hover)", border: "1px solid var(--border)", padding: "4px 10px", borderRadius: 8, letterSpacing: "-0.01em" }}>{g}</span>
                 ))}
               </div>
             </div>
