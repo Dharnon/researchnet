@@ -1,43 +1,17 @@
 const fs = require('fs');
-let c = fs.readFileSync('src/app/globals.css', 'utf8');
+const cssPath = "C:\\Users\\josei\\researchnet\\src\\app\\globals.css";
+let css = fs.readFileSync(cssPath, 'utf8');
 
-const oldBlock = `.skeleton-shimmer {
-  background: linear-gradient(90deg, #f0f0ee 25%, #e6e6e4 50%, #f0f0ee 75%);
-  background-size: 800px 100%;
-  animation: shimmer 1.4s infinite;
-}
-.skeleton-shimmer-dim {
-  background: linear-gradient(90deg, #f5f5f3 25%, #ededeb 50%, #f5f5f3 75%);
-  background-size: 800px 100%;
-  animation: shimmer 1.6s infinite;
-}`;
+const old = `  transition: box-shadow 0.22s, border-color 0.22s, transform 0.22s;\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n.researcher-card-a::before {\r\n  content: '';\r\n  position: absolute;\r\n  top: 0; left: 0; right: 0;\r\n  height: 2px;\r\n  background: linear-gradient(90deg, var(--accent), var(--accent-hover));\r\n  opacity: 0;\r\n  transition: opacity 0.22s;\r\n}\r\n.researcher-card-a:hover {\r\n  box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.06);\r\n  border-color: #D1D5DB;\r\n  transform: translateY(-2px);\r\n}\r\n.researcher-card-a:hover::before { opacity: 1; }`;
 
-const newBlock = `.skeleton-shimmer {
-  background: linear-gradient(90deg, #f5f7f0 0%, #e8edda 35%, #f0f5e8 60%, #f5f7f0 100%);
-  background-size: 1200px 100%;
-  animation: shimmer 1.6s ease-in-out infinite;
-}
-.skeleton-shimmer-dim {
-  background: linear-gradient(90deg, #fafaf6 0%, #f0f3e8 35%, #f5f8ee 60%, #fafaf6 100%);
-  background-size: 1200px 100%;
-  animation: shimmer 1.8s ease-in-out infinite;
-}`;
+const fixed = `  transition: box-shadow 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.22s, transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1);\r\n  position: relative;\r\n  overflow: hidden;\r\n}\r\n.researcher-card-a::before {\r\n  content: '';\r\n  position: absolute;\r\n  top: 0; left: 0; right: 0;\r\n  height: 2.5px;\r\n  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-hover) 100%);\r\n  opacity: 0;\r\n  transition: opacity 0.22s cubic-bezier(0.25, 0.46, 0.45, 0.94);\r\n}\r\n.researcher-card-a:hover {\r\n  box-shadow: 0 8px 32px rgba(0,0,0,0.11), 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.07);\r\n  border-color: #d1d5db;\r\n  transform: translateY(-3px);\r\n}\r\n.researcher-card-a:hover::before { opacity: 1; }`;
 
-if (c.includes(oldBlock)) {
-  c = c.replace(oldBlock, newBlock);
-  fs.writeFileSync('src/app/globals.css', c, 'utf8');
-  console.log('Replaced OK');
+if (css.includes(old)) {
+  css = css.replace(old, fixed);
+  console.log('Fixed researcher-card-a transitions + shadow + selection');
 } else {
-  // Try with CRLF
-  const oldBlockCrLf = oldBlock.replace(/\n/g, '\r\n');
-  const newBlockCrLf = newBlock.replace(/\n/g, '\r\n');
-  if (c.includes(oldBlockCrLf)) {
-    c = c.replace(oldBlockCrLf, newBlockCrLf);
-    fs.writeFileSync('src/app/globals.css', c, 'utf8');
-    console.log('Replaced OK (CRLF)');
-  } else {
-    console.log('NOT FOUND - checking diff');
-    const idx = c.indexOf('.skeleton-shimmer');
-    console.log(JSON.stringify(c.substring(idx, idx + oldBlock.length + 100)));
-  }
+  console.log('Could not find exact block');
 }
+
+fs.writeFileSync(cssPath, css, 'utf8');
+console.log('Done');
