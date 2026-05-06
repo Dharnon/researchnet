@@ -82,11 +82,11 @@ function SkeletonLoader() {
         <div className="skeleton-shimmer" style={{ width: 60, height: 14, borderRadius: 4 }} />
       </div>
       {/* Cards grid skeleton */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 14 }}>
         {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
+          <div key={i} className="skeleton-card" style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12, animationDelay: `${i * 80}ms` }}>
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-              <div className="skeleton-shimmer" style={{ width: 44, height: 44, borderRadius: "50%" }} />
+              <div className="skeleton-shimmer" style={{ width: 48, height: 48, borderRadius: "50%" }} />
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
                 <div className="skeleton-shimmer" style={{ width: "70%", height: 13, borderRadius: 4 }} />
                 <div className="skeleton-shimmer-dim" style={{ width: "50%", height: 10, borderRadius: 4 }} />
