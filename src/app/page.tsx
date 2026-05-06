@@ -12,12 +12,12 @@ import {
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 
 const researchers = [
-  { id: 1, name: "Dra. Elena Vargas", role: "Profesora Titular", dept: "Ingeniería Biomédica", avatar: "EV", color: "#84cc16", tags: ["Machine Learning", "Neurociencia Computacional", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Investigo interfaces cerebro-computadora y modelos de aprendizaje profundo aplicados a señales neuronales." },
-  { id: 2, name: "Dr. Marcos Ibáñez", role: "Investigador Senior", dept: "Ciencias de la Computación", avatar: "MI", color: "#60a5fa", tags: ["NLP", "Large Language Models", "Ética en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Trabajo en modelos de lenguaje multilingüe y los desafíos éticos que plantea la IA generativa." },
-  { id: 3, name: "Dra. Sofía Ríos", role: "Profesora Asociada", dept: "Biología Molecular", avatar: "SR", color: "#f472b6", tags: ["Genómica", "CRISPR", "Bioinformática"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Desarrollo herramientas computacionales para análisis de variantes genéticas y edición génica." },
-  { id: 4, name: "Dr. Andrés Leal", role: "Profesor Asociado", dept: "Física Computacional", avatar: "AL", color: "#c084fc", tags: ["Computación Cuántica", "Simulación", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Diseño algoritmos cuánticos para simulación de sistemas complejos y optimización combinatoria." },
-  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Postdoctoral", dept: "Salud Pública", avatar: "CF", color: "#D97706", tags: ["Epidemiología", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Aplico modelos predictivos a datos epidemiológicos para sistemas de alerta temprana." },
-  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Robótica e IA", avatar: "FM", color: "#34d399", tags: ["Robótica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Desarrollo sistemas de percepción visual para robots autónomos en entornos no estructurados." },
+  { id: 1, name: "Dra. Elena Vargas", role: "Profesora Titular", dept: "Ingeniería Biomédica", avatar: "EV", color: "#84cc16", tags: ["Machine Learning", "Neurociencia Computacional", "BCI"], groups: ["NeuroAI Lab"], projects: 4, pubs: 38, open: true, match: 97, bio: "Interfaces cerebro-computadora y aprendizaje profundo aplicado a señales neuronales." },
+  { id: 2, name: "Dr. Marcos Ibáñez", role: "Investigador Senior", dept: "Ciencias de la Computación", avatar: "MI", color: "#60a5fa", tags: ["NLP", "Large Language Models", "Ética en IA"], groups: ["NLP Group"], projects: 6, pubs: 52, open: true, match: 91, bio: "Modelos de lenguaje multilingüe y desafíos éticos de la IA generativa." },
+  { id: 3, name: "Dra. Sofía Ríos", role: "Profesora Asociada", dept: "Biología Molecular", avatar: "SR", color: "#f472b6", tags: ["Genómica", "CRISPR", "Bioinformática"], groups: ["GenomicsLab"], projects: 3, pubs: 29, open: false, match: 85, bio: "Herramientas computacionales para análisis de variantes genéticas y edición génica." },
+  { id: 4, name: "Dr. Andrés Leal", role: "Profesor Asociado", dept: "Física Computacional", avatar: "AL", color: "#c084fc", tags: ["Computación Cuántica", "Simulación", "Algoritmos"], groups: ["QuantumCS"], projects: 5, pubs: 44, open: true, match: 78, bio: "Algoritmos cuánticos para simulación de sistemas complejos y optimización combinatoria." },
+  { id: 5, name: "Dra. Carmen Fuentes", role: "Investigadora Postdoctoral", dept: "Salud Pública", avatar: "CF", color: "#D97706", tags: ["Epidemiología", "Salud Digital", "Machine Learning"], groups: ["DataHealth"], projects: 2, pubs: 17, open: true, match: 73, bio: "Modelos predictivos sobre datos epidemiológicos para sistemas de alerta temprana." },
+  { id: 6, name: "Dr. Felipe Mora", role: "Profesor Titular", dept: "Robótica e IA", avatar: "FM", color: "#34d399", tags: ["Robótica", "Computer Vision", "Deep Learning"], groups: ["RoboticsLab"], projects: 7, pubs: 61, open: false, match: 69, bio: "Sistemas de percepción visual para robots autónomos en entornos no estructurados." },
 ];
 
 const opportunities = [
@@ -348,6 +348,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={hovered ? "researcher-card-c is-hovered" : "researcher-card-c"}
+      style={hovered ? { borderColor: "var(--accent-border)", boxShadow: "0 8px 32px rgba(0,0,0,0.13), 0 20px 56px rgba(0,0,0,0.08), 0 0 0 1px var(--accent-border)", transform: "translateY(-4px)" } : undefined}
     >
       {/* Warm top gradient */}
       <div style={{
@@ -369,22 +370,23 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       }} />
 
       <div style={{ display: "flex", alignItems: "flex-start", gap: 14, position: "relative" }}>
-        {/* Avatar - warm glow on hover */}
+        {/* Avatar */}
         <div style={{
           width: 48, height: 48, borderRadius: "50%",
           background: `radial-gradient(circle at 35% 35%, ${researcher.color}ee, ${researcher.color}55 45%, ${researcher.color}18)`,
           border: `1.5px solid ${researcher.color}50`,
-          boxShadow: `0 0 0 1px ${researcher.color}20, inset 0 1px 2px rgba(255,255,255,0.12), 0 3px 10px ${researcher.color}25, ${hovered ? `0 0 16px var(--accent-border)` : "none"}`,
+          boxShadow: `0 0 0 1px ${researcher.color}20, inset 0 1px 2px rgba(255,255,255,0.12), 0 3px 10px ${researcher.color}25, ${hovered ? `0 0 20px ${researcher.color}30, 0 4px 16px rgba(0,0,0,0.15)` : "0 2px 8px rgba(0,0,0,0.10)"}`,
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: 14, fontWeight: 800, color: researcher.color,
           flexShrink: 0, letterSpacing: "-0.03em",
-          transition: "box-shadow 0.22s ease",
+          transition: "box-shadow 0.22s ease, transform 0.22s ease",
+          transform: hovered ? "scale(1.06)" : "scale(1)",
         }}>
           {researcher.avatar}
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 4 }}>
-            <span style={{ fontSize: 15, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.25, letterSpacing: "-0.01em" }}>{researcher.name}</span>
+            <span style={{ fontSize: 15, fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.25, letterSpacing: "-0.01em" }}>{researcher.name}</span>
             <div style={{ fontWeight: 500, letterSpacing: "0.03em" }}><MatchBadge score={researcher.match} /></div>
           </div>
           <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
@@ -392,13 +394,12 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         </div>
         {researcher.open && (
           <span style={{
-            display: "inline-flex", alignItems: "center", gap: 4,
-            fontSize: 9, fontWeight: 700, color: "var(--open-dot)",
-            background: "var(--open-dot-bg)", border: "1px solid var(--open-dot-border)",
-            padding: "3px 7px", borderRadius: 20,
-            textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0, alignSelf: "flex-start",
+            display: "inline-flex", alignItems: "center", gap: 5,
+            fontSize: 9, fontWeight: 600, color: "var(--text-tertiary)",
+            letterSpacing: "0.06em", flexShrink: 0, alignSelf: "flex-start",
+            textTransform: "uppercase",
           }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--open-dot)", display: "inline-block" }} />
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block", flexShrink: 0 }} />
             Open
           </span>
         )}
@@ -435,17 +436,18 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         <button
           onClick={(e) => { e.stopPropagation(); onConnect(e); }}
           style={{
-            padding: "7px 16px",
+            padding: "7px 18px",
             borderRadius: 9,
-            border: `1px solid ${isConnected ? "var(--connected-border)" : hovered ? "var(--accent-border)" : "var(--accent-faint)"}`,
+            border: `1px solid ${isConnected ? "var(--connected-border)" : hovered ? "var(--accent-border)" : "var(--card-border)"}`,
             fontSize: 11, fontWeight: 700,
             cursor: "pointer",
             background: isConnected ? "var(--connected-bg)" : hovered ? "var(--accent)" : "transparent",
-            color: isConnected ? "var(--connected-color)" : hovered ? "#fff" : "var(--accent)",
-            display: "flex", alignItems: "center", gap: 4,
-            transition: "all 0.18s ease",
+            color: isConnected ? "var(--connected-color)" : hovered ? "#fff" : "var(--text-secondary)",
+            display: "flex", alignItems: "center", gap: 5,
+            transition: "all 0.22s ease",
             letterSpacing: "0.01em",
-            boxShadow: !isConnected && hovered ? "0 3px 14px var(--accent-glow)" : "none",
+            boxShadow: !isConnected && hovered ? "0 2px 10px rgba(217,119,6,0.18)" : "none",
+            fontFamily: "'DM Sans', system-ui, sans-serif",
           }}
         >
           {isConnected ? <><Check size={12} /> Conectado</> : "Conectar"}
