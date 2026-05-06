@@ -72,7 +72,7 @@
   --header-border: rgba(41,37,36,0.80);
 
   --shadow-card: 0 1px 2px rgba(0,0,0,0.30), 0 4px 16px rgba(0,0,0,0.20), 0 0 0 1px rgba(254,243,199,0.03);
-  --shadow-card-hover: 0 8px 32px rgba(0,0,0,0.50), 0 16px 56px rgba(0,0,0,0.30), 0 0 0 1px rgba(245,158,11,0.20);
+  --shadow-card-hover: 0 12px 48px rgba(0,0,0,0.60), 0 16px 64px rgba(0,0,0,0.30), 0 0 0 1px rgba(245,158,11,0.18), 0 0 20px rgba(245,158,11,0.06);
   --shadow-detail-panel: -12px 0 56px rgba(0,0,0,0.60);
 }
 
