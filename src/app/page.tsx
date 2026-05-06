@@ -1083,6 +1083,7 @@ export default function App() {
             </div>
             <p style={{ fontSize: 11, color: "var(--text-tertiary)", marginTop: 8 }}>8 publicaciones · 2 proyectos · 0 colaboraciones activas este mes</p>
           </div>
+          <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: "18px 20px" }}>
             <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones rápidas</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {[{ label: "Ver mi perfil público", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
@@ -1091,10 +1092,11 @@ export default function App() {
                     <span style={{ color: "var(--accent)" }}>{action.icon}</span>
                     {action.label}
                   </span>
-                  <ChevronRight size={12} color="#333" />
+                  <ChevronRight size={12} color="var(--text-tertiary)" />
                 </button>
               ))}
             </div>
+          </div>
           </div>
         </div>
       )}
