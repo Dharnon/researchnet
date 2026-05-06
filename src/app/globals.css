@@ -73,11 +73,11 @@
   /* Hot / deadline accent */
   --hot-color: #ef4444;
 
-  /* Connected button â€”; lime for variant-a */
-  --connected-bg: rgba(132,204,22,0.08);
-  --connected-color: #4d7c0f;
-  --connected-border: rgba(132,204,22,0.28);
-  --connected-hover-bg: rgba(132,204,22,0.14);
+  /* Connected button — neutral muted for Clean Classic */
+  --connected-bg: #F3F4F6;
+  --connected-color: #6B7280;
+  --connected-border: #E5E7EB;
+  --connected-hover-bg: #EEEEEE;
 
   /* Header glass */
   --header-bg: rgba(255,255,255,0.90);
@@ -374,8 +374,8 @@ body {
   transition: opacity 0.22s;
 }
 .researcher-card-a:hover {
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--accent-border);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.06);
+  border-color: #D1D5DB;
   transform: translateY(-2px);
 }
 .researcher-card-a:hover::before { opacity: 1; }
@@ -587,8 +587,8 @@ body {
   overflow: hidden;
 }
 .opp-card:hover {
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--accent-border);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.06);
+  border-color: #D1D5DB;
   transform: translateY(-2px);
 }
 .opp-card::after {
