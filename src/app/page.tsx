@@ -142,13 +142,13 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
 }
 
 
-// --- MATCH BADGE (variant-a: lime accent, tiered) -----
+// --- MATCH BADGE (variant-a: lime accent, tiered) ---
 function MatchBadge({ score }: { score: number }) {
   const isHigh = score >= 90;
   const isMid  = score >= 70 && score < 90;
-  const color  = isHigh ? "var(--match-high)" : isMid ? "var(--match-mid)" : "var(--match-low)";
-  const bg     = isHigh ? "var(--match-high-bg)" : isMid ? "var(--match-mid-bg)" : "var(--match-low-bg)";
-  const border = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
+  const color   = isHigh ? "var(--match-high)" : isMid ? "var(--match-mid)" : "var(--match-low)";
+  const bg      = isHigh ? "var(--match-high-bg)" : isMid ? "var(--match-mid-bg)" : "var(--match-low-bg)";
+  const border  = isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)";
   return (
     <span style={{
       display: "inline-flex", alignItems: "center",
@@ -366,7 +366,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         </div>
         <div style={{ flex: 1, minWidth: 0 }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 6, marginBottom: 3 }}>
-            <span style={{ fontSize: 14, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2, letterSpacing: "-0.01em" }}>{researcher.name}</span>
+            <span style={{ fontSize: 14, fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.2, letterSpacing: "-0.01em" }}>{researcher.name}</span>
             <div style={{ opacity: 0.8 }}><MatchBadge score={researcher.match} /></div>
           </div>
           <p style={{ fontSize: 11, color: "var(--text-muted)", lineHeight: 1.3 }}>{researcher.role}</p>
@@ -374,13 +374,13 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         </div>
         {researcher.open && (
           <span style={{
-            display: "inline-flex", alignItems: "center", gap: 4,
-            fontSize: 9, fontWeight: 700, color: "var(--open-dot)",
-            background: "var(--open-dot-bg)", border: "1px solid var(--open-dot-border)",
-            padding: "2px 6px", borderRadius: 20,
-            textTransform: "uppercase", letterSpacing: "0.05em", flexShrink: 0, alignSelf: "flex-start",
+            display: "inline-flex", alignItems: "center", gap: 5,
+            fontSize: 9, fontWeight: 600, color: "var(--text-tertiary)",
+            background: "transparent", border: "none",
+            padding: "2px 4px", borderRadius: 20,
+            textTransform: "uppercase", letterSpacing: "0.07em", flexShrink: 0, alignSelf: "flex-start",
           }}>
-            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--open-dot)", display: "inline-block" }} />
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--accent)", display: "inline-block" }} />
             Open
           </span>
         )}
@@ -403,7 +403,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       </div>
 
       {/* Footer */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", position: "relative" }}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", position: "relative", paddingTop: 10, borderTop: "1px solid var(--border-subtle)" }}>
         <div style={{ display: "flex", gap: 12 }}>
           <span style={{ fontSize: 11, color: "var(--text-subtle)", display: "flex", alignItems: "center", gap: 4 }}>
             <BookOpen size={10} color="var(--text-tertiary)" />
@@ -417,17 +417,18 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         <button
           onClick={(e) => { e.stopPropagation(); onConnect(e); }}
           style={{
-            padding: "6px 14px",
-            borderRadius: 9,
-            border: `1px solid ${isConnected ? "var(--connected-border)" : hovered ? "var(--accent-border)" : "var(--accent-faint)"}`,
+            padding: "7px 16px",
+            borderRadius: 8,
+            border: `1px solid ${isConnected ? "var(--connected-border)" : hovered ? "var(--accent-border)" : "var(--card-border)"}`,
             fontSize: 11, fontWeight: 700,
             cursor: "pointer",
             background: isConnected ? "var(--connected-bg)" : hovered ? "var(--accent)" : "transparent",
-            color: isConnected ? "var(--connected-color)" : hovered ? "#000" : "var(--accent)",
-            display: "flex", alignItems: "center", gap: 4,
-            transition: "all 0.18s ease",
+            color: isConnected ? "var(--connected-color)" : hovered ? "#fff" : "var(--text-secondary)",
+            display: "flex", alignItems: "center", gap: 5,
+            transition: "all 0.22s ease",
             letterSpacing: "0.01em",
-            boxShadow: !isConnected && hovered ? "0 2px 10px var(--accent-glow)" : "none",
+            boxShadow: !isConnected && hovered ? "0 2px 10px rgba(217,119,6,0.18)" : "none",
+            fontFamily: "'DM Sans', system-ui, sans-serif",
           }}
         >
           {isConnected ? <><Check size={12} /> Conectado</> : "Conectar"}
