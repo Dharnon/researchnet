@@ -125,7 +125,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
         width: size, height: size, borderRadius: "50%",
         background: `radial-gradient(circle at 35% 35%, ${color}ee, ${color}55 45%, ${color}18)`,
         border: `1.5px solid ${color}50`,
-        boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.12), 0 2px 8px rgba(0,0,0,0.15)${hovered ? `, 0 0 14px ${color}30` : ""}`,
+        boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.12), 0 2px 8px rgba(0,0,0,0.15)`,
         display: "flex", alignItems: "center", justifyContent: "center",
         fontSize: s, fontWeight: 800, color,
         flexShrink: 0, letterSpacing: "-0.03em",
@@ -1003,7 +1003,7 @@ export default function App() {
       {view === "profile" && (
         <div style={{ maxWidth: 800, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
-            <h1 style={{ fontFamily: "'Playfair Display', Georgia, 'Times New Roman', serif", fontStyle: "italic", fontSize: 26, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 5 }}>Tu perfil</h1>
+            <h1 style={{ fontStyle: "italic", fontSize: 26, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", lineHeight: 1.2, marginBottom: 5, fontFamily: "'Playfair Display', Georgia, serif" }}>Tu perfil</h1>
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Gestiona tu información de investigador</p>
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18, padding: 28, marginBottom: 16 }}>
