@@ -195,25 +195,30 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
         </div>
 
         {/* Body */}
-        <div style={{ flex: 1, overflow: "auto", padding: "18px", display: "flex", flexDirection: "column", gap: 16 }}>
+        <div style={{ flex: 1, overflow: "auto", padding: "20px 20px 8px", display: "flex", flexDirection: "column", gap: 18 }}>
           {/* Profile header */}
           <div style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
             <Avatar initials={researcher.avatar} color={researcher.color} size={52} />
-            <div>
-              <h2 style={{ fontSize: 16, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.02em", marginBottom: 2 }}>{researcher.name}</h2>
-              <p style={{ fontSize: 11, color: "var(--text-secondary)", marginBottom: 1 }}>{researcher.role}</p>
-              <p style={{ fontSize: 10, color: "var(--text-tertiary)" }}>{researcher.dept}</p>
+            <div style={{ flex: 1 }}>
+              <h2 style={{ fontSize: 17, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.025em", lineHeight: 1.25, marginBottom: 4 }}>{researcher.name}</h2>
+              <p style={{ fontSize: 11.5, color: "var(--text-secondary)", marginBottom: 1, fontWeight: 500 }}>{researcher.role}</p>
+              <p style={{ fontSize: 11, color: "var(--text-tertiary)" }}>{researcher.dept}</p>
             </div>
           </div>
 
-          {/* Match score */}
+          {/* Match score — refined small pill */}
           <div style={{
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 6,
             background: researcher.match >= 90 ? "var(--match-high-bg)" : researcher.match >= 70 ? "var(--match-mid-bg)" : "var(--match-low-bg)",
             border: `1px solid ${researcher.match >= 90 ? "var(--match-high-border)" : researcher.match >= 70 ? "var(--match-mid-border)" : "var(--match-low-border)"}`,
-            borderRadius: 8, padding: "8px 12px", display: "flex", alignItems: "baseline", gap: 5,
+            borderRadius: 20,
+            padding: "5px 12px",
+            alignSelf: "flex-start",
           }}>
-            <span style={{ fontSize: 22, fontWeight: 900, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
-            <span style={{ fontSize: 10, fontWeight: 500, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", opacity: 0.50, letterSpacing: "0.04em" }}>% affinity</span>
+            <span style={{ fontSize: 14, fontWeight: 800, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", letterSpacing: "-0.04em", lineHeight: 1 }}>{researcher.match}</span>
+            <span style={{ fontSize: 10, fontWeight: 500, color: researcher.match >= 90 ? "var(--match-high)" : researcher.match >= 70 ? "var(--match-mid)" : "var(--match-low)", opacity: 0.55, letterSpacing: "0.04em" }}>% affinity</span>
           </div>
 
           {/* Bio */}
@@ -261,20 +266,33 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
         </div>
 
         {/* Footer */}
-        <div style={{ padding: "14px 18px", borderTop: "1px solid var(--card-border)" }}>
+        <div style={{ padding: "14px 20px 18px", borderTop: "1px solid var(--card-border)" }}>
           <button
             onClick={onConnect}
             style={{
-              width: "100%", padding: "11px", borderRadius: 10, border: "none",
-              fontSize: 13, fontWeight: 700, cursor: "pointer",
+              width: "100%",
+              padding: "11px 20px",
+              borderRadius: 10,
+              border: `1px solid ${isConnected ? "var(--connected-border)" : "var(--accent-border)"}`,
+              fontSize: 13,
+              fontWeight: 700,
+              cursor: "pointer",
+              fontFamily: "'DM Sans', system-ui, sans-serif",
               background: isConnected ? "var(--connected-bg)" : "var(--accent)",
-              color: isConnected ? "var(--connected-color)" : "#fff",
-              display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
-              transition: "all 0.18s",
-              boxShadow: isConnected ? "none" : "0 2px 8px var(--accent-glow)",
+              color: isConnected ? "var(--connected-color)" : "#3d5a00",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 7,
+              letterSpacing: "0.01em",
+              transition: "all 0.18s ease",
+              boxShadow: isConnected ? "none" : "0 2px 10px var(--accent-glow)",
             }}
           >
-            {isConnected ? <><Check size={14} /> Conectado — Ver mensaje</> : <><Users size={14} /> Conectar</>}
+            {isConnected
+              ? <><Check size={14} strokeWidth={2.5} /> Conectado</>
+              : <><Users size={14} strokeWidth={2} /> Conectar</>
+            }
           </button>
         </div>
       </div>
