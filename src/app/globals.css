@@ -1,7 +1,6 @@
-﻿/* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ Google Fonts (variant-c: Warm Editorial ├óΓé¼ΓÇ¥ Playfair Display + DM Sans) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
+/* WARM EDITORIAL — Playfair Display + DM Sans */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
-
-/* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ CSS VARIABLES (variant-c-warm: Cream, Amber Accent #D97706) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
+/* CSS VARIABLES (variant-c-warm: Cream #FAFAF8, Amber #D97706) */
 :root {
   --bg: #FAFAF8;
   --bg-secondary: #F5F4F0;
@@ -142,13 +141,13 @@
 }
 
 .skeleton-shimmer {
-  background: linear-gradient(90deg, var(--border) 25%, var(--accent-faint) 50%, var(--border) 75%);
+  background: linear-gradient(90deg, #F5F4F0 25%, #FAFAF8 50%, #F5F4F0 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
 
 .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, var(--border-subtle) 25%, var(--accent-faint) 50%, var(--border-subtle) 75%);
+  background: linear-gradient(90deg, #ECEAE4 25%, #F5F4F0 50%, #ECEAE4 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite 0.2s;
 }
