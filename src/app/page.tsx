@@ -1053,6 +1053,17 @@ export default function App() {
             ))}
           </div>
           <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: 20 }}>
+          {/* Research Activity */}
+          <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: "18px 20px", marginBottom: 16 }}>
+            <p style={{ fontSize: 11, fontWeight: 700, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 12 }}>Nivel de actividad</p>
+            <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+              <div style={{ flex: 1, height: 6, background: "var(--border)", borderRadius: 3, overflow: "hidden" }}>
+                <div style={{ width: "72%", height: "100%", background: "linear-gradient(90deg, var(--accent), var(--accent-hover))", borderRadius: 3, boxShadow: "0 0 8px var(--accent-glow)" }} />
+              </div>
+              <span style={{ fontSize: 11, fontWeight: 700, color: "var(--accent)", minWidth: 28 }}>72%</span>
+            </div>
+            <p style={{ fontSize: 11, color: "var(--text-tertiary)", marginTop: 8 }}>8 publicaciones · 2 proyectos · 0 colaboraciones activas este mes</p>
+          </div>
             <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones rápidas</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
               {[{ label: "Ver mi perfil público", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
