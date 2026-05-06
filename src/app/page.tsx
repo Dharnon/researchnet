@@ -1084,7 +1084,7 @@ export default function App() {
                     <span style={{ color: "var(--accent)" }}>{action.icon}</span>
                     {action.label}
                   </span>
-                  <ChevronRight size={12} color="#333" />
+                  <ChevronRight size={12} color="var(--text-tertiary)" />
                 </button>
               ))}
             </div>
