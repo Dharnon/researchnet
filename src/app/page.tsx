@@ -139,7 +139,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
 }
 
 
-// --- MATCH BADGE (variant-a: lime accent, tiered) -----
+// --- MATCH BADGE (variant-b: subtle dark — near-invisible metadata) -----
 function MatchBadge({ score }: { score: number }) {
   const isHigh = score >= 90;
   const isMid  = score >= 70 && score < 90;
@@ -148,10 +148,11 @@ function MatchBadge({ score }: { score: number }) {
   return (
     <span style={{
       display: "inline-flex", alignItems: "center",
-      fontSize: 10, fontWeight: 700,
+      fontSize: 10, fontWeight: 600,
       color, background: bg,
-      padding: "2px 7px", borderRadius: 20,
-      letterSpacing: "0.01em", flexShrink: 0,
+      padding: "1px 6px", borderRadius: 20,
+      letterSpacing: "0.02em", flexShrink: 0,
+      opacity: 0.70,
     }}>
       {score}%
     </span>
@@ -203,8 +204,9 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             </div>
           </div>
 
-          {/* Match score — small, unobtrusive */}
+          {/* Match score — truly small, unobtrusive metadata */}
           <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+            <span style={{ fontSize: 10, color: "var(--text-tertiary)", fontWeight: 500, letterSpacing: "0.03em" }}>affinity</span>
             <MatchBadge score={researcher.match} />
           </div>
 
