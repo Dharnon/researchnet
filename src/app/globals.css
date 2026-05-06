@@ -141,13 +141,13 @@
 }
 
 .skeleton-shimmer {
-  background: linear-gradient(90deg, #F5F4EE 25%, #FAFAF8 50%, #F5F4EE 75%);
+  background: linear-gradient(90deg, #f0f4f8 0%, #e2e8f0 35%, #f0f4f8 60%, #f0f4f8 100%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
 
 .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, #ECEAE4 25%, #F5F4F0 50%, #ECEAE4 75%);
+  background: linear-gradient(90deg, #fafbfd 0%, #f1f5f9 35%, #f8fafc 60%, #fafbfd 100%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite 0.2s;
 }
