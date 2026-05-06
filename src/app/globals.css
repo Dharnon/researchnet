@@ -118,18 +118,18 @@ body {
 
 /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ SKELETON SHIMMER (variant-c: Warm Editorial) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
 @keyframes shimmer {
-  0% { background-position: -400px 0; }
-  100% { background-position: 400px 0; }
+  0% { background-position: -200px 0; }
+  100% { background-position: 200px 0; }
 }
 .skeleton-shimmer {
   background: linear-gradient(90deg, #1c1917 0%, #292524 30%, #1c1917 60%, #292524 100%);
-  background-size: 800px 100%;
-  animation: shimmer 1.8s ease-in-out infinite;
+  background-size: 600px 100%;
+  animation: shimmer 2.2s ease-in-out infinite;
 }
 .skeleton-shimmer-dim {
   background: linear-gradient(90deg, #141210 0%, #1c1917 30%, #141210 60%, #1c1917 100%);
-  background-size: 800px 100%;
-  animation: shimmer 2.2s ease-in-out infinite;
+  background-size: 600px 100%;
+  animation: shimmer 2.6s ease-in-out infinite;
 }
 
 /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ ONBOARDING ORCID BUTTON (variant-b-dark) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
@@ -1048,7 +1048,7 @@ body {
   color: var(--accent); display: flex; align-items: center; justify-content: center;
   cursor: pointer; transition: all 0.15s; flex-shrink: 0;
 }
-.c-msg-btn:hover { background: var(--accent); color: #000; }
+.c-msg-btn:hover { background: var(--accent-dim); color: var(--accent-hover); border-color: var(--accent-border); box-shadow: 0 0 12px var(--accent-glow); }
 
 /* ─── HOT TOP STRIPE ON OPP CARDS ─── */
 .opp-card.hot::after { opacity: 1 !important; }
