@@ -401,9 +401,9 @@ body {
   overflow: hidden;
 }
 .researcher-card-b:hover {
-  box-shadow: 0 8px 36px rgba(0,0,0,0.40), 0 16px 56px rgba(0,0,0,0.22), 0 0 0 1px rgba(245,158,11,0.18), 0 0 56px rgba(245,158,11,0.08);
-  border-color: rgba(245,158,11,0.35);
-  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.35), 0 0 0 1px rgba(245,158,11,0.12), 0 0 28px rgba(245,158,11,0.05);
+  border-color: rgba(245,158,11,0.28);
+  transform: translateY(-2px);
 }
 .card-top {
   display: flex;
@@ -472,14 +472,15 @@ body {
 .stat strong { color: var(--text-secondary); }
 
 /* Match badge */
+/* Match badge — small, unobtrusive metadata (variant-b dark) */
 .match-badge-a {
   display: inline-flex;
   align-items: center;
-  font-size: 11px;
+  font-size: 9px;
   font-weight: 700;
-  padding: 2px 8px;
-  border-radius: 20px;
-  letter-spacing: 0.01em;
+  padding: 1px 5px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
 }
 
 /* Open badge */
