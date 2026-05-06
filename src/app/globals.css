@@ -130,18 +130,18 @@ body {
 
 /* ─── SKELETON SHIMMER ─── */
 @keyframes shimmer {
-  0% { background-position: -600px 0; }
-  100% { background-position: 600px 0; }
+  0% { background-position: -300px 0; }
+  100% { background-position: 300px 0; }
 }
 .skeleton-shimmer {
   background: linear-gradient(90deg, #f0f4e0 0%, #e8edda 30%, #f0f4e0 60%, #e8edda 100%);
-  background-size: 1200px 100%;
-  animation: shimmer 1.6s ease-in-out infinite;
+  background-size: 900px 100%;
+  animation: shimmer 2.0s ease-in-out infinite;
 }
 .skeleton-shimmer-dim {
   background: linear-gradient(90deg, #f8faf0 0%, #f0f4e0 30%, #f8faf0 60%, #f0f4e0 100%);
-  background-size: 1200px 100%;
-  animation: shimmer 1.8s ease-in-out infinite;
+  background-size: 900px 100%;
+  animation: shimmer 2.4s ease-in-out infinite;
 }
 
 /* â”€â”€ HEADER â”€â”€ */
@@ -606,9 +606,9 @@ body {
   overflow: hidden;
 }
 .opp-card:hover {
-  box-shadow: 0 12px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.07);
-  border-color: rgba(0,0,0,0.12);
-  transform: translateY(-3px) scale(1.008);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12), 0 2px 8px rgba(0,0,0,0.07), 0 0 0 1px rgba(132,204,22,0.18);
+  border-color: rgba(132,204,22,0.35);
+  transform: translateY(-3px);
 }
 .opp-card::after {
   content: '';
@@ -1023,7 +1023,7 @@ body {
   color: var(--accent); display: flex; align-items: center; justify-content: center;
   cursor: pointer; transition: all 0.15s; flex-shrink: 0;
 }
-.c-msg-btn:hover { background: var(--accent); color: #3d5a00; }
+.c-msg-btn:hover { background: var(--accent-dim); color: var(--accent); border-color: var(--accent-border); box-shadow: 0 0 12px var(--accent-glow); }
 
 /* ─── ORCID BUTTON (variant-a: premium lime brand) ─── */
 .onboard-orcid-btn {
