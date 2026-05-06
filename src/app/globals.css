@@ -154,15 +154,15 @@
 }
 
 .skeleton-shimmer {
-  background: linear-gradient(90deg, #faf8f4 0%, #f5f0e8 35%, #faf8f4 60%, #faf8f4 100%);
-  background-size: 800px 100%;
-  animation: shimmer 1.4s ease-in-out infinite;
+  background: linear-gradient(90deg, #f5f0e8 0%, #ede6d8 25%, #f5f0e8 50%, #ede6d8 75%, #f5f0e8 100%);
+  background-size: 1200px 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
 }
 
 .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, #fdfcfa 0%, #f8f4ec 35%, #fdfcfa 60%, #fdfcfa 100%);
-  background-size: 800px 100%;
-  animation: shimmer 1.4s ease-in-out infinite 0.2s;
+  background: linear-gradient(90deg, #faf8f4 0%, #f0ebe0 25%, #faf8f4 50%, #f0ebe0 75%, #faf8f4 100%);
+  background-size: 1200px 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
 }
 
 /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ SKELETON CARD (variant-c-warm: amber shimmer) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
