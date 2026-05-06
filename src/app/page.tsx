@@ -622,25 +622,29 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
 
   return (
     <div style={{
-      display: "flex", gap: 1,
+      display: "flex", gap: 2,
       background: "var(--surface-hover)",
       border: "1px solid var(--card-border)",
-      borderRadius: 10, padding: 3,
+      borderRadius: 10, padding: 4,
     }}>
       {items.map((item) => (
         <button key={item.key} onClick={() => setView(item.key)} style={{
-          position: "relative", width: 38, height: 34,
+          position: "relative", minWidth: 68, height: 34, padding: "0 10px",
           borderRadius: 7, border: "none",
           fontSize: 12, fontWeight: 600, cursor: "pointer",
           background: view === item.key ? "var(--accent-dim)" : "transparent",
           color: view === item.key ? "var(--accent)" : "var(--text-tertiary)",
           transition: "all 0.15s",
-          display: "flex", alignItems: "center", justifyContent: "center",
-        }}>
+          display: "flex", alignItems: "center", justifyContent: "center", gap: 5,
+        }}
+        title={item.label}
+        >
+          {item.icon}
+          <span>{item.label}</span>
           {item.icon}
           {item.badge !== undefined && item.badge > 0 && (
             <span style={{
-              position: "absolute", top: 2, right: 2,
+              position: "absolute", top: 4, right: 4,
               background: item.key === "messages" ? "#ef4444" : "var(--accent)",
               color: "#000", fontSize: 7, fontWeight: 800,
               padding: "0.5px 3.5px", borderRadius: 20, minWidth: 13,
@@ -651,8 +655,8 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           )}
           {view === item.key && (
             <div style={{
-              position: "absolute", bottom: 2, left: "50%", transform: "translateX(-50%)",
-              width: 16, height: 2, borderRadius: 2, background: "var(--accent)",
+              position: "absolute", bottom: -3, left: "50%", transform: "translateX(-50%)",
+              width: 18, height: 2, borderRadius: 2, background: "var(--accent)",
               boxShadow: "0 0 8px var(--accent-glow)",
             }} />
           )}
