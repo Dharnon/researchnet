@@ -573,10 +573,14 @@ body {
   padding: 12px 16px;
   border-radius: var(--radius-sm);
   cursor: pointer;
-  transition: background 0.18s;
+  transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
   text-decoration: none;
 }
-.conv-item:hover { background: var(--surface-hover); }
+.conv-item:hover {
+  background: var(--surface-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.20);
+}
 .conv-item.active { background: var(--accent-dim); }
 .conv-info { flex: 1; min-width: 0; }
 .conv-name {
