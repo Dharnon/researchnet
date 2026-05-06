@@ -103,16 +103,16 @@ body {
 /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ SELECTION ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
 ::selection { background: var(--accent-dim); color: var(--accent-hover); }
 /* ═══════════════════════════════════════════════
-   VARIANT-C SECTION HEADINGS
+   VARIANT-B SECTION HEADINGS
    ═══════════════════════════════════════════════ */
 .vc-section-heading {
   font-family: 'DM Sans', system-ui, sans-serif;
-  font-size: 22px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 800;
   color: var(--text-primary);
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  margin-bottom: 4px;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin-bottom: 6px;
 }
 
 
