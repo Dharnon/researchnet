@@ -942,7 +942,7 @@ export default function App() {
         <div style={{ maxWidth: 900, margin: "0 auto", padding: "24px" }}>
           <div style={{ marginBottom: 24 }}>
             <h1 style={{ fontFamily: "'Playfair Display', Georgia, serif", fontStyle: "italic", fontSize: 26, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 5 }}>Tu red</h1>
-            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>{connectedResearchers.length} investigador{connectedResearchers.length !== 1 ? "es" : ""} en tu red</p>
+            <p style={{ fontSize: 13, color: "var(--text-muted)" }}>{connectedResearchers.length} contact{connectedResearchers.length !== 1 ? "s" : ""} in your network</p>
           </div>
           {connectedResearchers.length === 0 ? (
             <div style={{
@@ -955,30 +955,32 @@ export default function App() {
               <div style={{
                 position: "absolute", top: "50%", left: "50%",
                 transform: "translate(-50%, -55%)",
-                width: 140, height: 140,
-                background: "radial-gradient(circle, var(--accent-dim) 0%, transparent 70%)",
+                width: 180, height: 180,
+                background: "radial-gradient(circle, rgba(217,119,6,0.07) 0%, transparent 65%)",
                 pointerEvents: "none",
               }} />
-              <svg width="56" height="56" viewBox="0 0 64 64" fill="none" style={{ display: "block", margin: "0 auto 20px", position: "relative" }}>
-                <circle cx="32" cy="32" r="8" stroke="var(--border)" strokeWidth="1.5" fill="none"/>
-                <circle cx="32" cy="32" r="3" fill="var(--accent)" opacity="0.6"/>
-                <circle cx="14" cy="18" r="5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.45"/>
-                <circle cx="50" cy="18" r="5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.45"/>
-                <circle cx="14" cy="46" r="5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.45"/>
-                <circle cx="50" cy="46" r="5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.45"/>
-                <circle cx="32" cy="8" r="4" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.35"/>
-                <circle cx="32" cy="56" r="4" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.35"/>
-                <line x1="24" y1="27" x2="18" y2="21" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="40" y1="27" x2="46" y2="21" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="24" y1="37" x2="18" y2="43" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="40" y1="37" x2="46" y2="43" stroke="var(--accent)" strokeWidth="1" strokeDasharray="3 2" opacity="0.35"/>
-                <line x1="32" y1="24" x2="32" y2="12" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.35"/>
-                <line x1="32" y1="40" x2="32" y2="52" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.35"/>
-                <circle cx="14" cy="18" r="2" fill="var(--accent)" opacity="0.35"/>
-                <circle cx="50" cy="18" r="2" fill="var(--accent)" opacity="0.35"/>
-                <circle cx="14" cy="46" r="2" fill="var(--accent)" opacity="0.35"/>
-                <circle cx="50" cy="46" r="2" fill="var(--accent)" opacity="0.35"/>
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style={{ display: "block", margin: "0 auto 22px", position: "relative" }}>
+                <circle cx="32" cy="32" r="9" stroke="var(--border)" strokeWidth="1.5" fill="none"/>
+                <circle cx="32" cy="32" r="3.5" fill="var(--accent)" opacity="0.65"/>
+                <circle cx="12" cy="16" r="5.5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.40"/>
+                <circle cx="52" cy="16" r="5.5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.40"/>
+                <circle cx="12" cy="48" r="5.5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.40"/>
+                <circle cx="52" cy="48" r="5.5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.40"/>
+                <circle cx="32" cy="7" r="4.5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.30"/>
+                <circle cx="32" cy="57" r="4.5" stroke="var(--text-tertiary)" strokeWidth="1.5" fill="none" opacity="0.30"/>
+                <line x1="22" y1="28" x2="15.5" y2="20" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="2.5 2" opacity="0.50"/>
+                <line x1="42" y1="28" x2="48.5" y2="20" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="2.5 2" opacity="0.50"/>
+                <line x1="22" y1="36" x2="15.5" y2="44" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="2.5 2" opacity="0.50"/>
+                <line x1="42" y1="36" x2="48.5" y2="44" stroke="var(--accent)" strokeWidth="1.5" strokeDasharray="2.5 2" opacity="0.50"/>
+                <line x1="32" y1="23" x2="32" y2="11" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.40"/>
+                <line x1="32" y1="41" x2="32" y2="53" stroke="var(--border)" strokeWidth="1" strokeDasharray="2 2" opacity="0.40"/>
+                <circle cx="12" cy="16" r="2" fill="var(--accent)" opacity="0.40"/>
+                <circle cx="52" cy="16" r="2" fill="var(--accent)" opacity="0.40"/>
+                <circle cx="12" cy="48" r="2" fill="var(--accent)" opacity="0.40"/>
+                <circle cx="52" cy="48" r="2" fill="var(--accent)" opacity="0.40"/>
               </svg>
+              <p style={{ fontSize: 16, fontWeight: 700, color: "var(--text-secondary)", marginBottom: 6, letterSpacing: "-0.01em" }}>Tu red está vacía</p>
+              <p style={{ fontSize: 13, color: "var(--text-tertiary)", maxWidth: 280, lineHeight: 1.65, margin: "0 auto" }}>Conéctate con investigadores para activar tu red de colaboración</p>
             </div>
           ) : (
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
