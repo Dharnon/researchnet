@@ -265,7 +265,6 @@ body {
   background: var(--accent-dim);
   color: var(--accent-hover);
   border-color: var(--accent-border);
-  background: var(--card-bg);
 }
 .notif-dot {
   position: absolute;
