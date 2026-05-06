@@ -407,8 +407,8 @@ body {
   overflow: hidden;
 }
 .researcher-card-b:hover {
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--accent-border);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.30), 0 14px 48px rgba(0,0,0,0.18), 0 0 0 1px rgba(245,158,11,0.12), 0 0 48px rgba(245,158,11,0.05);
+  border-color: rgba(245,158,11,0.28);
   transform: translateY(-2px);
 }
 .card-top {
@@ -553,8 +553,8 @@ body {
   transition: all 0.22s;
 }
 .network-card:hover {
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--accent-border);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.30), 0 14px 48px rgba(0,0,0,0.18), 0 0 0 1px rgba(245,158,11,0.12), 0 0 48px rgba(245,158,11,0.05);
+  border-color: rgba(245,158,11,0.28);
   transform: translateY(-1px);
 }
 .network-info { flex: 1; min-width: 0; }
@@ -619,8 +619,8 @@ body {
   overflow: hidden;
 }
 .opp-card:hover {
-  box-shadow: var(--shadow-card-hover);
-  border-color: var(--accent-border);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.30), 0 14px 48px rgba(0,0,0,0.18), 0 0 0 1px rgba(245,158,11,0.12), 0 0 48px rgba(245,158,11,0.05);
+  border-color: rgba(245,158,11,0.28);
   transform: translateY(-2px);
 }
 .opp-card::after {
