@@ -1,0 +1,10 @@
+const fs = require('fs');
+let c = fs.readFileSync('src/app/page.tsx', 'utf8');
+const idx = c.indexOf('radial-gradient(circle at 35% 35%');
+const end = c.indexOf("18)", idx);
+const old = c.substring(idx - 12, end + 3);
+console.log('Found:', JSON.stringify(old));
+const replacement = "background: `linear-gradient(135deg, ${color}22 0%, ${color}08 100%)`,\r\n        border:";
+c = c.replace(old, replacement);
+fs.writeFileSync('src/app/page.tsx', c, 'utf8');
+console.log('Done');

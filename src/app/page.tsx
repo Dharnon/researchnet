@@ -123,7 +123,7 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
       onMouseLeave={() => setHovered(false)}
       style={{
         width: size, height: size, borderRadius: "50%",
-        background: `radial-gradient(circle at 35% 35%, ${color}ee, ${color}55 45%, ${color}18)`,
+        background: `linear-gradient(135deg, ${color}22 0%, ${color}08 100%)`,
         border: `1.5px solid ${hovered ? color + "80" : color + "50"}`,
         boxShadow: hovered
           ? `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.08), 0 2px 6px rgba(0,0,0,0.4), 0 0 ${size * 0.3}px ${color}40`
