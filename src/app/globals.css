@@ -424,13 +424,13 @@ select:focus-visible {
 
 /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ SECTION HEADINGS (variant-c: warm editorial serif) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
 .vc-section-heading {
-  font-size: 26px;
-  font-weight: 700;
+  font-size: 28px;
+  font-weight: 800;
   color: var(--text-primary);
   font-family: 'Playfair Display', Georgia, serif;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
-  margin-bottom: 5px;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin-bottom: 6px;
 }
 
 /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ CONNECT BUTTONS (variant-c-warm: amber) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
