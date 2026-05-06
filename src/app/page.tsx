@@ -123,11 +123,11 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
       onMouseLeave={() => setHovered(false)}
       style={{
         width: size, height: size, borderRadius: "50%",
-        background: `linear-gradient(135deg, ${color}22 0%, ${color}08 100%)`,
-        border: `1.5px solid ${hovered ? color + "80" : color + "50"}`,
+        background: `linear-gradient(135deg, ${color}18 0%, ${color}08 100%)`,
+        border: `1.5px solid ${hovered ? color + "70" : color + "40"}`,
         boxShadow: hovered
-          ? `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.08), 0 2px 6px rgba(0,0,0,0.4), 0 0 ${size * 0.3}px ${color}40`
-          : `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.08), 0 2px 6px rgba(0,0,0,0.4)`,
+          ? `0 0 0 1px rgba(255,255,255,0.08), inset 0 1px 1px rgba(255,255,255,0.12), 0 2px 8px rgba(0,0,0,0.35)`
+          : `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.08), 0 1px 4px rgba(0,0,0,0.3)`,
         display: "flex", alignItems: "center", justifyContent: "center",
         fontSize: s, fontWeight: 800, color,
         flexShrink: 0, letterSpacing: "-0.03em",
@@ -354,14 +354,13 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
       <div style={{ display: "flex", alignItems: "flex-start", gap: 12, position: "relative" }}>
         <div style={{
           width: 48, height: 48, borderRadius: "50%",
-          background: `radial-gradient(circle at 35% 35%, ${researcher.color}ee, ${researcher.color}55 45%, ${researcher.color}18)`,
+          background: `radial-gradient(circle at 35% 35%, ${researcher.color}dd, ${researcher.color}55 45%, ${researcher.color}18)`,
           border: `1.5px solid ${researcher.color}40`,
-          boxShadow: `0 0 0 1px rgba(255,255,255,0.06), inset 0 1px 1px rgba(255,255,255,0.10), 0 3px 10px rgba(0,0,0,0.35)`,
+          boxShadow: `0 0 0 1px rgba(255,255,255,0.08), inset 0 1px 1px rgba(255,255,255,0.12), 0 2px 8px rgba(0,0,0,0.28)`,
           display: "flex", alignItems: "center", justifyContent: "center",
           fontSize: 14, fontWeight: 800, color: researcher.color,
           flexShrink: 0, letterSpacing: "-0.03em",
-          transition: "box-shadow 0.22s ease, filter 0.22s ease",
-          filter: `drop-shadow(0 0 6px ${researcher.color}30)`,
+          transition: "box-shadow 0.22s ease",
         }}>
           {researcher.avatar}
         </div>
