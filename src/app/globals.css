@@ -141,7 +141,7 @@
 }
 
 .skeleton-shimmer {
-  background: linear-gradient(90deg, #F5F4F0 25%, #FAFAF8 50%, #F5F4F0 75%);
+  background: linear-gradient(90deg, #F5F4EE 25%, #FAFAF8 50%, #F5F4EE 75%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
@@ -238,7 +238,12 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
 
-input::placeholder { color: var(--text-tertiary); }
+in
+
+/* ═══════════════════════════════════════════════
+   VARIANT-C SELECTION ══════════════════════════════════════════
+   ═══════════════════════════════════════════════ */
+::selection { background: rgba(217,119,6,0.18); color: #92400e; }put::placeholder { color: var(--text-tertiary); }
 
 button {
   font-family: 'DM Sans', system-ui, sans-serif;
@@ -282,8 +287,8 @@ select:focus-visible {
 }
 .researcher-card:hover {
   border-color: var(--accent-border);
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.14), 0 16px 56px rgba(0,0,0,0.10), 0 0 0 1px rgba(217,119,6,0.22), 0 0 32px rgba(217,119,6,0.08);
+  transform: translateY(-3px);
 }
 .researcher-card:hover::after { opacity: 1; }
 
