@@ -1,52 +1,43 @@
-// Read the globals.css file and fix the garbled variant comments
 const fs = require('fs');
-const path = 'src/app/globals.css';
+let c = fs.readFileSync('src/app/globals.css', 'utf8');
 
-let content = fs.readFileSync(path, 'utf8');
+const oldBlock = `.skeleton-shimmer {
+  background: linear-gradient(90deg, #f0f0ee 25%, #e6e6e4 50%, #f0f0ee 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite;
+}
+.skeleton-shimmer-dim {
+  background: linear-gradient(90deg, #f5f5f3 25%, #ededeb 50%, #f5f5f3 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.6s infinite;
+}`;
 
-// Fix the garbled comments in variant-a-clean branch
-// The file has "variant-b-dark" in comments and vars declarations when it should be "variant-a-clean"
-// Lines 1-2: Google Fonts and CSS VARIABLES comments
-content = content.replace(
-  '/* â\u0080\u009E\u0080\u009E Google Fonts (variant-b-dark: Deep Navy + Lime) â\u0080\u009E\u0080\u009E */',
-  '/* â\u0080\u009E\u0080\u009E Google Fonts (variant-a-clean: Clean Classic, Dark Navy + Lime #84cc16) â\u0080\u009E\u0080\u009E */'
-);
-content = content.replace(
-  '/* â\u0080\u009E\u0080\u009E CSS VARIABLES (variant-b-dark: Deep Navy Dark, Lime Accent #84cc16) â\u0080\u009E\u0080\u009E */',
-  '/* â\u0080\u009E\u0080\u009E CSS VARIABLES (variant-a-clean: Deep Navy #0B0E17, Lime Accent #84cc16) â\u0080\u009E\u0080\u009E */'
-);
+const newBlock = `.skeleton-shimmer {
+  background: linear-gradient(90deg, #f5f7f0 0%, #e8edda 35%, #f0f5e8 60%, #f5f7f0 100%);
+  background-size: 1200px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+}
+.skeleton-shimmer-dim {
+  background: linear-gradient(90deg, #fafaf6 0%, #f0f3e8 35%, #f5f8ee 60%, #fafaf6 100%);
+  background-size: 1200px 100%;
+  animation: shimmer 1.8s ease-in-out infinite;
+}`;
 
-// Fix the comment referencing variant-b-dark for match/connected/hot variables
-content = content.replace(
-  '/* Match score tiers; lime for variant-b-dark */',
-  '/* Match score tiers; lime for variant-a-clean */'
-);
-content = content.replace(
-  '/* Connected button; lime for variant-b-dark */',
-  '/* Connected button; lime for variant-a-clean */'
-);
-content = content.replace(
-  '/* Hot / deadline accent */',
-  '/* Hot / deadline accent; lime for variant-a-clean */'
-);
-
-// Fix the skeleton shimmer comment
-content = content.replace(
-  '/* â\u0080\u009E\u0080\u009E SKELETON SHIMMER (variant-a-clean: Deep Navy + Lime #84cc16) â\u0080\u009E\u0080\u009E */',
-  '/* â\u0080\u009E\u0080\u009E SKELETON SHIMMER (variant-a-clean: Deep Navy + Lime #84cc16) â\u0080\u009E\u0080\u009E */'
-);
-
-// Fix onboarding button comment
-content = content.replace(
-  '/* â\u0080\u009E\u0080\u009E ONBOARDING ORCID BUTTON (variant-a-clean) â\u0080\u009E\u0080\u009E */',
-  '/* â\u0080\u009E\u0080\u009E ONBOARDING ORCID BUTTON (variant-a-clean) â\u0080\u009E\u0080\u009E */'
-);
-
-// Also fix border-radius: 12 to border-radius: var(--radius)
-content = content.replace(
-  'border-radius: 12;',
-  'border-radius: var(--radius);'
-);
-
-fs.writeFileSync(path, content, 'utf8');
-console.log('Fixed variant-a-clean globals.css');
+if (c.includes(oldBlock)) {
+  c = c.replace(oldBlock, newBlock);
+  fs.writeFileSync('src/app/globals.css', c, 'utf8');
+  console.log('Replaced OK');
+} else {
+  // Try with CRLF
+  const oldBlockCrLf = oldBlock.replace(/\n/g, '\r\n');
+  const newBlockCrLf = newBlock.replace(/\n/g, '\r\n');
+  if (c.includes(oldBlockCrLf)) {
+    c = c.replace(oldBlockCrLf, newBlockCrLf);
+    fs.writeFileSync('src/app/globals.css', c, 'utf8');
+    console.log('Replaced OK (CRLF)');
+  } else {
+    console.log('NOT FOUND - checking diff');
+    const idx = c.indexOf('.skeleton-shimmer');
+    console.log(JSON.stringify(c.substring(idx, idx + oldBlock.length + 100)));
+  }
+}
