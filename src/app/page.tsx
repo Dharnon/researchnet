@@ -610,8 +610,8 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
   return (
     <div style={{
       display: "flex", gap: 1,
-      background: "rgba(255,255,255,0.03)",
-      border: "1px solid rgba(255,255,255,0.07)",
+      background: "var(--surface-hover)",
+      border: "1px solid var(--card-border)",
       borderRadius: 10, padding: 3,
     }}>
       {items.map((item) => {
@@ -627,14 +627,15 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
               position: "relative", minWidth: 70, height: 34,
               borderRadius: 7, border: "none",
               fontSize: 12, fontWeight: 600, cursor: "pointer",
-              background: isActive ? "var(--accent-dim)" : isHovered ? "rgba(255,255,255,0.06)" : "transparent",
-              color: isActive ? "var(--accent)" : isHovered ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.30)",
+              background: isActive ? "var(--accent-dim)" : isHovered ? "var(--surface)" : "transparent",
+              color: isActive ? "var(--accent)" : isHovered ? "var(--text-secondary)" : "var(--text-tertiary)",
               transition: "all 0.15s",
               display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
               padding: "0 10px",
             }}
           >
             {item.icon}
+            <span>{item.label}</span>
             {item.badge !== undefined && item.badge > 0 && (
               <span style={{
                 position: "absolute", top: 2, right: 2,
@@ -883,7 +884,7 @@ export default function App() {
             <h1 className="vc-section-heading">Oportunidades</h1>
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Postdocs, becas, convocatorias y ms</p>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 14 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 20 }}>
             {opportunities.map((opp, i) => {
               const color = TYPE_COLORS[opp.type] ?? "#6b7280";
               return (
@@ -893,11 +894,10 @@ export default function App() {
                   className={`opp-card card-enter${opp.hot ? " hot" : ""}`}
                   style={{ animationDelay: `${Math.min(i, 5) * 60}ms` }}
                 >
-                  {/* Top accent line for hot */}
                   {opp.hot && (
                     <div style={{
                       position: "absolute", top: 0, left: 0, right: 0, height: 3,
-                      background: "linear-gradient(90deg, #ef4444, #f97316)",
+                      background: "linear-gradient(90deg, var(--hot-color), var(--accent-hover))",
                       borderRadius: "14px 14px 0 0",
                     }} />
                   )}
@@ -1085,7 +1085,7 @@ export default function App() {
                     <span style={{ color: "var(--accent)" }}>{action.icon}</span>
                     {action.label}
                   </span>
-                  <ChevronRight size={12} color="#333" />
+                  <ChevronRight size={12} color="var(--text-tertiary)" />
                 </button>
               ))}
             </div>
