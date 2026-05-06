@@ -70,40 +70,53 @@ const researcherColors: Record<string, string> = {
 // ─── SKELETON LOADER ─────────────────────────────────────────────────────────
 
 function SkeletonLoader() {
+  const shimmer = "skeleton-shimmer";
+  const dim = "skeleton-shimmer-dim";
   return (
     <div style={{ background: "var(--bg)", minHeight: "100vh", padding: "24px" }}>
       {/* Header skeleton */}
       <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 32, padding: "0 0 24px", borderBottom: "1px solid var(--border)" }}>
         <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <div className="skeleton-shimmer" style={{ width: 28, height: 28, borderRadius: 8 }} />
-          <div className="skeleton-shimmer" style={{ width: 90, height: 14, borderRadius: 4 }} />
+          <div className={shimmer} style={{ width: 28, height: 28, borderRadius: 8 }} />
+          <div className={shimmer} style={{ width: 90, height: 14, borderRadius: 4 }} />
         </div>
-        <div className="skeleton-shimmer" style={{ width: 280, height: 36, borderRadius: 10 }} />
-        <div className="skeleton-shimmer" style={{ width: 60, height: 14, borderRadius: 4 }} />
+        <div className={shimmer} style={{ width: 280, height: 36, borderRadius: 10 }} />
+        <div className={shimmer} style={{ width: 60, height: 14, borderRadius: 4 }} />
       </div>
-      {/* Cards grid skeleton */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 14 }}>
-        {[1, 2, 3, 4, 5, 6].map((i) => (
-          <div key={i} style={{ background: "var(--card-bg)", border: "1px solid var(--border)", borderRadius: 14, padding: 18, display: "flex", flexDirection: "column", gap: 12 }}>
+      {/* Cards grid skeleton — mirrors actual card structure */}
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: 14 }}>
+        {[0, 1, 2, 3, 4, 5].map((i) => (
+          <div key={i} className={dim} style={{
+            background: "var(--card-bg)", border: "1px solid var(--card-border)",
+            borderRadius: 14, padding: 18,
+            display: "flex", flexDirection: "column", gap: 10,
+            animationDelay: `${i * 60}ms`,
+            // Pulse at card level — shimmer lives on inner elements only
+          }}>
+            {/* Top row: avatar + name/role/dept */}
             <div style={{ display: "flex", gap: 12, alignItems: "flex-start" }}>
-              <div className="skeleton-shimmer" style={{ width: 44, height: 44, borderRadius: "50%" }} />
+              <div className={shimmer} style={{ width: 48, height: 48, borderRadius: "50%", flexShrink: 0 }} />
               <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 6 }}>
-                <div className="skeleton-shimmer" style={{ width: "70%", height: 13, borderRadius: 4 }} />
-                <div className="skeleton-shimmer-dim" style={{ width: "50%", height: 10, borderRadius: 4 }} />
-                <div className="skeleton-shimmer-dim" style={{ width: "40%", height: 9, borderRadius: 4 }} />
+                <div className={shimmer} style={{ width: "65%", height: 14, borderRadius: 4 }} />
+                <div className={dim} style={{ width: "48%", height: 11, borderRadius: 4 }} />
+                <div className={dim} style={{ width: "38%", height: 10, borderRadius: 4 }} />
               </div>
             </div>
+            {/* Bio line */}
+            <div className={dim} style={{ width: "92%", height: 10, borderRadius: 4 }} />
+            {/* Tags */}
             <div style={{ display: "flex", gap: 6 }}>
-              <div className="skeleton-shimmer" style={{ width: 64, height: 20, borderRadius: 20 }} />
-              <div className="skeleton-shimmer-dim" style={{ width: 80, height: 20, borderRadius: 20 }} />
-              <div className="skeleton-shimmer" style={{ width: 56, height: 20, borderRadius: 20 }} />
+              <div className={shimmer} style={{ width: 70, height: 22, borderRadius: 20 }} />
+              <div className={dim} style={{ width: 85, height: 22, borderRadius: 20 }} />
+              <div className={shimmer} style={{ width: 60, height: 22, borderRadius: 20 }} />
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 4 }}>
-              <div style={{ display: "flex", gap: 10 }}>
-                <div className="skeleton-shimmer-dim" style={{ width: 40, height: 10, borderRadius: 4 }} />
-                <div className="skeleton-shimmer-dim" style={{ width: 50, height: 10, borderRadius: 4 }} />
+            {/* Footer */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: 4, borderTop: "1px solid var(--border-subtle)" }}>
+              <div style={{ display: "flex", gap: 12 }}>
+                <div className={dim} style={{ width: 44, height: 11, borderRadius: 4 }} />
+                <div className={dim} style={{ width: 52, height: 11, borderRadius: 4 }} />
               </div>
-              <div className="skeleton-shimmer" style={{ width: 72, height: 26, borderRadius: 8 }} />
+              <div className={shimmer} style={{ width: 80, height: 26, borderRadius: 8 }} />
             </div>
           </div>
         ))}
@@ -813,9 +826,18 @@ export default function App() {
             <p style={{ fontSize: 13, color: "var(--text-muted)" }}>Encuentra colaboradores para tu próximo proyecto</p>
           </div>
           <div style={{ display: "flex", gap: 8, alignItems: "center", flexWrap: "wrap" as const, marginBottom: 24 }}>
-            <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, display: "flex", alignItems: "center", gap: 8, padding: "8px 12px", flex: 1, minWidth: 200 }}>
+            <div className="search-container">
               <Search size={13} color="var(--text-subtle)" />
-              <input value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Buscar por nombre, Área o departamento..." style={{ background: "transparent", border: "none", outline: "none", color: "var(--text-primary)", fontSize: 13, flex: 1, width: "100%" }} />
+              <input
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Buscar por nombre, Área o departamento..."
+                style={{
+                  background: "transparent", border: "none", outline: "none",
+                  color: "var(--text-primary)", fontSize: 13, flex: 1, width: "100%",
+                  caretColor: "var(--accent)",
+                }}
+              />
             </div>
             <select value={selectedDept} onChange={(e) => setSelectedDept(e.target.value)} style={{ appearance: "none" as const, background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 10, color: "var(--text-muted)", fontSize: 12, fontWeight: 600, padding: "8px 12px", cursor: "pointer" as const }}>
               {allDepts.map((d) => <option key={d} value={d}>{d}</option>)}
@@ -879,7 +901,7 @@ export default function App() {
                       borderRadius: "14px 14px 0 0",
                     }} />
                   )}
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                     <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}18`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
                       {opp.type === "Postdoc" && <><GraduationCap size={10} />Postdoc</>}
                       {opp.type === "Doctorado" && <><GraduationCap size={10} />Doctorado</>}
@@ -888,7 +910,18 @@ export default function App() {
                       {opp.type === "Laboral" && <><JobIcon size={10} />Laboral</>}
                       {!["Postdoc","Doctorado","Fondos","Internacional","Laboral"].includes(opp.type) && opp.type}
                     </span>
-                    {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={11} color="#ef4444" fill="#ef4444" /></span>}
+                    {opp.hot && (
+                      <span style={{
+                        display: "flex", alignItems: "center", gap: 4,
+                        fontSize: 9, fontWeight: 800, color: "#ef4444",
+                        background: "rgba(239,68,68,0.12)", border: "1px solid rgba(239,68,68,0.28)",
+                        padding: "2px 7px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em",
+                        boxShadow: "0 0 8px rgba(239,68,68,0.18)",
+                      }}>
+                        <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#ef4444", display: "inline-block", boxShadow: "0 0 4px #ef4444" }} />
+                        HOT
+                      </span>
+                    )}
                   </div>
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
                   <p style={{ fontSize: 11, color: "var(--text-muted)" }}>{opp.dept}</p>
