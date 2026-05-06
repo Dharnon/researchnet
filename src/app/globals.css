@@ -375,13 +375,26 @@ select:focus-visible {
   display: flex;
   flex-direction: column;
   gap: 9px;
+  position: relative;
+  overflow: hidden;
   transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.opp-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px; height: 100%;
+  background: var(--accent);
+  border-radius: 14px 0 0 14px;
+  opacity: 0;
+  transition: opacity 0.2s ease;
 }
 .opp-card:hover {
   border-color: var(--accent-border);
   transform: translateY(-2px);
   box-shadow: 0 8px 32px rgba(0,0,0,0.10);
 }
+.opp-card:hover::before { opacity: 1; }
 
 /* -- QUICK ACTION BUTTON -- */
 .quick-action-btn {
