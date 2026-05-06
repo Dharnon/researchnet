@@ -374,11 +374,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         )}
       </div>
 
-      {/* Tags */}
-      <p style={{ fontSize: 12, color: "var(--text-secondary)", lineHeight: 1.6, overflow: "hidden", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical" }}>
-        {researcher.bio}
-      </p>
-
+      {/* Tags — primary visual element, bio is for detail panel only */}
       <div style={{ display: "flex", gap: 5, flexWrap: "wrap", position: "relative" }}>
         {researcher.tags.slice(0, 3).map((tag) => (
           <span key={tag} style={{
@@ -589,6 +585,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
   connectedCount: number;
   unreadMessages: number;
 }) {
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const items = [
     { key: "discover", icon: <Search size={14} />, label: "Discover" },
     { key: "opportunities", icon: <Zap size={14} />, label: "Opportunities" },
@@ -604,37 +601,48 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
       border: "1px solid rgba(255,255,255,0.07)",
       borderRadius: 10, padding: 3,
     }}>
-      {items.map((item) => (
-        <button key={item.key} onClick={() => setView(item.key)} style={{
-          position: "relative", width: 38, height: 34,
-          borderRadius: 7, border: "none",
-          fontSize: 12, fontWeight: 600, cursor: "pointer",
-          background: view === item.key ? "var(--accent-dim)" : "transparent",
-          color: view === item.key ? "var(--accent)" : "rgba(255,255,255,0.30)",
-          transition: "all 0.15s",
-          display: "flex", alignItems: "center", justifyContent: "center",
-        }}>
-          {item.icon}
-          {item.badge !== undefined && item.badge > 0 && (
-            <span style={{
-              position: "absolute", top: 2, right: 2,
-              background: item.key === "messages" ? "#ef4444" : "var(--accent)",
-              color: "#000", fontSize: 7, fontWeight: 800,
-              padding: "0.5px 3.5px", borderRadius: 20, minWidth: 13,
-              textAlign: "center", lineHeight: 1.4,
-            }}>
-              {item.badge > 9 ? "9+" : item.badge}
-            </span>
-          )}
-          {view === item.key && (
-            <div style={{
-              position: "absolute", bottom: 2, left: "50%", transform: "translateX(-50%)",
-              width: 16, height: 2, borderRadius: 2, background: "var(--accent)",
-              boxShadow: "0 0 8px var(--accent-glow)",
-            }} />
-          )}
-        </button>
-      ))}
+      {items.map((item) => {
+        const isActive = view === item.key;
+        const isHovered = hoveredItem === item.key;
+        return (
+          <button
+            key={item.key}
+            onClick={() => setView(item.key)}
+            onMouseEnter={() => setHoveredItem(item.key)}
+            onMouseLeave={() => setHoveredItem(null)}
+            style={{
+              position: "relative", minWidth: 70, height: 34,
+              borderRadius: 7, border: "none",
+              fontSize: 12, fontWeight: 600, cursor: "pointer",
+              background: isActive ? "var(--accent-dim)" : isHovered ? "rgba(255,255,255,0.06)" : "transparent",
+              color: isActive ? "var(--accent)" : isHovered ? "rgba(255,255,255,0.75)" : "rgba(255,255,255,0.30)",
+              transition: "all 0.15s",
+              display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
+              padding: "0 10px",
+            }}
+          >
+            {item.icon}
+            {item.badge !== undefined && item.badge > 0 && (
+              <span style={{
+                position: "absolute", top: 2, right: 2,
+                background: item.key === "messages" ? "#ef4444" : "var(--accent)",
+                color: "#000", fontSize: 7, fontWeight: 800,
+                padding: "0.5px 3.5px", borderRadius: 20, minWidth: 13,
+                textAlign: "center", lineHeight: 1.4,
+              }}>
+                {item.badge > 9 ? "9+" : item.badge}
+              </span>
+            )}
+            {isActive && (
+              <div style={{
+                position: "absolute", bottom: 2, left: "50%", transform: "translateX(-50%)",
+                width: 16, height: 2, borderRadius: 2, background: "var(--accent)",
+                boxShadow: "0 0 8px var(--accent-glow)",
+              }} />
+            )}
+          </button>
+        );
+      })}
     </div>
   );
 }
@@ -860,11 +868,19 @@ export default function App() {
                 <div
                   key={opp.id}
                   onClick={() => setSelectedOpp(opp)}
-                  className="opp-card card-enter"
+                  className={`opp-card card-enter${opp.hot ? " hot" : ""}`}
                   style={{ animationDelay: `${Math.min(i, 5) * 60}ms` }}
                 >
+                  {/* Top accent line for hot */}
+                  {opp.hot && (
+                    <div style={{
+                      position: "absolute", top: 0, left: 0, right: 0, height: 3,
+                      background: "linear-gradient(90deg, #ef4444, #f97316)",
+                      borderRadius: "14px 14px 0 0",
+                    }} />
+                  )}
                   <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
-                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
+                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}18`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
                       {opp.type === "Postdoc" && <><GraduationCap size={10} />Postdoc</>}
                       {opp.type === "Doctorado" && <><GraduationCap size={10} />Doctorado</>}
                       {opp.type === "Fondos" && <><Wallet size={10} />Fondos</>}
@@ -872,7 +888,7 @@ export default function App() {
                       {opp.type === "Laboral" && <><JobIcon size={10} />Laboral</>}
                       {!["Postdoc","Doctorado","Fondos","Internacional","Laboral"].includes(opp.type) && opp.type}
                     </span>
-                    {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={10} color="var(--hot-color)" /></span>}
+                    {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={11} color="#ef4444" fill="#ef4444" /></span>}
                   </div>
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
                   <p style={{ fontSize: 11, color: "var(--text-muted)" }}>{opp.dept}</p>
