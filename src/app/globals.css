@@ -360,9 +360,13 @@ select:focus-visible {
   border-radius: 14px;
   padding: 14px 16px;
   cursor: pointer;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
-.conv-item:hover { border-color: var(--accent-border); }
+.conv-item:hover {
+  border-color: var(--accent-border);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transform: translateY(-1px);
+}
 
 /* -- OPPORTUNITY CARD -- */
 .opp-card {
@@ -376,22 +380,22 @@ select:focus-visible {
   gap: 9px;
   position: relative;
   overflow: hidden;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease, transform 0.22s ease, box-shadow 0.22s ease;
 }
 .opp-card::before {
   content: '';
   position: absolute;
   top: 0; left: 0;
   width: 3px; height: 100%;
-  background: var(--accent);
+  background: linear-gradient(180deg, var(--accent), var(--accent-hover));
   border-radius: 14px 0 0 14px;
   opacity: 0;
   transition: opacity 0.2s ease;
 }
 .opp-card:hover {
   border-color: var(--accent-border);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.16), 0 16px 48px rgba(0,0,0,0.08), 0 0 0 1px var(--accent-border);
 }
 .opp-card:hover::before { opacity: 1; }
 
