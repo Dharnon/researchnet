@@ -1,7 +1,7 @@
-/* â”€â”€ Google Fonts (variant-a: Clean Classic — DM Sans) â”€â”€ */
+﻿/* Ã¢â€â‚¬Ã¢â€â‚¬ Google Fonts (variant-a: Clean Classic â€” DM Sans) Ã¢â€â‚¬Ã¢â€â‚¬ */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 
-/* â”€â”€ CSS VARIABLES (variant-a-clean: White bg, Lime Accent #84cc16) â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ CSS VARIABLES (variant-a-clean: White bg, Lime Accent #84cc16) Ã¢â€â‚¬Ã¢â€â‚¬ */
 :root {
   --bg: #FFFFFF;
   --bg-secondary: #F9FAFB;
@@ -59,7 +59,7 @@
   --shadow-card-hover: 0 12px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.06), 0 0 0 1.5px rgba(132,204,22,0.08);
   --shadow-detail-panel: -8px 0 48px rgba(0,0,0,0.10);
 
-  /* Match score tiers â€”; lime green for variant-a */
+  /* Match score tiers Ã¢â‚¬â€; lime green for variant-a */
   --match-high: #84cc16;
   --match-high-bg: rgba(132,204,22,0.10);
   --match-high-border: rgba(132,204,22,0.22);
@@ -73,7 +73,7 @@
   /* Hot / deadline accent */
   --hot-color: #ef4444;
 
-  /* Connected button — neutral muted for Clean Classic */
+  /* Connected button â€” neutral muted for Clean Classic */
   --connected-bg: #F3F4F6;
   --connected-color: #6B7280;
   --connected-border: #E5E7EB;
@@ -84,7 +84,7 @@
   --header-border: rgba(229,231,235,0.80);
 }
 
-/* â”€â”€ RESET & BASE â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ RESET & BASE Ã¢â€â‚¬Ã¢â€â‚¬ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
@@ -101,16 +101,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* â”€â”€ SCROLLBAR â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ SCROLLBAR Ã¢â€â‚¬Ã¢â€â‚¬ */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
 
-/* â”€â”€ SELECTION â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ SELECTION Ã¢â€â‚¬Ã¢â€â‚¬ */
 ::selection { background: rgba(132,204,22,0.20); color: #4d7c0f; }
 
-/* ─── SEARCH INPUT WRAPPER (variant-a: clean classic) ─── */
+/* â”€â”€â”€ SEARCH INPUT WRAPPER (variant-a: clean classic) â”€â”€â”€ */
 .search-input-wrap {
   display: flex;
   align-items: center;
@@ -128,7 +128,7 @@ body {
   box-shadow: 0 0 0 3px var(--accent-dim);
 }
 
-/* ─── SKELETON SHIMMER ─── */
+/* â”€â”€â”€ SKELETON SHIMMER â”€â”€â”€ */
 @keyframes shimmer {
   0% { background-position: -300px 0; }
   100% { background-position: 300px 0; }
@@ -144,7 +144,7 @@ body {
   animation: shimmer 2.4s ease-in-out infinite;
 }
 
-/* â”€â”€ HEADER â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ HEADER Ã¢â€â‚¬Ã¢â€â‚¬ */
 .header {
   position: sticky;
   top: 0;
@@ -279,14 +279,14 @@ body {
   box-shadow: 0 0 0 3px var(--accent-dim);
 }
 
-/* â”€â”€ MAIN LAYOUT â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ MAIN LAYOUT Ã¢â€â‚¬Ã¢â€â‚¬ */
 .main-content {
   max-width: 1400px;
   margin: 0 auto;
   padding: 28px 24px;
 }
 
-/* â”€â”€ SECTION HEADER â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ SECTION HEADER Ã¢â€â‚¬Ã¢â€â‚¬ */
 .section-header {
   display: flex;
   align-items: center;
@@ -318,7 +318,7 @@ body {
   font-weight: 400;
 }
 
-/* â”€â”€ TABS â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ TABS Ã¢â€â‚¬Ã¢â€â‚¬ */
 .tabs {
   display: flex;
   gap: 4px;
@@ -357,7 +357,7 @@ body {
   flex-shrink: 0;
 }
 
-/* â”€â”€ GRID â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ GRID Ã¢â€â‚¬Ã¢â€â‚¬ */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -367,7 +367,7 @@ body {
 @media (max-width: 1100px) { .cards-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 720px) { .cards-grid { grid-template-columns: 1fr; } }
 
-/* â”€â”€ RESEARCHER CARD (variant-a: clean, no hover JS) â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ RESEARCHER CARD (variant-a: clean, no hover JS) Ã¢â€â‚¬Ã¢â€â‚¬ */
 .researcher-card-a {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
@@ -394,14 +394,19 @@ body {
   pointer-events: none;
 }
 .researcher-card-a:hover {
-  box-shadow: 0 12px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1.5px rgba(132,204,22,0.14), 0 0 20px rgba(132,204,22,0.07);
-  transform: translateY(-3px);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.12), 0 16px 48px rgba(0,0,0,0.08), 0 0 0 1.5px rgba(217,119,6,0.15), 0 0 20px rgba(217,119,6,0.06);
+  transform: translateY(-2px);
 }
-.researcher-card-a:hover::before { opacity: 1; }
-.researcher-card-a:hover .card-avatar {
-  transform: scale(1.06);
-  box-shadow: 0 0 0 1px rgba(255,255,255,0.12), inset 0 1px 1px rgba(255,255,255,0.16), 0 4px 14px rgba(0,0,0,0.35);
+
+[data-theme="dark"] .researcher-card-a::before {
+  background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
 }
+
+[data-theme="dark"] .researcher-card-a:hover {
+  border-color: rgba(181,132,42,0.20);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.25), 0 0 0 1px rgba(181,132,42,0.12);
+}
+
 .card-top {
   display: flex;
   gap: 12px;
@@ -488,7 +493,7 @@ body {
   font-weight: 600;
   padding: 3px 8px;
   border-radius: 20px;
-  background: var(--open-dot-bg);
+  background: var(--accent-faint); border-color: rgba(132,204,22,0.28);
   color: var(--open-dot);
   border: 1px solid var(--open-dot-border);
 }
@@ -499,7 +504,7 @@ body {
   background: var(--open-dot);
 }
 
-/* â”€â”€ CONNECTION BUTTON â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ CONNECTION BUTTON Ã¢â€â‚¬Ã¢â€â‚¬ */
 .connect-btn {
   padding: 7px 14px;
   border-radius: 9px;
@@ -530,7 +535,7 @@ body {
   cursor: default;
 }
 
-/* â”€â”€ NETWORK CARD (compact) â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ NETWORK CARD (compact) Ã¢â€â‚¬Ã¢â€â‚¬ */
 .network-card {
   background: var(--card-bg);
   border: 1.5px solid var(--card-border);
@@ -561,7 +566,7 @@ body {
 }
 .network-actions { display: flex; gap: 6px; }
 
-/* â”€â”€ CONVERSATION ITEM â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ CONVERSATION ITEM Ã¢â€â‚¬Ã¢â€â‚¬ */
 .conv-item {
   display: flex;
   align-items: center;
@@ -594,7 +599,7 @@ body {
   flex-shrink: 0;
 }
 
-/* â”€â”€ OPP CARD (opportunity compact card) â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ OPP CARD (opportunity compact card) Ã¢â€â‚¬Ã¢â€â‚¬ */
 .opp-card {
   background: var(--card-bg);
   border: 1.5px solid var(--card-border);
@@ -656,7 +661,7 @@ body {
   gap: 4px;
 }
 
-/* â”€â”€ DETAIL PANEL (slide-in from right) â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ DETAIL PANEL (slide-in from right) Ã¢â€â‚¬Ã¢â€â‚¬ */
 .detail-panel {
   position: fixed;
   top: 0;
@@ -710,7 +715,7 @@ body {
   gap: 20px;
 }
 
-/* â”€â”€ MESSAGE INPUT â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ MESSAGE INPUT Ã¢â€â‚¬Ã¢â€â‚¬ */
 .msg-input-row {
   display: flex;
   gap: 8px;
@@ -755,7 +760,7 @@ body {
 .send-btn:hover { background: var(--accent-hover); box-shadow: 0 2px 8px var(--accent-glow); }
 .send-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-/* â”€â”€ PROFILE HEADER â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ PROFILE HEADER Ã¢â€â‚¬Ã¢â€â‚¬ */
 .profile-header {
   display: flex;
   flex-direction: column;
@@ -798,7 +803,7 @@ body {
   letter-spacing: 0.05em;
 }
 
-/* â”€â”€ QUICK ACTION BUTTONS â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ QUICK ACTION BUTTONS Ã¢â€â‚¬Ã¢â€â‚¬ */
 .quick-actions {
   display: flex;
   gap: 8px;
@@ -826,7 +831,7 @@ body {
   border-color: var(--accent-border);
 }
 
-/* â”€â”€ FILTER BAR â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ FILTER BAR Ã¢â€â‚¬Ã¢â€â‚¬ */
 .filter-bar {
   display: flex;
   align-items: center;
@@ -849,7 +854,7 @@ body {
 .filter-select:focus { border-color: var(--accent); }
 .filter-select:hover { border-color: var(--accent-border); }
 
-/* â”€â”€ EMPTY STATE â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ EMPTY STATE Ã¢â€â‚¬Ã¢â€â‚¬ */
 .empty-state {
   text-align: center;
   padding: 48px 24px;
@@ -877,7 +882,7 @@ body {
   color: var(--text-tertiary);
 }
 
-/* â”€â”€ TOAST / NOTIFICATION BANNER â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ TOAST / NOTIFICATION BANNER Ã¢â€â‚¬Ã¢â€â‚¬ */
 .toast {
   position: fixed;
   bottom: 24px;
@@ -900,26 +905,26 @@ body {
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* â”€â”€ FADE-IN ANIMATION â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ FADE-IN ANIMATION Ã¢â€â‚¬Ã¢â€â‚¬ */
 @keyframes fade-in {
   from { opacity: 0; transform: translateY(6px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .fade-in { animation: fade-in 0.35s ease forwards; }
 
-/* â”€â”€ DIVIDER â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ DIVIDER Ã¢â€â‚¬Ã¢â€â‚¬ */
 .divider {
   height: 1px;
   background: var(--border);
   margin: 4px 0;
 }
 
-/* â”€â”€ SECTION WRAPPER â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ SECTION WRAPPER Ã¢â€â‚¬Ã¢â€â‚¬ */
 .section-wrapper {
   margin-bottom: 36px;
 }
 
-/* â”€â”€ TYPE BADGE COLORS (shared helpers) â”€â”€ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ TYPE BADGE COLORS (shared helpers) Ã¢â€â‚¬Ã¢â€â‚¬ */
 .type-postdoc { background: var(--type-postdoc-bg); color: var(--type-postdoc-text); }
 .type-fondos { background: var(--type-fondos-bg); color: var(--type-fondos-text); }
 .type-intl    { background: var(--type-intl-bg);    color: var(--type-intl-text); }
@@ -932,7 +937,7 @@ body {
 .match-mid  { color: var(--match-mid);  background: var(--match-mid-bg);  border-color: var(--match-mid-border); }
 .match-low  { color: var(--match-low);  background: var(--match-low-bg);  border-color: var(--match-low-border); }
 
-/* ─── CARD ENTER STAGGER ANIMATION ─── */
+/* â”€â”€â”€ CARD ENTER STAGGER ANIMATION â”€â”€â”€ */
 @keyframes card-enter {
   from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -942,19 +947,46 @@ body {
   animation: card-enter 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-/* ─── DARK MODE SKELETON SHIMMER (variant-a-clean) ─── */
+/* â”€â”€â”€ DARK MODE SKELETON SHIMMER (variant-a-clean) â”€â”€â”€ */
 [data-theme="dark"] .skeleton-shimmer {
-  background: linear-gradient(90deg, #0c0a09 25%, #1c1917 50%, #0c0a09 75%);
+  background: linear-gradient(90deg, #161410 0%, #1e1b16 35%, #161410 60%, #161410 100%);
   background-size: 800px 100%;
-  animation: shimmer 1.8s ease-in-out infinite;
+  animation: shimmer 1.6s ease-in-out infinite;
 }
 [data-theme="dark"] .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, #090807 25%, #141210 50%, #090807 75%);
+  background: linear-gradient(90deg, #161410 0%, #1e1b16 35%, #161410 60%, #161410 100%);
   background-size: 800px 100%;
   animation: shimmer 2.2s ease-in-out infinite 0.2s;
 }
 
-/* ─── SECTION HEADINGS (variant-a: Clean Classic — editorial weight) ─── */
+.skeleton-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.skeleton-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent-faint) 50%, transparent 100%);
+  background-size: 800px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .skeleton-card::after {
+  background: linear-gradient(90deg, transparent 0%, rgba(30,27,22,0.8) 50%, transparent 100%);
+}
+
+/* â”€â”€â”€ SECTION HEADINGS (variant-a: Clean Classic â€” editorial weight) â”€â”€â”€ */
 .vc-section-heading {
   font-size: 28px;
   font-weight: 800;
@@ -965,7 +997,7 @@ body {
   margin-bottom: 6px;
 }
 
-/* ─── NETWORK EMPTY CTA ─── */
+/* â”€â”€â”€ NETWORK EMPTY CTA â”€â”€â”€ */
 .network-empty-cta {
   display: inline-flex;
   align-items: center;
@@ -989,7 +1021,7 @@ body {
 }
 .network-empty-cta:active { transform: translateY(0); }
 
-/* ─── MSG INPUT DARK ─── */
+/* â”€â”€â”€ MSG INPUT DARK â”€â”€â”€ */
 .msg-input-dark {
   background: var(--surface) !important;
   border: 1.5px solid var(--border) !important;
@@ -1008,7 +1040,7 @@ body {
   box-shadow: 0 0 0 3px var(--accent-dim) !important;
 }
 
-/* ─── CONNECTION DISCONNECT BUTTON ─── */
+/* â”€â”€â”€ CONNECTION DISCONNECT BUTTON â”€â”€â”€ */
 .c-disconnect-btn {
   width: 28px; height: 28px; border-radius: 7px;
   border: 1px solid var(--border); background: transparent;
@@ -1020,7 +1052,7 @@ body {
   border-color: rgba(239,68,68,0.30);
 }
 
-/* ─── CONNECTION MESSAGE BUTTON ─── */
+/* â”€â”€â”€ CONNECTION MESSAGE BUTTON â”€â”€â”€ */
 .c-msg-btn {
   width: 28px; height: 28px; border-radius: 7px;
   border: 1px solid var(--accent-border); background: var(--accent-dim);
@@ -1029,7 +1061,7 @@ body {
 }
 .c-msg-btn:hover { background: var(--accent-dim); color: var(--accent); border-color: var(--accent-border); box-shadow: 0 0 12px var(--accent-glow); }
 
-/* ─── ORCID BUTTON (variant-a: premium lime brand) ─── */
+/* â”€â”€â”€ ORCID BUTTON (variant-a: premium lime brand) â”€â”€â”€ */
 .onboard-orcid-btn {
   width: 100%;
   padding: 13px 20px;
@@ -1061,7 +1093,9 @@ body {
   box-shadow: none;
 }
 
-/* ─── HOT STRIPE ON OPP CARDS ─── */
+/* â”€â”€â”€ HOT STRIPE ON OPP CARDS â”€â”€â”€ */
 .opp-card.hot::after {
   opacity: 1 !important;
 }
+
+
