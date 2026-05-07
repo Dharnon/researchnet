@@ -134,12 +134,12 @@ body {
   100% { background-position: 300px 0; }
 }
 .skeleton-shimmer {
-  background: linear-gradient(90deg, #f0f4e0 0%, #e8edda 30%, #f0f4e0 60%, #e8edda 100%);
+  background: linear-gradient(90deg, #f5f5f5 0%, #eeeeee 30%, #f5f5f5 60%, #eeeeee 100%);
   background-size: 900px 100%;
   animation: shimmer 2.0s ease-in-out infinite;
 }
 .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, #f8faf0 0%, #f0f4e0 30%, #f8faf0 60%, #f0f4e0 100%);
+  background: linear-gradient(90deg, #fafafa 0%, #f2f2f2 30%, #fafafa 60%, #f2f2f2 100%);
   background-size: 900px 100%;
   animation: shimmer 2.4s ease-in-out infinite;
 }
@@ -497,11 +497,13 @@ body {
   color: var(--open-dot);
   border: 1px solid var(--open-dot-border);
 }
+@keyframes open-pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.7); } }
 .open-dot {
   width: 5px;
   height: 5px;
   border-radius: 50%;
   background: var(--open-dot);
+  animation: open-pulse 2s ease-in-out infinite;
 }
 
 /* Ã¢â€â‚¬Ã¢â€â‚¬ CONNECTION BUTTON Ã¢â€â‚¬Ã¢â€â‚¬ */
