@@ -16,16 +16,16 @@
   --text-muted: #a8a29e;
   --text-subtle: #57534e;
 
-  --accent: #f59e0b;
-  --accent-dim: rgba(245,158,11,0.12);
-  --accent-hover: #fbbf24;
-  --accent-glow: rgba(245,158,11,0.15);
-  --accent-border: rgba(245,158,11,0.35);
-  --accent-faint: rgba(245,158,11,0.06);
+  --accent: #84cc16;
+  --accent-dim: rgba(132,204,22,0.10);
+  --accent-hover: #a3e635;
+  --accent-glow: rgba(132,204,22,0.12);
+  --accent-border: rgba(132,204,22,0.28);
+  --accent-faint: rgba(132,204,22,0.06);
 
-  --open-dot: #f59e0b;
-  --open-dot-bg: rgba(245,158,11,0.10);
-  --open-dot-border: rgba(245,158,11,0.25);
+  --open-dot: #84cc16;
+  --open-dot-bg: rgba(132,204,22,0.10);
+  --open-dot-border: rgba(132,204,22,0.22);
 
   --tag-bg: #1c1917;
   --tag-border: #292524;
@@ -51,15 +51,15 @@
   --type-laboral-text: #fbbf24;
   --type-laboral-bg: rgba(251,191,36,0.10);
 
-  --match-high: #f59e0b;
-  --match-high-bg: rgba(245,158,11,0.12);
-  --match-high-border: rgba(245,158,11,0.25);
-  --match-mid: #d97706;
-  --match-mid-bg: rgba(217,119,6,0.08);
-  --match-mid-border: rgba(217,119,6,0.18);
-  --match-low: #78716c;
-  --match-low-bg: rgba(120,113,108,0.12);
-  --match-low-border: rgba(120,113,108,0.20);
+  --match-high: #84cc16;
+  --match-high-bg: rgba(132,204,22,0.10);
+  --match-high-border: rgba(132,204,22,0.22);
+  --match-mid: #a3e635;
+  --match-mid-bg: rgba(163,230,53,0.08);
+  --match-mid-border: rgba(163,230,53,0.18);
+  --match-low: #57534e;
+  --match-low-bg: rgba(87,83,78,0.12);
+  --match-low-border: rgba(87,83,78,0.20);
 
   --hot-color: #ef4444;
 
@@ -116,7 +116,7 @@ body {
 }
 
 
-/* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ SKELETON SHIMMER (variant-c: Warm Editorial) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
+/* ─── SKELETON SHIMMER (variant-b: Dark Premium) ─── */
 @keyframes shimmer {
   0% { background-position: -200px 0; }
   100% { background-position: 200px 0; }
