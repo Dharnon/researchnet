@@ -639,7 +639,24 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
       border: "1px solid var(--border)", borderRadius: 10, padding: 4,
     }}>
       {items.map((item) => (
-        <button key={item.key} onClick={() => setView(item.key)} style={{
+        <button
+          key={item.key}
+          onClick={() => setView(item.key)}
+          onMouseEnter={(e) => {
+            const el = e.currentTarget;
+            if (view !== item.key) {
+              el.style.background = "var(--surface-hover)";
+              el.style.color = "var(--text-secondary)";
+            }
+          }}
+          onMouseLeave={(e) => {
+            const el = e.currentTarget;
+            if (view !== item.key) {
+              el.style.background = "transparent";
+              el.style.color = "var(--text-tertiary)";
+            }
+          }}
+          style={{
           display: "flex", alignItems: "center", justifyContent: "center",
           position: "relative", minWidth: 56, height: 34, padding: "0 10px",
           borderRadius: 7,
@@ -657,7 +674,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
             <span style={{
               position: "absolute", top: 2, right: 2,
               background: item.key === "messages" ? "#ef4444" : "var(--accent)",
-              color: "#000", fontSize: 8, fontWeight: 800,
+              color: "#000", fontSize: 9, fontWeight: 800,
               padding: "0.5px 4px", borderRadius: 20, minWidth: 14, textAlign: "center",
               lineHeight: 1.4,
             }}>
