@@ -394,7 +394,7 @@ body {
   pointer-events: none;
 }
 .researcher-card-a:hover {
-  box-shadow: 0 6px 24px rgba(0,0,0,0.12), 0 16px 48px rgba(0,0,0,0.08), 0 0 0 1.5px rgba(217,119,6,0.15), 0 0 20px rgba(217,119,6,0.06);
+  box-shadow: 0 6px 24px rgba(0,0,0,0.10), 0 16px 48px rgba(0,0,0,0.08), 0 0 0 1.5px rgba(132,204,22,0.18), 0 0 20px rgba(132,204,22,0.10);
   transform: translateY(-2px);
 }
 
@@ -403,9 +403,16 @@ body {
 }
 
 [data-theme="dark"] .researcher-card-a:hover {
-  border-color: rgba(181,132,42,0.20);
-  box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.25), 0 0 0 1px rgba(181,132,42,0.12);
+  border-color: rgba(132,204,22,0.22);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.25), 0 0 0 1px rgba(132,204,22,0.14);
 }
+
+/* JS-driven hover state for variant-a */
+.researcher-card-a.is-hovered {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.10), 0 16px 48px rgba(0,0,0,0.08), 0 0 0 1.5px rgba(132,204,22,0.18), 0 0 20px rgba(132,204,22,0.10);
+  transform: translateY(-2px);
+}
+.researcher-card-a.is-hovered::before { opacity: 1; }
 
 .card-top {
   display: flex;
@@ -997,6 +1004,18 @@ body {
   letter-spacing: -0.04em;
   line-height: 1.1;
   margin-bottom: 6px;
+  position: relative;
+  display: inline-block;
+}
+.vc-section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 32px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-hover) 100%);
+  border-radius: 2px;
 }
 
 /* â”€â”€â”€ NETWORK EMPTY CTA â”€â”€â”€ */
