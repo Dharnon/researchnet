@@ -63,7 +63,7 @@ const researcherColors: Record<string, string> = {
   "Ciencias de la Computación": "#3b82f6",
   "Biología Molecular": "#8b5cf6",
   "Física Computacional": "#f59e0b",
-  "Salud Pública": "#ef4444",
+  "Salud Pública": "#D97706",
   "Robótica e IA": "#6366f1",
 };
 
@@ -680,7 +680,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
           {item.badge !== undefined && item.badge > 0 && (
             <span style={{
               position: "absolute", top: 4, right: 4,
-              background: item.key === "messages" ? "#ef4444" : "var(--accent)",
+              background: "var(--accent)",
               color: "#000", fontSize: 9, fontWeight: 800,
               padding: "0.5px 3.5px", borderRadius: 20, minWidth: 13,
               textAlign: "center", lineHeight: 1.4,

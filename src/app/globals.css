@@ -486,6 +486,18 @@ select:focus-visible {
   letter-spacing: -0.025em;
   line-height: 1.15;
   margin-bottom: 6px;
+  position: relative;
+  display: inline-block;
+}
+.vc-section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 36px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-hover) 100%);
+  border-radius: 2px;
 }
 
 /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ CONNECT BUTTONS (variant-c-warm: amber) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
