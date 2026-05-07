@@ -687,10 +687,11 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
             {item.badge !== undefined && item.badge > 0 && (
               <span style={{
                 position: "absolute", top: 2, right: 2,
-                background: item.key === "messages" ? "#ef4444" : "var(--accent)",
+                background: "var(--accent)",
                 color: "#000", fontSize: 9, fontWeight: 800,
                 padding: "0.5px 3.5px", borderRadius: 20, minWidth: 13,
                 textAlign: "center", lineHeight: 1.4,
+                boxShadow: "0 0 8px var(--accent-glow)",
               }}>
                 {item.badge > 9 ? "9+" : item.badge}
               </span>
@@ -961,12 +962,12 @@ export default function App() {
                     {opp.hot && (
                       <span style={{
                         display: "flex", alignItems: "center", gap: 4,
-                        fontSize: 9, fontWeight: 800, color: "#ef4444",
+                        fontSize: 9, fontWeight: 800, color: "var(--hot-color)",
                         background: "rgba(239,68,68,0.12)", border: "1px solid rgba(239,68,68,0.28)",
                         padding: "2px 7px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em",
                         boxShadow: "0 0 8px rgba(239,68,68,0.18)",
                       }}>
-                        <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#ef4444", display: "inline-block", boxShadow: "0 0 4px #ef4444" }} />
+                        <span style={{ width: 5, height: 5, borderRadius: "50%", background: "var(--hot-color)", display: "inline-block", boxShadow: "0 0 4px var(--hot-color)" }} />
                         HOT
                       </span>
                     )}

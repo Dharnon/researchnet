@@ -939,6 +939,19 @@ body {
   letter-spacing: -0.03em;
   line-height: 1.2;
   margin-bottom: 5px;
+  position: relative;
+  display: inline-block;
+}
+.vc-section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 28px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-hover) 100%);
+  border-radius: 2px;
+  box-shadow: 0 0 10px var(--accent-glow);
 }
 
 /* ΓöÇΓöÇΓöÇ NETWORK EMPTY CTA (variant-b-dark) ΓöÇΓöÇΓöÇ */
