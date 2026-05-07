@@ -950,9 +950,12 @@ export default function App() {
                     <span style={{ fontSize: 11, color: opp.hot ? "var(--hot-color)" : "var(--text-tertiary)", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
                       <Clock size={10} />{opp.deadline}
                     </span>
-                    <span style={{ fontSize: 11, fontWeight: 700, color: color, display: "flex", alignItems: "center", gap: 2, letterSpacing: "0.01em" }}>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setSelectedOpp(opp); }}
+                      style={{ background: "none", border: "none", padding: 0, cursor: "pointer", display: "flex", alignItems: "center", gap: 2, fontSize: 11, fontWeight: 700, color: color, letterSpacing: "0.01em" }}
+                    >
                       Ver más <span className="opp-chevron"><ChevronRight size={10} /></span>
-                    </span>
+                    </button>
                   </div>
                 </div>
               );
