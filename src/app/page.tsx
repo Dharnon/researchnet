@@ -116,21 +116,21 @@ function SkeletonLoader() {
 
 function Avatar({ initials, color, size = 44 }: { initials: string; color: string; size?: number }) {
   const [hovered, setHovered] = useState(false);
-  const s = Math.round(size * 0.34);
+  const s = Math.round(size * 0.33);
   return (
     <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
         width: size, height: size, borderRadius: "50%",
-        background: `radial-gradient(circle at 35% 35%, ${color}ee, ${color}55 45%, ${color}18)`,
-        border: `1.5px solid ${color}50`,
-        boxShadow: `0 0 0 1px ${color}20, inset 0 1px 2px rgba(255,255,255,0.12), 0 2px 8px rgba(0,0,0,0.15)`,
+        background: `${color}18`,
+        border: `1.5px solid ${color}40`,
+        boxShadow: hovered ? `0 0 0 3px ${color}20, 0 2px 8px rgba(0,0,0,0.08)` : `0 1px 3px rgba(0,0,0,0.06)`,
         display: "flex", alignItems: "center", justifyContent: "center",
-        fontSize: s, fontWeight: 800, color,
-        flexShrink: 0, letterSpacing: "-0.03em",
-        transition: "box-shadow 0.22s ease, transform 0.22s ease",
-        transform: hovered ? "scale(1.05)" : "scale(1)",
+        fontSize: s, fontWeight: 600, color,
+        flexShrink: 0, letterSpacing: "-0.02em",
+        transition: "box-shadow 0.2s ease, transform 0.2s ease",
+        transform: hovered ? "scale(1.04)" : "scale(1)",
         cursor: "default",
       }}>
       {initials}
