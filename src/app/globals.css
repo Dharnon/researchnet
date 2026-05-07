@@ -1,4 +1,4 @@
-﻿/* Ã¢â€â‚¬Ã¢â€â‚¬ Google Fonts (variant-a: Clean Classic â€” DM Sans) Ã¢â€â‚¬Ã¢â€â‚¬ */
+/* Ã¢â€â‚¬Ã¢â€â‚¬ Google Fonts (variant-a: Clean Classic â€” DM Sans) Ã¢â€â‚¬Ã¢â€â‚¬ */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap');
 
 /* Ã¢â€â‚¬Ã¢â€â‚¬ CSS VARIABLES (variant-a-clean: White bg, Lime Accent #84cc16) Ã¢â€â‚¬Ã¢â€â‚¬ */
@@ -109,6 +109,8 @@ body {
 
 /* Ã¢â€â‚¬Ã¢â€â‚¬ SELECTION Ã¢â€â‚¬Ã¢â€â‚¬ */
 ::selection { background: rgba(132,204,22,0.20); color: #4d7c0f; }
+
+[data-theme="dark"]::selection { background: rgba(181,132,42,0.30); color: #c9983a; }
 
 /* â”€â”€â”€ SEARCH INPUT WRAPPER (variant-a: clean classic) â”€â”€â”€ */
 .search-input-wrap {
@@ -958,12 +960,12 @@ body {
 
 /* â”€â”€â”€ DARK MODE SKELETON SHIMMER (variant-a-clean) â”€â”€â”€ */
 [data-theme="dark"] .skeleton-shimmer {
-  background: linear-gradient(90deg, #161410 0%, #1e1b16 35%, #161410 60%, #161410 100%);
+  background: linear-gradient(90deg, #111827 0%, #1e293b 35%, #111827 60%, #111827 100%);
   background-size: 800px 100%;
   animation: shimmer 1.6s ease-in-out infinite;
 }
 [data-theme="dark"] .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, #161410 0%, #1e1b16 35%, #161410 60%, #161410 100%);
+  background: linear-gradient(90deg, #111827 0%, #1e293b 35%, #111827 60%, #111827 100%);
   background-size: 800px 100%;
   animation: shimmer 2.2s ease-in-out infinite 0.2s;
 }
