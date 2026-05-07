@@ -229,10 +229,16 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             {[{ v: researcher.pubs, l: "papers" }, { v: researcher.projects, l: "projects" }, { v: researcher.groups.length, l: "groups" }].map((s) => (
               <div key={s.l} style={{
                 background: "var(--surface-hover)", border: "1px solid var(--card-border)",
-                borderRadius: 8, padding: "8px 6px", textAlign: "center",
+                borderRadius: 10, padding: "12px 8px", textAlign: "center",
+                position: "relative", overflow: "hidden",
               }}>
-                <div style={{ fontSize: 18, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1.2, marginBottom: 2 }}>{s.v}</div>
-                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.06em", fontWeight: 500 }}>{s.l}</div>
+                <div style={{
+                  position: "absolute", top: 0, left: 0, right: 0, height: 2,
+                  background: `linear-gradient(90deg, ${researcher.color}50, ${researcher.color}15)`,
+                  borderRadius: "10px 10px 0 0",
+                }} />
+                <div style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em", lineHeight: 1.2, marginBottom: 3 }}>{s.v}</div>
+                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.07em", fontWeight: 600 }}>{s.l}</div>
               </div>
             ))}
           </div>
@@ -910,8 +916,8 @@ export default function App() {
                   className="opp-card card-enter"
                   style={{ animationDelay: `${Math.min(i, 5) * 60}ms` }}
                 >
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
-                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
+                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}18`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4, border: `1px solid ${color}30` }}>
                       {opp.type === "Postdoc" && <><GraduationCap size={10} />Postdoc</>}
                       {opp.type === "Doctorado" && <><GraduationCap size={10} />Doctorado</>}
                       {opp.type === "Fondos" && <><Wallet size={10} />Fondos</>}
@@ -919,16 +925,27 @@ export default function App() {
                       {opp.type === "Laboral" && <><JobIcon size={10} />Laboral</>}
                       {!["Postdoc","Doctorado","Fondos","Internacional","Laboral"].includes(opp.type) && opp.type}
                     </span>
-                    {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={10} color="var(--hot-color)" /></span>}
+                    {opp.hot && (
+                      <span style={{
+                        display: "flex", alignItems: "center", gap: 4,
+                        fontSize: 9, fontWeight: 800, color: "#ef4444",
+                        background: "rgba(239,68,68,0.12)", border: "1px solid rgba(239,68,68,0.28)",
+                        padding: "2px 7px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em",
+                        boxShadow: "0 0 8px rgba(239,68,68,0.18)",
+                      }}>
+                        <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#ef4444", display: "inline-block", boxShadow: "0 0 4px #ef4444" }} />
+                        HOT
+                      </span>
+                    )}
                   </div>
                   <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
                   <p style={{ fontSize: 11, color: "var(--text-muted)" }}>{opp.dept}</p>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto", paddingTop: 4 }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto", paddingTop: 6, borderTop: `1px solid var(--border-subtle)` }}>
                     <span style={{ fontSize: 11, color: opp.hot ? "var(--hot-color)" : "var(--text-tertiary)", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
                       <Clock size={10} />{opp.deadline}
                     </span>
-                    <span style={{ fontSize: 11, fontWeight: 600, color: "var(--text-muted)", display: "flex", alignItems: "center", gap: 3 }}>
-                      Ver más <ChevronRight size={10} color="var(--text-tertiary)" />
+                    <span style={{ fontSize: 11, fontWeight: 700, color: color, display: "flex", alignItems: "center", gap: 2 }}>
+                      Ver más <ChevronRight size={10} />
                     </span>
                   </div>
                 </div>
@@ -1066,23 +1083,28 @@ export default function App() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, marginBottom: 16, border: "1px solid var(--border)", borderRadius: 14, overflow: "hidden" }}>
             {[{ value: userProfile.pubs, label: "Publicaciones", icon: <BookOpen size={15} /> }, { value: userProfile.projects, label: "Proyectos", icon: <Briefcase size={15} /> }, { value: connectedIds.length, label: "Conexiones", icon: <Users size={15} /> }].map((stat, i) => (
-              <div key={stat.label} style={{ background: "var(--surface)", padding: "20px 20px", display: "flex", alignItems: "center", gap: 14, borderLeft: i > 0 ? "1px solid var(--border-subtle)" : "none" }}>
-                <div style={{ color: "var(--text-subtle)", flexShrink: 0 }}>{stat.icon}</div>
+              <div key={stat.label} style={{ background: "var(--surface)", padding: "22px 20px", display: "flex", alignItems: "center", gap: 14, borderLeft: i > 0 ? "1px solid var(--border-subtle)" : "none", position: "relative", overflow: "hidden" }}>
+                <div style={{
+                  position: "absolute", top: 0, left: 0, right: 0, height: 2,
+                  background: "linear-gradient(90deg, var(--accent), var(--accent-hover))",
+                  opacity: 0.6,
+                }} />
+                <div style={{ color: "var(--accent)", flexShrink: 0, opacity: 0.8 }}>{stat.icon}</div>
                 <div style={{ textAlign: "left" }}>
-                  <div style={{ fontSize: 26, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.03em", lineHeight: 1, marginBottom: 4 }}>{stat.value}</div>
-                  <div style={{ fontSize: 10, color: "var(--text-subtle)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.06em" }}>{stat.label}</div>
+                  <div style={{ fontSize: 30, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 5 }}>{stat.value}</div>
+                  <div style={{ fontSize: 10, color: "var(--text-subtle)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.07em" }}>{stat.label}</div>
                 </div>
               </div>
             ))}
           </div>
-          <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: 20 }}>
-            <p style={{ fontSize: 12, fontWeight: 700, color: "var(--text-primary)", marginBottom: 14, letterSpacing: "-0.01em" }}>Acciones rápidas</p>
-            <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+          <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: "18px 16px" }}>
+            <p style={{ fontSize: 11, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", marginBottom: 12 }}>Acciones rápidas</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               {[{ label: "Ver mi perfil público", icon: <ExternalLink size={13} /> }, { label: "Invitar a un colega", icon: <Users size={13} /> }, { label: "Exportar mi CV", icon: <BookOpen size={13} /> }].map((action) => (
-                <button key={action.label} className="quick-action-btn">
+                <button key={action.label} className="quick-action-btn" style={{ padding: "11px 14px" }}>
                   <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
                     <span style={{ color: "var(--accent)" }}>{action.icon}</span>
-                    {action.label}
+                    <span style={{ fontSize: 13, fontWeight: 500, color: "var(--text-secondary)" }}>{action.label}</span>
                   </span>
                   <ChevronRight size={12} color="var(--text-tertiary)" />
                 </button>
