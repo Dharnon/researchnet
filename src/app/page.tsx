@@ -1093,9 +1093,7 @@ export default function App() {
               </div>
             ))}
           </div>
-          <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: 20 }}>
-          {/* Research Activity */}
-          <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 14, padding: "18px 20px", marginBottom: 16 }}>
+          <div style={{ background: "var(--surface)", border: "1px solid var(--border)", borderRadius: 18, padding: "18px 20px", marginBottom: 16 }}>
             <p style={{ fontSize: 11, fontWeight: 700, color: "var(--text-secondary)", textTransform: "uppercase", letterSpacing: "0.07em", marginBottom: 12 }}>Nivel de actividad</p>
             <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
               <div style={{ flex: 1, height: 6, background: "var(--border)", borderRadius: 3, overflow: "hidden" }}>
@@ -1118,7 +1116,6 @@ export default function App() {
                 </button>
               ))}
             </div>
-          </div>
           </div>
         </div>
       )}
