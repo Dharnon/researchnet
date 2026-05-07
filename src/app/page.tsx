@@ -448,7 +448,7 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
             display: "flex", alignItems: "center", gap: 5,
             transition: "all 0.22s ease",
             letterSpacing: "0.01em",
-            boxShadow: !isConnected && hovered ? "0 2px 10px rgba(217,119,6,0.18)" : "none",
+            boxShadow: !isConnected && hovered ? "0 2px 10px var(--accent-glow)" : "none",
             fontFamily: "'DM Sans', system-ui, sans-serif",
           }}
         >

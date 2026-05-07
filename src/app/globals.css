@@ -394,10 +394,14 @@ body {
   pointer-events: none;
 }
 .researcher-card-a:hover {
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06), 0 0 0 1.5px rgba(132,204,22,0.14), 0 0 20px rgba(132,204,22,0.07);
+  transform: translateY(-3px);
 }
-.researcher-card-a:hover::before { opacity: 0.55; }
+.researcher-card-a:hover::before { opacity: 1; }
+.researcher-card-a:hover .card-avatar {
+  transform: scale(1.06);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.12), inset 0 1px 1px rgba(255,255,255,0.16), 0 4px 14px rgba(0,0,0,0.35);
+}
 .card-top {
   display: flex;
   gap: 12px;
