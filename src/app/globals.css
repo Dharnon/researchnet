@@ -438,6 +438,8 @@ select:focus-visible {
   border-radius: 14px 0 0 14px;
   opacity: 0;
   transition: opacity 0.2s ease;
+  pointer-events: none;
+  z-index: 1;
 }
 .opp-card:hover {
   border-color: var(--accent-border);
@@ -445,6 +447,7 @@ select:focus-visible {
   box-shadow: 0 8px 32px rgba(0,0,0,0.16), 0 16px 48px rgba(0,0,0,0.08), 0 0 0 1px var(--accent-border);
 }
 .opp-card:hover::before { opacity: 1; }
+.opp-card:hover .opp-card-accent { opacity: 1; }
 
 /* -- QUICK ACTION BUTTON -- */
 .quick-action-btn {

@@ -231,11 +231,20 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
             {[{ v: researcher.pubs, l: "papers" }, { v: researcher.projects, l: "projects" }, { v: researcher.groups.length, l: "groups" }].map((s) => (
               <div key={s.l} style={{
                 background: "var(--surface-hover)", border: "1px solid var(--card-border)",
-                borderRadius: 10, padding: "10px 8px", textAlign: "center",
+                borderRadius: 12, padding: "12px 8px", textAlign: "center",
                 position: "relative", overflow: "hidden",
               }}>
-                <div style={{ fontSize: 20, fontWeight: 800, color: "var(--text-primary)", letterSpacing: "-0.04em", lineHeight: 1.1, marginBottom: 3 }}>{s.v}</div>
-                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.07em", fontWeight: 600 }}>{s.l}</div>
+                <div style={{
+                  position: "absolute", top: 0, left: 0, right: 0, height: 2,
+                  background: `linear-gradient(90deg, ${researcher.color}40, ${researcher.color}10)`,
+                  borderRadius: "12px 12px 0 0",
+                }} />
+                <div style={{
+                  fontSize: 22, fontWeight: 800, color: "var(--text-primary)",
+                  letterSpacing: "-0.05em", lineHeight: 1.1, marginBottom: 4,
+                  fontFamily: "'Playfair Display', Georgia, serif",
+                }}>{s.v}</div>
+                <div style={{ fontSize: 9, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: 600 }}>{s.l}</div>
               </div>
             ))}
           </div>
@@ -910,8 +919,16 @@ export default function App() {
               const color = TYPE_COLORS[opp.type] ?? "#6b7280";
               return (
                 <div key={opp.id} onClick={() => setSelectedOpp(opp)} className="opp-card card-enter" style={{ animationDelay: `${Math.min(i, 5) * 60}ms` }}>
-                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 2 }}>
-                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4 }}>
+                  {/* Top accent line */}
+                  <div style={{
+                    position: "absolute", top: 0, left: 0, right: 0, height: 2,
+                    background: `linear-gradient(90deg, ${color}, ${color}60)`,
+                    opacity: 0,
+                    transition: "opacity 0.2s ease",
+                    borderRadius: "14px 14px 0 0",
+                  }} className="opp-card-accent" />
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4, position: "relative" }}>
+                    <span style={{ fontSize: 9, fontWeight: 800, color: color, background: `${color}15`, padding: "3px 8px", borderRadius: 20, textTransform: "uppercase", letterSpacing: "0.05em", display: "flex", alignItems: "center", gap: 4, border: `1px solid ${color}25` }}>
                       {opp.type === "Postdoc" && <><GraduationCap size={10} />Postdoc</>}
                       {opp.type === "Doctorado" && <><GraduationCap size={10} />Doctorado</>}
                       {opp.type === "Fondos" && <><Wallet size={10} />Fondos</>}
@@ -919,15 +936,15 @@ export default function App() {
                       {opp.type === "Laboral" && <><JobIcon size={10} />Laboral</>}
                       {!["Postdoc","Doctorado","Fondos","Internacional","Laboral"].includes(opp.type) && opp.type}
                     </span>
-                    {opp.hot && <span style={{ display: "flex", alignItems: "center" }}><Zap size={10} color="var(--hot-color)" /></span>}
+                    {opp.hot && <span style={{ display: "flex", alignItems: "center", gap: 3, fontSize: 10, fontWeight: 700, color: "var(--hot-color)", background: "rgba(217,119,6,0.08)", padding: "2px 6px", borderRadius: 8, border: "1px solid rgba(217,119,6,0.18)" }}><Zap size={9} />Hot</span>}
                   </div>
-                  <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.4, letterSpacing: "-0.01em" }}>{opp.title}</h3>
-                  <p style={{ fontSize: 11, color: "var(--text-muted)" }}>{opp.dept}</p>
-                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto", paddingTop: 4 }}>
+                  <h3 style={{ fontSize: 13, fontWeight: 700, color: "var(--text-primary)", lineHeight: 1.45, letterSpacing: "-0.01em" }}>{opp.title}</h3>
+                  <p style={{ fontSize: 11, color: "var(--text-muted)", marginTop: 2 }}>{opp.dept}</p>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginTop: "auto", paddingTop: 6, borderTop: "1px solid var(--border-subtle)" }}>
                     <span style={{ fontSize: 11, color: opp.hot ? "var(--hot-color)" : "var(--text-tertiary)", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
                       <Clock size={10} />{opp.deadline}
                     </span>
-                    <span style={{ fontSize: 11, fontWeight: 600, color: "var(--accent)", display: "flex", alignItems: "center", gap: 3 }}>
+                    <span style={{ fontSize: 11, fontWeight: 700, color: color, display: "flex", alignItems: "center", gap: 2, letterSpacing: "0.01em" }}>
                       Ver más <ChevronRight size={10} />
                     </span>
                   </div>
@@ -1062,11 +1079,16 @@ export default function App() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 0, marginBottom: 16, border: "1px solid var(--border)", borderRadius: 16, overflow: "hidden", boxShadow: "var(--shadow-card)" }}>
             {[{ value: userProfile.pubs, label: "Publicaciones", icon: <BookOpen size={15} /> }, { value: userProfile.projects, label: "Proyectos", icon: <Briefcase size={15} /> }, { value: connectedIds.length, label: "Conexiones", icon: <Users size={15} /> }].map((stat, i) => (
-              <div key={stat.label} style={{ background: "var(--surface)", padding: "22px 20px", display: "flex", alignItems: "center", gap: 14, borderLeft: i > 0 ? "1px solid var(--border-subtle)" : "none", position: "relative" }}>
-                <div style={{ color: "var(--accent)", flexShrink: 0, opacity: 0.7 }}>{stat.icon}</div>
+              <div key={stat.label} style={{ background: "var(--surface)", padding: "24px 20px", display: "flex", alignItems: "center", gap: 14, borderLeft: i > 0 ? "1px solid var(--border-subtle)" : "none", position: "relative", overflow: "hidden" }}>
+                <div style={{
+                  position: "absolute", top: 0, left: 0, right: 0, height: 2,
+                  background: "linear-gradient(90deg, var(--accent), var(--accent-hover))",
+                  opacity: 0.6,
+                }} />
+                <div style={{ color: "var(--accent)", flexShrink: 0, opacity: 0.75 }}>{stat.icon}</div>
                 <div style={{ textAlign: "left" }}>
-                  <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 28, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 4 }}>{stat.value}</div>
-                  <div style={{ fontSize: 10, color: "var(--text-tertiary)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.07em" }}>{stat.label}</div>
+                  <div style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: 30, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 5 }}>{stat.value}</div>
+                  <div style={{ fontSize: 10, color: "var(--text-tertiary)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.08em" }}>{stat.label}</div>
                 </div>
               </div>
             ))}
