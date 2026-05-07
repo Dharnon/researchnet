@@ -981,9 +981,7 @@ export default function App() {
                     <span style={{ fontSize: 11, color: opp.hot ? "var(--hot-color)" : "var(--text-tertiary)", fontWeight: 600, display: "flex", alignItems: "center", gap: 4 }}>
                       <Clock size={10} />{opp.deadline}
                     </span>
-                    <span style={{ fontSize: 11, fontWeight: 700, color: color, display: "flex", alignItems: "center", gap: 2 }}>
-                      Ver más <ChevronRight size={10} />
-                    </span>
+                    {/* Ver más — animated chevron */}<span style={{ fontSize: 11, fontWeight: 700, color: color, display: "flex", alignItems: "center", gap: 2 }}>Ver más <span style={{ display: "inline-flex", transition: "transform 0.18s", transform: "translateX(0px)" }} className="opp-chevron"><ChevronRight size={10} /></span></span>
                   </div>
                 </div>
               );
