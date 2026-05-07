@@ -401,9 +401,13 @@ body {
   overflow: hidden;
 }
 .researcher-card-b:hover {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.35), 0 0 0 1px rgba(245,158,11,0.12), 0 0 28px rgba(245,158,11,0.05);
-  border-color: rgba(245,158,11,0.28);
-  transform: translateY(-2px);
+  box-shadow: 0 12px 48px rgba(0,0,0,0.55), 0 16px 64px rgba(0,0,0,0.28), 0 0 0 1.5px rgba(245,158,11,0.22), 0 0 24px rgba(245,158,11,0.10);
+  border-color: rgba(245,158,11,0.38);
+  transform: translateY(-3px);
+}
+.researcher-card-b:hover .card-avatar {
+  transform: scale(1.06);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.10), inset 0 1px 1px rgba(255,255,255,0.12), 0 4px 14px rgba(0,0,0,0.40);
 }
 .card-top {
   display: flex;
