@@ -34,8 +34,8 @@
   --card-bg: #1c1917;
   --card-border: #292524;
 
-  --type-postdoc-bg: rgba(245,158,11,0.12);
-  --type-postdoc-text: #f59e0b;
+  --type-postdoc-bg: rgba(132,204,22,0.12);
+  --type-postdoc-text: #84cc16;
 
   --type-fondos-bg: rgba(161,98,7,0.15);
   --type-fondos-text: #d97706;
@@ -46,8 +46,8 @@
   --type-phd-bg: rgba(180,83,9,0.12);
   --type-phd-text: #f59e0b;
 
-  --type-becas-bg: rgba(245,158,11,0.12);
-  --type-becas-text: #f59e0b;
+  --type-becas-bg: rgba(132,204,22,0.12);
+  --type-becas-text: #84cc16;
   --type-laboral-text: #fbbf24;
   --type-laboral-bg: rgba(251,191,36,0.10);
 
@@ -63,16 +63,16 @@
 
   --hot-color: #ef4444;
 
-  --connected-bg: rgba(245,158,11,0.10);
-  --connected-color: #92400e;
-  --connected-border: rgba(245,158,11,0.30);
-  --connected-hover-bg: rgba(245,158,11,0.16);
+  --connected-bg: rgba(132,204,22,0.10);
+  --connected-color: #3d5a00;
+  --connected-border: rgba(132,204,22,0.30);
+  --connected-hover-bg: rgba(132,204,22,0.16);
 
   --header-bg: rgba(12,10,9,0.90);
   --header-border: rgba(41,37,36,0.80);
 
   --shadow-card: 0 1px 2px rgba(0,0,0,0.30), 0 4px 16px rgba(0,0,0,0.20), 0 0 0 1px rgba(254,243,199,0.03);
-  --shadow-card-hover: 0 12px 48px rgba(0,0,0,0.60), 0 16px 64px rgba(0,0,0,0.30), 0 0 0 1px rgba(245,158,11,0.18), 0 0 20px rgba(245,158,11,0.06);
+  --shadow-card-hover: 0 12px 48px rgba(0,0,0,0.60), 0 16px 64px rgba(0,0,0,0.30), 0 0 0 1px rgba(132,204,22,0.18), 0 0 20px rgba(132,204,22,0.06);
   --shadow-detail-panel: -12px 0 56px rgba(0,0,0,0.60);
 }
 
@@ -101,7 +101,7 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: var(--text-tertiary); }
 
 /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ SELECTION ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
-::selection { background: rgba(245,158,11,0.25); color: #fbbf24; }
+::selection { background: rgba(132,204,22,0.25); color: #84cc16; }
 /* ═══════════════════════════════════════════════
    VARIANT-B SECTION HEADINGS
    ═══════════════════════════════════════════════ */
@@ -401,8 +401,8 @@ body {
   overflow: hidden;
 }
 .researcher-card-b:hover {
-  box-shadow: 0 12px 48px rgba(0,0,0,0.55), 0 16px 64px rgba(0,0,0,0.28), 0 0 0 1.5px rgba(245,158,11,0.22), 0 0 24px rgba(245,158,11,0.10);
-  border-color: rgba(245,158,11,0.38);
+  box-shadow: 0 12px 48px rgba(0,0,0,0.55), 0 16px 64px rgba(0,0,0,0.28), 0 0 0 1.5px rgba(132,204,22,0.22), 0 0 24px rgba(132,204,22,0.10);
+  border-color: rgba(132,204,22,0.38);
   transform: translateY(-3px);
 }
 .researcher-card-b:hover .card-avatar {
@@ -552,8 +552,8 @@ body {
   transition: all 0.22s;
 }
 .network-card:hover {
-  box-shadow: 0 4px 24px rgba(0,0,0,0.30), 0 14px 48px rgba(0,0,0,0.18), 0 0 0 1px rgba(245,158,11,0.12), 0 0 48px rgba(245,158,11,0.05);
-  border-color: rgba(245,158,11,0.28);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.30), 0 14px 48px rgba(0,0,0,0.18), 0 0 0 1px rgba(132,204,22,0.12), 0 0 48px rgba(132,204,22,0.05);
+  border-color: rgba(132,204,22,0.28);
   transform: translateY(-1px);
 }
 .network-info { flex: 1; min-width: 0; }
@@ -625,8 +625,8 @@ body {
   transform: translateX(3px) !important;
 }
 .opp-card:hover {
-  box-shadow: 0 4px 24px rgba(0,0,0,0.30), 0 14px 48px rgba(0,0,0,0.18), 0 0 0 1px rgba(245,158,11,0.12), 0 0 48px rgba(245,158,11,0.05);
-  border-color: rgba(245,158,11,0.28);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.30), 0 14px 48px rgba(0,0,0,0.18), 0 0 0 1px rgba(132,204,22,0.12), 0 0 48px rgba(132,204,22,0.05);
+  border-color: rgba(132,204,22,0.28);
   transform: translateY(-2px);
 }
 .opp-card::after {
