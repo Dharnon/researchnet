@@ -122,14 +122,37 @@ body {
   100% { background-position: 200px 0; }
 }
 .skeleton-shimmer {
-  background: linear-gradient(90deg, #1c1917 0%, #292524 30%, #1c1917 60%, #292524 100%);
-  background-size: 600px 100%;
-  animation: shimmer 2.2s ease-in-out infinite;
+  background: linear-gradient(90deg, #161410 0%, #1e1b16 35%, #161410 60%, #161410 100%);
+  background-size: 800px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
 }
 .skeleton-shimmer-dim {
-  background: linear-gradient(90deg, #141210 0%, #1c1917 30%, #141210 60%, #1c1917 100%);
-  background-size: 600px 100%;
-  animation: shimmer 2.6s ease-in-out infinite;
+  background: linear-gradient(90deg, #161410 0%, #1e1b16 35%, #161410 60%, #161410 100%);
+  background-size: 800px 100%;
+  animation: shimmer 2.2s ease-in-out infinite 0.2s;
+}
+
+.skeleton-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.skeleton-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  background: linear-gradient(90deg, transparent 0%, rgba(30,27,22,0.8) 50%, transparent 100%);
+  background-size: 800px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  pointer-events: none;
 }
 
 /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ ONBOARDING ORCID BUTTON (variant-b-dark) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
@@ -401,10 +424,21 @@ body {
   overflow: hidden;
 }
 .researcher-card-b:hover {
-  box-shadow: 0 12px 48px rgba(0,0,0,0.55), 0 16px 64px rgba(0,0,0,0.28), 0 0 0 1.5px rgba(132,204,22,0.22), 0 0 24px rgba(132,204,22,0.10);
-  border-color: rgba(132,204,22,0.38);
+  border-color: rgba(181,132,42,0.20);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.25), 0 0 0 1px rgba(181,132,42,0.12);
   transform: translateY(-3px);
 }
+.researcher-card-b::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: none;
+}
+.researcher-card-b:hover::before { opacity: 1; }
 .researcher-card-b:hover .card-avatar {
   transform: scale(1.06);
   box-shadow: 0 0 0 1px rgba(255,255,255,0.10), inset 0 1px 1px rgba(255,255,255,0.12), 0 4px 14px rgba(0,0,0,0.40);
@@ -671,59 +705,7 @@ body {
   gap: 4px;
 }
 
-/* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ DETAIL PANEL (slide-in from right) ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
-.detail-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 440px;
-  background: var(--surface);
-  border-left: 1.5px solid var(--border);
-  box-shadow: var(--shadow-detail-panel);
-  z-index: 200;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  transform: translateX(100%);
-  transition: transform 0.28s cubic-bezier(0.32, 0, 0.16, 1);
-}
-.detail-panel.open { transform: translateX(0); }
-.panel-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 16px 20px;
-  border-bottom: 1px solid var(--border);
-  flex-shrink: 0;
-}
-.panel-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--text-primary);
-}
-.close-btn {
-  width: 30px;
-  height: 30px;
-  border-radius: 8px;
-  border: 1.5px solid var(--border);
-  background: var(--surface);
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.18s;
-}
-.close-btn:hover { background: var(--surface-hover); color: var(--text-primary); }
-.panel-body {
-  flex: 1;
-  overflow-y: auto;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+
 
 /* ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ MESSAGE INPUT ├óΓÇ¥Γé¼├óΓÇ¥Γé¼ */
 .msg-input-row {
