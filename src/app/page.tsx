@@ -945,7 +945,7 @@ export default function App() {
                       <Clock size={10} />{opp.deadline}
                     </span>
                     <span style={{ fontSize: 11, fontWeight: 700, color: color, display: "flex", alignItems: "center", gap: 2 }}>
-                      Ver más <ChevronRight size={10} />
+                      Ver más <span className="opp-chevron" style={{ display: "inline-flex", transition: "transform 0.18s" }}><ChevronRight size={10} /></span>
                     </span>
                   </div>
                 </div>
