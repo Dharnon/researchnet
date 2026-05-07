@@ -189,9 +189,9 @@
   pointer-events: none;
 }
 
-/* DARK SKELETON SHIMMER (variant-a clean: neutral cool-dark, lime accent) */
+/* WARM DARK SKELETON SHIMMER (variant-c warm editorial: warm stone-dark) */
 [data-theme="dark"] .skeleton-shimmer {
-  background: linear-gradient(90deg, #111827 0%, #1e293b 35%, #111827 60%, #111827 100%);
+  background: linear-gradient(90deg, #1c1917 0%, #2a2520 35%, #1c1917 60%, #1c1917 100%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
