@@ -189,9 +189,9 @@
   pointer-events: none;
 }
 
-/* DARK SKELETON SHIMMER (variant-b: stone-black) */
+/* DARK SKELETON SHIMMER (variant-a clean: neutral cool-dark, lime accent) */
 [data-theme="dark"] .skeleton-shimmer {
-  background: linear-gradient(90deg, #161410 0%, #241f18 35%, #161410 60%, #161410 100%);
+  background: linear-gradient(90deg, #111827 0%, #1e293b 35%, #111827 60%, #111827 100%);
   background-size: 800px 100%;
   animation: shimmer 1.4s ease-in-out infinite;
 }
@@ -254,9 +254,19 @@ body {
 in
 
 /* ═══════════════════════════════════════════════
+   VARIANT-B DARK PREMIUM SELECTION
+   ═══════════════════════════════════════════════ */
+[data-theme="dark"]::selection {
+  background: rgba(181,132,42,0.30);
+  color: #c9983a;
+}
+
+/* ═══════════════════════════════════════════════
    VARIANT-C SELECTION ══════════════════════════════════════════
    ═══════════════════════════════════════════════ */
-::selection { background: rgba(217,119,6,0.18); color: #92400e; }put::placeholder { color: var(--text-tertiary); }
+::selection { background: rgba(217,119,6,0.18); color: #92400e; }
+
+[data-theme="dark"] ::selection { background: rgba(181,132,42,0.30); color: #c9983a; }put::placeholder { color: var(--text-tertiary); }
 
 button {
   font-family: 'DM Sans', system-ui, sans-serif;
