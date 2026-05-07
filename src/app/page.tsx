@@ -198,15 +198,19 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
         {/* Header */}
         <div style={{
           display: "flex", alignItems: "center", justifyContent: "space-between",
-          padding: "14px 18px", borderBottom: "1px solid var(--card-border)",
+          padding: "16px 20px", borderBottom: "1px solid var(--card-border)",
         }}>
-          <span style={{ fontSize: 9, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.1em" }}>
+          <span style={{ fontSize: 10, fontWeight: 700, color: "var(--text-tertiary)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
             Perfil
           </span>
           <button onClick={onClose} style={{
             background: "none", border: "none", color: "var(--text-tertiary)",
-            cursor: "pointer", fontSize: 18, lineHeight: 1, padding: "0 4px",
-          }}>×</button>
+            cursor: "pointer", fontSize: 20, lineHeight: 1, padding: "2px 6px",
+            borderRadius: 6, transition: "background 0.15s, color 0.15s",
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.background = "var(--surface-hover)"; e.currentTarget.style.color = "var(--text-primary)"; }}
+          onMouseLeave={(e) => { e.currentTarget.style.background = "none"; e.currentTarget.style.color = "var(--text-tertiary)"; }}
+          >×</button>
         </div>
 
         {/* Body */}
@@ -288,27 +292,41 @@ function DetailPanel({ researcher, onClose, onConnect, isConnected }: {
         </div>
 
         {/* Footer */}
-        <div style={{ padding: "14px 20px 18px", borderTop: "1px solid var(--card-border)" }}>
+        <div style={{ padding: "14px 20px 20px", borderTop: "1px solid var(--card-border)" }}>
           <button
             onClick={onConnect}
             style={{
               width: "100%",
-              padding: "11px 20px",
-              borderRadius: 10,
+              padding: "13px 20px",
+              borderRadius: 12,
               border: `1px solid ${isConnected ? "var(--connected-border)" : "var(--accent-border)"}`,
-              fontSize: 13,
+              fontSize: 13.5,
               fontWeight: 700,
               cursor: "pointer",
               fontFamily: "'DM Sans', system-ui, sans-serif",
               background: isConnected ? "var(--connected-bg)" : "var(--accent)",
-              color: isConnected ? "var(--connected-color)" : "#1c1917",
+              color: isConnected ? "var(--connected-color)" : "#1a2e00",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: 7,
+              gap: 8,
               letterSpacing: "0.01em",
               transition: "all 0.18s ease",
-              boxShadow: isConnected ? "none" : "0 2px 10px var(--accent-glow)",
+              boxShadow: isConnected ? "none" : "0 4px 20px var(--accent-glow)",
+            }}
+            onMouseEnter={(e) => {
+              if (!isConnected) {
+                e.currentTarget.style.background = "var(--accent-hover)";
+                e.currentTarget.style.boxShadow = "0 6px 28px var(--accent-glow)";
+                e.currentTarget.style.transform = "translateY(-1px)";
+              }
+            }}
+            onMouseLeave={(e) => {
+              if (!isConnected) {
+                e.currentTarget.style.background = "var(--accent)";
+                e.currentTarget.style.boxShadow = "0 4px 20px var(--accent-glow)";
+                e.currentTarget.style.transform = "translateY(0)";
+              }
             }}
           >
             {isConnected
@@ -1101,15 +1119,15 @@ export default function App() {
           </div>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 1, marginBottom: 16, border: "1px solid var(--border)", borderRadius: 14, overflow: "hidden" }}>
             {[{ value: userProfile.pubs, label: "Publicaciones", icon: <BookOpen size={15} /> }, { value: userProfile.projects, label: "Proyectos", icon: <Briefcase size={15} /> }, { value: connectedIds.length, label: "Conexiones", icon: <Users size={15} /> }].map((stat, i) => (
-              <div key={stat.label} style={{ background: "var(--surface)", padding: "22px 20px", display: "flex", alignItems: "center", gap: 14, borderLeft: i > 0 ? "1px solid var(--border-subtle)" : "none", position: "relative", overflow: "hidden" }}>
+              <div key={stat.label} style={{ background: "var(--surface)", padding: "22px 20px", display: "flex", alignItems: "center", gap: 14, borderLeft: i > 0 ? "1px solid var(--border)" : "none", position: "relative", overflow: "hidden" }}>
                 <div style={{
                   position: "absolute", top: 0, left: 0, right: 0, height: 2,
                   background: "linear-gradient(90deg, var(--accent), var(--accent-hover))",
-                  opacity: 0.5,
+                  opacity: 0.65,
                 }} />
-                <div style={{ color: "var(--accent)", flexShrink: 0, opacity: 0.8 }}>{stat.icon}</div>
+                <div style={{ color: "var(--accent)", flexShrink: 0, opacity: 0.85 }}>{stat.icon}</div>
                 <div style={{ textAlign: "left" }}>
-                  <div style={{ fontSize: 30, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 5 }}>{stat.value}</div>
+                  <div style={{ fontSize: 28, fontWeight: 700, color: "var(--text-primary)", letterSpacing: "-0.04em", lineHeight: 1, marginBottom: 5 }}>{stat.value}</div>
                   <div style={{ fontSize: 10, color: "var(--text-subtle)", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.07em" }}>{stat.label}</div>
                 </div>
               </div>
