@@ -583,12 +583,8 @@ function MessagesView({ conversations, onSelectConversation, onBack, selectedOrc
           />
           <button
             onClick={onSendMessage}
-            style={{
-              width: 40, height: 40, borderRadius: "50%", border: "none",
-              background: "var(--accent)", color: "#000", cursor: "pointer",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              transition: "all 0.15s", flexShrink: 0,
-            }}
+            className="send-btn"
+            style={{ flexShrink: 0 }}
           >
             <Send size={15} />
           </button>
