@@ -646,6 +646,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
   connectedCount: number;
   unreadMessages: number;
 }) {
+  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const items = [
     { key: "discover", icon: <Search size={14} />, label: "Discover" },
     { key: "opportunities", icon: <Zap size={14} />, label: "Opportunities" },
@@ -662,16 +663,21 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
       borderRadius: 10, padding: 4,
     }}>
       {items.map((item) => (
-        <button key={item.key} onClick={() => setView(item.key)} style={{
-          position: "relative", minWidth: 68, height: 34, padding: "0 10px",
-          borderRadius: 7, border: "none",
-          fontSize: 12, fontWeight: 600, cursor: "pointer",
-          background: view === item.key ? "var(--accent-dim)" : "transparent",
-          color: view === item.key ? "var(--accent)" : "var(--text-tertiary)",
-          transition: "all 0.15s",
-          display: "flex", alignItems: "center", justifyContent: "center", gap: 5,
-        }}
-        title={item.label}
+        <button
+          key={item.key}
+          onClick={() => setView(item.key)}
+          onMouseEnter={() => setHoveredItem(item.key)}
+          onMouseLeave={() => setHoveredItem(null)}
+          style={{
+            position: "relative", minWidth: 68, height: 34, padding: "0 10px",
+            borderRadius: 7, border: "none",
+            fontSize: 12, fontWeight: 600, cursor: "pointer",
+            background: view === item.key ? "var(--accent-dim)" : hoveredItem === item.key ? "var(--surface)" : "transparent",
+            color: view === item.key ? "var(--accent)" : hoveredItem === item.key ? "var(--text-secondary)" : "var(--text-tertiary)",
+            transition: "all 0.15s",
+            display: "flex", alignItems: "center", justifyContent: "center", gap: 5,
+          }}
+          title={item.label}
         >
           {item.icon}
           <span>{item.label}</span>
@@ -679,7 +685,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
             <span style={{
               position: "absolute", top: 4, right: 4,
               background: item.key === "messages" ? "#ef4444" : "var(--accent)",
-              color: "#000", fontSize: 7, fontWeight: 800,
+              color: "#000", fontSize: 9, fontWeight: 800,
               padding: "0.5px 3.5px", borderRadius: 20, minWidth: 13,
               textAlign: "center", lineHeight: 1.4,
             }}>
