@@ -8,6 +8,7 @@ import type { Theme } from "@/lib/theme";
 export function GroupSpotlightCard({ group, t }: { group: ResearchGroup; t: Theme }) {
   return (
     <div
+      className="group-card"
       style={{
         background: t.surface,
         border: `1px solid ${t.border}`,

@@ -764,5 +764,15 @@ select:focus-visible {
   border-color: rgba(239,68,68,0.30);
 }
 
+/* ─── GROUP SPOTLIGHT CARD ─── */
+.group-card {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.group-card:hover {
+  border-color: var(--accent-border);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
 /* ─── HOT TOP STRIPE OVERRIDE FOR OPP CARDS ─── */
 .opp-card.hot::after { opacity: 1 !important; }
