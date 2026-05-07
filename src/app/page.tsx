@@ -142,19 +142,19 @@ function Avatar({ initials, color, size = 44 }: { initials: string; color: strin
 }
 
 
-// --- MATCH BADGE (variant-b: near-invisible metadata style) ---
+// --- MATCH BADGE (variant-a: Clean Classic — lime accent pill) ---
 function MatchBadge({ score }: { score: number }) {
   const isHigh = score >= 90;
   const isMid  = score >= 70 && score < 90;
-  const color   = isHigh ? "var(--text-tertiary)" : isMid ? "var(--text-subtle)" : "var(--text-subtle)";
   return (
     <span style={{
-      display: "inline-flex", alignItems: "center",
-      fontSize: 9.5, fontWeight: 500,
-      color, background: "transparent",
-      border: "none", padding: "1px 0",
+      display: "inline-flex", alignItems: "center", gap: 4,
+      fontSize: 10.5, fontWeight: 700,
+      color: isHigh ? "var(--match-high)" : isMid ? "var(--match-mid)" : "var(--match-low)",
+      background: isHigh ? "var(--match-high-bg)" : isMid ? "var(--match-mid-bg)" : "var(--match-low-bg)",
+      border: `1px solid ${isHigh ? "var(--match-high-border)" : isMid ? "var(--match-mid-border)" : "var(--match-low-border)"}`,
+      padding: "2px 7px", borderRadius: 20,
       letterSpacing: "0.01em", flexShrink: 0,
-      opacity: isHigh ? 0.65 : 0.45,
     }}>
       {score}%
     </span>
@@ -396,12 +396,12 @@ function ResearcherCard({ researcher, onSelect, onConnect, isConnected }: {
         {researcher.open && (
           <span style={{
             display: "inline-flex", alignItems: "center", gap: 4,
-            fontSize: 8.5, fontWeight: 500, color: "var(--text-tertiary)",
-            background: "transparent", border: "none",
-            padding: "2px 0", borderRadius: 20,
+            fontSize: 8.5, fontWeight: 600, color: "var(--accent)",
+            background: "var(--accent-faint)", border: "1px solid var(--accent-border)",
+            padding: "2px 7px", borderRadius: 20,
             textTransform: "uppercase", letterSpacing: "0.08em", flexShrink: 0, alignSelf: "flex-start",
           }}>
-            <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--text-tertiary)", display: "inline-block", opacity: 0.5, flexShrink: 0 }} />
+            <span style={{ width: 4, height: 4, borderRadius: "50%", background: "var(--accent)", display: "inline-block", flexShrink: 0 }} />
             Open
           </span>
         )}
