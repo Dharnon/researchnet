@@ -692,7 +692,7 @@ function NavBar({ view, setView, connectedCount, unreadMessages }: {
               <span style={{
                 position: "absolute", top: 2, right: 2,
                 background: item.key === "messages" ? "#ef4444" : "var(--accent)",
-                color: "#000", fontSize: 7, fontWeight: 800,
+                color: "#000", fontSize: 9, fontWeight: 800,
                 padding: "0.5px 3.5px", borderRadius: 20, minWidth: 13,
                 textAlign: "center", lineHeight: 1.4,
               }}>
