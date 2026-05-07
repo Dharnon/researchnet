@@ -451,6 +451,8 @@ select:focus-visible {
 }
 .opp-card:hover::before { opacity: 1; }
 .opp-card:hover .opp-card-accent { opacity: 1; }
+.opp-card:hover .opp-chevron { transform: translateX(3px); }
+.opp-card .opp-chevron { transition: transform 0.18s ease; display: inline-flex; }
 
 /* -- QUICK ACTION BUTTON -- */
 .quick-action-btn {
